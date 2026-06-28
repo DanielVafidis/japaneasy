@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JapanEasy 🇯🇵
 
-## Getting Started
+**Learn Japanese the natural way** — a calm, structured course that teaches Japanese from a Japanese point of view, with the interactive tools that make learning stick.
 
-First, run the development server:
+JapanEasy is a lesson-based web app: kana first, then grammar built block by block, with spaced-repetition flashcards, audio on every sentence, quizzes, kanji browse, and a streak/XP system. Everything runs in the browser — **no account, no backend**. Progress saves privately in `localStorage`.
+
+---
+
+## Screenshots
+
+| Home & dashboard | Curriculum |
+| --- | --- |
+| ![Home dashboard](.screenshots/home.png) | ![Lesson reader](.screenshots/lesson.png) |
+
+| Kana trainer | Kanji browser |
+| --- | --- |
+| ![Kana trainer](.screenshots/kana.png) | ![Kanji grid](.screenshots/kanji.png) |
+
+| Kanji detail | Flashcards (SRS) |
+| --- | --- |
+| ![Kanji detail](.screenshots/kanji-detail.png) | ![Flashcards review](.screenshots/flashcards.png) |
+
+| Progress | Settings |
+| --- | --- |
+| ![Progress & stats](.screenshots/progress.png) | ![Settings](.screenshots/settings.png) |
+
+---
+
+## Features
+
+- **35 lessons across 5 stages** — Foundations → Basic Grammar → Essential Grammar → Special Expressions → Advanced Topics
+- **Kana Trainer** — hiragana/katakana chart, recognition quiz, and writing canvas
+- **Kanji browser** — 100 common characters with readings, examples, and add-to-deck
+- **Global search (⌘K)** — jump to any lesson, word, kanji, or page
+- **Furigana & romaji toggles** — romaji off by default; generated from kana automatically
+- **Audio everywhere** — Web Speech API on sentences, words, and kana
+- **Spaced-repetition flashcards** — SM-2-style scheduler; kana, vocab, grammar, and kanji decks
+- **Per-lesson quizzes** — multiple choice, fill-in, and matching; 60%+ completes the lesson
+- **Progress & gamification** — streaks, XP, levels, daily goal ring, study heatmap, export/import
+- **Light & dark themes** — clean, high-contrast UI
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org/) (App Router) + React 19 + TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [Zustand](https://github.com/pmndrs/zustand) + `localStorage` persistence
+- [lucide-react](https://lucide.dev/) · [motion](https://motion.dev/)
+- Web Speech API for pronunciation
+
+## Getting started
+
+**Prerequisites:** Node.js 20+ and npm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm run build    # production build + type-check
+npm run start    # serve production build
+npm run lint
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> Japanese TTS depends on your OS/browser voice. Audio buttons hide themselves if none is available.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```text
+app/                     # routes (home, learn, lessons, kana, kanji, flashcards, progress, settings)
+content/                 # typed lesson & kanji data
+  lessons/               # one file per lesson + index.ts registry
+  curriculum.ts          # stage metadata
+  kana.ts, kanji.ts, decks.ts, types.ts
+lib/                     # store, SRS, furigana/romaji, speech, leveling
+components/              # UI by feature area
+.screenshots/            # README screenshots
+```
 
-To learn more about Next.js, take a look at the following resources:
+## How it works
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Content is typed TypeScript**, not Markdown — furigana, audio, quizzes, and flashcards are derived from each `Lesson` object ([`content/types.ts`](content/types.ts)).
+- **Furigana convention:** `学生[がくせい]だ` → ruby rendering + auto romaji.
+- **Progress** lives in `localStorage` (`japaneasy-store-v1`). Reset via the footer link or Settings → data controls.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See **[AUTHORING.md](AUTHORING.md)** for adding or editing lessons.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Works on [Vercel](https://vercel.com/) or any static host that supports Next.js:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
+
+Connect the repo, set framework to Next.js, deploy. No environment variables required.
+
+## Source & attribution
+
+Grammar content is adapted from ***A Guide to Japanese Grammar*** by Tae Kim (CC BY-NC-SA). JapanEasy is a non-commercial learning project. Prose may be rewritten over time for licensing flexibility.

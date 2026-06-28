@@ -1,65 +1,175 @@
-import Image from "next/image";
+import {
+  BookOpenCheck,
+  Brain,
+  Headphones,
+  Languages,
+  Route,
+  Search,
+  Shapes,
+  Sparkles,
+} from "lucide-react";
+import { ButtonLink } from "@/components/ui/Button";
+import { Dashboard } from "@/components/home/Dashboard";
+import { Reveal } from "@/components/Reveal";
 
-export default function Home() {
+const FEATURES = [
+  {
+    icon: <Route className="h-5 w-5" />,
+    title: "A Japanese-first path",
+    body: "Lessons follow the order that makes sense in Japanese — not forced translations of English phrases.",
+  },
+  {
+    icon: <Languages className="h-5 w-5" />,
+    title: "Kana before everything",
+    body: "Master hiragana and katakana with an interactive trainer and audio. We never lean on romaji.",
+  },
+  {
+    icon: <Brain className="h-5 w-5" />,
+    title: "Remember it for good",
+    body: "Add any word, kana, or grammar point to a spaced-repetition deck that schedules reviews for you.",
+  },
+  {
+    icon: <Headphones className="h-5 w-5" />,
+    title: "Hear every sentence",
+    body: "A tap plays natural Japanese pronunciation on any example, so you train your ear from day one.",
+  },
+  {
+    icon: <BookOpenCheck className="h-5 w-5" />,
+    title: "Read at your level",
+    body: "Toggle furigana and romaji on or off per your comfort, and wean off the training wheels over time.",
+  },
+  {
+    icon: <Search className="h-5 w-5" />,
+    title: "Find anything instantly",
+    body: "Press ⌘K (or Ctrl+K) to jump to any lesson, vocabulary word, kanji, or page without leaving your keyboard.",
+  },
+  {
+    icon: <Shapes className="h-5 w-5" />,
+    title: "Kanji at a glance",
+    body: "Browse N5 kanji by category, inspect readings and examples, and add characters straight to your review deck.",
+  },
+  {
+    icon: <Sparkles className="h-5 w-5" />,
+    title: "Stay motivated",
+    body: "Daily streaks, XP and levels turn consistent practice into a habit that's genuinely satisfying.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="relative">
+      {/* Hero */}
+      <section>
+        <div className="mx-auto max-w-6xl px-5 pb-10 pt-16 sm:pt-24">
+          <div className="max-w-2xl">
+            <p
+              className="mb-4 inline-flex animate-fade-up items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-sm text-ink-soft"
+              style={{ animationDelay: "40ms" }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <Sparkles className="h-3.5 w-3.5 text-shu" /> 日本語 · learn the
+              natural way
+            </p>
+            <h1
+              className="animate-fade-up text-balance text-5xl font-bold leading-[1.05] text-ink sm:text-6xl"
+              style={{ animationDelay: "100ms" }}
             >
-              Learning
-            </a>{" "}
-            center.
+              Read Japanese, the way it{" "}
+              <span className="brush-underline text-shu">actually works</span>.
+            </h1>
+            <p
+              className="mt-6 max-w-xl animate-fade-up text-lg leading-8 text-ink-soft"
+              style={{ animationDelay: "180ms" }}
+            >
+              A calm, structured course that teaches Japanese from a Japanese
+              point of view — kana first, then grammar built block by block, with
+              spaced-repetition flashcards, audio, and quizzes to make it stick.
+            </p>
+            <div
+              className="mt-8 flex animate-fade-up flex-wrap items-center gap-3"
+              style={{ animationDelay: "260ms" }}
+            >
+              <ButtonLink href="/lessons/introduction" size="lg">
+                Start learning — it's free
+              </ButtonLink>
+              <ButtonLink href="/learn" variant="outline" size="lg">
+                See the curriculum
+              </ButtonLink>
+            </div>
+            <p
+              className="mt-4 animate-fade-up text-sm text-ink-faint"
+              style={{ animationDelay: "320ms" }}
+            >
+              No account needed · your progress saves privately in this browser.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Dashboard */}
+      <section className="mx-auto max-w-6xl px-5 py-8">
+        <h2 className="mb-4 flex items-center gap-3 font-display text-2xl text-ink">
+          <span className="h-6 w-1 rounded-full bg-shu" /> Your dashboard
+        </h2>
+        <Dashboard />
+      </section>
+
+      {/* Features */}
+      <section className="mx-auto max-w-6xl px-5 py-12">
+        <div className="mb-8 max-w-2xl">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-shu">
+            Why it works
+          </p>
+          <h2 className="text-balance text-3xl text-ink sm:text-4xl">
+            Built around how people actually learn Japanese
+          </h2>
+          <p className="mt-3 text-ink-soft">
+            Every feature reflects hard-won community wisdom: foundations first,
+            review often, and immerse with comprehensible input.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {FEATURES.map((f, i) => (
+            <Reveal key={f.title} delay={i * 0.05}>
+              <Feature icon={f.icon} title={f.title} body={f.body} />
+            </Reveal>
+          ))}
         </div>
-      </main>
+      </section>
+
+      {/* Philosophy */}
+      <section className="mx-auto max-w-4xl px-5 pb-8">
+        <Reveal>
+        <figure className="rounded-3xl border border-line bg-surface p-8 text-center sm:p-12">
+          <blockquote className="font-display text-2xl leading-relaxed text-ink sm:text-3xl">
+            Language is not a math problem. Practice from real Japanese, learn by
+            example, and the patterns become second nature.
+          </blockquote>
+          <figcaption className="mt-4 text-sm text-ink-faint">
+            — the guiding idea behind every lesson
+          </figcaption>
+        </figure>
+        </Reveal>
+      </section>
+    </div>
+  );
+}
+
+function Feature({
+  icon,
+  title,
+  body,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="group rounded-3xl border border-line bg-surface p-6 transition-colors hover:border-shu/30 card-shadow">
+      <span className="mb-4 grid h-11 w-11 place-items-center rounded-2xl bg-shu/10 text-shu transition-transform group-hover:scale-110">
+        {icon}
+      </span>
+      <h3 className="mb-1.5 font-display text-lg text-ink">{title}</h3>
+      <p className="text-sm leading-6 text-ink-soft">{body}</p>
     </div>
   );
 }

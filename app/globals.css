@@ -1,26 +1,189 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (toggled on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  JapanEasy — "Washi & Sumi" design system
+  Warm paper (washi) surfaces, sumi-ink text, vermilion (朱) hanko accent,
+  indigo (藍) secondary, matcha + gold tertiaries.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f7f6f3;
+  --paper-2: #eeede8;
+  --surface: #ffffff;
+  --surface-2: #f3f2ee;
+  --ink: #1a1714;
+  --ink-soft: #4a4540;
+  --ink-faint: #736b62;
+  --line: #ddd9d0;
+  --line-strong: #c8c2b6;
+
+  --shu: #d2452c;        /* vermilion — primary */
+  --shu-deep: #b1351f;
+  --ai: #2c456f;         /* indigo — secondary */
+  --ai-soft: #4a6398;
+  --matcha: #6c8a45;     /* success / progress */
+  --gold: #bd9740;       /* highlight / streak */
+
+  --shadow-color: 30 25 18;
+}
+
+.dark {
+  --paper: #0f0e0c;
+  --paper-2: #161412;
+  --surface: #1c1a17;
+  --surface-2: #252219;
+  --ink: #f5f2eb;
+  --ink-soft: #c4bdb0;
+  --ink-faint: #8a8278;
+  --line: #2e2a24;
+  --line-strong: #3d3830;
+
+  --shu: #ef6a4d;
+  --shu-deep: #d2492d;
+  --ai: #93a7d6;
+  --ai-soft: #6e85bd;
+  --matcha: #a0bd72;
+  --gold: #d9b95f;
+
+  --shadow-color: 0 0 0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-shu: var(--shu);
+  --color-shu-deep: var(--shu-deep);
+  --color-ai: var(--ai);
+  --color-ai-soft: var(--ai-soft);
+  --color-matcha: var(--matcha);
+  --color-gold: var(--gold);
+
+  --font-display: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+  --font-sans: "Zen Kaku Gothic New", "Hiragino Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-jp: "Klee One", "Zen Kaku Gothic New", "Hiragino Mincho ProN", serif;
+
+  --radius-xl: 1.1rem;
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.5s ease both;
+  --animate-stamp: stamp 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  --animate-float: float 7s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--shu) 28%, transparent);
+    color: var(--ink);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* Pretty, thin scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+
+  /* Consistent, visible keyboard focus */
+  a:focus-visible,
+  button:focus-visible,
+  select:focus-visible,
+  input:focus-visible,
+  [role="button"]:focus-visible,
+  [role="switch"]:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--shu);
+    outline-offset: 2px;
+    border-radius: 8px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Hand-painted ink underline */
+  .brush-underline {
+    background-image: linear-gradient(120deg, var(--shu), var(--shu-deep));
+    background-repeat: no-repeat;
+    background-position: 0 92%;
+    background-size: 100% 0.22em;
+    padding-bottom: 0.05em;
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .card-shadow {
+    box-shadow:
+      0 1px 2px rgb(var(--shadow-color) / 0.05),
+      0 4px 16px -4px rgb(var(--shadow-color) / 0.1);
+  }
+  .card-shadow-lg {
+    box-shadow:
+      0 1px 2px rgb(var(--shadow-color) / 0.06),
+      0 8px 24px -8px rgb(var(--shadow-color) / 0.14);
+  }
+}
+
+/* The hanko seal "JE" stamp */
+.seal {
+  font-family: var(--font-display);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--shu), var(--shu-deep));
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, #fff 30%, transparent);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes stamp {
+  0% { opacity: 0; transform: scale(1.6) rotate(-12deg); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) rotate(-8deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

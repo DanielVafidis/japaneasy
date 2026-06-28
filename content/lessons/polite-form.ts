@@ -1,0 +1,97 @@
+import type { Lesson } from "../types";
+
+export const politeForm: Lesson = {
+  id: "polite-form",
+  stage: "essential-grammar",
+  order: 0,
+  title: "Polite Form",
+  subtitle: "〜です and 〜ます",
+  summary:
+    "Switch from casual plain speech to the polite です／ます forms used with strangers, teachers, and in most service settings.",
+  estMinutes: 15,
+  vocabulary: [
+    { word: "食[た]べる", reading: "たべる", meaning: "to eat" },
+    { word: "行[い]く", reading: "いく", meaning: "to go" },
+    { word: "学生[がくせい]", reading: "がくせい", meaning: "student" },
+    { word: "元気[げんき]", reading: "げんき", meaning: "healthy; fine" },
+    { word: "昨日[きのう]", reading: "きのう", meaning: "yesterday" },
+  ],
+  blocks: [
+    {
+      type: "prose",
+      text: "Plain Japanese — {{だ}}, {{食べる}}, {{行った}} — is fine among friends. Everywhere else, you wrap statements in **polite form**: nouns and na-adjectives take {{です}}, verbs take {{ます}}.",
+    },
+    {
+      type: "rule",
+      title: "Nouns & na-adjectives",
+      items: [
+        "Present polite: add {{です}}. {{学生だ}} → {{学生です}}.",
+        "Past polite: replace {{だ}} with {{でした}}. {{元気だった}} → {{元気でした}}.",
+        "Negative polite: {{じゃない}} → {{じゃないです}} or {{ではありません}} (more formal).",
+      ],
+    },
+    {
+      type: "examples",
+      title: "Nouns",
+      items: [
+        { jp: "学生[がくせい]です。", en: "I am a student. / (They) are a student." },
+        { jp: "元気[げんき]でした。", en: "Was fine (polite past)." },
+        { jp: "学生[がくせい]じゃないです。", en: "Is not a student (polite)." },
+      ],
+    },
+    {
+      type: "heading",
+      text: "Verbs: the ます-form",
+    },
+    {
+      type: "rule",
+      title: "How to make ます",
+      items: [
+        "**Ru-verbs:** drop {{る}}, add {{ます}}. {{食べる}} → {{食べます}}.",
+        "**U-verbs:** change the final /u/ vowel to /i/, add {{ます}}. {{行く}} → {{行きます}}.",
+        "**Exceptions:** {{する}} → {{します}}, {{来る}} → {{来ます}}.",
+        "**Past polite:** change {{ます}} to {{ました}}. {{食べます}} → {{食べました}}.",
+        "**Negative polite:** {{ません}} / {{ませんでした}}.",
+      ],
+    },
+    {
+      type: "examples",
+      title: "Verbs",
+      items: [
+        { jp: "毎日[まいにち]、ご飯[ごはん]を食[た]べます。", en: "I eat rice every day (polite)." },
+        { jp: "昨日[きのう]、学校[がっこう]へ行[い]きました。", en: "Went to school yesterday (polite past)." },
+        { jp: "今日[きょう]は行[い]きません。", en: "Won't go today (polite negative)." },
+      ],
+    },
+    {
+      type: "tip",
+      text: "In real conversation, {{です}} and {{ます}} often drop at the end of long sentences — but when in doubt, keep them. They signal respect and distance.",
+    },
+  ],
+  quiz: [
+    {
+      kind: "mc",
+      prompt: "Polite present of 食べる?",
+      choices: ["食べる", "食べます", "食べた", "食べない"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "Polite past of 行く?",
+      choices: ["行きます", "行きました", "行った", "行きません"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "Polite form of 学生だ?",
+      choices: ["学生です", "学生ます", "学生でした", "学生い"],
+      answer: 0,
+    },
+    {
+      kind: "mc",
+      prompt: "Polite negative of a verb ends in…",
+      choices: ["ない", "ません", "じゃない", "ではない"],
+      answer: 1,
+    },
+  ],
+};
