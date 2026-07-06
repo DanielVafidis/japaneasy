@@ -97,7 +97,14 @@ const typeMeta: Record<ItemType, { label: string; icon: React.ReactNode }> = {
   kanji: { label: "Kanji", icon: <Shapes className="h-4 w-4" /> },
 };
 
-export function SearchPalette({ compact = false }: { compact?: boolean }) {
+export function SearchPalette({
+  compact,
+  className,
+}: {
+  /** Force icon-only button. Omit for responsive header styling. */
+  compact?: boolean;
+  className?: string;
+}) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -200,13 +207,16 @@ export function SearchPalette({ compact = false }: { compact?: boolean }) {
         aria-label="Search"
         className={cn(
           "inline-flex shrink-0 items-center justify-center text-ink-faint transition-colors hover:text-ink active:bg-surface-2",
-          compact
-            ? "h-9 w-9"
-            : "h-10 gap-1.5 rounded-full border border-line bg-surface py-2 pl-3 pr-2 text-sm hover:border-shu/40 sm:gap-2",
+          compact === true && "h-9 w-9",
+          compact === false &&
+            "h-10 gap-1.5 rounded-full border border-line bg-surface py-2 pl-3 pr-2 text-sm hover:border-shu/40 sm:gap-2",
+          compact === undefined &&
+            "h-9 w-9 md:h-10 md:w-auto md:gap-1.5 md:rounded-full md:border md:border-line md:bg-surface md:py-2 md:pl-3 md:pr-2 md:text-sm md:hover:border-shu/40 md:active:bg-surface",
+          className,
         )}
       >
         <Search className="h-4 w-4" />
-        {!compact && (
+        {compact !== true && (
           <>
             <span className="hidden lg:inline">Search</span>
             <kbd className="hidden rounded border border-line bg-paper px-1.5 py-0.5 font-sans text-[0.65rem] lg:inline">

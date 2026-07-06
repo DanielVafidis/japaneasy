@@ -63,58 +63,58 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex shrink-0 items-center md:gap-2">
-          {/* Mobile: grouped icon controls with shared border, no gaps */}
-          <div className="touch-segment md:hidden">
-            <SearchPalette compact />
-            {hasHydrated && (
+        {/* Single control strip — segmented on mobile, spaced on desktop */}
+        <div
+          className={cn(
+            "flex shrink-0 items-center",
+            "max-md:touch-segment",
+            "md:gap-2",
+          )}
+        >
+          <SearchPalette />
+
+          {hasHydrated && (
+            <>
               <span
-                className="inline-flex min-h-9 min-w-9 items-center justify-center gap-0.5 px-2 text-[0.65rem] font-semibold text-gold"
+                className="inline-flex min-h-9 min-w-9 items-center justify-center gap-0.5 px-2 text-[0.65rem] font-semibold text-gold md:hidden"
                 title={`${streak}-day streak`}
               >
                 <Flame className="h-3 w-3" /> {streak}
               </span>
-            )}
-            <ThemeToggle className="h-9 w-9 shrink-0 border-0 bg-transparent hover:border-0" />
-            <button
-              type="button"
-              onClick={() => setOpen((o) => !o)}
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              className="grid h-9 w-9 shrink-0 place-items-center text-ink-soft active:bg-surface-2"
-            >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-          </div>
+              <span
+                className="hidden items-center gap-1 rounded-full border border-gold/30 bg-gold/10 px-2.5 py-1 text-xs font-semibold text-gold md:inline-flex"
+                title={`${streak}-day streak`}
+              >
+                <Flame className="h-3.5 w-3.5" /> {streak}
+              </span>
+              <span
+                className="hidden items-center gap-1 rounded-full border border-ai/25 bg-ai/10 px-2.5 py-1 text-xs font-semibold text-ai md:inline-flex"
+                title={`Level ${level}`}
+              >
+                Lv {level}
+              </span>
+            </>
+          )}
 
-          {/* Desktop: spaced controls */}
-          <div className="hidden items-center gap-2 md:flex">
-            <SearchPalette />
-            {hasHydrated && (
-              <>
-                <span
-                  className="inline-flex items-center gap-1 rounded-full border border-gold/30 bg-gold/10 px-2.5 py-1 text-xs font-semibold text-gold"
-                  title={`${streak}-day streak`}
-                >
-                  <Flame className="h-3.5 w-3.5" /> {streak}
-                </span>
-                <span
-                  className="inline-flex items-center gap-1 rounded-full border border-ai/25 bg-ai/10 px-2.5 py-1 text-xs font-semibold text-ai"
-                  title={`Level ${level}`}
-                >
-                  Lv {level}
-                </span>
-              </>
-            )}
-            <Link
-              href="/settings"
-              aria-label="Settings"
-              className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface text-ink-soft transition-colors hover:border-shu/40 hover:text-ink"
-            >
-              <Settings className="h-[18px] w-[18px]" />
-            </Link>
-            <ThemeToggle />
-          </div>
+          <Link
+            href="/settings"
+            aria-label="Settings"
+            className="hidden h-10 w-10 place-items-center rounded-full border border-line bg-surface text-ink-soft transition-colors hover:border-shu/40 hover:text-ink md:grid"
+          >
+            <Settings className="h-[18px] w-[18px]" />
+          </Link>
+
+          <ThemeToggle className="max-md:h-9 max-md:w-9 max-md:border-0 max-md:bg-transparent max-md:hover:border-0" />
+
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            className="grid h-9 w-9 shrink-0 place-items-center text-ink-soft active:bg-surface-2 md:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
 

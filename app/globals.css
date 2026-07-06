@@ -191,7 +191,7 @@
     border-radius: 0;
   }
 
-  /* Segmented control — adjacent buttons with no gap */
+  /* Segmented control — adjacent buttons with no gap (mobile header) */
   .touch-segment {
     display: flex;
     overflow: hidden;
@@ -199,6 +199,20 @@
     border: 1px solid var(--line);
     background-color: var(--surface);
     padding: 2px;
+  }
+
+  @media (min-width: 768px) {
+    .touch-segment {
+      overflow: visible;
+      border-radius: 0;
+      border: 0;
+      background-color: transparent;
+      padding: 0;
+    }
+
+    .touch-segment > * + * {
+      box-shadow: none;
+    }
   }
 
   .touch-segment > button {
@@ -210,6 +224,15 @@
 
   .touch-segment > * + * {
     box-shadow: -1px 0 0 var(--line);
+  }
+
+  @media (min-width: 768px) {
+    .touch-segment > button {
+      flex: none;
+      min-height: 0;
+      min-width: auto;
+      border-radius: 9999px;
+    }
   }
 
   .card-shadow {
