@@ -8,7 +8,7 @@ export const definingAndTrying: Lesson = {
   subtitle: "〜方 · の/こと · 〜てみる · 〜といい",
   summary:
     "Turn verbs into nouns with の and こと, say how to do something with 方, try actions with てみる, and express hopes with といい.",
-  estMinutes: 18,
+  estMinutes: 20,
   vocabulary: [
     { word: "方[かた]", reading: "かた", meaning: "way; how to (after verb stem)" },
     { word: "意味[いみ]", reading: "いみ", meaning: "meaning" },
@@ -66,6 +66,21 @@ export const definingAndTrying: Lesson = {
     },
     {
       type: "heading",
+      text: "Defining with という",
+    },
+    {
+      type: "prose",
+      text: "**Noun + {{という}} + noun** defines or renames: {{学生[がくせい]という人[ひと]}} — 'a person called a student' / 'what we call a student'. {{日本[にほん]という国[くに]}} — 'the country called Japan'.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "忘[わす]れっぽいというのは、よく物[もの]をなくすことだ。", en: "Being forgetful means often losing things." },
+        { jp: "「ありがとう」という言[い]葉[ことば]。", en: "The word 'arigatou'." },
+      ],
+    },
+    {
+      type: "heading",
       text: "Trying something: 〜てみる",
     },
     {
@@ -118,8 +133,8 @@ export const definingAndTrying: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "「I hope it rains」 (wish for rain)?",
-      choices: ["雨が降る", "雨が降るといい", "雨が降って", "雨が降るの"],
+      prompt: "「The country called Japan」?",
+      choices: ["日本の国", "日本という国", "日本というの", "日本のこと"],
       answer: 1,
     },
   ],

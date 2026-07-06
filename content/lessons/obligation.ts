@@ -8,7 +8,7 @@ export const obligation: Lesson = {
   subtitle: "なければならない and softer cousins",
   summary:
     "Express obligation, prohibition, and 'don't have to' with te-form based patterns.",
-  estMinutes: 14,
+  estMinutes: 18,
   vocabulary: [
     { word: "宿題[しゅくだい]", reading: "しゅくだい", meaning: "homework" },
     { word: "薬[くすり]", reading: "くすり", meaning: "medicine" },
@@ -46,9 +46,20 @@ export const obligation: Lesson = {
       type: "rule",
       title: "Prohibition & exemption",
       items: [
-        "**Must not:** {{てはいけない}} / {{てはダメ}} — {{食べてはいけない}}.",
+        "**Must not:** {{てはいけない}} / {{てはダメ[だめ]}} / {{ちゃだめ}} (casual) — {{食べてはいけない}}.",
         "**Don't have to:** {{なくてもいい}} — {{来[こ]なくてもいい}} — needn't come.",
         "Don't confuse them: {{食べなくてもいい}} = you may skip eating; {{食べてはいけない}} = eating is forbidden.",
+      ],
+    },
+    {
+      type: "table",
+      caption: "Easy mix-ups",
+      headers: ["Pattern", "Meaning"],
+      rows: [
+        ["食べなければならない", "must eat"],
+        ["食べてはいけない", "must not eat"],
+        ["食べなくてもいい", "don't have to eat"],
+        ["食べないといけない", "colloquial must eat"],
       ],
     },
     {
@@ -86,8 +97,8 @@ export const obligation: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Casual short form of 行かなければならない?",
-      choices: ["行かなきゃ", "行っちゃ", "行けば", "行ったら"],
+      prompt: "Colloquial 「must eat」 (like なきゃ)?",
+      choices: ["食べないといけない", "食べてもいい", "食べてはいけない", "食べなくてもいい"],
       answer: 0,
     },
   ],

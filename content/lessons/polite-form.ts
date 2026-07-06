@@ -8,7 +8,7 @@ export const politeForm: Lesson = {
   subtitle: "〜です and 〜ます",
   summary:
     "Switch from casual plain speech to the polite です／ます forms used with strangers, teachers, and in most service settings.",
-  estMinutes: 15,
+  estMinutes: 18,
   vocabulary: [
     { word: "食[た]べる", reading: "たべる", meaning: "to eat" },
     { word: "行[い]く", reading: "いく", meaning: "to go" },
@@ -28,6 +28,7 @@ export const politeForm: Lesson = {
         "Present polite: add {{です}}. {{学生だ}} → {{学生です}}.",
         "Past polite: replace {{だ}} with {{でした}}. {{元気だった}} → {{元気でした}}.",
         "Negative polite: {{じゃない}} → {{じゃないです}} or {{ではありません}} (more formal).",
+        "**I-adjectives:** keep the {{い}}, add {{です}} — {{暑[あつ]い}} → {{暑いです}}. Past: {{暑かったです}}.",
       ],
     },
     {
@@ -55,6 +56,17 @@ export const politeForm: Lesson = {
       ],
     },
     {
+      type: "table",
+      caption: "食べる — full polite paradigm",
+      headers: ["Form", "Polite"],
+      rows: [
+        ["Present", "食べます"],
+        ["Past", "食べました"],
+        ["Negative", "食べません"],
+        ["Past negative", "食べませんでした"],
+      ],
+    },
+    {
       type: "examples",
       title: "Verbs",
       items: [
@@ -62,6 +74,10 @@ export const politeForm: Lesson = {
         { jp: "昨日[きのう]、学校[がっこう]へ行[い]きました。", en: "Went to school yesterday (polite past)." },
         { jp: "今日[きょう]は行[い]きません。", en: "Won't go today (polite negative)." },
       ],
+    },
+    {
+      type: "note",
+      text: "{{ではありません}} is more formal than {{じゃないです}} — use on signs, in speeches, and with strangers in very polite settings.",
     },
     {
       type: "tip",
@@ -89,9 +105,9 @@ export const politeForm: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Polite negative of a verb ends in…",
-      choices: ["ない", "ません", "じゃない", "ではない"],
-      answer: 1,
+      prompt: "Polite present of 暑い?",
+      choices: ["暑いです", "暑います", "暑です", "暑いでした"],
+      answer: 0,
     },
   ],
 };

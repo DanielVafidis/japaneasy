@@ -8,7 +8,7 @@ export const potentialForm: Lesson = {
   subtitle: "Can / be able to",
   summary:
     "Express ability with the potential verb form — and learn how が marks what you can do.",
-  estMinutes: 14,
+  estMinutes: 18,
   vocabulary: [
     { word: "食[た]べる", reading: "たべる", meaning: "to eat" },
     { word: "見[み]る", reading: "みる", meaning: "to see" },
@@ -53,8 +53,38 @@ export const potentialForm: Lesson = {
       text: "Using {{を}} with potential is still heard: {{日本語を話せる}}. Both are acceptable; {{が}} emphasises ability.",
     },
     {
+      type: "heading",
+      text: "見える vs 見られる · 聞こえる vs 聞ける",
+    },
+    {
+      type: "rule",
+      title: "Natural ability vs potential form",
+      items: [
+        "**{{見[み]える}}** — visible / can see (spontaneous): {{山[やま]が見える}}.",
+        "**{{見[み]られる}}** — can watch / able to see (potential): {{映画[えいが]が見られる}}.",
+        "**{{聞[き]こえる}}** — audible: {{音[おと]が聞こえる}}.",
+        "**{{聞[き]ける}}** — can listen / able to hear (effort): {{ラジオが聞ける}}.",
+      ],
+    },
+    {
+      type: "heading",
+      text: "Negative & polite",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "日本語[にほんご]の新聞[しんぶん]は、まだ読[よ]めません。", en: "Can't read Japanese newspapers yet (polite)." },
+        { jp: "ここでは泳[およ]げない。", en: "Can't swim here." },
+        { jp: "彼[かれ]の声[こえ]が聞[き]こえない。", en: "Can't hear his voice." },
+      ],
+    },
+    {
       type: "tip",
       text: "{{できる}} also works as a standalone helper: {{日本語ができる}} = 'can do Japanese' = speaks Japanese.",
+    },
+    {
+      type: "note",
+      text: "Ru-verb {{食[た]べられる}} can mean **potential** or **passive** — context decides. U-verbs avoid this: {{読[よ]まれる}} = passive only; {{読める}} = potential.",
     },
   ],
   quiz: [
@@ -78,9 +108,9 @@ export const potentialForm: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Potential form of 書く?",
-      choices: ["書ける", "書られる", "書いてる", "書かれる"],
-      answer: 0,
+      prompt: "「The mountain is visible」?",
+      choices: ["山が見られる", "山が見える", "山を見える", "山が見えられる"],
+      answer: 1,
     },
   ],
 };

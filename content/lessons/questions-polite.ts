@@ -8,7 +8,7 @@ export const questionsPolite: Lesson = {
   subtitle: "Asking politely without changing word order",
   summary:
     "Turn any statement into a question by adding か — and learn the polite question patterns that replace casual の.",
-  estMinutes: 12,
+  estMinutes: 16,
   vocabulary: [
     { word: "誰[だれ]", reading: "だれ", meaning: "who" },
     { word: "何[なに/なん]", reading: "なに", meaning: "what" },
@@ -53,6 +53,24 @@ export const questionsPolite: Lesson = {
         ["どこ", "where", "どこへ行きますか"],
         ["いつ", "when", "いつ来ますか"],
         ["どう", "how", "日本語はどうですか"],
+        ["どうして / なぜ", "why", "どうして来[き]ませんか"],
+      ],
+    },
+    {
+      type: "heading",
+      text: "Negative questions = soft invitations",
+    },
+    {
+      type: "prose",
+      text: "{{食[た]べませんか}} literally asks 'won't you eat?' but usually means **'would you like to eat?'** — softer than {{食べますか}}. Same pattern: {{行[い]きませんか}} (shall we go?), {{コーヒーにしませんか}} (how about coffee?).",
+    },
+    {
+      type: "rule",
+      title: "Answering yes/no questions",
+      items: [
+        "**はい** agrees with the question as stated — even if the question is negative.",
+        "「コーヒーはいりませんか」→「はい」= 'No thanks' is WRONG in textbook logic; 「はい」= 'Yes, I don't need it.' Many speakers use **「いいえ、結構[けっこう]です」** instead.",
+        "When unsure, repeat the verb: {{はい、飲[の]みます}} / {{いいえ、飲みません}}.",
       ],
     },
     {
@@ -90,8 +108,14 @@ export const questionsPolite: Lesson = {
     },
     {
       kind: "fill",
-      prompt: "Type the question word for 'where' (romaji).",
-      answers: ["doko"],
+      prompt: "Type the question word for 'why' (common casual form, romaji).",
+      answers: ["doushite", "naze"],
+    },
+    {
+      kind: "mc",
+      prompt: "「Shall we go?」 — natural invitation?",
+      choices: ["行きますか", "行きませんか", "行くか", "行きたいか"],
+      answer: 1,
     },
   ],
 };

@@ -8,7 +8,7 @@ export const givingReceiving: Lesson = {
   subtitle: "あげる · くれる · もらう",
   summary:
     "Three verbs that encode direction — who gives, who receives, and whose perspective you're speaking from.",
-  estMinutes: 16,
+  estMinutes: 20,
   vocabulary: [
     { word: "あげる", reading: "あげる", meaning: "to give (outward)" },
     { word: "くれる", reading: "くれる", meaning: "to give (to me/us)" },
@@ -43,6 +43,28 @@ export const givingReceiving: Lesson = {
     },
     {
       type: "heading",
+      text: "Favours with te-form: 〜てあげる / 〜てくれる / 〜てもらう",
+    },
+    {
+      type: "rule",
+      title: "Doing favours for someone",
+      items: [
+        "**{{〜てあげる}}** — do a favour **for someone else** (outward): {{教[おし]えてあげた}}.",
+        "**{{〜てくれる}}** — someone does a favour **for me/us**: {{教[おし]えてくれた}}.",
+        "**{{〜てもらう}}** — I **get someone to** do for me: {{友達[ともだち]に教[おし]えてもらった}}.",
+        "Same direction rules as あげる/くれる/もらう — now with any verb.",
+      ],
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "弟[おとうと]に宿題[しゅくだい]を手伝[てつだ]ってあげた。", en: "I helped my little brother with homework." },
+        { jp: "隣[となり]の人[ひと]が塵[ごみ]を捨[す]ててくれた。", en: "The neighbour threw out my trash (for me)." },
+        { jp: "医者[いしゃ]に見[み]てもらった。", en: "I had a doctor examine me." },
+      ],
+    },
+    {
+      type: "heading",
       text: "Honorific giving verbs",
     },
     {
@@ -61,6 +83,15 @@ export const givingReceiving: Lesson = {
         { jp: "母[はは]に花[はな]をあげた。", en: "I gave flowers to my mother." },
         { jp: "友達[ともだち]が手伝[てつだ]ってくれた。", en: "A friend helped me (did me the favour)." },
         { jp: "先生[せんせい]に日本語[にほんご]を教[おし]えてもらった。", en: "I received the favour of being taught Japanese (by the teacher)." },
+      ],
+    },
+    {
+      type: "rule",
+      title: "Common mistake",
+      items: [
+        "✗ {{友達[ともだち]にプレゼントをくれた}} when YOU gave it — use {{あげた}}.",
+        "✓ {{友達[ともだち]が}} (subject) {{くれた}} — the friend gave TO you.",
+        "Think: {{くれる}} always means the giver acts **toward your circle**.",
       ],
     },
     {
@@ -89,9 +120,9 @@ export const givingReceiving: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "ください comes from which verb family?",
-      choices: ["あげる", "くれる / くださる", "もらう", "する"],
-      answer: 1,
+      prompt: "Friend taught you (benefit to you) — natural?",
+      choices: ["教えてあげた", "教えてくれた", "教えてもらった", "Both B and C"],
+      answer: 3,
     },
   ],
 };

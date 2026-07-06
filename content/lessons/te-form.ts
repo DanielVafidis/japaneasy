@@ -8,7 +8,7 @@ export const teForm: Lesson = {
   subtitle: "Linking verbs and building longer sentences",
   summary:
     "The te-form connects verbs in sequence, makes requests, and is the stem for dozens of grammar patterns.",
-  estMinutes: 18,
+  estMinutes: 20,
   vocabulary: [
     { word: "食[た]べる", reading: "たべる", meaning: "to eat" },
     { word: "飲[の]む", reading: "のむ", meaning: "to drink" },
@@ -67,8 +67,40 @@ export const teForm: Lesson = {
       ],
     },
     {
+      type: "heading",
+      text: "Adjectives in te-form chains",
+    },
+    {
+      type: "rule",
+      title: "Linking adjectives with て",
+      items: [
+        "**I-adjectives:** drop {{い}}, add {{くて}} — {{安[やす]い}} → {{安くて}} (cheap and…).",
+        "**Na-adjectives:** {{で}} — {{静[しず]か}} → {{静かで}}.",
+        "{{大[おお]きくて、重[おも]くて、持[も]てない}} — too big and heavy to carry.",
+      ],
+    },
+    {
+      type: "heading",
+      text: "Negative te-form",
+    },
+    {
+      type: "prose",
+      text: "Negative te uses {{なくて}}: {{食[た]べない}} → {{食べなくて}} — 'didn't eat and (so)…' {{行[い]かなくて}}、遅[おく]れた — didn't go, so was late.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "朝[あさ]ご飯[はん]を食[た]べなくて、お腹[なか]が空[す]いた。", en: "Didn't eat breakfast, so I'm hungry." },
+        { jp: "安[やす]くて、おいしい。", en: "Cheap and tasty." },
+      ],
+    },
+    {
       type: "tip",
       text: "If you know the past tense (た-form), the te-form uses the same stem change — just swap {{た}} for {{て}} and {{だ}} for {{で}}.",
+    },
+    {
+      type: "note",
+      text: "Later patterns stack on te-form: {{読[よ]んでいる}} (progressive), {{食[た]べてしまう}} (done/regret), {{持[も]ってくる}} (bring). Master conjugation first — the helpers come next.",
     },
   ],
   quiz: [
@@ -92,8 +124,14 @@ export const teForm: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Te-form of する?",
-      choices: ["すて", "して", "した", "すって"],
+      prompt: "Te-form of 行く?",
+      choices: ["行いて", "行って", "行んで", "行きて"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "「Cheap and tasty」 — link i-adjectives?",
+      choices: ["安いて、おいしい", "安くて、おいしい", "安で、おいしい", "安く、おいしく"],
       answer: 1,
     },
   ],

@@ -8,7 +8,7 @@ export const conditionals: Lesson = {
   subtitle: "と · なら · ば · たら",
   summary:
     "Four ways to say 'if / when' — each with a different nuance, from natural laws to hypotheticals.",
-  estMinutes: 18,
+  estMinutes: 22,
   vocabulary: [
     { word: "雨[あめ]", reading: "あめ", meaning: "rain" },
     { word: "暑[あつ]い", reading: "あつい", meaning: "hot (weather)" },
@@ -68,6 +68,21 @@ export const conditionals: Lesson = {
       ],
     },
     {
+      type: "table",
+      caption: "Pick the right conditional",
+      headers: ["Pattern", "Best for", "Example"],
+      rows: [
+        ["と", "automatic / always", "春[はる]になると暖[あた]かい"],
+        ["なら", "advice on a topic raised", "行[い]くなら早[はや]い方[ほう]がいい"],
+        ["ば", "general if", "勉強[べんきょう]すれば分[わ]かる"],
+        ["たら", "when / if (everyday)", "着[つ]いたら連絡[れんらく]して"],
+      ],
+    },
+    {
+      type: "note",
+      text: "Optional {{もし}} at the start adds 'if' emphasis: {{もし雨[あめ]が降[ふ]ったら}}. Nouns: {{学生[がくせい]なら}} (if you're a student) vs {{学生だと}} (when someone is a student → always…).",
+    },
+    {
       type: "tip",
       text: "Start with {{たら}} for everyday 'when/if' and {{なら}} for advice. Save {{と}} for inevitable pairs and {{ば}} for textbook hypotheticals.",
     },
@@ -93,8 +108,8 @@ export const conditionals: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Conditional form of i-adjective 暑い?",
-      choices: ["暑いと", "暑ければ", "暑かったら", "暑いなら"],
+      prompt: "「If you're a student (advice)」 — noun?",
+      choices: ["学生だと", "学生なら", "学生たら", "学生ば"],
       answer: 1,
     },
   ],

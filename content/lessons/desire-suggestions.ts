@@ -8,7 +8,7 @@ export const desireSuggestions: Lesson = {
   subtitle: "たい · ましょう · ませんか",
   summary:
     "Say what you want, invite someone out, and propose doing things together.",
-  estMinutes: 14,
+  estMinutes: 18,
   vocabulary: [
     { word: "食[た]べる", reading: "たべる", meaning: "to eat" },
     { word: "行[い]く", reading: "いく", meaning: "to go" },
@@ -49,8 +49,17 @@ export const desireSuggestions: Lesson = {
       items: [
         "{{ましょう}} — 'let's': {{食べましょう}}.",
         "{{ませんか}} — polite invitation: {{映画を見ませんか}} — 'Won't you watch a movie?'",
+        "{{ましょうか}} — offer to help: {{荷物[にもつ]を持[も]ちましょうか}} — 'Shall I carry your bag?'",
         "{{たらどう}} — casual nudge: {{休[やす]んだらどう}} — 'How about resting?'",
       ],
+    },
+    {
+      type: "heading",
+      text: "Third-person desire: たがる",
+    },
+    {
+      type: "prose",
+      text: "You can't say {{彼[かれ]はラーメンを食[た]べたい}} about someone else in neutral narration — use {{食[た]べたがっている}} ('seems to want to eat'). {{が}} marks the thing wanted: {{ラーメンを食べたがっている}}.",
     },
     {
       type: "dialogue",
@@ -86,9 +95,15 @@ export const desireSuggestions: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Negative of 行きたい?",
-      choices: ["行きたくない", "行きない", "行きたくなかった", "Both A and C"],
-      answer: 3,
+      prompt: "「He seems to want ramen」 — natural?",
+      choices: ["食べたい", "食べたがっている", "食べ欲しい", "食べましょう"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "「Shall I help you?」 — offering?",
+      choices: ["手伝いましょうか", "手伝いません", "手伝いたい", "手伝うなら"],
+      answer: 0,
     },
   ],
 };
