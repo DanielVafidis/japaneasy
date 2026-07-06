@@ -57,9 +57,14 @@ const FEATURES = [
 
 export default function HomePage() {
   return (
-    <div className="relative">
+    <div className="relative flex flex-col">
+      {/* Today — first on mobile, after hero on desktop */}
+      <section className="order-1 page-x mx-auto w-full max-w-6xl py-6 md:order-2 md:py-8">
+        <Dashboard />
+      </section>
+
       {/* Hero */}
-      <section>
+      <section className="order-2 md:order-1">
         <div className="page-x mx-auto max-w-6xl pb-10 pt-12 sm:pt-24">
           <div className="max-w-2xl">
             <p
@@ -105,16 +110,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Dashboard */}
-      <section className="page-x mx-auto max-w-6xl py-8">
-        <h2 className="mb-4 flex items-center gap-3 font-display text-2xl text-ink">
-          <span className="h-6 w-1 rounded-full bg-shu" /> Your dashboard
-        </h2>
-        <Dashboard />
-      </section>
-
       {/* Features */}
-      <section className="page-x mx-auto max-w-6xl py-12">
+      <section className="order-3 page-x mx-auto max-w-6xl py-12">
         <div className="mb-8 max-w-2xl">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-shu">
             Why it works
@@ -137,7 +134,7 @@ export default function HomePage() {
       </section>
 
       {/* Philosophy */}
-      <section className="page-x mx-auto max-w-4xl pb-8">
+      <section className="order-4 page-x mx-auto max-w-4xl pb-8">
         <Reveal>
         <figure className="rounded-3xl border border-line bg-surface p-6 text-center sm:p-8 md:p-12">
           <blockquote className="font-display text-xl leading-relaxed text-ink sm:text-2xl md:text-3xl">

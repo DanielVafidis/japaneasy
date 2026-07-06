@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { FlashcardsView } from "@/components/flashcards/FlashcardsView";
 
 export const metadata: Metadata = {
@@ -22,7 +23,9 @@ export default function FlashcardsPage() {
           card at the perfect moment so it sticks with minimal effort.
         </p>
       </header>
-      <FlashcardsView />
+      <Suspense fallback={null}>
+        <FlashcardsView />
+      </Suspense>
     </div>
   );
 }

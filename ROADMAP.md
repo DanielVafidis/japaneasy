@@ -50,7 +50,7 @@ Ship these before backend, AI, or major new content.
 | # | Feature | Description | Why (beginners + course feel) | Effort | Priority | Status |
 |---|---------|-------------|-------------------------------|--------|----------|--------|
 | 0.1 | **Auto-enroll vocab on lesson complete** | When a lesson is marked complete (or quiz ≥60%), add its vocabulary cards to the SRS deck automatically (opt-out in Settings). | Beginners won’t discover “Add to flashcards”; review is where retention happens. | Low | High | ✅ |
-| 0.2 | **“Today” course view (mobile home)** | Replace/supplement dashboard with: (1) reviews due, (2) next lesson in path, (3) daily goal progress — one primary CTA. | Course apps win on “what do I do today?” not stats grids. | Medium | High | ⬜ |
+| 0.2 | **“Today” course view (mobile home)** | Replace/supplement dashboard with: (1) reviews due, (2) next lesson in path, (3) daily goal progress — one primary CTA. | Course apps win on “what do I do today?” not stats grids. | Medium | High | ✅ |
 | 0.3 | **Post-lesson recap** | After complete: “12 words added · 8 due tomorrow · Next: Polite Form”. | Connects reading to long-term memory; feels like a course, not a checklist. | Low | High | 🔄 |
 | 0.4 | **Quiz misses → boosted SRS** | Wrong quiz answers spawn or prioritize cards (sentence or vocab). | Closes read → test → review loop without AI. | Medium | High | ⬜ |
 | 0.5 | **First-run onboarding (3 steps)** | Explain: read lesson → short quiz → reviews save progress. Mobile-first, dismissible. | Reduces bounce; sets course expectations vs game. | Low | High | ⬜ |
@@ -172,5 +172,6 @@ Ship these before backend, AI, or major new content.
 
 | Date | Change |
 |------|--------|
+| 2026-07-06 | Phase 0.2: mobile-first Today view on home with review/lesson/daily-goal plan |
 | 2026-07-06 | Phase 0.1: auto-add lesson vocab to SRS on complete (Settings opt-out) |
 | 2026-07-06 | Locked north star: **Foundation** (structured course + daily review) |

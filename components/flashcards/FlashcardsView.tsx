@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   ArrowRight,
   Brain,
@@ -37,6 +38,8 @@ const GRADES: { id: Grade; label: string; tone: string }[] = [
 ];
 
 export function FlashcardsView() {
+  const searchParams = useSearchParams();
+  const autoStarted = useRef(false);
   const cards = useStore((s) => s.cards);
   const reviewCard = useStore((s) => s.reviewCard);
   const totalAdded = useTotalAdded();
@@ -69,6 +72,16 @@ export function FlashcardsView() {
     setReviewed(0);
     setMode("review");
   }
+
+  useEffect(() => {
+    if (autoStarted.current) return;
+    if (searchParams.get("review") !== "1") return;
+    const q = buildDue();
+    if (q.length === 0) return;
+    autoStarted.current = true;
+    start();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, cards]);
 
   function grade(g: Grade) {
     const id = queue[pos];
