@@ -7,10 +7,12 @@ function Toggle({
   active,
   onClick,
   children,
+  className,
 }: {
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <button
@@ -18,10 +20,11 @@ function Toggle({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        "rounded-full px-3 py-1 text-xs font-medium transition-all",
+        "px-3 py-1.5 text-xs font-medium transition-all sm:py-1",
         active
           ? "bg-shu text-white shadow-sm"
-          : "text-ink-soft hover:text-ink",
+          : "text-ink-soft hover:text-ink active:bg-surface-2",
+        className,
       )}
     >
       {children}
@@ -36,19 +39,22 @@ export function ReadingControls({ className }: { className?: string }) {
   const setShowRomaji = useStore((s) => s.setShowRomaji);
 
   return (
-    <div
-      className={cn(
-        "inline-flex items-center gap-1 rounded-full border border-line bg-surface p-1",
-        className,
-      )}
-    >
-      <span className="px-2 text-[0.7rem] font-medium uppercase tracking-wide text-ink-faint">
+    <div className={cn("touch-segment w-full sm:w-auto", className)}>
+      <span className="hidden px-2 text-[0.7rem] font-medium uppercase tracking-wide text-ink-faint sm:inline">
         Readings
       </span>
-      <Toggle active={showFurigana} onClick={() => setShowFurigana(!showFurigana)}>
+      <Toggle
+        active={showFurigana}
+        onClick={() => setShowFurigana(!showFurigana)}
+        className="flex-1 sm:flex-none"
+      >
         ふりがな
       </Toggle>
-      <Toggle active={showRomaji} onClick={() => setShowRomaji(!showRomaji)}>
+      <Toggle
+        active={showRomaji}
+        onClick={() => setShowRomaji(!showRomaji)}
+        className="flex-1 sm:flex-none"
+      >
         Romaji
       </Toggle>
     </div>

@@ -142,14 +142,16 @@ export function FlashcardsView() {
               Show answer
             </Button>
           ) : (
-            <div className="grid grid-cols-4 gap-2">
-              {GRADES.map((g) => (
+            <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-line sm:grid-cols-4 sm:gap-2 sm:overflow-visible sm:rounded-none sm:border-0">
+              {GRADES.map((g, i) => (
                 <button
                   key={g.id}
                   onClick={() => grade(g.id)}
                   className={cn(
-                    "flex flex-col items-center gap-1 rounded-2xl border bg-surface py-3 text-sm font-semibold transition-all active:scale-95",
+                    "flex flex-col items-center gap-1 bg-surface py-3.5 text-xs font-semibold transition-colors active:bg-surface-2 sm:rounded-2xl sm:border sm:py-3 sm:text-sm",
                     g.tone,
+                    i % 2 === 1 && "border-l border-line sm:border-l",
+                    i >= 2 && "border-t border-line sm:border-t-0",
                   )}
                 >
                   {g.label}
@@ -197,7 +199,7 @@ export function FlashcardsView() {
       {totalAdded === 0 ? (
         <EmptyState />
       ) : (
-        <div className="rounded-3xl border border-line bg-surface p-7 card-shadow">
+        <div className="rounded-3xl border border-line bg-surface p-5 card-shadow sm:p-7">
           <div className="relative flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-shu">

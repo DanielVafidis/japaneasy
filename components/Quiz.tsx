@@ -91,42 +91,44 @@ export function Quiz({
   }
 
   return (
-    <div className="rounded-3xl border border-line bg-surface p-6 sm:p-8">
-      <div className="mb-5 flex items-center justify-between">
-        <span className="text-xs font-semibold uppercase tracking-widest text-ink-faint">
-          Question {index + 1} of {questions.length}
-        </span>
-        <div className="flex gap-1">
-          {questions.map((_, i) => (
-            <span
-              key={i}
-              className={cn(
-                "h-1.5 w-5 rounded-full transition-colors",
-                i < index || (i === index && answered)
-                  ? "bg-shu"
-                  : i === index
-                    ? "bg-shu/40"
-                    : "bg-line",
-              )}
-            />
-          ))}
+    <div className="overflow-hidden rounded-3xl border border-line bg-surface sm:overflow-visible">
+      <div className="px-4 pt-4 sm:p-6 md:px-8 md:pt-8">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <span className="text-xs font-semibold uppercase tracking-widest text-ink-faint">
+            Question {index + 1} of {questions.length}
+          </span>
+          <div className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 sm:mx-0 sm:overflow-visible sm:pb-0">
+            {questions.map((_, i) => (
+              <span
+                key={i}
+                className={cn(
+                  "h-1.5 w-4 shrink-0 rounded-full transition-colors sm:w-5",
+                  i < index || (i === index && answered)
+                    ? "bg-shu"
+                    : i === index
+                      ? "bg-shu/40"
+                      : "bg-line",
+                )}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div key={`${attempt}-${index}`} className="animate-fade-up">
+          {q.kind === "mc" && (
+            <MultipleChoice q={q} answered={answered} onResult={handleResult} />
+          )}
+          {q.kind === "fill" && (
+            <FillIn q={q} answered={answered} onResult={handleResult} />
+          )}
+          {q.kind === "match" && (
+            <MatchPairs q={q} answered={answered} onResult={handleResult} />
+          )}
         </div>
       </div>
 
-      <div key={`${attempt}-${index}`} className="animate-fade-up">
-        {q.kind === "mc" && (
-          <MultipleChoice q={q} answered={answered} onResult={handleResult} />
-        )}
-        {q.kind === "fill" && (
-          <FillIn q={q} answered={answered} onResult={handleResult} />
-        )}
-        {q.kind === "match" && (
-          <MatchPairs q={q} answered={answered} onResult={handleResult} />
-        )}
-      </div>
-
       {answered && (
-        <div className="mt-5 animate-fade-up">
+        <div className="border-t border-line px-4 py-4 animate-fade-up sm:px-6 md:px-8">
           <div
             className={cn(
               "flex items-start gap-2 rounded-xl p-3 text-sm",
@@ -147,8 +149,8 @@ export function Quiz({
               {"explanation" in q && q.explanation}
             </span>
           </div>
-          <div className="mt-4 flex justify-end">
-            <Button size="sm" onClick={next}>
+          <div className="mt-4 flex justify-stretch sm:justify-end">
+            <Button size="sm" onClick={next} className="w-full sm:w-auto">
               {index + 1 >= questions.length ? "See results" : "Next"}
             </Button>
           </div>
@@ -164,7 +166,7 @@ function Prompt({ prompt, promptJp }: { prompt: string; promptJp?: string }) {
       <p className="text-lg text-ink">{prompt}</p>
       {promptJp && (
         <div className="mt-3 grid place-items-center rounded-2xl bg-surface-2/70 py-6">
-          <JapaneseText text={promptJp} className="text-4xl" align="center" />
+          <JapaneseText text={promptJp} className="text-3xl sm:text-4xl" align="center" />
         </div>
       )}
     </div>
@@ -197,7 +199,8 @@ function MultipleChoice({
   return (
     <>
       <Prompt prompt={q.prompt} promptJp={q.promptJp} />
-      <div className="grid gap-2.5 sm:grid-cols-2">
+      {/* Mobile: full-bleed stacked choices that share borders */}
+      <div className="touch-list -mx-4 sm:hidden">
         {choices.map((choice) => {
           const isCorrect = choice === correctValue;
           const isSelected = choice === selected;
@@ -208,7 +211,37 @@ function MultipleChoice({
               disabled={answered}
               onClick={() => choose(choice)}
               className={cn(
-                "flex items-center justify-between gap-2 rounded-xl border px-4 py-3 text-left transition-all",
+                "flex w-full items-center justify-between gap-2 px-4 py-3.5 text-left text-sm transition-colors active:bg-surface-2",
+                !answered && "bg-surface",
+                answered && isCorrect && "bg-matcha/10",
+                answered && isSelected && !isCorrect && "bg-shu/10",
+                answered && !isCorrect && !isSelected && "opacity-50",
+              )}
+            >
+              <span className="font-jp text-ink">{choice}</span>
+              {answered && isCorrect && (
+                <Check className="h-4 w-4 shrink-0 text-matcha" />
+              )}
+              {answered && isSelected && !isCorrect && (
+                <X className="h-4 w-4 shrink-0 text-shu" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+      {/* Desktop: spaced grid */}
+      <div className="hidden gap-2.5 sm:grid sm:grid-cols-2">
+        {choices.map((choice) => {
+          const isCorrect = choice === correctValue;
+          const isSelected = choice === selected;
+          return (
+            <button
+              key={choice}
+              type="button"
+              disabled={answered}
+              onClick={() => choose(choice)}
+              className={cn(
+                "flex min-h-11 items-center justify-between gap-2 rounded-xl border px-4 py-3 text-left text-base transition-all",
                 !answered &&
                   "border-line bg-surface hover:border-shu/50 hover:bg-surface-2 active:scale-[0.99]",
                 answered && isCorrect && "border-matcha/50 bg-matcha/10",
@@ -308,8 +341,8 @@ function MatchPairs({
       <Prompt prompt={q.prompt} />
       <div className="flex flex-col gap-2.5">
         {q.pairs.map((p, i) => (
-          <div key={i} className="flex items-center gap-3">
-            <span className="w-28 font-jp text-ink">{p.left}</span>
+          <div key={i} className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+            <span className="font-jp text-ink sm:w-28">{p.left}</span>
             <select
               disabled={answered}
               value={picks[i] ?? ""}

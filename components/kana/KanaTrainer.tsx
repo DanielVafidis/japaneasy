@@ -22,8 +22,8 @@ export function KanaTrainer() {
   return (
     <div className="flex flex-col gap-6">
       {/* top controls */}
-      <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-        <div className="inline-flex rounded-full border border-line bg-surface p-1">
+      <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="touch-segment w-full sm:w-auto">
           {(
             [
               { id: "hira", label: "Hiragana", jp: "ひらがな" },
@@ -34,10 +34,10 @@ export function KanaTrainer() {
               key={s.id}
               onClick={() => setScript(s.id)}
               className={cn(
-                "flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all",
+                "flex flex-1 items-center justify-center gap-2 px-3 py-2 text-sm font-medium transition-all sm:flex-none sm:px-4",
                 script === s.id
                   ? "bg-shu text-white shadow-sm"
-                  : "text-ink-soft hover:text-ink",
+                  : "text-ink-soft hover:text-ink active:bg-surface-2",
               )}
             >
               <span className="font-jp text-base">{s.jp}</span>
@@ -46,7 +46,7 @@ export function KanaTrainer() {
           ))}
         </div>
 
-        <div className="inline-flex rounded-full border border-line bg-surface p-1">
+        <div className="touch-segment w-full sm:w-auto">
           {(
             [
               { id: "chart", label: "Chart", icon: <Grid3x3 className="h-4 w-4" /> },
@@ -58,10 +58,10 @@ export function KanaTrainer() {
               key={m.id}
               onClick={() => setMode(m.id)}
               className={cn(
-                "flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-all",
+                "flex flex-1 items-center justify-center gap-1.5 px-3 py-2 text-sm font-medium transition-all sm:flex-none sm:px-4",
                 mode === m.id
                   ? "bg-ai text-white shadow-sm"
-                  : "text-ink-soft hover:text-ink",
+                  : "text-ink-soft hover:text-ink active:bg-surface-2",
               )}
             >
               {m.icon}

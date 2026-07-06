@@ -53,7 +53,7 @@ export function ProgressView() {
   return (
     <div className="flex flex-col gap-6">
       {/* top stats */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-4 lg:gap-4">
         <Stat icon={<Flame className="h-5 w-5" />} tone="gold" label="Current streak" value={hasHydrated ? `${streak} ${streak === 1 ? "day" : "days"}` : "—"} />
         <Stat icon={<Trophy className="h-5 w-5" />} tone="shu" label="Longest streak" value={hasHydrated ? `${longestStreak} ${longestStreak === 1 ? "day" : "days"}` : "—"} />
         <Stat icon={<Star className="h-5 w-5" />} tone="ai" label={`Level ${level.level} · ${level.rank}`} value={hasHydrated ? `${xp} XP` : "—"} progress={level.pct} />
@@ -61,8 +61,8 @@ export function ProgressView() {
       </div>
 
       {/* heatmap */}
-      <section className="rounded-3xl border border-line bg-surface p-6 card-shadow">
-        <div className="mb-5 flex items-center justify-between">
+      <section className="rounded-3xl border border-line bg-surface p-4 card-shadow sm:p-6">
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="flex items-center gap-2 font-display text-xl text-ink">
             <CalendarDays className="h-5 w-5 text-ink-soft" /> Study activity
           </h2>
@@ -75,7 +75,7 @@ export function ProgressView() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         {/* per-stage */}
-        <section className="rounded-3xl border border-line bg-surface p-6 card-shadow">
+        <section className="rounded-3xl border border-line bg-surface p-4 card-shadow sm:p-6">
           <h2 className="mb-5 font-display text-xl text-ink">Curriculum progress</h2>
           <div className="flex flex-col gap-4">
             {stages.map((st) => {
@@ -102,7 +102,7 @@ export function ProgressView() {
         </section>
 
         {/* flashcards */}
-        <section className="rounded-3xl border border-line bg-surface p-6 card-shadow">
+        <section className="rounded-3xl border border-line bg-surface p-4 card-shadow sm:p-6">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-display text-xl text-ink">Flashcards</h2>
             {dueNow > 0 && <Badge tone="shu">{dueNow} due now</Badge>}
@@ -140,7 +140,7 @@ export function ProgressView() {
       </div>
 
       {/* data management */}
-      <section className="rounded-3xl border border-line bg-surface p-6 card-shadow">
+      <section className="rounded-3xl border border-line bg-surface p-4 card-shadow sm:p-6">
         <h2 className="mb-1 font-display text-xl text-ink">Your data</h2>
         <p className="mb-5 text-sm text-ink-soft">
           Progress lives only in this browser. Export a backup, restore it on

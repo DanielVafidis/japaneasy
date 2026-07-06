@@ -18,6 +18,9 @@ const NAV = [
   { href: "/progress", label: "Progress" },
 ];
 
+const drawerLink =
+  "block w-full border-b border-line/60 py-3.5 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] text-base font-medium transition-colors active:bg-surface-2";
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -28,13 +31,13 @@ export function SiteHeader() {
   const level = levelInfo(xp).level;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-surface">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5">
-        <Link href="/" className="group flex items-center gap-2.5">
-          <span className="seal h-9 w-9 rounded-lg text-base font-bold tracking-tight transition-transform group-hover:-rotate-6">
+    <header className="sticky top-0 z-50 border-b border-line bg-surface pt-[env(safe-area-inset-top,0px)]">
+      <div className="page-x mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 sm:h-16 sm:gap-3">
+        <Link href="/" className="group flex min-w-0 items-center gap-2 sm:gap-2.5">
+          <span className="seal h-8 w-8 shrink-0 rounded-lg text-sm font-bold tracking-tight transition-transform group-hover:-rotate-6 sm:h-9 sm:w-9 sm:text-base">
             JE
           </span>
-          <span className="font-display text-xl font-bold tracking-tight text-ink">
+          <span className="truncate font-display text-lg font-bold tracking-tight text-ink sm:text-xl">
             JapanEasy
           </span>
         </Link>
@@ -60,55 +63,76 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <SearchPalette />
-          {hasHydrated && (
-            <div className="hidden items-center gap-2 sm:flex">
+        <div className="flex shrink-0 items-center md:gap-2">
+          {/* Mobile: grouped icon controls with shared border, no gaps */}
+          <div className="touch-segment md:hidden">
+            <SearchPalette compact />
+            {hasHydrated && (
               <span
-                className="inline-flex items-center gap-1 rounded-full border border-gold/30 bg-gold/10 px-2.5 py-1 text-xs font-semibold text-gold"
+                className="inline-flex min-h-9 min-w-9 items-center justify-center gap-0.5 px-2 text-[0.65rem] font-semibold text-gold"
                 title={`${streak}-day streak`}
               >
-                <Flame className="h-3.5 w-3.5" /> {streak}
+                <Flame className="h-3 w-3" /> {streak}
               </span>
-              <span
-                className="inline-flex items-center gap-1 rounded-full border border-ai/25 bg-ai/10 px-2.5 py-1 text-xs font-semibold text-ai"
-                title={`Level ${level}`}
-              >
-                Lv {level}
-              </span>
-            </div>
-          )}
-          <Link
-            href="/settings"
-            aria-label="Settings"
-            className="hidden h-10 w-10 place-items-center rounded-full border border-line bg-surface text-ink-soft transition-colors hover:border-shu/40 hover:text-ink sm:grid"
-          >
-            <Settings className="h-[18px] w-[18px]" />
-          </Link>
-          <ThemeToggle />
-          <button
-            type="button"
-            onClick={() => setOpen((o) => !o)}
-            aria-label="Menu"
-            className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface text-ink-soft md:hidden"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+            )}
+            <ThemeToggle className="h-9 w-9 shrink-0 border-0 bg-transparent hover:border-0" />
+            <button
+              type="button"
+              onClick={() => setOpen((o) => !o)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              className="grid h-9 w-9 shrink-0 place-items-center text-ink-soft active:bg-surface-2"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+
+          {/* Desktop: spaced controls */}
+          <div className="hidden items-center gap-2 md:flex">
+            <SearchPalette />
+            {hasHydrated && (
+              <>
+                <span
+                  className="inline-flex items-center gap-1 rounded-full border border-gold/30 bg-gold/10 px-2.5 py-1 text-xs font-semibold text-gold"
+                  title={`${streak}-day streak`}
+                >
+                  <Flame className="h-3.5 w-3.5" /> {streak}
+                </span>
+                <span
+                  className="inline-flex items-center gap-1 rounded-full border border-ai/25 bg-ai/10 px-2.5 py-1 text-xs font-semibold text-ai"
+                  title={`Level ${level}`}
+                >
+                  Lv {level}
+                </span>
+              </>
+            )}
+            <Link
+              href="/settings"
+              aria-label="Settings"
+              className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface text-ink-soft transition-colors hover:border-shu/40 hover:text-ink"
+            >
+              <Settings className="h-[18px] w-[18px]" />
+            </Link>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
 
       {open && (
-        <nav className="border-t border-line bg-paper px-5 py-3 md:hidden">
+        <nav
+          className="border-t border-line bg-paper md:hidden"
+          aria-label="Mobile navigation"
+        >
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
               className={cn(
-                "block rounded-xl px-4 py-3 text-base font-medium transition-colors",
+                drawerLink,
                 pathname.startsWith(item.href)
                   ? "bg-shu/10 text-shu"
-                  : "text-ink-soft hover:bg-surface-2",
+                  : "text-ink-soft",
               )}
             >
               {item.label}
@@ -118,10 +142,10 @@ export function SiteHeader() {
             href="/settings"
             onClick={() => setOpen(false)}
             className={cn(
-              "block rounded-xl px-4 py-3 text-base font-medium transition-colors",
+              drawerLink,
               pathname.startsWith("/settings")
                 ? "bg-shu/10 text-shu"
-                : "text-ink-soft hover:bg-surface-2",
+                : "text-ink-soft",
             )}
           >
             Settings

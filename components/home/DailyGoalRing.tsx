@@ -20,8 +20,8 @@ export function DailyGoalRing() {
   const C = 2 * Math.PI * R;
 
   return (
-    <div className="flex items-center gap-5 rounded-3xl border border-line bg-surface p-5 card-shadow">
-      <div className="relative h-28 w-28 shrink-0">
+    <div className="flex items-center gap-4 rounded-3xl border border-line bg-surface p-4 card-shadow sm:gap-5 sm:p-5">
+      <div className="relative h-24 w-24 shrink-0 sm:h-28 sm:w-28">
         <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
           <circle
             cx="60"

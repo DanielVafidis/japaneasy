@@ -94,6 +94,23 @@
   body {
     background-color: var(--paper);
     color: var(--ink);
+    overflow-x: clip;
+  }
+
+  /* iOS: avoid zoom-on-focus and improve tap response */
+  @supports (-webkit-touch-callout: none) {
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+  }
+
+  button,
+  a,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   ::selection {
@@ -139,6 +156,61 @@
 
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
+
+  /* Shared horizontal page gutter with notch-safe insets */
+  .page-x {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  @media (min-width: 640px) {
+    .page-x {
+      padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  .safe-b {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Full-bleed row list — items share borders, no gaps (iOS-friendly) */
+  .touch-list {
+    display: flex;
+    flex-direction: column;
+    border-block: 1px solid var(--line);
+  }
+
+  .touch-list > * + * {
+    border-top: 1px solid var(--line);
+  }
+
+  .touch-list > button,
+  .touch-list > a {
+    min-height: 2.75rem;
+    border-radius: 0;
+  }
+
+  /* Segmented control — adjacent buttons with no gap */
+  .touch-segment {
+    display: flex;
+    overflow: hidden;
+    border-radius: 9999px;
+    border: 1px solid var(--line);
+    background-color: var(--surface);
+    padding: 2px;
+  }
+
+  .touch-segment > button {
+    flex: 1 1 0%;
+    min-height: 2.25rem;
+    min-width: 0;
+    border-radius: 9999px;
+  }
+
+  .touch-segment > * + * {
+    box-shadow: -1px 0 0 var(--line);
+  }
 
   .card-shadow {
     box-shadow:

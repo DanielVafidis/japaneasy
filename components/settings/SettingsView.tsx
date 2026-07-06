@@ -37,13 +37,13 @@ export function SettingsView() {
       </Section>
 
       <Section title="Daily goal" desc="How much XP to aim for each day.">
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
           {GOAL_PRESETS.map((g) => (
             <button
               key={g}
               onClick={() => setDailyGoal(g)}
               className={cn(
-                "rounded-2xl border px-5 py-3 text-center transition-all",
+                "rounded-2xl border px-4 py-3 text-center transition-all sm:px-5",
                 dailyGoal === g
                   ? "border-shu bg-shu/10"
                   : "border-line bg-surface hover:border-shu/40",
@@ -80,7 +80,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-3xl border border-line bg-surface p-6 card-shadow">
+    <section className="rounded-3xl border border-line bg-surface p-4 card-shadow sm:p-6">
       <h2 className="font-display text-xl text-ink">{title}</h2>
       {desc && <p className="mb-5 mt-1 text-sm text-ink-soft">{desc}</p>}
       <div className={desc ? "" : "mt-5"}>{children}</div>
@@ -100,7 +100,7 @@ function ToggleRow({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 border-b border-line/60 py-3 last:border-0">
+    <div className="flex items-start justify-between gap-3 border-b border-line/60 py-3 last:border-0 sm:items-center sm:gap-4">
       <div>
         <p className="font-medium text-ink">{label}</p>
         <p className="text-sm text-ink-faint">{desc}</p>
@@ -157,13 +157,13 @@ function ThemeChooser() {
   ];
 
   return (
-    <div className="inline-flex rounded-2xl border border-line bg-surface p-1">
+    <div className="grid w-full grid-cols-3 gap-0 rounded-2xl border border-line bg-surface p-0.5 sm:inline-flex sm:w-auto sm:gap-1 sm:p-1">
       {options.map((o) => (
         <button
           key={o.id}
           onClick={() => apply(o.id)}
           className={cn(
-            "flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all",
+            "flex items-center justify-center gap-1.5 rounded-xl px-2 py-2.5 text-sm font-medium transition-all sm:gap-2 sm:px-4 sm:py-2",
             mode === o.id
               ? "bg-shu text-white shadow-sm"
               : "text-ink-soft hover:text-ink",

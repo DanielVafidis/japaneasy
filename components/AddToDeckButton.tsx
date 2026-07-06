@@ -34,7 +34,7 @@ export function AddToDeckButton({
       onClick={handle}
       disabled={added}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border font-medium transition-all active:scale-95 disabled:active:scale-100",
+        "inline-flex items-center justify-center gap-1.5 rounded-full border font-medium transition-all active:scale-95 disabled:active:scale-100",
         size === "sm" ? "px-3 py-1 text-xs" : "px-4 py-1.5 text-sm",
         added
           ? "border-matcha/40 bg-matcha/10 text-matcha"

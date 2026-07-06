@@ -27,7 +27,7 @@ function Block({ block }: { block: ContentBlock }) {
 
     case "prose":
       return (
-        <p className="text-[1.02rem] leading-8 text-ink">
+        <p className="text-base leading-7 text-ink sm:text-[1.02rem] sm:leading-8">
           <RichText text={block.text} />
         </p>
       );
@@ -111,8 +111,8 @@ function Block({ block }: { block: ContentBlock }) {
     case "table":
       return (
         <figure className="flex flex-col gap-2">
-          <div className="overflow-x-auto rounded-2xl border border-line">
-            <table className="w-full border-collapse text-left font-jp text-sm">
+          <div className="overflow-x-auto rounded-2xl border border-line [-webkit-overflow-scrolling:touch]">
+            <table className="w-full min-w-[280px] border-collapse text-left font-jp text-sm">
               <thead>
                 <tr className="bg-surface-2">
                   {block.headers.map((h, i) => (

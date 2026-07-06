@@ -97,7 +97,7 @@ const typeMeta: Record<ItemType, { label: string; icon: React.ReactNode }> = {
   kanji: { label: "Kanji", icon: <Shapes className="h-4 w-4" /> },
 };
 
-export function SearchPalette() {
+export function SearchPalette({ compact = false }: { compact?: boolean }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -198,18 +198,27 @@ export function SearchPalette() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Search"
-        className="inline-flex items-center gap-2 rounded-full border border-line bg-surface py-2 pl-3 pr-2 text-sm text-ink-faint transition-colors hover:border-shu/40 hover:text-ink"
+        className={cn(
+          "inline-flex shrink-0 items-center justify-center text-ink-faint transition-colors hover:text-ink active:bg-surface-2",
+          compact
+            ? "h-9 w-9"
+            : "h-10 gap-1.5 rounded-full border border-line bg-surface py-2 pl-3 pr-2 text-sm hover:border-shu/40 sm:gap-2",
+        )}
       >
         <Search className="h-4 w-4" />
-        <span className="hidden lg:inline">Search</span>
-        <kbd className="hidden rounded border border-line bg-paper px-1.5 py-0.5 font-sans text-[0.65rem] lg:inline">
-          ⌘K
-        </kbd>
+        {!compact && (
+          <>
+            <span className="hidden lg:inline">Search</span>
+            <kbd className="hidden rounded border border-line bg-paper px-1.5 py-0.5 font-sans text-[0.65rem] lg:inline">
+              ⌘K
+            </kbd>
+          </>
+        )}
       </button>
 
       {open && (
         <div
-          className="fixed inset-0 z-[100] flex items-start justify-center p-4 pt-[12vh]"
+          className="fixed inset-0 z-[100] flex items-start justify-center p-3 pt-[8vh] sm:p-4 sm:pt-[12vh]"
           role="dialog"
           aria-modal="true"
           aria-label="Search"

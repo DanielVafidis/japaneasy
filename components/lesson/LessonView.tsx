@@ -67,9 +67,9 @@ export function LessonView({
   }
 
   return (
-    <article className="mx-auto w-full max-w-3xl px-5 py-10 sm:py-14">
+    <article className="page-x mx-auto w-full max-w-3xl py-8 sm:py-14">
       {/* top bar */}
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
+      <div className="mb-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         <Link
           href="/learn"
           className="inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-shu"
@@ -81,7 +81,7 @@ export function LessonView({
 
       {/* header */}
       <header className="mb-10 animate-fade-up">
-        <div className="mb-4 flex items-center gap-2">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
           <Badge tone="shu">
             <GraduationCap className="h-3 w-3" /> {stage.title}
           </Badge>
@@ -96,7 +96,7 @@ export function LessonView({
             </Badge>
           )}
         </div>
-        <h1 className="text-balance text-4xl leading-tight text-ink sm:text-5xl">
+        <h1 className="text-balance text-3xl leading-tight text-ink sm:text-4xl md:text-5xl">
           {lesson.title}
         </h1>
         {lesson.subtitle && (
@@ -106,21 +106,22 @@ export function LessonView({
 
       {/* vocabulary */}
       {lesson.vocabulary && lesson.vocabulary.length > 0 && (
-        <section className="mb-10 animate-fade-up rounded-3xl border border-line bg-surface p-6">
-          <div className="mb-4 flex items-center justify-between gap-3">
+        <section className="mb-10 animate-fade-up rounded-3xl border border-line bg-surface p-4 sm:p-6">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-ink-faint">
               <BookOpen className="h-4 w-4" /> Vocabulary
             </h2>
             <AddToDeckButton
               ids={vocabIds}
               label={`Add all ${vocabIds.length}`}
+              className="w-full sm:w-auto"
             />
           </div>
           <ul className="grid gap-3 sm:grid-cols-2">
             {lesson.vocabulary.map((v, i) => (
               <li
                 key={i}
-                className="flex items-center gap-3 rounded-2xl border border-line/70 bg-surface px-4 py-3"
+                className="flex flex-col gap-3 rounded-2xl border border-line/70 bg-surface px-4 py-3 sm:flex-row sm:items-center"
               >
                 <AudioButton
                   text={v.reading ?? v.word}
@@ -128,7 +129,7 @@ export function LessonView({
                   className="shrink-0"
                 />
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex items-baseline gap-2 min-w-0">
                     <span className="font-jp text-xl text-ink">
                       <JapaneseText text={v.word} showFurigana={false} />
                     </span>
@@ -150,7 +151,7 @@ export function LessonView({
                   target="_blank"
                   rel="noreferrer"
                   title="Look up on Jisho"
-                  className="mt-0.5 shrink-0 text-ink-faint transition-colors hover:text-shu"
+                  className="self-start shrink-0 text-ink-faint transition-colors hover:text-shu sm:mt-0.5"
                 >
                   <SquareArrowOutUpRight className="h-4 w-4" />
                 </a>
@@ -196,12 +197,12 @@ export function LessonView({
       </section>
 
       {/* nav */}
-      <nav className="mt-10 flex items-stretch justify-between gap-3">
+      <nav className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-stretch">
         {prev ? (
           <ButtonLink
             href={`/lessons/${prev.id}`}
             variant="outline"
-            className="flex-1 justify-start"
+            className="w-full flex-1 justify-start sm:w-auto"
           >
             <ArrowLeft className="h-4 w-4" />
             <span className="truncate text-left">
@@ -212,10 +213,10 @@ export function LessonView({
             </span>
           </ButtonLink>
         ) : (
-          <span className="flex-1" />
+          <span className="hidden flex-1 sm:block" />
         )}
         {next ? (
-          <ButtonLink href={`/lessons/${next.id}`} className="flex-1 justify-end">
+          <ButtonLink href={`/lessons/${next.id}`} className="w-full flex-1 justify-end sm:w-auto">
             <span className="truncate text-right">
               <span className="block text-[0.65rem] uppercase tracking-wide text-white/70">
                 Next
@@ -225,7 +226,7 @@ export function LessonView({
             <ArrowRight className="h-4 w-4" />
           </ButtonLink>
         ) : (
-          <span className="flex-1" />
+          <span className="hidden flex-1 sm:block" />
         )}
       </nav>
     </article>

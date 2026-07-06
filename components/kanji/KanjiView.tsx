@@ -48,8 +48,8 @@ export function KanjiView() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-1.5">
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+        <div className="flex w-full flex-wrap gap-1.5 sm:w-auto">
           <Chip active={filter === "all"} onClick={() => setFilter("all")}>
             All
           </Chip>
@@ -63,7 +63,7 @@ export function KanjiView() {
             </Chip>
           ))}
         </div>
-        <AddToDeckButton ids={allIds} label={`Add all ${allIds.length}`} size="md" />
+        <AddToDeckButton ids={allIds} label={`Add all ${allIds.length}`} size="md" className="w-full justify-center sm:w-auto" />
       </div>
 
       <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8">
@@ -131,7 +131,7 @@ function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void 
 
   return (
     <div
-      className="fixed inset-0 z-[80] flex items-end justify-center p-4 sm:items-center"
+      className="fixed inset-0 z-[80] flex items-end justify-center p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:items-center sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="kanji-detail-title"
@@ -140,13 +140,13 @@ function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void 
         className="absolute inset-0 bg-ink/40 backdrop-blur-sm animate-fade-in"
         onClick={onClose}
       />
-      <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-line bg-surface p-6 card-shadow-lg animate-fade-up">
+      <div className="relative max-h-[min(90vh,900px)] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-line bg-surface p-5 card-shadow-lg animate-fade-up sm:rounded-3xl sm:p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-shu">
               {categoryLabel}
             </p>
-            <h2 id="kanji-detail-title" className="mt-1 font-jp text-6xl text-ink">
+            <h2 id="kanji-detail-title" className="mt-1 font-jp text-5xl text-ink sm:text-6xl">
               {k.char}
             </h2>
             <p className="mt-2 text-lg text-ink-soft">{k.meaning}</p>
@@ -195,10 +195,10 @@ function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void 
             <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">
               Example
             </p>
-            <div className="mt-2 flex items-center gap-3 rounded-2xl border border-line bg-surface-2 p-4">
+            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl border border-line bg-surface-2 p-4">
               <span className="font-jp text-2xl text-ink">{k.example.word}</span>
               <span className="text-sm text-ink-soft">{k.example.reading}</span>
-              <span className="text-sm text-ink-faint">{k.example.meaning}</span>
+              <span className="w-full text-sm text-ink-faint sm:w-auto">{k.example.meaning}</span>
               <AudioButton text={k.example.word} className="ml-auto shrink-0" />
             </div>
           </div>

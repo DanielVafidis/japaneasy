@@ -20,7 +20,7 @@ export function Flashcard({
         type="button"
         onClick={onFlip}
         aria-label={flipped ? "Hide answer" : "Show answer"}
-        className="relative block h-72 w-full text-left"
+        className="relative block h-56 w-full text-left sm:h-64 md:h-72"
       >
         <div
           className={cn(
@@ -35,11 +35,11 @@ export function Flashcard({
                 <JapaneseText
                   text={card.front}
                   showFurigana={false}
-                  className="text-6xl"
+                  className="text-4xl sm:text-5xl md:text-6xl"
                   align="center"
                 />
               ) : (
-                <span className="px-6 text-center font-display text-3xl text-ink">
+                <span className="px-4 text-center font-display text-2xl text-ink sm:px-6 sm:text-3xl">
                   {card.front}
                 </span>
               )}

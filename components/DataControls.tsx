@@ -58,11 +58,11 @@ export function DataControls() {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2">
-        <Button variant="outline" size="sm" onClick={doExport}>
+      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+        <Button variant="outline" size="sm" onClick={doExport} className="w-full sm:w-auto">
           <Download className="h-4 w-4" /> Export backup
         </Button>
-        <Button variant="outline" size="sm" onClick={() => fileRef.current?.click()}>
+        <Button variant="outline" size="sm" onClick={() => fileRef.current?.click()} className="w-full sm:w-auto">
           <Upload className="h-4 w-4" /> Import backup
         </Button>
         <input
@@ -76,7 +76,7 @@ export function DataControls() {
           variant="ghost"
           size="sm"
           onClick={doReset}
-          className="text-shu hover:bg-shu/10"
+          className="w-full text-shu hover:bg-shu/10 sm:w-auto"
         >
           <RotateCcw className="h-4 w-4" /> Reset
         </Button>

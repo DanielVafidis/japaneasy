@@ -60,7 +60,7 @@ export default function HomePage() {
     <div className="relative">
       {/* Hero */}
       <section>
-        <div className="mx-auto max-w-6xl px-5 pb-10 pt-16 sm:pt-24">
+        <div className="page-x mx-auto max-w-6xl pb-10 pt-12 sm:pt-24">
           <div className="max-w-2xl">
             <p
               className="mb-4 inline-flex animate-fade-up items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-sm text-ink-soft"
@@ -70,7 +70,7 @@ export default function HomePage() {
               natural way
             </p>
             <h1
-              className="animate-fade-up text-balance text-5xl font-bold leading-[1.05] text-ink sm:text-6xl"
+              className="animate-fade-up text-balance text-3xl font-bold leading-[1.08] text-ink sm:text-4xl md:text-5xl lg:text-6xl"
               style={{ animationDelay: "100ms" }}
             >
               Read Japanese, the way it{" "}
@@ -85,13 +85,13 @@ export default function HomePage() {
               spaced-repetition flashcards, audio, and quizzes to make it stick.
             </p>
             <div
-              className="mt-8 flex animate-fade-up flex-wrap items-center gap-3"
+              className="mt-8 flex animate-fade-up flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
               style={{ animationDelay: "260ms" }}
             >
-              <ButtonLink href="/lessons/introduction" size="lg">
+              <ButtonLink href="/lessons/introduction" size="lg" className="w-full sm:w-auto">
                 Start learning — it's free
               </ButtonLink>
-              <ButtonLink href="/learn" variant="outline" size="lg">
+              <ButtonLink href="/learn" variant="outline" size="lg" className="w-full sm:w-auto">
                 See the curriculum
               </ButtonLink>
             </div>
@@ -106,7 +106,7 @@ export default function HomePage() {
       </section>
 
       {/* Dashboard */}
-      <section className="mx-auto max-w-6xl px-5 py-8">
+      <section className="page-x mx-auto max-w-6xl py-8">
         <h2 className="mb-4 flex items-center gap-3 font-display text-2xl text-ink">
           <span className="h-6 w-1 rounded-full bg-shu" /> Your dashboard
         </h2>
@@ -114,7 +114,7 @@ export default function HomePage() {
       </section>
 
       {/* Features */}
-      <section className="mx-auto max-w-6xl px-5 py-12">
+      <section className="page-x mx-auto max-w-6xl py-12">
         <div className="mb-8 max-w-2xl">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-shu">
             Why it works
@@ -137,10 +137,10 @@ export default function HomePage() {
       </section>
 
       {/* Philosophy */}
-      <section className="mx-auto max-w-4xl px-5 pb-8">
+      <section className="page-x mx-auto max-w-4xl pb-8">
         <Reveal>
-        <figure className="rounded-3xl border border-line bg-surface p-8 text-center sm:p-12">
-          <blockquote className="font-display text-2xl leading-relaxed text-ink sm:text-3xl">
+        <figure className="rounded-3xl border border-line bg-surface p-6 text-center sm:p-8 md:p-12">
+          <blockquote className="font-display text-xl leading-relaxed text-ink sm:text-2xl md:text-3xl">
             Language is not a math problem. Practice from real Japanese, learn by
             example, and the patterns become second nature.
           </blockquote>

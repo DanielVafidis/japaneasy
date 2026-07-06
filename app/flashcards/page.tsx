@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function FlashcardsPage() {
   return (
-    <div className="mx-auto w-full max-w-4xl px-5 py-12 sm:py-16">
+    <div className="page-x mx-auto w-full max-w-4xl py-10 sm:py-16">
       <header className="mb-10 max-w-2xl">
         <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-shu">
           Review · 復習
         </p>
-        <h1 className="text-balance text-4xl text-ink sm:text-5xl">
+        <h1 className="text-balance text-3xl text-ink sm:text-4xl md:text-5xl">
           Flashcards that schedule themselves
         </h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">

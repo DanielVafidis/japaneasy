@@ -4,7 +4,7 @@ import { ResetProgress } from "@/components/ResetProgress";
 export function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-line bg-surface-2">
-      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:grid-cols-2 md:grid-cols-4">
+      <div className="page-x mx-auto grid max-w-6xl gap-8 py-12 sm:grid-cols-2 md:grid-cols-4">
         <div className="sm:col-span-2 md:col-span-1">
           <div className="flex items-center gap-2.5">
             <span className="seal h-8 w-8 rounded-lg text-sm font-bold">JE</span>
@@ -49,7 +49,7 @@ export function SiteFooter() {
           </p>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-between gap-2 border-t border-line/60 px-5 py-5 text-center text-xs text-ink-faint sm:flex-row">
+      <div className="page-x flex flex-col items-center justify-between gap-2 border-t border-line/60 py-5 text-center text-xs text-ink-faint sm:flex-row">
         <span>Built for joyful, consistent practice · 日本語を楽しもう</span>
         <ResetProgress />
       </div>

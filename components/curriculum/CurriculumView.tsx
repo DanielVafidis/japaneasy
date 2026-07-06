@@ -27,16 +27,16 @@ export function CurriculumView() {
               locked ? "border-line/70" : "border-line",
             )}
           >
-            <div className="flex flex-col gap-4 border-b border-line/70 bg-surface-2/40 p-6 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-4">
-                <span className="font-jp text-4xl text-shu/70">
+            <div className="flex flex-col gap-4 border-b border-line/70 bg-surface-2/40 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+                <span className="shrink-0 font-jp text-3xl text-shu/70 sm:text-4xl">
                   {stage.jpTitle}
                 </span>
-                <div>
+                <div className="min-w-0">
                   <p className="text-[0.7rem] font-semibold uppercase tracking-widest text-ink-faint">
                     Stage {stage.index}
                   </p>
-                  <h2 className="font-display text-2xl text-ink">
+                  <h2 className="truncate font-display text-xl text-ink sm:text-2xl">
                     {stage.title}
                   </h2>
                 </div>
@@ -92,7 +92,7 @@ export function CurriculumView() {
                             )}
                           </div>
                           {lesson.estMinutes && (
-                            <span className="hidden shrink-0 items-center gap-1 text-xs text-ink-faint sm:flex">
+                            <span className="flex shrink-0 items-center gap-1 text-xs text-ink-faint">
                               <Clock className="h-3 w-3" /> {lesson.estMinutes}m
                             </span>
                           )}

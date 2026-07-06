@@ -44,7 +44,7 @@ export function Dashboard() {
     <div className="grid gap-4 lg:grid-cols-3">
       {/* Continue / start */}
       <div className="lg:col-span-2">
-        <div className="h-full rounded-3xl border border-line bg-surface p-7 card-shadow">
+        <div className="h-full rounded-3xl border border-line bg-surface p-5 card-shadow sm:p-7">
           <div>
             <p className="mb-1 flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-shu">
               <GraduationCap className="h-4 w-4" />
@@ -52,7 +52,7 @@ export function Dashboard() {
             </p>
             {nextLesson ? (
               <>
-                <h2 className="mt-2 text-balance font-display text-3xl text-ink">
+                <h2 className="mt-2 text-balance font-display text-2xl text-ink sm:text-3xl">
                   {nextLesson.title}
                 </h2>
                 {nextLesson.subtitle && (
@@ -71,7 +71,7 @@ export function Dashboard() {
               </>
             ) : (
               <>
-                <h2 className="mt-2 font-display text-3xl text-ink">
+                <h2 className="mt-2 font-display text-2xl text-ink sm:text-3xl">
                   You finished every lesson! 🎉
                 </h2>
                 <p className="mt-2 max-w-lg text-ink-soft">
@@ -89,7 +89,7 @@ export function Dashboard() {
       {/* Stats */}
       <div className="flex flex-col gap-4">
         <DailyGoalRing />
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:gap-4">
           <StatTile
             icon={<Flame className="h-5 w-5" />}
             tone="gold"
@@ -108,7 +108,7 @@ export function Dashboard() {
       </div>
 
       {/* secondary row */}
-      <div className="grid grid-cols-2 gap-4 lg:col-span-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:col-span-3 lg:grid-cols-4 lg:gap-4">
       <MiniStat
         href="/learn"
         icon={<Layers className="h-5 w-5" />}
@@ -167,12 +167,12 @@ function StatTile({
     shu: "text-shu bg-shu/12",
   }[tone];
   return (
-    <div className="flex flex-col justify-between rounded-3xl border border-line bg-surface p-5 card-shadow">
-      <div className="flex items-center gap-2.5">
-        <span className={cn("grid h-10 w-10 place-items-center rounded-full", tones)}>
+    <div className="flex flex-col justify-between rounded-3xl border border-line bg-surface p-4 card-shadow sm:p-5">
+      <div className="flex items-center gap-2 sm:gap-2.5">
+        <span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-full sm:h-10 sm:w-10", tones)}>
           {icon}
         </span>
-        <span className="text-sm text-ink-soft">{label}</span>
+        <span className="min-w-0 truncate text-sm text-ink-soft">{label}</span>
       </div>
       <div className="mt-3">
         <p className="font-display text-2xl text-ink">{value}</p>
@@ -210,7 +210,7 @@ function MiniStat({
     <Link
       href={href}
       className={cn(
-        "group flex items-center gap-3 rounded-3xl border bg-surface p-5 transition-colors hover:border-shu/30 card-shadow",
+        "group flex items-center gap-3 rounded-3xl border bg-surface p-4 transition-colors hover:border-shu/30 card-shadow sm:p-5",
         highlight ? "border-shu/40" : "border-line hover:border-shu/30",
       )}
     >
@@ -219,7 +219,7 @@ function MiniStat({
       </span>
       <div className="min-w-0 flex-1">
         <p className="text-sm text-ink-soft">{label}</p>
-        <p className="font-display text-xl text-ink">{value}</p>
+        <p className="truncate font-display text-lg text-ink sm:text-xl">{value}</p>
       </div>
       <ArrowRight className="h-4 w-4 shrink-0 text-ink-faint transition-transform group-hover:translate-x-1 group-hover:text-shu" />
     </Link>
