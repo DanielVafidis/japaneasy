@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const questionsPolite: Lesson = {
   id: "questions-polite",
   stage: "essential-grammar",
-  order: 1,
+  order: 3,
   title: "Questions & か",
   subtitle: "Asking politely without changing word order",
   summary:

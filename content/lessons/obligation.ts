@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const obligation: Lesson = {
   id: "obligation",
   stage: "essential-grammar",
-  order: 5,
+  order: 9,
   title: "Must & Have To",
   subtitle: "なければならない and softer cousins",
   summary:

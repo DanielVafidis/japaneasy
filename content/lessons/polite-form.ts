@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const politeForm: Lesson = {
   id: "polite-form",
   stage: "essential-grammar",
-  order: 0,
+  order: 1,
   title: "Polite Form",
   subtitle: "〜です and 〜ます",
   summary:

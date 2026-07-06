@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const desireSuggestions: Lesson = {
   id: "desire-suggestions",
   stage: "essential-grammar",
-  order: 6,
+  order: 10,
   title: "Desire & Suggestions",
   subtitle: "たい · ましょう · ませんか",
   summary:

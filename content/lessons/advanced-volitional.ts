@@ -3,12 +3,12 @@ import type { Lesson } from "../types";
 export const advancedVolitional: Lesson = {
   id: "advanced-volitional",
   stage: "advanced-topics",
-  order: 5,
+  order: 6,
   title: "Advanced Volitional",
   subtitle: "Volitional form beyond ましょう",
   summary:
     "The う／よう form for intention, suggestion, and set literary patterns.",
-  estMinutes: 14,
+  estMinutes: 18,
   vocabulary: [
     { word: "頑張[がんば]る", reading: "がんばる", meaning: "to do one's best" },
     { word: "協力[きょうりょく]", reading: "きょうりょく", meaning: "cooperation" },
@@ -49,6 +49,27 @@ export const advancedVolitional: Lesson = {
       ],
     },
     {
+      type: "heading",
+      text: "Volitional in set phrases",
+    },
+    {
+      type: "rule",
+      title: "Common patterns",
+      items: [
+        "**〜ようとしない** — refuses to try: {{話[はな]そうとしない}}.",
+        "**〜ようと思[おも]う** — intend to: {{もう一度[いちど]やろうと思[おも]う}}.",
+        "**〜まい** — negative volitional (won't): {{二度[にど]とするまい}} — 'won't do again.'",
+        "**〜ようにする** — make an effort: {{早[はや]く寝[ね]るようにする}}.",
+      ],
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "毎日[まいにち]、日本語[にほんご]を話[はな]すようにしている。", en: "I make a point of speaking Japanese daily." },
+        { jp: "もう二度[にど]と、あんなミスは犯[おか]すまい。", en: "I won't make a mistake like that again." },
+      ],
+    },
+    {
       type: "tip",
       text: "{{〜ようとしない}} — 'won't even try' — is a strong complaint: {{宿題[しゅくだい]をしようとしない}}.",
     },
@@ -74,9 +95,9 @@ export const advancedVolitional: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Intent pattern: 留学しようと＿",
-      choices: ["ある", "思う", "みる", "しまう"],
-      answer: 1,
+      prompt: "「Won't do that again」 — literary resolve?",
+      choices: ["するまい", "しないでしょう", "しよう", "するはず"],
+      answer: 0,
     },
   ],
 };

@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const givingReceiving: Lesson = {
   id: "giving-receiving",
   stage: "essential-grammar",
-  order: 7,
+  order: 13,
   title: "Giving & Receiving",
   subtitle: "あげる · くれる · もらう",
   summary:

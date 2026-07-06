@@ -3,12 +3,12 @@ import type { Lesson } from "../types";
 export const zaruWoEnai: Lesson = {
   id: "zaru-wo-enai",
   stage: "advanced-topics",
-  order: 3,
+  order: 4,
   title: "〜ざるを得ない",
   subtitle: "Cannot help but · have no choice",
   summary:
     "A formal double-negative expressing unavoidable action — 'can't not do'.",
-  estMinutes: 12,
+  estMinutes: 16,
   vocabulary: [
     { word: "認[みと]める", reading: "みとめる", meaning: "to admit; recognise" },
     { word: "延期[えんき]", reading: "えんき", meaning: "postponement" },
@@ -39,12 +39,27 @@ export const zaruWoEnai: Lesson = {
       ],
     },
     {
-      type: "note",
-      text: "Spoken equivalent: {{〜ないわけにはいかない}} — same 'no way around it' feeling, less literary.",
+      type: "heading",
+      text: "Other 'no choice' patterns",
     },
     {
-      type: "tip",
-      text: "You'll see this in news headlines and business emails more than in conversation. Recognise it on sight first; active use can wait.",
+      type: "rule",
+      title: "Spoken and written alternatives",
+      items: [
+        "**{{〜ないわけにはいかない}}** — social / moral pressure: {{行[い]かないわけにはいかない}}.",
+        "**{{〜ざるを得ない}}** — formal, external circumstances: {{延期[えんき]せざるを得[え]ない}}.",
+        "**{{〜ないではすまない}}** — won't get away without doing (apology, duty).",
+      ],
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "親[おや]の期待[きたい]に応[こた]えないわけにはいかない。", en: "I can't not live up to my parents' expectations." },
+      ],
+    },
+    {
+      type: "note",
+      text: "You'll see {{ざるを得ない}} in news headlines and business emails. Recognise it on sight first; active use can wait.",
     },
   ],
   quiz: [

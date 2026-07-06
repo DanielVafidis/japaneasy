@@ -8,7 +8,7 @@ export const formalDearu: Lesson = {
   subtitle: "Written-style copula for essays and reports",
   summary:
     "Replace だ with である in formal writing — and learn でありません, であった, and のである.",
-  estMinutes: 14,
+  estMinutes: 18,
   vocabulary: [
     { word: "問題[もんだい]", reading: "もんだい", meaning: "problem" },
     { word: "結論[けつろん]", reading: "けつろん", meaning: "conclusion" },
@@ -39,9 +39,25 @@ export const formalDearu: Lesson = {
       ],
     },
     {
+      type: "rule",
+      title: "である vs だ vs です",
+      items: [
+        "**だ** — casual plain: essays never use this in body text.",
+        "**です** — polite spoken / some business writing.",
+        "**である** — academic, news analysis, theses: {{問題である}}.",
+        "**でございます** — ultra-polite spoken; not the same register as である.",
+      ],
+    },
+    {
+      type: "heading",
+      text: "である in real sentences",
+    },
+    {
       type: "examples",
       items: [
         { jp: "これは事実[じじつ]である。", en: "This is a fact. (formal written)" },
+        { jp: "日本[にほん]の人口[じんこう]は減[へ]少[しょう]傾向[けいこう]である。", en: "Japan's population is on a declining trend. (news style)" },
+        { jp: "本[ほん]研究[けんきゅう]の目的[もくてき]は、環境[かんきょう]問題[もんだい]の解決[かいけつ]である。", en: "The aim of this study is solving environmental problems." },
         { jp: "その方法[ほうほう]は適切[てきせつ]ではない。", en: "That method is not appropriate." },
         { jp: "彼[かれ]の指摘[してき]は正[ただ]しかったのである。", en: "His point was correct (formal explanatory)." },
       ],
@@ -72,8 +88,8 @@ export const formalDearu: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "である is most common in…",
-      choices: ["casual chat", "formal writing", "text messages", "anime only"],
+      prompt: "である vs です — academic paper copula?",
+      choices: ["です", "である", "でございます", "だ"],
       answer: 1,
     },
   ],

@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const teForm: Lesson = {
   id: "te-form",
   stage: "essential-grammar",
-  order: 2,
+  order: 5,
   title: "Te-form",
   subtitle: "Linking verbs and building longer sentences",
   summary:

@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const potentialForm: Lesson = {
   id: "potential-form",
   stage: "essential-grammar",
-  order: 3,
+  order: 7,
   title: "Potential Form",
   subtitle: "Can / be able to",
   summary:

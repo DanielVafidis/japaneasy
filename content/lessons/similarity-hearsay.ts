@@ -3,17 +3,19 @@ import type { Lesson } from "../types";
 export const similarityHearsay: Lesson = {
   id: "similarity-hearsay",
   stage: "special-expressions",
-  order: 4,
+  order: 6,
   title: "Similarity & Hearsay",
   subtitle: "よう · みたい · そう · らしい",
   summary:
     "Four look-alike patterns for 'seems like', 'looks like', and 'I heard that' — each with different evidence rules.",
-  estMinutes: 16,
+  estMinutes: 20,
   vocabulary: [
     { word: "雨[あめ]", reading: "あめ", meaning: "rain" },
     { word: "便利[べんり]", reading: "べんり", meaning: "convenient" },
     { word: "喧[や]嘩[か]", reading: "けんか", meaning: "quarrel; fight" },
     { word: "伝[つた]える", reading: "つたえる", meaning: "to convey" },
+    { word: "春[はる]", reading: "はる", meaning: "spring" },
+    { word: "忙[いそが]しい", reading: "いそがしい", meaning: "busy" },
   ],
   blocks: [
     {
@@ -25,8 +27,9 @@ export const similarityHearsay: Lesson = {
       title: "ようだ / みたい — seem (judgement)",
       items: [
         "**{{ようだ}}** — formal inference from evidence: {{雨が降るようだ}}.",
-        "**{{みたい}}** — casual version: {{雨みたい}}.",
-        "Attach to plain form. Can also mean 'like a NOUN': {{子供みたい}} — like a child.",
+        "**{{みたい}}** — casual version: {{雨[あめ]みたい}}.",
+        "Attach to plain form. **Noun-like:** {{子供[こども]みたい}} — like a child; {{子供みたいな人}} — a childlike person.",
+        "**{{ような}}** / **{{みたいな}}** before nouns: {{映画[えいが]のような結末[けつまつ]}}.",
       ],
     },
     {
@@ -34,7 +37,9 @@ export const similarityHearsay: Lesson = {
       title: "そう — looks like (visual / sensory)",
       items: [
         "**Appearance:** stem + {{そう}} — {{美味[おい]しそう}} (looks delicious). **Never** {{美味しいそう}}.",
+        "**Negative appearance:** stem + {{なさそう}} — {{雨[あめ]が降[ふ]らなさそう}} (doesn't look like rain).",
         "**Hearsay:** plain + {{そうだ}} — {{雨が降るそうだ}} (I heard it will rain).",
+        "**Unlikely:** {{降[ふ]りそうもない}} — doesn't look like it'll rain at all.",
         "Same surface, different attachment — appearance uses **stem**, hearsay uses **plain form**.",
       ],
     },
@@ -43,7 +48,23 @@ export const similarityHearsay: Lesson = {
       title: "らしい — seems / I hear (typical of)",
       items: [
         "Plain + {{らしい}} — report from others OR 'typical of': {{彼[かれ]らしい}} — 'That's so like him.'",
-        "{{雨らしい}} — 'I hear it's rain' / 'apparently rain'.",
+        "{{春[はる]らしい}} — 'so spring-like' (typical of the season).",
+        "{{雨[あめ]らしい}} — 'I hear it's rain' / 'apparently rain'.",
+      ],
+    },
+    {
+      type: "heading",
+      text: "Side-by-side: same situation",
+    },
+    {
+      type: "table",
+      caption: "「He seems busy」 — pick your evidence",
+      headers: ["Pattern", "Sentence", "Nuance"],
+      rows: [
+        ["みたい", "忙[いそが]しそうみたい", "casual guess from what you see"],
+        ["ようだ", "忙しいようだ", "formal inference"],
+        ["らしい", "忙しいらしい", "someone said / typical for him"],
+        ["stem+そう", "忙しそう", "looks busy (visual)"],
       ],
     },
     {
@@ -64,6 +85,8 @@ export const similarityHearsay: Lesson = {
         { jp: "ケーキが美味[おい]しそう。", en: "The cake looks delicious." },
         { jp: "明日[あした]は休[やす]みだそうだ。", en: "I heard tomorrow is a day off." },
         { jp: "彼[かれ]、試験[しけん]に落[お]ちたらしい。", en: "Apparently he failed the exam." },
+        { jp: "今日[きょう]は、春[はる]らしい暖[あたた]かさだ。", en: "Today's warmth is so spring-like." },
+        { jp: "雨[あめ]が降[ふ]らなさそう。", en: "Doesn't look like it'll rain." },
       ],
     },
     {
@@ -92,8 +115,20 @@ export const similarityHearsay: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "らしい often implies…",
-      choices: ["direct visual evidence only", "report or typical behaviour", "obligation", "ability"],
+      prompt: "「Doesn't look tasty」 (appearance)?",
+      choices: ["美味しそう", "美味しなさそう", "美味しくないそう", "美味しいらしい"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "「Spring-like weather」 — typical of season?",
+      choices: ["春みたい", "春らしい", "春のよう", "春そう"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "Hearsay vs appearance for 降る — which is hearsay?",
+      choices: ["降りそう", "降るそうだ", "降るみたい", "降るよう"],
       answer: 1,
     },
   ],

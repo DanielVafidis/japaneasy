@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const conditionals: Lesson = {
   id: "conditionals",
   stage: "essential-grammar",
-  order: 4,
+  order: 8,
   title: "Conditionals",
   subtitle: "と · なら · ば · たら",
   summary:

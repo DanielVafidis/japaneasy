@@ -18,27 +18,42 @@ import { nounParticles } from "./noun-particles";
 import { adverbsParticles } from "./adverbs-particles";
 
 import { politeForm } from "./polite-form";
+import { verbStems } from "./verb-stems";
+import { addressingPeople } from "./addressing-people";
 import { questionsPolite } from "./questions-polite";
+import { compoundSentences } from "./compound-sentences";
 import { teForm } from "./te-form";
+import { teFormUses } from "./te-form-uses";
 import { potentialForm } from "./potential-form";
 import { conditionals } from "./conditionals";
 import { obligation } from "./obligation";
 import { desireSuggestions } from "./desire-suggestions";
+import { definingAndTrying } from "./defining-and-trying";
+import { quotedSpeech } from "./quoted-speech";
 import { givingReceiving } from "./giving-receiving";
+import { makingRequests } from "./making-requests";
+import { numbersCounting } from "./numbers-counting";
+import { casualPatterns } from "./casual-patterns";
 
 import { causativePassive } from "./causative-passive";
 import { honorificHumble } from "./honorific-humble";
 import { teShimau } from "./te-shimau";
+import { genericNouns } from "./generic-nouns";
 import { certainty } from "./certainty";
+import { expressingAmounts } from "./expressing-amounts";
 import { similarityHearsay } from "./similarity-hearsay";
 import { easeDifficulty } from "./ease-difficulty";
+import { hypothesizing } from "./hypothesizing";
+import { timeAndMama } from "./time-and-mama";
 
 import { formalDearu } from "./formal-dearu";
 import { hazuBeki } from "./hazu-beki";
 import { deSaeDesura } from "./de-sae-desura";
+import { showingSigns } from "./showing-signs";
 import { zaruWoEnai } from "./zaru-wo-enai";
 import { tendencies } from "./tendencies";
 import { advancedVolitional } from "./advanced-volitional";
+import { coveredEvents } from "./covered-events";
 
 export const allLessons: Lesson[] = [
   introduction,
@@ -56,26 +71,41 @@ export const allLessons: Lesson[] = [
   relativeClauses,
   nounParticles,
   adverbsParticles,
+  verbStems,
   politeForm,
+  addressingPeople,
   questionsPolite,
+  compoundSentences,
   teForm,
+  teFormUses,
   potentialForm,
   conditionals,
   obligation,
   desireSuggestions,
+  definingAndTrying,
+  quotedSpeech,
   givingReceiving,
+  makingRequests,
+  numbersCounting,
+  casualPatterns,
   causativePassive,
   honorificHumble,
   teShimau,
+  genericNouns,
   certainty,
+  expressingAmounts,
   similarityHearsay,
   easeDifficulty,
+  hypothesizing,
+  timeAndMama,
   formalDearu,
   hazuBeki,
   deSaeDesura,
+  showingSigns,
   zaruWoEnai,
   tendencies,
   advancedVolitional,
+  coveredEvents,
 ];
 
 export const lessonsById: Record<string, Lesson> = Object.fromEntries(

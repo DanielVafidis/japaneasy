@@ -8,7 +8,7 @@ export const deSaeDesura: Lesson = {
   subtitle: "Even · to the extent of",
   summary:
     "Emphasise the surprising inclusiveness of 'even' — when the least likely thing applies too.",
-  estMinutes: 12,
+  estMinutes: 16,
   vocabulary: [
     { word: "子供[こども]", reading: "こども", meaning: "child" },
     { word: "大人[おとな]", reading: "おとな", meaning: "adult" },
@@ -39,8 +39,28 @@ export const deSaeDesura: Lesson = {
       ],
     },
     {
+      type: "heading",
+      text: "さえ in conditionals",
+    },
+    {
+      type: "rule",
+      title: "Even if / as long as (different slot)",
+      items: [
+        "**Stem + {{さえ}} + conditional** — {{見[み]さえすれば}} — 'as long as you look.'",
+        "**Noun + {{さえ}}** — {{お金[かね]さえあれば}} — 'if only there is money.'",
+        "Not the same as {{でさえ}} emphasis, but same core word {{さえ}}.",
+      ],
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "お金[かね]さえあれば、何[なん]でも買[か]える。", en: "If I only had money, I could buy anything." },
+        { jp: "一口[ひとくち]さえ食[た]べれば、分[わ]かる。", en: "You'll get it if you even take one bite." },
+      ],
+    },
+    {
       type: "note",
-      text: "Don't confuse with {{さえ}} (even if / as long as) in conditionals: {{見[み]さえすれば}} — 'as long as you look.' Same word family, different grammar slot.",
+      text: "{{でさえ}} emphasises **who** is included. {{さえ}} in conditionals marks the **minimum condition** — same word, different grammar slot.",
     },
   ],
   quiz: [
@@ -64,9 +84,9 @@ export const deSaeDesura: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "彼＿分からなかった — 'Even he didn't get it'?",
-      choices: ["をすら", "ですら", "でさえ", "Both B and C work"],
-      answer: 3,
+      prompt: "「If only there is money」?",
+      choices: ["お金でさえ", "お金さえあれば", "お金すら", "お金でも"],
+      answer: 1,
     },
   ],
 };
