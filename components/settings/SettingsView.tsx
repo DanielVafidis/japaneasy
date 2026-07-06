@@ -12,9 +12,11 @@ export function SettingsView() {
   const showFurigana = useStore((s) => s.showFurigana);
   const showRomaji = useStore((s) => s.showRomaji);
   const dailyGoal = useStore((s) => s.dailyGoal);
+  const autoAddVocabOnComplete = useStore((s) => s.autoAddVocabOnComplete);
   const setShowFurigana = useStore((s) => s.setShowFurigana);
   const setShowRomaji = useStore((s) => s.setShowRomaji);
   const setDailyGoal = useStore((s) => s.setDailyGoal);
+  const setAutoAddVocabOnComplete = useStore((s) => s.setAutoAddVocabOnComplete);
 
   return (
     <div className="flex flex-col gap-6">
@@ -33,6 +35,18 @@ export function SettingsView() {
           desc="Show romanized readings. Best left off once you know kana."
           checked={showRomaji}
           onChange={setShowRomaji}
+        />
+      </Section>
+
+      <Section
+        title="Review preferences"
+        desc="How spaced-repetition flashcards stay in sync with your lessons."
+      >
+        <ToggleRow
+          label="Add lesson vocabulary on complete"
+          desc="When you finish a lesson, its words are added to your review deck automatically."
+          checked={autoAddVocabOnComplete}
+          onChange={setAutoAddVocabOnComplete}
         />
       </Section>
 

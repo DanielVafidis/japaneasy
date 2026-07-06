@@ -5,6 +5,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { createCard, schedule, type Grade, type SrsState } from "@/lib/srs";
 import { todayStr, daysBetween } from "@/lib/datetime";
 import { XP } from "@/lib/leveling";
+import { vocabCardIdsForLesson } from "@/lib/lesson-cards";
 
 export interface LessonProgress {
   completedAt: number;
@@ -17,6 +18,7 @@ export interface ProgressExport {
   showFurigana: boolean;
   showRomaji: boolean;
   dailyGoal: number;
+  autoAddVocabOnComplete: boolean;
   xpToday: number;
   xpDate: string | null;
   completedLessons: Record<string, LessonProgress>;
@@ -38,6 +40,7 @@ interface AppState {
   showFurigana: boolean;
   showRomaji: boolean;
   dailyGoal: number;
+  autoAddVocabOnComplete: boolean;
 
   // daily activity
   xpToday: number;
@@ -64,11 +67,12 @@ interface AppState {
   setShowFurigana: (v: boolean) => void;
   setShowRomaji: (v: boolean) => void;
   setDailyGoal: (n: number) => void;
+  setAutoAddVocabOnComplete: (v: boolean) => void;
 
   markStudiedToday: () => void;
   addXp: (amount: number) => void;
 
-  completeLesson: (lessonId: string) => void;
+  completeLesson: (lessonId: string) => { newlyAddedVocab: number };
   recordQuiz: (lessonId: string, scorePct: number) => void;
 
   hasCard: (id: string) => boolean;
@@ -86,6 +90,7 @@ const initial = {
   showFurigana: true,
   showRomaji: false,
   dailyGoal: 50,
+  autoAddVocabOnComplete: true,
   xpToday: 0,
   xpDate: null as string | null,
   completedLessons: {} as Record<string, LessonProgress>,
@@ -110,6 +115,7 @@ export const useStore = create<AppState>()(
       setShowRomaji: (v) => set({ showRomaji: v }),
       setDailyGoal: (n) =>
         set({ dailyGoal: Math.max(10, Math.min(1000, Math.round(n))) }),
+      setAutoAddVocabOnComplete: (v) => set({ autoAddVocabOnComplete: v }),
 
       markStudiedToday: () => {
         const today = todayStr();
@@ -151,6 +157,12 @@ export const useStore = create<AppState>()(
         }));
         if (!already) get().addXp(XP.lessonComplete);
         else get().markStudiedToday();
+
+        let newlyAddedVocab = 0;
+        if (get().autoAddVocabOnComplete) {
+          newlyAddedVocab = get().addCards(vocabCardIdsForLesson(lessonId));
+        }
+        return { newlyAddedVocab };
       },
 
       recordQuiz: (lessonId, scorePct) => {
@@ -203,6 +215,7 @@ export const useStore = create<AppState>()(
           showFurigana: s.showFurigana,
           showRomaji: s.showRomaji,
           dailyGoal: s.dailyGoal,
+          autoAddVocabOnComplete: s.autoAddVocabOnComplete,
           xpToday: s.xpToday,
           xpDate: s.xpDate,
           completedLessons: s.completedLessons,
@@ -233,6 +246,10 @@ export const useStore = create<AppState>()(
               ? data.showRomaji
               : s.showRomaji,
           dailyGoal: num(data.dailyGoal, s.dailyGoal),
+          autoAddVocabOnComplete:
+            typeof data.autoAddVocabOnComplete === "boolean"
+              ? data.autoAddVocabOnComplete
+              : s.autoAddVocabOnComplete,
           xpToday: num(data.xpToday, s.xpToday),
           xpDate:
             data.xpDate === null || typeof data.xpDate === "string"

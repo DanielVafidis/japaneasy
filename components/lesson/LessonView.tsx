@@ -42,11 +42,18 @@ export function LessonView({
   const quizScores = useStore((s) => s.quizScores);
 
   const [justCompleted, setJustCompleted] = useState(false);
+  const [addedVocabCount, setAddedVocabCount] = useState(0);
 
   const stage = stageMeta(lesson.stage);
   const vocabIds = (lesson.vocabulary ?? []).map(
     (v) => `vocab:${stripFurigana(v.word)}`,
   );
+
+  function finishLesson() {
+    const { newlyAddedVocab } = completeLesson(lesson.id);
+    setAddedVocabCount(newlyAddedVocab);
+    setJustCompleted(true);
+  }
 
   function handleQuizComplete(correct: number, total: number) {
     const pct = Math.round((correct / total) * 100);
@@ -56,14 +63,12 @@ export function LessonView({
       addXp(correct * XP.quizPerCorrect + (pct === 100 ? XP.quizPerfectBonus : 0));
     }
     if (pct >= 60 && !completed) {
-      completeLesson(lesson.id);
-      setJustCompleted(true);
+      finishLesson();
     }
   }
 
   function handleManualComplete() {
-    completeLesson(lesson.id);
-    setJustCompleted(true);
+    finishLesson();
   }
 
   return (
@@ -180,11 +185,23 @@ export function LessonView({
       {/* completion */}
       <section className="mt-12">
         {completed ? (
-          <div className="flex items-center justify-center gap-2 rounded-2xl border border-matcha/30 bg-matcha/[0.08] px-6 py-4 text-matcha">
-            <CheckCircle2 className="h-5 w-5" />
-            <span className="font-medium">
-              {justCompleted ? "Nice work — lesson complete!" : "Lesson complete"}
-            </span>
+          <div className="flex flex-col items-center gap-2 rounded-2xl border border-matcha/30 bg-matcha/[0.08] px-6 py-4 text-center text-matcha">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5 shrink-0" />
+              <span className="font-medium">
+                {justCompleted ? "Nice work — lesson complete!" : "Lesson complete"}
+              </span>
+            </div>
+            {justCompleted && addedVocabCount > 0 && (
+              <p className="text-sm text-matcha/90">
+                {addedVocabCount} word{addedVocabCount === 1 ? "" : "s"} added to your review deck.
+              </p>
+            )}
+            {justCompleted && addedVocabCount === 0 && vocabIds.length > 0 && (
+              <p className="text-sm text-matcha/90">
+                Vocabulary is already in your review deck.
+              </p>
+            )}
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3 rounded-2xl border border-line bg-surface px-6 py-6 text-center">
