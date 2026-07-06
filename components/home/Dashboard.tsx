@@ -22,7 +22,14 @@ export function Dashboard() {
   return (
     <div className="flex flex-col gap-6 lg:gap-8">
       <TodayView />
+      <DashboardStatsPanel />
+    </div>
+  );
+}
 
+export function DashboardStatsPanel() {
+  return (
+    <>
       <div className="hidden lg:block">
         <DashboardStats />
       </div>
@@ -30,7 +37,7 @@ export function Dashboard() {
       <details className="group lg:hidden">
         <summary className="cursor-pointer list-none rounded-2xl border border-line bg-surface-2/40 px-4 py-3 text-sm font-medium text-ink-soft transition-colors hover:border-shu/30 [&::-webkit-details-marker]:hidden">
           <span className="flex items-center justify-between">
-            More stats
+            Progress details
             <ArrowRight className="h-4 w-4 transition-transform group-open:rotate-90" />
           </span>
         </summary>
@@ -38,7 +45,7 @@ export function Dashboard() {
           <DashboardStats />
         </div>
       </details>
-    </div>
+    </>
   );
 }
 
@@ -55,49 +62,49 @@ function DashboardStats() {
 
   return (
     <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-4 lg:gap-4">
-          <StatTile
-            icon={<Flame className="h-5 w-5" />}
-            tone="gold"
-            label="Day streak"
-            value={hasHydrated ? String(streak) : "—"}
-            hint={streak > 0 ? "Keep it alive!" : "Study today to start"}
-          />
-          <StatTile
-            icon={<Star className="h-5 w-5" />}
-            tone="ai"
-            label={`Level ${level.level} · ${level.rank}`}
-            value={hasHydrated ? `${xp} XP` : "—"}
-            progress={level.pct}
-          />
-          <MiniStat
-            href="/learn"
-            icon={<Layers className="h-5 w-5" />}
-            label="Lessons complete"
-            value={`${completedCount} / ${lessons.length}`}
-            tone="matcha"
-          />
-          <MiniStat
-            href={due > 0 ? "/flashcards?review=1" : "/flashcards"}
-            icon={<Sparkles className="h-5 w-5" />}
-            label={totalAdded > 0 ? "Cards to review" : "Flashcards"}
-            value={totalAdded > 0 ? `${due} due` : "Add cards"}
-            tone="shu"
-            highlight={due > 0}
-          />
-          <MiniStat
-            href="/kana"
-            icon={<span className="font-jp text-lg leading-none">あ</span>}
-            label="Kana Trainer"
-            value="Practice"
-            tone="ai"
-          />
-          <MiniStat
-            href="/kanji"
-            icon={<Shapes className="h-5 w-5" />}
-            label="Kanji"
-            value={`${kanji.length} chars`}
-            tone="gold"
-          />
+      <StatTile
+        icon={<Flame className="h-5 w-5" />}
+        tone="gold"
+        label="Day streak"
+        value={hasHydrated ? String(streak) : "—"}
+        hint={streak > 0 ? "Study today to keep it" : "Open a lesson to begin"}
+      />
+      <StatTile
+        icon={<Star className="h-5 w-5" />}
+        tone="ai"
+        label={`Level ${level.level} · ${level.rank}`}
+        value={hasHydrated ? `${xp} XP` : "—"}
+        progress={level.pct}
+      />
+      <MiniStat
+        href="/learn"
+        icon={<Layers className="h-5 w-5" />}
+        label="Lessons complete"
+        value={`${completedCount} / ${lessons.length}`}
+        tone="matcha"
+      />
+      <MiniStat
+        href={due > 0 ? "/flashcards?review=1" : "/flashcards"}
+        icon={<Sparkles className="h-5 w-5" />}
+        label={totalAdded > 0 ? "Cards to review" : "Flashcards"}
+        value={totalAdded > 0 ? `${due} due` : "Add cards"}
+        tone="shu"
+        highlight={due > 0}
+      />
+      <MiniStat
+        href="/kana"
+        icon={<span className="font-jp text-lg leading-none">あ</span>}
+        label="Kana Trainer"
+        value="Practice"
+        tone="ai"
+      />
+      <MiniStat
+        href="/kanji"
+        icon={<Shapes className="h-5 w-5" />}
+        label="Kanji"
+        value={`${kanji.length} chars`}
+        tone="gold"
+      />
     </div>
   );
 }
@@ -134,7 +141,7 @@ function StatTile({
         >
           {icon}
         </span>
-        <span className="min-w-0 truncate text-sm text-ink-soft">{label}</span>
+        <span className="min-w-0 text-sm leading-snug text-ink-soft">{label}</span>
       </div>
       <div className="mt-3">
         <p className="font-display text-2xl text-ink">{value}</p>
@@ -185,10 +192,8 @@ function MiniStat({
         {icon}
       </span>
       <div className="min-w-0 flex-1">
-        <p className="text-sm text-ink-soft">{label}</p>
-        <p className="truncate font-display text-lg text-ink sm:text-xl">
-          {value}
-        </p>
+        <p className="text-sm leading-snug text-ink-soft">{label}</p>
+        <p className="font-display text-lg text-ink sm:text-xl">{value}</p>
       </div>
       <ArrowRight className="h-4 w-4 shrink-0 text-ink-faint transition-transform group-hover:translate-x-1 group-hover:text-shu" />
     </Link>

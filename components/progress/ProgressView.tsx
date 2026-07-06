@@ -33,17 +33,19 @@ export function ProgressView() {
   );
   const completedCount = Object.keys(completedLessons).length;
 
-  // 7-day due forecast (overdue lumped into today)
+  // 7-day due forecast (overdue lumped into today) — client-only dates
   const forecast = Array.from({ length: 7 }, () => 0);
-  const todayMid = new Date();
-  todayMid.setHours(0, 0, 0, 0);
-  for (const c of Object.values(cards)) {
-    if (!cardsById[c.id]) continue;
-    const dueMid = new Date(c.due);
-    dueMid.setHours(0, 0, 0, 0);
-    let idx = Math.round((dueMid.getTime() - todayMid.getTime()) / DAY);
-    if (idx < 0) idx = 0;
-    if (idx <= 6) forecast[idx]++;
+  if (hasHydrated) {
+    const todayMid = new Date();
+    todayMid.setHours(0, 0, 0, 0);
+    for (const c of Object.values(cards)) {
+      if (!cardsById[c.id]) continue;
+      const dueMid = new Date(c.due);
+      dueMid.setHours(0, 0, 0, 0);
+      let idx = Math.round((dueMid.getTime() - todayMid.getTime()) / DAY);
+      if (idx < 0) idx = 0;
+      if (idx <= 6) forecast[idx]++;
+    }
   }
   const forecastMax = Math.max(1, ...forecast);
   const dayLabels = ["Today", "+1", "+2", "+3", "+4", "+5", "+6"];

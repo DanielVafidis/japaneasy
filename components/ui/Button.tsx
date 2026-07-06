@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
@@ -34,10 +36,12 @@ export function Button({
   variant = "primary",
   size = "md",
   className,
+  type = "button",
   ...props
 }: CommonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
+      type={type}
       className={cn(base, variants[variant], sizes[size], className)}
       {...props}
     />

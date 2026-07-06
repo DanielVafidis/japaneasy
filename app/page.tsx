@@ -9,144 +9,182 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
-import { Dashboard } from "@/components/home/Dashboard";
+import { DashboardStatsPanel } from "@/components/home/Dashboard";
+import { TodayView } from "@/components/home/TodayView";
 import { Reveal } from "@/components/Reveal";
 
-const FEATURES = [
+const STUDY_FEATURES = [
   {
     icon: <Route className="h-5 w-5" />,
-    title: "A Japanese-first path",
-    body: "Lessons follow the order that makes sense in Japanese — not forced translations of English phrases.",
+    title: "Grammar in Japanese order",
+    body: (
+      <>
+        Textbooks often explain <span className="font-jp">です</span> through
+        English sentence logic. These lessons follow how the language is actually
+        put together.
+      </>
+    ),
   },
   {
     icon: <Languages className="h-5 w-5" />,
-    title: "Kana before everything",
-    body: "Master hiragana and katakana with an interactive trainer and audio. We never lean on romaji.",
+    title: "Hiragana and katakana first",
+    body: "Romaji feels easier until it isn't. A trainer with audio gets you reading real script before anything else.",
   },
   {
     icon: <Brain className="h-5 w-5" />,
-    title: "Remember it for good",
-    body: "Add any word, kana, or grammar point to a spaced-repetition deck that schedules reviews for you.",
+    title: "Words that actually stick",
+    body: (
+      <>
+        You&apos;ll forget <span className="font-jp">食べる</span> by tomorrow
+        without review. Add anything to a spaced-repetition deck — it schedules
+        when to look again.
+      </>
+    ),
   },
   {
     icon: <Headphones className="h-5 w-5" />,
-    title: "Hear every sentence",
-    body: "A tap plays natural Japanese pronunciation on any example, so you train your ear from day one.",
+    title: "Audio on every example",
+    body: "Reading alone won't help you follow a conversation. Tap any sentence to hear how it's pronounced.",
   },
   {
     icon: <BookOpenCheck className="h-5 w-5" />,
-    title: "Read at your level",
-    body: "Toggle furigana and romaji on or off per your comfort, and wean off the training wheels over time.",
+    title: "Furigana when you need it",
+    body: "Kanji-heavy text is overwhelming early on. Turn furigana and romaji on or off, and drop them as readings stick.",
   },
+];
+
+const TOOL_FEATURES = [
   {
     icon: <Search className="h-5 w-5" />,
-    title: "Find anything instantly",
-    body: "Press ⌘K (or Ctrl+K) to jump to any lesson, vocabulary word, kanji, or page without leaving your keyboard.",
+    title: "Jump anywhere",
+    body: "Looking for that one particle lesson? ⌘K (or Ctrl+K) finds lessons, vocabulary, and kanji without digging through menus.",
   },
   {
     icon: <Shapes className="h-5 w-5" />,
-    title: "Kanji at a glance",
-    body: "Browse N5 kanji by category, inspect readings and examples, and add characters straight to your review deck.",
+    title: "N5 kanji, grouped",
+    body: "Kanji piles up fast. Browse by category, check readings in context, and send words straight to your review deck.",
   },
   {
     icon: <Sparkles className="h-5 w-5" />,
-    title: "Stay motivated",
-    body: "Daily streaks, XP and levels turn consistent practice into a habit that's genuinely satisfying.",
+    title: "Streaks and daily goals",
+    body: "Consistency beats cramming. A simple daily target and streak counter — nothing flashy, just something to come back to.",
   },
 ];
 
 export default function HomePage() {
   return (
     <div className="relative flex flex-col">
-      {/* Today — first on mobile, after hero on desktop */}
-      <section className="order-1 page-x mx-auto w-full max-w-6xl py-6 md:order-2 md:py-8">
-        <Dashboard />
-      </section>
-
-      {/* Hero */}
-      <section className="order-2 md:order-1">
-        <div className="page-x mx-auto max-w-6xl pb-10 pt-12 sm:pt-24">
-          <div className="max-w-2xl">
+      <section className="page-x mx-auto w-full max-w-6xl pb-6 pt-10 sm:pt-14 lg:pb-8 lg:pt-16">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-x-14">
+          <div className="max-w-xl lg:sticky lg:top-24">
             <p
               className="mb-4 inline-flex animate-fade-up items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-sm text-ink-soft"
               style={{ animationDelay: "40ms" }}
             >
-              <Sparkles className="h-3.5 w-3.5 text-shu" /> 日本語 · learn the
-              natural way
+              <Sparkles className="h-3.5 w-3.5 text-shu" />
+              Free · saves progress in this browser
             </p>
             <h1
-              className="animate-fade-up text-balance text-3xl font-bold leading-[1.08] text-ink sm:text-4xl md:text-5xl lg:text-6xl"
+              className="animate-fade-up max-w-md text-[1.625rem] font-medium leading-snug text-ink sm:text-[1.875rem]"
               style={{ animationDelay: "100ms" }}
             >
-              Read Japanese, the way it{" "}
-              <span className="brush-underline text-shu">actually works</span>.
+              <span className="font-jp text-shu">日本語</span> from kana to
+              sentences.
             </h1>
             <p
-              className="mt-6 max-w-xl animate-fade-up text-lg leading-8 text-ink-soft"
+              className="mt-4 max-w-lg animate-fade-up text-base leading-7 text-ink-soft sm:text-lg sm:leading-8"
               style={{ animationDelay: "180ms" }}
             >
-              A calm, structured course that teaches Japanese from a Japanese
-              point of view — kana first, then grammar built block by block, with
-              spaced-repetition flashcards, audio, and quizzes to make it stick.
+              Particles that never quite click. Kanji you saw yesterday and
+              can&apos;t recall today. Textbook sentences that sound fine in
+              English but wrong in Japanese. This course works through those
+              problems in order — kana, then grammar, with review built in.
             </p>
             <div
-              className="mt-8 flex animate-fade-up flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+              className="mt-7 flex animate-fade-up flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
               style={{ animationDelay: "260ms" }}
             >
               <ButtonLink href="/lessons/introduction" size="lg" className="w-full sm:w-auto">
-                Start learning — it's free
+                Open lesson 1
               </ButtonLink>
               <ButtonLink href="/learn" variant="outline" size="lg" className="w-full sm:w-auto">
-                See the curriculum
+                Browse lessons
               </ButtonLink>
             </div>
-            <p
-              className="mt-4 animate-fade-up text-sm text-ink-faint"
-              style={{ animationDelay: "320ms" }}
-            >
-              No account needed · your progress saves privately in this browser.
-            </p>
+          </div>
+
+          <div className="min-w-0">
+            <TodayView />
           </div>
         </div>
+
+        <div className="mt-8 lg:mt-10">
+          <DashboardStatsPanel />
+        </div>
       </section>
 
-      {/* Features */}
-      <section className="order-3 page-x mx-auto max-w-6xl py-12">
-        <div className="mb-8 max-w-2xl">
+      <section className="page-x mx-auto w-full max-w-6xl border-t border-line/60 py-14 sm:py-16">
+        <div className="mb-10 max-w-2xl">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-shu">
-            Why it works
+            What&apos;s here
           </p>
-          <h2 className="text-balance text-3xl text-ink sm:text-4xl">
-            Built around how people actually learn Japanese
+          <h2 className="text-balance text-2xl text-ink sm:text-3xl">
+            For the parts of Japanese that actually trip people up
           </h2>
-          <p className="mt-3 text-ink-soft">
-            Every feature reflects hard-won community wisdom: foundations first,
-            review often, and immerse with comprehensible input.
+          <p className="mt-3 max-w-xl text-ink-soft">
+            Not a feature list for its own sake — each tool addresses something
+            you&apos;ll run into within the first few months of studying.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f, i) => (
-            <Reveal key={f.title} delay={i * 0.05}>
-              <Feature icon={f.icon} title={f.title} body={f.body} />
-            </Reveal>
-          ))}
+
+        <div className="flex flex-col gap-12">
+          <FeatureGroup label="Study" features={STUDY_FEATURES} startIndex={0} />
+          <FeatureGroup
+            label="Reference & habits"
+            features={TOOL_FEATURES}
+            startIndex={STUDY_FEATURES.length}
+          />
         </div>
       </section>
 
-      {/* Philosophy */}
-      <section className="order-4 page-x mx-auto max-w-4xl pb-8">
+      <section className="page-x mx-auto max-w-3xl pb-12 pt-2 sm:pb-16">
         <Reveal>
-        <figure className="rounded-3xl border border-line bg-surface p-6 text-center sm:p-8 md:p-12">
-          <blockquote className="font-display text-xl leading-relaxed text-ink sm:text-2xl md:text-3xl">
-            Language is not a math problem. Practice from real Japanese, learn by
-            example, and the patterns become second nature.
-          </blockquote>
-          <figcaption className="mt-4 text-sm text-ink-faint">
-            — the guiding idea behind every lesson
-          </figcaption>
-        </figure>
+          <figure className="rounded-3xl border border-line bg-surface px-6 py-8 text-center sm:px-10 sm:py-10">
+            <blockquote className="font-display text-lg leading-relaxed text-ink sm:text-xl md:text-2xl">
+              Patterns stick when you meet them in sentences, not in charts.
+              These lessons show real usage first and explain after.
+            </blockquote>
+            <figcaption className="mt-4 text-sm text-ink-faint">
+              — how the lessons are structured
+            </figcaption>
+          </figure>
         </Reveal>
       </section>
+    </div>
+  );
+}
+
+function FeatureGroup({
+  label,
+  features,
+  startIndex,
+}: {
+  label: string;
+  features: { icon: React.ReactNode; title: string; body: React.ReactNode }[];
+  startIndex: number;
+}) {
+  return (
+    <div>
+      <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-ink-faint">
+        {label}
+      </h3>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {features.map((f, i) => (
+          <Reveal key={f.title} delay={(startIndex + i) * 0.05}>
+            <Feature icon={f.icon} title={f.title} body={f.body} />
+          </Reveal>
+        ))}
+      </div>
     </div>
   );
 }
@@ -158,10 +196,10 @@ function Feature({
 }: {
   icon: React.ReactNode;
   title: string;
-  body: string;
+  body: React.ReactNode;
 }) {
   return (
-    <div className="group rounded-3xl border border-line bg-surface p-6 transition-colors hover:border-shu/30 card-shadow">
+    <div className="group h-full rounded-3xl border border-line bg-surface p-6 transition-colors hover:border-shu/30 card-shadow">
       <span className="mb-4 grid h-11 w-11 place-items-center rounded-2xl bg-shu/10 text-shu transition-transform group-hover:scale-110">
         {icon}
       </span>

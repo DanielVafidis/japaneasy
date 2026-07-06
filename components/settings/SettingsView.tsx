@@ -9,6 +9,7 @@ import { cn } from "@/lib/cn";
 const GOAL_PRESETS = [20, 50, 100, 150];
 
 export function SettingsView() {
+  const hasHydrated = useStore((s) => s.hasHydrated);
   const showFurigana = useStore((s) => s.showFurigana);
   const showRomaji = useStore((s) => s.showRomaji);
   const dailyGoal = useStore((s) => s.dailyGoal);
@@ -28,12 +29,14 @@ export function SettingsView() {
           label="Furigana by default"
           desc="Show kana readings above kanji."
           checked={showFurigana}
+          disabled={!hasHydrated}
           onChange={setShowFurigana}
         />
         <ToggleRow
           label="Romaji by default"
           desc="Show romanized readings. Best left off once you know kana."
           checked={showRomaji}
+          disabled={!hasHydrated}
           onChange={setShowRomaji}
         />
       </Section>
@@ -46,6 +49,7 @@ export function SettingsView() {
           label="Add lesson vocabulary on complete"
           desc="When you finish a lesson, its words are added to your review deck automatically."
           checked={autoAddVocabOnComplete}
+          disabled={!hasHydrated}
           onChange={setAutoAddVocabOnComplete}
         />
       </Section>
@@ -55,12 +59,15 @@ export function SettingsView() {
           {GOAL_PRESETS.map((g) => (
             <button
               key={g}
+              type="button"
               onClick={() => setDailyGoal(g)}
+              disabled={!hasHydrated}
               className={cn(
                 "rounded-2xl border px-4 py-3 text-center transition-all sm:px-5",
                 dailyGoal === g
                   ? "border-shu bg-shu/10"
                   : "border-line bg-surface hover:border-shu/40",
+                !hasHydrated && "pointer-events-none",
               )}
             >
               <span className="block font-display text-xl text-ink">{g}</span>
@@ -106,11 +113,13 @@ function ToggleRow({
   label,
   desc,
   checked,
+  disabled = false,
   onChange,
 }: {
   label: string;
   desc: string;
   checked: boolean;
+  disabled?: boolean;
   onChange: (v: boolean) => void;
 }) {
   return (
@@ -120,20 +129,20 @@ function ToggleRow({
         <p className="text-sm text-ink-faint">{desc}</p>
       </div>
       <button
+        type="button"
         role="switch"
         aria-checked={checked}
         aria-label={label}
+        disabled={disabled}
         onClick={() => onChange(!checked)}
         className={cn(
-          "relative h-6 w-11 shrink-0 rounded-full transition-colors",
-          checked ? "bg-shu" : "bg-line-strong",
+          "inline-flex h-6 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors disabled:pointer-events-none",
+          checked ? "justify-end bg-shu" : "justify-start bg-line-strong",
         )}
       >
         <span
-          className={cn(
-            "absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform",
-            checked ? "translate-x-5" : "translate-x-0.5",
-          )}
+          aria-hidden
+          className="block h-5 w-5 shrink-0 rounded-full bg-white shadow-sm ring-1 ring-black/5"
         />
       </button>
     </div>
@@ -143,9 +152,11 @@ function ToggleRow({
 type Mode = "light" | "dark" | "system";
 
 function ThemeChooser() {
+  const [mounted, setMounted] = useState(false);
   const [mode, setMode] = useState<Mode>("system");
 
   useEffect(() => {
+    setMounted(true);
     const stored = localStorage.getItem("japaneasy-theme");
     setMode(stored === "light" || stored === "dark" ? stored : "system");
   }, []);
@@ -175,10 +186,11 @@ function ThemeChooser() {
       {options.map((o) => (
         <button
           key={o.id}
+          type="button"
           onClick={() => apply(o.id)}
           className={cn(
             "flex items-center justify-center gap-1.5 rounded-xl px-2 py-2.5 text-sm font-medium transition-all sm:gap-2 sm:px-4 sm:py-2",
-            mode === o.id
+            mounted && mode === o.id
               ? "bg-shu text-white shadow-sm"
               : "text-ink-soft hover:text-ink",
           )}

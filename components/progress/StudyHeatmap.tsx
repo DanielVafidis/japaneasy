@@ -15,8 +15,15 @@ interface Day {
 }
 
 export function StudyHeatmap() {
+  const hasHydrated = useStore((s) => s.hasHydrated);
   const studyDays = useStore((s) => s.studyDays);
   const studied = new Set(studyDays);
+
+  if (!hasHydrated) {
+    return (
+      <div className="h-24 animate-pulse rounded-2xl bg-surface-2" aria-hidden />
+    );
+  }
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);

@@ -292,11 +292,24 @@ export const useStore = create<AppState>()(
             },
       ),
       skipHydration: true,
-      partialize: (s) => {
-        const { hasHydrated, ...rest } = s;
-        void hasHydrated;
-        return rest;
-      },
+      partialize: (s) => ({
+        showFurigana: s.showFurigana,
+        showRomaji: s.showRomaji,
+        dailyGoal: s.dailyGoal,
+        autoAddVocabOnComplete: s.autoAddVocabOnComplete,
+        xpToday: s.xpToday,
+        xpDate: s.xpDate,
+        completedLessons: s.completedLessons,
+        quizScores: s.quizScores,
+        xp: s.xp,
+        streak: s.streak,
+        longestStreak: s.longestStreak,
+        lastStudyDate: s.lastStudyDate,
+        studyDays: s.studyDays,
+        cards: s.cards,
+        reviewsToday: s.reviewsToday,
+        reviewsDate: s.reviewsDate,
+      }),
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true);
       },

@@ -8,9 +8,15 @@ import { KanaGrid, KanaChips } from "@/components/kana/KanaGrid";
 import { KanaQuiz } from "@/components/kana/KanaQuiz";
 import { KanaWriter } from "@/components/kana/KanaWriter";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
+import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { cn } from "@/lib/cn";
 
 type Mode = "chart" | "quiz" | "write";
+
+const SCRIPTS = [
+  { id: "hira" as const, jp: "ひらがな", en: "Hiragana" },
+  { id: "kata" as const, jp: "カタカナ", en: "Katakana" },
+];
 
 export function KanaTrainer() {
   const [script, setScript] = useState<KanaScript>("hira");
@@ -20,54 +26,44 @@ export function KanaTrainer() {
   const kanaIds = cardsForDeck(deckId).map((c) => c.id);
 
   return (
-    <div className="flex flex-col gap-6">
-      {/* top controls */}
-      <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="touch-segment w-full sm:w-auto">
-          {(
-            [
-              { id: "hira", label: "Hiragana", jp: "ひらがな" },
-              { id: "kata", label: "Katakana", jp: "カタカナ" },
-            ] as const
-          ).map((s) => (
-            <button
-              key={s.id}
-              onClick={() => setScript(s.id)}
-              className={cn(
-                "flex flex-1 items-center justify-center gap-2 px-3 py-2 text-sm font-medium transition-all sm:flex-none sm:px-4",
-                script === s.id
-                  ? "bg-shu text-white shadow-sm"
-                  : "text-ink-soft hover:text-ink active:bg-surface-2",
-              )}
-            >
-              <span className="font-jp text-base">{s.jp}</span>
-              <span className="hidden sm:inline">{s.label}</span>
-            </button>
-          ))}
-        </div>
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-5 sm:gap-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4">
+            {SCRIPTS.map((s) => (
+              <ScriptButton
+                key={s.id}
+                active={script === s.id}
+                jp={s.jp}
+                en={s.en}
+                onClick={() => setScript(s.id)}
+              />
+            ))}
+          </div>
 
-        <div className="touch-segment w-full sm:w-auto">
-          {(
-            [
-              { id: "chart", label: "Chart", icon: <Grid3x3 className="h-4 w-4" /> },
-              { id: "quiz", label: "Quiz", icon: <ListChecks className="h-4 w-4" /> },
-              { id: "write", label: "Write", icon: <PencilLine className="h-4 w-4" /> },
-            ] as const
-          ).map((m) => (
-            <button
-              key={m.id}
-              onClick={() => setMode(m.id)}
-              className={cn(
-                "flex flex-1 items-center justify-center gap-1.5 px-3 py-2 text-sm font-medium transition-all sm:flex-none sm:px-4",
-                mode === m.id
-                  ? "bg-ai text-white shadow-sm"
-                  : "text-ink-soft hover:text-ink active:bg-surface-2",
-              )}
-            >
-              {m.icon}
-              {m.label}
-            </button>
-          ))}
+          <SegmentedControl
+            aria-label="Study mode"
+            value={mode}
+            onChange={setMode}
+            className="w-full sm:w-auto sm:min-w-[18rem]"
+            options={[
+              {
+                value: "chart",
+                label: "Chart",
+                icon: <Grid3x3 className="h-4 w-4 shrink-0" />,
+              },
+              {
+                value: "quiz",
+                label: "Quiz",
+                icon: <ListChecks className="h-4 w-4 shrink-0" />,
+              },
+              {
+                value: "write",
+                label: "Write",
+                icon: <PencilLine className="h-4 w-4 shrink-0" />,
+              },
+            ]}
+          />
         </div>
       </div>
 
@@ -96,6 +92,42 @@ export function KanaTrainer() {
       {mode === "quiz" && <KanaQuiz key={script} script={script} />}
       {mode === "write" && <KanaWriter key={script} script={script} />}
     </div>
+  );
+}
+
+function ScriptButton({
+  active,
+  jp,
+  en,
+  onClick,
+}: {
+  active: boolean;
+  jp: string;
+  en: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className={cn(
+        "flex min-h-[4.25rem] flex-col items-center justify-center gap-1.5 rounded-2xl border px-4 py-3 transition-all sm:min-w-[8.5rem] sm:px-5",
+        active
+          ? "border-shu/35 bg-surface text-ink card-shadow"
+          : "border-line bg-surface-2/40 text-ink-soft hover:border-line-strong hover:bg-surface hover:text-ink",
+      )}
+    >
+      <span className="font-jp text-xl leading-none sm:text-2xl">{jp}</span>
+      <span
+        className={cn(
+          "text-xs font-medium tracking-wide",
+          active ? "text-ink-soft" : "text-ink-faint",
+        )}
+      >
+        {en}
+      </span>
+    </button>
   );
 }
 

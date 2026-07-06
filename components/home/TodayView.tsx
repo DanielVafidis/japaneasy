@@ -48,10 +48,10 @@ export function TodayView() {
     if (due > 0) {
       return {
         kind: "review" as const,
-        title: `${due} card${due === 1 ? "" : "s"} due`,
-        body: "Review now while the memory is fresh — it only takes a few minutes.",
+        title: `${due} card${due === 1 ? "" : "s"} waiting`,
+        body: "Reviewing now takes a few minutes and saves you from relearning these later.",
         href: "/flashcards?review=1",
-        cta: "Start review",
+        cta: "Review now",
         icon: <Brain className="h-6 w-6" />,
       };
     }
@@ -62,17 +62,17 @@ export function TodayView() {
         body:
           nextLesson.subtitle ??
           nextLesson.summary ??
-          "Continue your path through the course.",
+          "Pick up where you left off in the course.",
         href: `/lessons/${nextLesson.id}`,
-        cta: started ? "Continue lesson" : "Begin lesson 1",
+        cta: started ? "Continue" : "Start here",
         icon: <GraduationCap className="h-6 w-6" />,
       };
     }
     if (totalAdded > 0) {
       return {
         kind: "caught-up" as const,
-        title: "All caught up",
-        body: "You've finished every lesson. Keep reviewing to hold on to what you know.",
+        title: "Lessons finished",
+        body: "You've worked through the course. Keep reviewing so the vocabulary doesn't fade.",
         href: "/flashcards",
         cta: "Open flashcards",
         icon: <CheckCircle2 className="h-6 w-6" />,
@@ -80,24 +80,24 @@ export function TodayView() {
     }
     return {
       kind: "start" as const,
-      title: "Welcome — start here",
-      body: "Read the introduction, then work through lessons in order. Vocabulary joins your review deck as you go.",
+      title: "Start with the introduction",
+      body: "A short overview of how the course works, then hiragana and grammar in order. New words go into your review deck as you meet them.",
       href: "/lessons/introduction",
-      cta: "Start learning",
+      cta: "Read introduction",
       icon: <BookOpen className="h-6 w-6" />,
     };
   })();
 
   return (
-    <div className="flex flex-col gap-4">
-      {/* header */}
+    <div className="flex flex-col gap-5">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-semibold uppercase tracking-widest text-shu">
-            今日 · Today
+            <span className="font-jp normal-case tracking-normal">今日</span>
+            <span className="font-sans"> · Today</span>
           </p>
-          <h2 className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-            {goalMet ? "Nice work today" : "Your plan for today"}
+          <h2 className="mt-1 font-display text-xl text-ink sm:text-2xl">
+            {goalMet ? "Daily goal done" : "What to do next"}
           </h2>
         </div>
         {hasHydrated && streak > 0 && (
@@ -107,7 +107,6 @@ export function TodayView() {
         )}
       </div>
 
-      {/* primary action */}
       <div className="rounded-3xl border-2 border-shu/25 bg-surface p-5 card-shadow sm:p-6">
         <div className="flex items-start gap-4">
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-shu/10 text-shu">
@@ -116,10 +115,10 @@ export function TodayView() {
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold uppercase tracking-wide text-shu">
               {primary.kind === "review"
-                ? "Step 1 · Review"
+                ? "Reviews first"
                 : primary.kind === "lesson"
-                  ? "Step 1 · Learn"
-                  : "Up next"}
+                  ? "Next up"
+                  : "Suggested"}
             </p>
             <h3 className="mt-1 text-balance font-display text-xl text-ink sm:text-2xl">
               {primary.title}
@@ -133,7 +132,6 @@ export function TodayView() {
         </ButtonLink>
       </div>
 
-      {/* plan checklist */}
       <div className="overflow-hidden rounded-3xl border border-line bg-surface card-shadow">
         <PlanRow
           done={due === 0 && totalAdded > 0}
@@ -142,10 +140,10 @@ export function TodayView() {
           label="Reviews"
           value={
             totalAdded === 0
-              ? "Cards appear as you learn"
+              ? "Added as you study"
               : due > 0
-                ? `${due} due now`
-                : "All caught up"
+                ? `${due} due`
+                : "Nothing due"
           }
           href={due > 0 ? "/flashcards?review=1" : "/flashcards"}
           action={due > 0 ? "Review" : totalAdded > 0 ? "Open" : undefined}
@@ -154,23 +152,23 @@ export function TodayView() {
           done={!nextLesson}
           active={due === 0 && Boolean(nextLesson)}
           icon={<GraduationCap className="h-4 w-4" />}
-          label="Next lesson"
-          value={nextLesson?.title ?? "Course complete"}
+          label="Lesson"
+          value={nextLesson?.title ?? "All done"}
           href={nextLesson ? `/lessons/${nextLesson.id}` : "/learn"}
-          action={nextLesson ? "Open" : "Curriculum"}
+          action={nextLesson ? "Open" : "Lessons"}
         />
         <PlanRow
           done={goalMet}
           active={!goalMet && hasHydrated}
           icon={<Sparkles className="h-4 w-4" />}
-          label="Daily goal"
+          label="Today's goal"
           value={
             goalMet
-              ? `${todaysXp} / ${dailyGoal} XP · done`
+              ? `${todaysXp} / ${dailyGoal} XP`
               : `${todaysXp} / ${dailyGoal} XP`
           }
           href="/settings"
-          action="Adjust"
+          action="Change"
           footer={
             !goalMet && (
               <ProgressBar value={goalPct} tone="shu" className="mt-2" />
@@ -179,17 +177,15 @@ export function TodayView() {
         />
       </div>
 
-      {/* quick link when reviews aren't primary but exist */}
       {due > 0 && primary.kind !== "review" && (
         <p className="text-center text-sm text-ink-soft">
-          You also have{" "}
+          Also{" "}
           <Link href="/flashcards?review=1" className="font-medium text-shu hover:underline">
             {due} review{due === 1 ? "" : "s"} due
           </Link>
         </p>
       )}
 
-      {/* progress snapshot */}
       {started && (
         <Link
           href="/learn"
@@ -197,10 +193,10 @@ export function TodayView() {
         >
           <span className="flex items-center gap-2 text-ink-soft">
             <Layers className="h-4 w-4" />
-            Course progress
+            Lessons completed
           </span>
           <span className="font-medium text-ink">
-            {completedCount} / {lessons.length} lessons
+            {completedCount} / {lessons.length}
             <ArrowRight className="ml-1 inline h-3.5 w-3.5 text-ink-faint" />
           </span>
         </Link>

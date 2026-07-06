@@ -17,25 +17,14 @@ import {
   type DeckId,
 } from "@/content/decks";
 import { useStore } from "@/lib/store";
-import { isDue, previewInterval, type Grade } from "@/lib/srs";
+import { isDue, type Grade } from "@/lib/srs";
 import { useDeckStat, useTotalAdded } from "@/lib/review";
-import { Flashcard } from "@/components/flashcards/Flashcard";
+import { TypingFlashcard } from "@/components/flashcards/TypingFlashcard";
+import { checkFlashcardAnswer } from "@/lib/flashcard-review";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Badge } from "@/components/ui/Badge";
-import { cn } from "@/lib/cn";
-
-const GRADES: { id: Grade; label: string; tone: string }[] = [
-  { id: "again", label: "Again", tone: "text-shu border-shu/40 hover:bg-shu/10" },
-  { id: "hard", label: "Hard", tone: "text-gold border-gold/40 hover:bg-gold/10" },
-  { id: "good", label: "Good", tone: "text-ai border-ai/40 hover:bg-ai/10" },
-  {
-    id: "easy",
-    label: "Easy",
-    tone: "text-matcha border-matcha/40 hover:bg-matcha/10",
-  },
-];
 
 export function FlashcardsView() {
   const searchParams = useSearchParams();
@@ -47,7 +36,9 @@ export function FlashcardsView() {
   const [mode, setMode] = useState<"overview" | "review" | "done">("overview");
   const [queue, setQueue] = useState<string[]>([]);
   const [pos, setPos] = useState(0);
-  const [flipped, setFlipped] = useState(false);
+  const [input, setInput] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [correct, setCorrect] = useState<boolean | null>(null);
   const [reviewed, setReviewed] = useState(0);
 
   function buildDue(deck?: DeckId): string[] {
@@ -63,12 +54,18 @@ export function FlashcardsView() {
       .map((c) => c.id);
   }
 
+  function resetCardState() {
+    setInput("");
+    setSubmitted(false);
+    setCorrect(null);
+  }
+
   function start(deck?: DeckId) {
     const q = buildDue(deck);
     if (q.length === 0) return;
     setQueue(q);
     setPos(0);
-    setFlipped(false);
+    resetCardState();
     setReviewed(0);
     setMode("review");
   }
@@ -83,52 +80,58 @@ export function FlashcardsView() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, cards]);
 
-  function grade(g: Grade) {
+  function advance(grade: Grade) {
     const id = queue[pos];
-    reviewCard(id, g);
+    reviewCard(id, grade);
     setReviewed((r) => r + 1);
     if (pos + 1 >= queue.length) {
       setMode("done");
     } else {
       setPos((p) => p + 1);
-      setFlipped(false);
+      resetCardState();
     }
   }
 
-  // Keyboard shortcuts during review: Space/Enter to flip, 1-4 to grade.
+  function submitAnswer() {
+    if (submitted) return;
+    const id = queue[pos];
+    const card = getCard(id);
+    if (!card) return;
+
+    const trimmed = input.trim();
+    if (!trimmed) return;
+
+    const ok = checkFlashcardAnswer(card, trimmed);
+    setSubmitted(true);
+    setCorrect(ok);
+  }
+
+  function continueReview() {
+    if (!submitted || correct === null) return;
+    advance(correct ? "good" : "again");
+  }
+
   useEffect(() => {
     if (mode !== "review") return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === " " || e.key === "Enter") {
-        e.preventDefault();
-        if (!flipped) setFlipped(true);
+      if (e.key === "Escape") {
+        setMode("overview");
         return;
       }
-      if (flipped) {
-        const map: Record<string, Grade> = {
-          "1": "again",
-          "2": "hard",
-          "3": "good",
-          "4": "easy",
-        };
-        const g = map[e.key];
-        if (g) {
-          e.preventDefault();
-          grade(g);
-        }
+      if (submitted && e.key === "Enter") {
+        e.preventDefault();
+        continueReview();
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, flipped, pos, queue]);
+  }, [mode, submitted, correct]);
 
   // ---- Review session ----
   if (mode === "review") {
     const id = queue[pos];
     const card = getCard(id);
-    const state = cards[id];
-    if (!card || !state) {
+    if (!card || !cards[id]) {
       setMode("overview");
       return null;
     }
@@ -147,39 +150,20 @@ export function FlashcardsView() {
         </div>
         <ProgressBar value={((pos + 1) / queue.length) * 100} className="mb-6" />
 
-        <Flashcard card={card} flipped={flipped} onFlip={() => setFlipped((f) => !f)} />
-
-        <div className="mt-6">
-          {!flipped ? (
-            <Button className="w-full" size="lg" onClick={() => setFlipped(true)}>
-              Show answer
-            </Button>
-          ) : (
-            <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-line sm:grid-cols-4 sm:gap-2 sm:overflow-visible sm:rounded-none sm:border-0">
-              {GRADES.map((g, i) => (
-                <button
-                  key={g.id}
-                  onClick={() => grade(g.id)}
-                  className={cn(
-                    "flex flex-col items-center gap-1 bg-surface py-3.5 text-xs font-semibold transition-colors active:bg-surface-2 sm:rounded-2xl sm:border sm:py-3 sm:text-sm",
-                    g.tone,
-                    i % 2 === 1 && "border-l border-line sm:border-l",
-                    i >= 2 && "border-t border-line sm:border-t-0",
-                  )}
-                >
-                  {g.label}
-                  <span className="text-[0.65rem] font-normal text-ink-faint">
-                    {previewInterval(state, g.id)}
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+        <TypingFlashcard
+          card={card}
+          value={input}
+          onChange={setInput}
+          onSubmit={submitAnswer}
+          onContinue={continueReview}
+          submitted={submitted}
+          correct={correct}
+        />
 
         <p className="mt-4 text-center text-xs text-ink-faint">
-          {flipped ? "Press 1–4 to grade" : "Press Space to reveal"} ·
-          keyboard shortcuts enabled
+          {submitted
+            ? "Press Enter or Continue for the next card · Esc to end"
+            : "Type the answer · romaji converts to kana · kanji decks accept readings · Enter to check · Esc to end"}
         </p>
       </div>
     );
@@ -225,7 +209,7 @@ export function FlashcardsView() {
               </h2>
               <p className="mt-1 text-ink-soft">
                 {totalDue > 0
-                  ? "A few minutes now locks today's learning into long-term memory."
+                  ? "Type each answer from memory — correct cards move forward, misses come back soon."
                   : "Nothing to review right now. Add more cards or come back later."}
               </p>
             </div>

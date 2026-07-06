@@ -27,13 +27,13 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       type="button"
       onClick={toggle}
-      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label="Toggle light/dark theme"
       className={cn(
         "relative grid h-10 w-10 place-items-center rounded-full border border-line bg-surface text-ink-soft transition-colors hover:text-ink hover:border-shu/40",
         className,
       )}
     >
-      {mounted && (
+      {mounted ? (
         <span className="relative h-5 w-5">
           <Sun
             className={cn(
@@ -48,6 +48,8 @@ export function ThemeToggle({ className }: { className?: string }) {
             )}
           />
         </span>
+      ) : (
+        <Sun className="h-5 w-5 opacity-0" aria-hidden />
       )}
     </button>
   );
