@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, X, RotateCcw, Trophy } from "lucide-react";
 import type { QuizQuestion } from "@/content/types";
 import { JapaneseText } from "@/components/JapaneseText";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
-
-function normalize(s: string) {
-  return s.trim().toLowerCase().replace(/[\s。、.！？!?]/g, "");
-}
+import {
+  checkQuizFillAnswer,
+  fillUsesJapaneseInput,
+  prepareQuizFillInput,
+  quizFillPlaceholder,
+} from "@/lib/quiz-review";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -277,12 +279,18 @@ function FillIn({
   onResult: (correct: boolean) => void;
 }) {
   const [value, setValue] = useState("");
-  const accepted = useMemo(() => q.answers.map(normalize), [q]);
+  const composingRef = useRef(false);
+  const japaneseInput = fillUsesJapaneseInput(q);
+  const display = prepareQuizFillInput(q, value);
+
+  function appendRaw(extra: string) {
+    setValue((prev) => prev + extra);
+  }
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
     if (answered || !value.trim()) return;
-    onResult(accepted.includes(normalize(value)));
+    onResult(checkQuizFillAnswer(q, value));
   }
 
   return (
@@ -291,10 +299,46 @@ function FillIn({
       <form onSubmit={submit} className="flex flex-col gap-3 sm:flex-row">
         <input
           autoFocus
-          value={value}
+          value={display}
           disabled={answered}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Type your answer…"
+          onKeyDown={(e) => {
+            if (answered || composingRef.current) return;
+
+            if (e.key === "Backspace" || e.key === "Delete") {
+              e.preventDefault();
+              setValue((prev) => prev.slice(0, -1));
+              return;
+            }
+
+            if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+              if (japaneseInput && /[a-zA-Z]/.test(e.key)) {
+                e.preventDefault();
+                appendRaw(e.key);
+              }
+            }
+          }}
+          onCompositionStart={() => {
+            composingRef.current = true;
+          }}
+          onCompositionEnd={(e) => {
+            composingRef.current = false;
+            if (e.data) appendRaw(e.data);
+          }}
+          onPaste={(e) => {
+            if (answered) return;
+            e.preventDefault();
+            const text = e.clipboardData.getData("text");
+            if (text) appendRaw(text);
+          }}
+          onChange={(e) => {
+            if (answered || composingRef.current) return;
+            if (!japaneseInput) setValue(e.target.value);
+          }}
+          placeholder={quizFillPlaceholder(q)}
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
+          lang={japaneseInput ? "ja" : undefined}
           className="flex-1 rounded-xl border border-line bg-surface px-4 py-3 font-jp text-ink outline-none transition-colors focus:border-shu/60 disabled:opacity-60"
         />
         {!answered && (

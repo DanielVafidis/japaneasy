@@ -1,0 +1,88 @@
+import type { QuizQuestion } from "@/content/types";
+import {
+  convertRomajiInInput,
+  fromRomaji,
+  kataToHira,
+  normalizeRomaji,
+  toReading,
+  toRomaji,
+} from "@/lib/japanese";
+
+const JA_RE = /[\u3040-\u309f\u30a0-\u30ff\u3400-\u9fff\u3005]/;
+
+type FillQuestion = Extract<QuizQuestion, { kind: "fill" }>;
+
+function normalizeJa(s: string): string {
+  return s.trim().normalize("NFKC").replace(/[\s。、.！？!?'"()]/g, "");
+}
+
+export function fillUsesJapaneseInput(q: FillQuestion): boolean {
+  return q.answers.some((a) => JA_RE.test(a));
+}
+
+function inputJaVariants(raw: string): string[] {
+  const typed = raw.trim();
+  if (!typed) return [];
+
+  return [
+    normalizeJa(typed),
+    normalizeJa(convertRomajiInInput(typed)),
+    normalizeJa(fromRomaji(typed)),
+    normalizeJa(kataToHira(typed)),
+  ];
+}
+
+function acceptedJaAnswers(answers: string[]): string[] {
+  const set = new Set<string>();
+  for (const a of answers) {
+    set.add(normalizeJa(a));
+    set.add(normalizeJa(kataToHira(a)));
+    const reading = toReading(a);
+    if (reading !== a) set.add(normalizeJa(reading));
+  }
+  return [...set];
+}
+
+function acceptedRomajiAnswers(answers: string[]): string[] {
+  const set = new Set<string>();
+  for (const a of answers) {
+    set.add(normalizeRomaji(a));
+    if (JA_RE.test(a)) {
+      const romaji = normalizeRomaji(toRomaji(a));
+      if (romaji) set.add(romaji);
+    }
+  }
+  return [...set];
+}
+
+export function prepareQuizFillInput(q: FillQuestion, raw: string): string {
+  if (!fillUsesJapaneseInput(q)) return raw;
+  return convertRomajiInInput(raw);
+}
+
+export function quizFillPlaceholder(q: FillQuestion): string {
+  if (fillUsesJapaneseInput(q)) return "Type in romaji or Japanese…";
+  return "Type the romaji…";
+}
+
+export function checkQuizFillAnswer(q: FillQuestion, input: string): boolean {
+  const typed = input.trim();
+  if (!typed) return false;
+
+  if (fillUsesJapaneseInput(q)) {
+    const jaAccepted = acceptedJaAnswers(q.answers);
+    if (inputJaVariants(typed).some((v) => jaAccepted.includes(v))) return true;
+
+    const romajiAccepted = acceptedRomajiAnswers(q.answers);
+    return romajiAccepted.includes(normalizeRomaji(typed));
+  }
+
+  const romajiAccepted = new Set(q.answers.map((a) => normalizeRomaji(a)));
+  if (romajiAccepted.has(normalizeRomaji(typed))) return true;
+
+  if (JA_RE.test(typed)) {
+    return romajiAccepted.has(normalizeRomaji(toRomaji(typed)));
+  }
+
+  return false;
+}
