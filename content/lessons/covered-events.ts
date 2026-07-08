@@ -116,5 +116,12 @@ export const coveredEvents: Lesson = {
       choices: ["うちに", "次第", "際に", "にわたって"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Let's head home before it gets dark'",
+      tiles: ["暗[くら]くならない", "うちに", "帰[かえ]ろう"],
+      distractors: ["うちで"],
+      explanation: "ないうちに = before (while the state hasn't changed yet).",
+    },
   ],
 };

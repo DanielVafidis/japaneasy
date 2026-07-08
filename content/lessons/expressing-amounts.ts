@@ -116,5 +116,12 @@ export const expressingAmounts: Lesson = {
       choices: ["positive verb only", "negative verb", "past tense only", "nouns only"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'My little brother eats nothing but sweets'",
+      tiles: ["弟[おとうと]は", "お菓子[かし]ばかり", "食[た]べている"],
+      distractors: ["お菓子[かし]だけで"],
+      explanation: "ばかり + ている = does nothing but.",
+    },
   ],
 };

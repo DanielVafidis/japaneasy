@@ -101,5 +101,12 @@ export const particlesIntro: Lesson = {
       prompt: "Say 'Tom is also a student' (casual). Type the Japanese:",
       answers: ["トムも学生", "トムも学生。"],
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Today the weather is good'",
+      tiles: ["今日[きょう]は", "天気[てんき]が", "いい"],
+      distractors: ["天気[てんき]も"],
+      explanation: "は marks the topic (today), が marks the subject (weather).",
+    },
   ],
 };

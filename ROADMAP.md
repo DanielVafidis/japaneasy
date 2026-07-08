@@ -1,6 +1,6 @@
 # JapanEasy — Product roadmap & recommendations
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 
 ## Product direction (locked for now)
 
@@ -35,11 +35,13 @@ This is the product’s primary promise: structured lessons first, spaced repeti
 
 ## Current state (baseline)
 
-- **50 lessons**, 5 stages, typed TS content with furigana, examples, quizzes
-- **SRS** (SM-2-lite), 5 decks, manual “Add to flashcards”
+- **54 lessons**, 5 stages, typed TS content with furigana, examples, quizzes
+- **SRS** (SM-2-lite), 5 decks; auto-enroll on lesson complete + manual “Add to flashcards”
+- **Typed recall** in flashcard review & quiz fill-ins — romaji/kana input, normalized matching (kana, vocab, kanji readings; EN for grammar)
 - **Kana** chart / quiz / writer; **~172 kanji** browser
 - **Gamification** — streak, XP, daily goal, heatmap; localStorage only
-- **Gaps** — weak review loop, passive cards, no production/listening, no PWA, no tests
+- **Coverage** — full Tae Kim guide coverage as of 2026-07-08 (audit + fixes in **MISSING.md**)
+- **Gaps** — examples not yet original vs the PDF (C.3); grammar deck cards weak (title→summary); no in-lesson production exercises; no sentence cards, listening drills, onboarding, PWA, tests
 
 ---
 
@@ -51,10 +53,26 @@ Ship these before backend, AI, or major new content.
 |---|---------|-------------|-------------------------------|--------|----------|--------|
 | 0.1 | **Auto-enroll vocab on lesson complete** | When a lesson is marked complete (or quiz ≥60%), add its vocabulary cards to the SRS deck automatically (opt-out in Settings). | Beginners won’t discover “Add to flashcards”; review is where retention happens. | Low | High | ✅ |
 | 0.2 | **“Today” course view (mobile home)** | Replace/supplement dashboard with: (1) reviews due, (2) next lesson in path, (3) daily goal progress — one primary CTA. | Course apps win on “what do I do today?” not stats grids. | Medium | High | ✅ |
-| 0.3 | **Post-lesson recap** | After complete: “12 words added · 8 due tomorrow · Next: Polite Form”. | Connects reading to long-term memory; feels like a course, not a checklist. | Low | High | 🔄 |
+| 0.3 | **Post-lesson recap** | After complete: “12 words added · N cards to review · Next: Polite Form” with review + next-lesson CTAs. (New cards are due immediately in our SRS, so “due tomorrow” → “to review now”.) | Connects reading to long-term memory; feels like a course, not a checklist. | Low | High | ✅ |
 | 0.4 | **Quiz misses → boosted SRS** | Wrong quiz answers spawn or prioritize cards (sentence or vocab). | Closes read → test → review loop without AI. | Medium | High | ⬜ |
 | 0.5 | **First-run onboarding (3 steps)** | Explain: read lesson → short quiz → reviews save progress. Mobile-first, dismissible. | Reduces bounce; sets course expectations vs game. | Low | High | ⬜ |
 | 0.6 | **Daily goal = reviews + lesson** | Tie goal to “10 reviews OR finish one lesson section” not XP alone (kana quiz spam). | Keeps gamification honest and course-aligned. | Low | High | ⬜ |
+
+---
+
+## Phase C — Content overhaul (now first in queue)
+
+Decided 2026-07-08: before more app features, the course content itself gets fixed —
+complete vs the Tae Kim guide, original in voice and examples, and interactive.
+Still **frontend-only**; backend stays deferred.
+
+| # | Feature | Description | Why | Effort | Priority | Status |
+|---|---------|-------------|-----|--------|----------|--------|
+| C.1 | **Fill missing chapters** | Author the 3 missing Tae Kim chapters (する/なる with に; 方・よる comparisons; time-specific actions) and re-map/extend `covered-events` to its real pp. 418–435 points. See MISSING.md §1–2. | Course promise is a complete grammar foundation. | Medium | High | ✅ |
+| C.2 | **Fill sub-point gaps** | Extend ~10 lessons with missing points (ず/ん/ぬ negatives, ところ/もの, おろか, べく/べからず, めく, かねる, きらいがある, ちょうだい, であろう/かろう…). See MISSING.md §3. | Chapters shouldn't silently drop points. | Medium | High | ✅ |
+| C.3 | **Original examples & prose pass** | Rewrite lesson examples/sentences so none are lifted from the PDF; keep the grammar points. Verified by scan: all 386 example sentences checked against full PDF text — 0 verbatim, 0 near-copies (12+ shared chars); ~30 flagged sentences rewritten. Prose was already original voice. | Originality + licensing hygiene (book is CC BY-NC-SA). | High | High | ✅ |
+| C.4 | **Curriculum reorder** | Kept minimal by design: **Comparisons moved to Essential Grammar** (after Conditionals) — N5 material that sat at lesson ~41. ながら stays in Special Expressions (bundled with genuinely intermediate たばかり/とたん/まくる). Progress is keyed by lesson id, so saved progress is unaffected. | Beginners should meet common patterns sooner. | Low | Medium | ✅ |
+| C.5 | **In-lesson exercises v2** | New `order` quiz kind (tap word tiles to build a sentence, with distractors) + automatic **"Practice these words"** typed vocab drill on every lesson with 3+ words (reuses flashcard checker, non-scoring). Tap-the-word = existing `mc`; type-the-word = existing `fill` with romaji. Every grammar lesson (50/50) now has a sentence-building exercise with a teaching distractor; all sentences verified original vs the PDF. | Active production inside the lesson loop, before SRS. | High | High | ✅ |
 
 ---
 
@@ -63,7 +81,7 @@ Ship these before backend, AI, or major new content.
 | # | Feature | Description | Why | Effort | Priority | Status |
 |---|---------|-------------|-----|--------|----------|--------|
 | 1.1 | **Sentence cards from examples** | Generate SRS cards from `examples` blocks: JP → EN, optional cloze. | Words in context; grammar collocation. | Medium | High | ⬜ |
-| 1.2 | **Typed recall mode (mobile)** | Optional EN→JP or reading→kana with fuzzy match; start with kana + vocab. | Active production; still no AI. | Medium | High | ⬜ |
+| 1.2 | **Typed recall mode (mobile)** | Typed answers with live romaji→kana conversion + normalized matching: kana, vocab, kanji readings, EN for grammar; quiz fill-ins too. Shipped beyond original “kana + vocab” scope. | Active production; still no AI. | Medium | High | ✅ |
 | 1.3 | **Rebuild grammar deck** | Replace title→summary with pattern drills (conjugate, particle, fix sentence) authored in lesson files. | Current grammar cards don’t teach grammar. | Medium | High | ⬜ |
 | 1.4 | **Kanji card modes** | char↔meaning, reading drills, link to example word from `kanji.ts`. | Kanji browser alone doesn’t build recall. | Medium | High | ⬜ |
 | 1.5 | **Pre-lesson warm-up** | 3–5 due cards before new lesson content (skippable). | Spacing inside the course path. | Medium | High | ⬜ |
@@ -146,16 +164,17 @@ Ship these before backend, AI, or major new content.
 
 ---
 
-## Suggested build order (next 6 weeks, mobile-first)
+## Suggested build order (next up, mobile-first)
 
-| Week | Focus |
-|------|--------|
-| 1 | 0.1 Auto-enroll vocab · 0.3 Post-lesson recap · 0.5 Onboarding |
-| 2 | 0.2 Today view · 0.6 Goal tied to reviews |
-| 3 | 1.1 Sentence cards · 0.4 Quiz → SRS |
-| 4 | 1.3 Grammar deck rebuild (start with Basic Grammar stage) |
-| 5 | 2.2 Store migration · 2.3 Tests · 2.1 PWA scaffold |
-| 6 | 1.5 Pre-lesson warm-up · 2.6 Listening drills (pilot one lesson) |
+Ordered queue — pull from the top; reorder here as priorities shift.
+
+1. **0.5 First-run onboarding** (3 steps)
+2. **0.6 Daily goal** tied to reviews + lesson
+3. **0.4 Quiz misses → boosted SRS**
+4. **1.1 Sentence cards** from examples
+5. **1.3 Grammar deck rebuild** (start with Basic Grammar stage)
+6. **2.2 Store schema v2** · **2.3 Tests** (srs, japanese, store) · **2.1 PWA scaffold**
+7. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
 
 ---
 
@@ -172,6 +191,16 @@ Ship these before backend, AI, or major new content.
 
 | Date | Change |
 |------|--------|
+| 2026-07-08 | Phase C.4 done (kept minimal): Comparisons moved into Essential Grammar after Conditionals; stage orders renumbered — **Phase C content overhaul complete** |
+| 2026-07-08 | Phase C.5 completed: sentence-building `order` exercise rolled out to all 50 grammar lessons (one per lesson, each with a teaching distractor); all new sentences scanned original vs the PDF |
+| 2026-07-08 | Phase C.5 (partial): sentence-building `order` quiz kind + automatic typed vocab practice drill on lessons with 3+ words; `order` piloted in 6 lessons; AUTHORING.md updated |
+| 2026-07-08 | Phase C.3 shipped: originality pass — scanned all 386 example sentences (plus every Japanese string) against the full PDF text; rewrote ~30 flagged sentences across 16 lessons; verified 0 verbatim / 0 near-copies remain |
+| 2026-07-08 | Phase C.2 shipped: 10 lessons extended with all missing sub-points (ないで/ずに/ん/ぬ, ところ/もの, slang + sentence enders, やむを得ない/かねる, きらいがある, べく/べからず, はおろか, んばかり/めく, まい/であろう/かろう, ちょうだい); fixed 忙しつつも grammar bug in tendencies — full Tae Kim coverage reached |
+| 2026-07-08 | Phase C.1 shipped: 4 new lessons (`naru-suru`, `comparisons`, `time-specific-actions`, `covered-by`) close every missing-chapter gap; course now 54 lessons; PDF map ranges corrected |
+| 2026-07-08 | PDF coverage audit → **MISSING.md**: 3 missing chapters, 2 mis-mapped lessons, ~10 lessons with sub-point gaps; `pdf-curriculum.ts` statuses corrected; Phase C (content overhaul + in-lesson exercises) added at front of queue |
+| 2026-07-08 | Phase 0.3 shipped: post-lesson recap with words-added + reviews-waiting counts and review/next-lesson CTAs |
+| 2026-07-08 | Phase 1.2 marked ✅: live romaji conversion in lesson quiz fill-ins completed the typed-recall loop |
+| 2026-07-07 | Phase 1.2: flashcard review redesigned around typed recall with romaji input; home/review UI fixes |
 | 2026-07-06 | Phase 0.2: mobile-first Today view on home with review/lesson/daily-goal plan |
 | 2026-07-06 | Phase 0.1: auto-add lesson vocab to SRS on complete (Settings opt-out) |
 | 2026-07-06 | Locked north star: **Foundation** (structured course + daily review) |

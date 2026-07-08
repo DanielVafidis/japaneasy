@@ -47,7 +47,7 @@ export const verbStems: Lesson = {
     {
       type: "examples",
       items: [
-        { jp: "明日[あした]、映画[えいが]を見[み]に行[い]く。", en: "Tomorrow, (I) will go to see a movie." },
+        { jp: "週末[しゅうまつ]、友達[ともだち]に会[あ]いに行[い]く。", en: "On the weekend, (I) will go to meet a friend." },
         { jp: "日本[にほん]に勉強[べんきょう]しに来[き]た。", en: "Came to Japan to study." },
       ],
     },
@@ -80,6 +80,13 @@ export const verbStems: Lesson = {
       prompt: "Stem of 泳ぐ?",
       choices: ["泳ぎ", "泳ぐ", "泳い", "泳げ"],
       answer: 0,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'I go to play with a friend'",
+      tiles: ["友達[ともだち]と", "遊[あそ]びに", "行[い]く"],
+      distractors: ["遊[あそ]んで"],
+      explanation: "Stem + に + motion verb = go in order to do: 遊びに行く.",
     },
   ],
 };

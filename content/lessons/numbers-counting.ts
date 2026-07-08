@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const numbersCounting: Lesson = {
   id: "numbers-counting",
   stage: "essential-grammar",
-  order: 15,
+  order: 17,
   title: "Numbers & Counting",
   subtitle: "1–万 · counters · dates",
   summary:
@@ -113,6 +113,13 @@ export const numbersCounting: Lesson = {
       prompt: "Counter for flat things (paper, plates)?",
       choices: ["〜本", "〜枚", "〜人", "〜つ"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'Three apples, please'",
+      tiles: ["りんごを", "三[みっ]つ", "ください"],
+      distractors: ["三人[さんにん]"],
+      explanation: "Generic objects use the native counter みっつ; 三人 counts people.",
     },
   ],
 };

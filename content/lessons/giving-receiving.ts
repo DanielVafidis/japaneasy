@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const givingReceiving: Lesson = {
   id: "giving-receiving",
   stage: "essential-grammar",
-  order: 13,
+  order: 15,
   title: "Giving & Receiving",
   subtitle: "あげる · くれる · もらう",
   summary:
@@ -26,9 +26,9 @@ export const givingReceiving: Lesson = {
       type: "rule",
       title: "The three verbs",
       items: [
-        "**{{あげる}}** — give **away from** the speaker's in-group. {{私は友達にプレゼントをあげた}}.",
-        "**{{くれる}}** — someone gives **to** the speaker (or their in-group). {{友達がプレゼントをくれた}}.",
-        "**{{もらう}}** — receive; focus on the recipient. {{私は友達にプレゼントをもらった}}.",
+        "**{{あげる}}** — give **away from** the speaker's in-group. {{私は妹にお菓子をあげた}}.",
+        "**{{くれる}}** — someone gives **to** the speaker (or their in-group). {{先輩が本をくれた}}.",
+        "**{{もらう}}** — receive; focus on the recipient. {{私は先輩に本をもらった}}.",
       ],
     },
     {
@@ -89,7 +89,7 @@ export const givingReceiving: Lesson = {
       type: "rule",
       title: "Common mistake",
       items: [
-        "✗ {{友達[ともだち]にプレゼントをくれた}} when YOU gave it — use {{あげた}}.",
+        "✗ {{妹[いもうと]にお菓子[かし]をくれた}} when YOU gave it — use {{あげた}}.",
         "✓ {{友達[ともだち]が}} (subject) {{くれた}} — the friend gave TO you.",
         "Think: {{くれる}} always means the giver acts **toward your circle**.",
       ],
@@ -114,7 +114,7 @@ export const givingReceiving: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Focus on receiving from a friend: 友達＿プレゼントを＿",
+      prompt: "Focus on receiving from a senior colleague: 先輩＿本を＿",
       choices: ["が…あげた", "に…もらった", "を…くれた", "で…もらう"],
       answer: 1,
     },
@@ -123,6 +123,13 @@ export const givingReceiving: Lesson = {
       prompt: "Friend taught you (benefit to you) — natural?",
       choices: ["教えてあげた", "教えてくれた", "教えてもらった", "Both B and C"],
       answer: 3,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'My senior kindly lent me an umbrella'",
+      tiles: ["先輩[せんぱい]が", "傘[かさ]を", "貸[か]してくれた"],
+      distractors: ["貸[か]してあげた"],
+      explanation: "The favour comes toward you → くれた, not あげた.",
     },
   ],
 };

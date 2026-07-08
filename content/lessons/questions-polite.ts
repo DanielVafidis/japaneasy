@@ -117,5 +117,12 @@ export const questionsPolite: Lesson = {
       choices: ["行きますか", "行きませんか", "行くか", "行きたいか"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Excuse me, where is the station?'",
+      tiles: ["すみません、", "駅[えき]は", "どこですか"],
+      distractors: ["どこだか"],
+      explanation: "Polite questions end in ですか.",
+    },
   ],
 };

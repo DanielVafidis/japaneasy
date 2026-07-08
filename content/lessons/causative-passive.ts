@@ -141,5 +141,12 @@ export const causativePassive: Lesson = {
       choices: ["に", "を", "が", "で"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'I was made to eat vegetables by my mom'",
+      tiles: ["母[はは]に", "野菜[やさい]を", "食[た]べさせられた"],
+      distractors: ["食[た]べられた"],
+      explanation: "Causative-passive させられる = was made to do; 食べられた is plain passive.",
+    },
   ],
 };

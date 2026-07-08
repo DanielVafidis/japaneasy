@@ -40,8 +40,8 @@ export const addressingPeople: Lesson = {
     {
       type: "examples",
       items: [
-        { jp: "私[わたし]の名前[なまえ]はキムです。", en: "My name is Kim. (neutral, polite)" },
-        { jp: "僕[ぼく]の名前[なまえ]はボブだ。", en: "My name is Bob. (male, casual)" },
+        { jp: "私[わたし]の名前[なまえ]は佐藤[さとう]です。", en: "My name is Sato. (neutral, polite)" },
+        { jp: "僕[ぼく]の名前[なまえ]は健太[けんた]だ。", en: "My name is Kenta. (male, casual)" },
       ],
     },
     {
@@ -95,6 +95,13 @@ export const addressingPeople: Lesson = {
       prompt: "社長 refers to…",
       choices: ["teacher", "company president", "doctor", "student"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'This is my friend Kenta'",
+      tiles: ["こちらは", "友達[ともだち]の", "健太[けんた]です"],
+      distractors: ["健太[けんた]さんです"],
+      explanation: "No さん when introducing someone from your own in-group.",
     },
   ],
 };

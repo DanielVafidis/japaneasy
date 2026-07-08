@@ -11,6 +11,18 @@ import {
 const JA_RE = /[\u3040-\u309f\u30a0-\u30ff\u3400-\u9fff\u3005]/;
 
 type FillQuestion = Extract<QuizQuestion, { kind: "fill" }>;
+type OrderQuestion = Extract<QuizQuestion, { kind: "order" }>;
+
+export function checkQuizOrderAnswer(q: OrderQuestion, picked: string[]): boolean {
+  return (
+    picked.length === q.tiles.length && picked.every((t, i) => t === q.tiles[i])
+  );
+}
+
+/** The correct sentence, tiles joined, furigana markup preserved. */
+export function orderAnswerText(q: OrderQuestion): string {
+  return q.tiles.join("");
+}
 
 function normalizeJa(s: string): string {
   return s.trim().normalize("NFKC").replace(/[\s。、.！？!?'"()]/g, "");

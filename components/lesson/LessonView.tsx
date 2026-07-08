@@ -6,6 +6,7 @@ import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
+  Brain,
   CheckCircle2,
   Clock,
   GraduationCap,
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 import type { Lesson } from "@/content/types";
 import { useStore } from "@/lib/store";
+import { useDueStates } from "@/lib/review";
 import { XP } from "@/lib/leveling";
 import { stageMeta } from "@/content/curriculum";
 import { stripFurigana } from "@/lib/japanese";
@@ -21,10 +23,10 @@ import { AudioButton } from "@/components/AudioButton";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
 import { ReadingControls } from "@/components/ReadingControls";
 import { LessonBlocks } from "@/components/lesson/LessonBlocks";
+import { VocabCheck } from "@/components/lesson/VocabCheck";
 import { Quiz } from "@/components/Quiz";
 import { Badge } from "@/components/ui/Badge";
 import { Button, ButtonLink } from "@/components/ui/Button";
-import { cn } from "@/lib/cn";
 
 export function LessonView({
   lesson,
@@ -43,6 +45,8 @@ export function LessonView({
 
   const [justCompleted, setJustCompleted] = useState(false);
   const [addedVocabCount, setAddedVocabCount] = useState(0);
+
+  const dueCount = useDueStates().length;
 
   const stage = stageMeta(lesson.stage);
   const vocabIds = (lesson.vocabulary ?? []).map(
@@ -163,6 +167,9 @@ export function LessonView({
               </li>
             ))}
           </ul>
+          {lesson.vocabulary.length >= 3 && (
+            <VocabCheck vocabulary={lesson.vocabulary} />
+          )}
         </section>
       )}
 
@@ -185,22 +192,52 @@ export function LessonView({
       {/* completion */}
       <section className="mt-12">
         {completed ? (
-          <div className="flex flex-col items-center gap-2 rounded-2xl border border-matcha/30 bg-matcha/[0.08] px-6 py-4 text-center text-matcha">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5 shrink-0" />
-              <span className="font-medium">
-                {justCompleted ? "Nice work — lesson complete!" : "Lesson complete"}
-              </span>
+          <div className="rounded-2xl border border-matcha/30 bg-matcha/[0.08] px-5 py-4 sm:px-6">
+            <div className="flex flex-col items-center gap-2 text-center text-matcha">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 shrink-0" />
+                <span className="font-medium">
+                  {justCompleted ? "Nice work — lesson complete!" : "Lesson complete"}
+                </span>
+              </div>
+              {justCompleted && (addedVocabCount > 0 || vocabIds.length > 0 || dueCount > 0) && (
+                <p className="text-sm text-matcha/90">
+                  {addedVocabCount > 0
+                    ? `${addedVocabCount} word${addedVocabCount === 1 ? "" : "s"} added to your review deck`
+                    : vocabIds.length > 0
+                      ? "Vocabulary is already in your review deck"
+                      : null}
+                  {dueCount > 0 && (
+                    <>
+                      {(addedVocabCount > 0 || vocabIds.length > 0) && " · "}
+                      {dueCount} card{dueCount === 1 ? "" : "s"} waiting to review
+                    </>
+                  )}
+                </p>
+              )}
             </div>
-            {justCompleted && addedVocabCount > 0 && (
-              <p className="text-sm text-matcha/90">
-                {addedVocabCount} word{addedVocabCount === 1 ? "" : "s"} added to your review deck.
-              </p>
-            )}
-            {justCompleted && addedVocabCount === 0 && vocabIds.length > 0 && (
-              <p className="text-sm text-matcha/90">
-                Vocabulary is already in your review deck.
-              </p>
+            {justCompleted && (dueCount > 0 || next) && (
+              <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                {dueCount > 0 && (
+                  <ButtonLink
+                    href="/flashcards?review=1"
+                    className="w-full flex-1"
+                  >
+                    <Brain className="h-4 w-4" />
+                    Review {dueCount} card{dueCount === 1 ? "" : "s"}
+                  </ButtonLink>
+                )}
+                {next && (
+                  <ButtonLink
+                    href={`/lessons/${next.id}`}
+                    variant={dueCount > 0 ? "outline" : "primary"}
+                    className="w-full flex-1"
+                  >
+                    <span className="truncate">Next: {next.title}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0" />
+                  </ButtonLink>
+                )}
+              </div>
             )}
           </div>
         ) : (

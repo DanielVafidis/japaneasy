@@ -5,9 +5,9 @@ export const tendencies: Lesson = {
   stage: "advanced-topics",
   order: 5,
   title: "Tendencies",
-  subtitle: "がち · つつ · 気味",
+  subtitle: "がち · つつ · 気味 · きらいがある",
   summary:
-    "Describe leaning toward a state, doing something while also doing another, or a slight tendency.",
+    "Describe leaning toward a state, doing something while also doing another, a slight physical tendency, and the formal きらいがある.",
   estMinutes: 18,
   vocabulary: [
     { word: "病気[びょうき]", reading: "びょうき", meaning: "illness" },
@@ -35,7 +35,7 @@ export const tendencies: Lesson = {
         "Te-form + {{つつ}} (formal/literary): {{悩[なや]みつつ}} — 'while worrying.'",
         "Same form as {{ながら}} but more written: {{改善[かいぜん]しつつ}} — 'while improving.'",
         "Also: {{つつある}} — 'in the process of': {{発展[はってん]しつつある}}.",
-        "**{{つつも}}** — 'even while': {{忙[いそが]しつつも}}、手伝[てつだ]った — helped even while busy.",
+        "**{{つつも}}** — 'even while': {{悪[わる]いと知[し]りつつも}} — 'even while knowing it's bad.' (Attaches to **verb stems only** — for adjectives use {{ながらも}}.)",
       ],
     },
     {
@@ -53,7 +53,22 @@ export const tendencies: Lesson = {
         { jp: "彼[かれ]は悩[なや]みつつ、前[まえ]に進[すす]んだ。", en: "While worrying, he moved forward." },
         { jp: "ちょっと風邪[かぜ]気味[ぎみ]なので、休[やす]みます。", en: "I feel a bit under the weather, so I'll rest." },
         { jp: "経済[けいざい]は回復[かいふく]しつつある。", en: "The economy is in the process of recovering." },
-        { jp: "忙[いそが]しつつも、毎日[まいにち]走[はし]っている。", en: "Even while busy, runs every day." },
+        { jp: "悪[わる]いと知[し]りつつも、夜更[よふ]かししてしまう。", en: "Even while knowing it's bad, I end up staying up late." },
+      ],
+    },
+    {
+      type: "heading",
+      text: "きらいがある — an (unwelcome) tendency",
+    },
+    {
+      type: "prose",
+      text: "**Dictionary form / noun + {{の}} + {{きらいがある}}** is a formal, written way to point out an undesirable tendency — usually in people's behaviour, and usually as measured criticism. It has nothing to do with {{嫌[きら]い}} 'to dislike' in meaning, despite the shared origin.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "彼[かれ]は物事[ものごと]を大[おお]げさに言[い]うきらいがある。", en: "He has a tendency to exaggerate things." },
+        { jp: "この計画[けいかく]は理想[りそう]に走[はし]るきらいがある。", en: "This plan tends to chase ideals (at the expense of realism)." },
       ],
     },
   ],
@@ -81,6 +96,25 @@ export const tendencies: Lesson = {
       prompt: "「Economy is recovering (in progress)」?",
       choices: ["回復がち", "回復しつつある", "回復気味", "回復べき"],
       answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "遅刻するきらいがある means…",
+      choices: [
+        "has an (unwelcome) tendency to be late",
+        "hates being late",
+        "is never late",
+        "was late just now",
+      ],
+      answer: 0,
+      explanation: "きらいがある = formal 'has a tendency to' (criticism); unrelated to 嫌い 'dislike'.",
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'In winter I tend to catch colds'",
+      tiles: ["冬[ふゆ]は", "風邪[かぜ]を", "ひきがちだ"],
+      distractors: ["ひくがちだ"],
+      explanation: "がち attaches to the stem: ひき + がち.",
     },
   ],
 };

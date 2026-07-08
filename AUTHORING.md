@@ -104,7 +104,21 @@ You never write romaji by hand — it's generated from the kana for the romaji t
 
 // Matching
 { kind: "match", prompt: "Match the pairs", pairs: [{ left: "犬", right: "dog" }] }
+
+// Sentence building (tap tiles into the right order; tiles may carry furigana)
+{
+  kind: "order",
+  prompt: "Build: 'I am a student'",
+  tiles: ["私[わたし]は", "学生[がくせい]", "だ"], // correct order
+  distractors: ["じゃない"],                        // optional wrong tiles
+  explanation: "Topic first, noun, then declarative だ.",
+}
 ```
+
+Fill-in questions with Japanese answers accept romaji — the input converts to kana live.
+
+Lessons with 3+ vocabulary entries automatically get a **"Practice these words"** typed
+drill under the vocabulary list (non-scoring; reuses the flashcard answer checker).
 
 ## 6. Stages
 

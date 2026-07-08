@@ -3,11 +3,11 @@ import type { Lesson } from "../types";
 export const makingRequests: Lesson = {
   id: "making-requests",
   stage: "essential-grammar",
-  order: 14,
+  order: 16,
   title: "Making Requests",
-  subtitle: "ください · なさい · command form",
+  subtitle: "ください · ちょうだい · なさい · command form",
   summary:
-    "Ask politely with te-form + ください, give firm instructions with なさい, and learn the plain command form.",
+    "Ask politely with te-form + ください, casually with ちょうだい, give firm instructions with なさい, and learn the plain command form.",
   estMinutes: 16,
   vocabulary: [
     { word: "ください", reading: "ください", meaning: "please (give me / do for me)" },
@@ -29,8 +29,8 @@ export const makingRequests: Lesson = {
     {
       type: "examples",
       items: [
-        { jp: "漢字[かんじ]で書[か]いてください。", en: "Please write it in kanji." },
-        { jp: "ゆっくり話[はな]してください。", en: "Please speak slowly." },
+        { jp: "ここに名前[なまえ]を書[か]いてください。", en: "Please write your name here." },
+        { jp: "もう少[すこ]し大[おお]きい声[こえ]で話[はな]してください。", en: "Please speak a little louder." },
         { jp: "それをください。", en: "Please give me that." },
       ],
     },
@@ -38,9 +38,24 @@ export const makingRequests: Lesson = {
       type: "rule",
       title: "Negative requests",
       items: [
-        "{{ないでください}} — 'please don't': {{落書[らくが]きを書[か]かないでください}}.",
-        "Casual: drop {{ください}} → {{日本語[にほんご]で話[はな]して}}.",
+        "{{ないでください}} — 'please don't': {{ここに荷物[にもつ]を置[お]かないでください}}.",
+        "Casual: drop {{ください}} → {{もう一度[いちど]言[い]って}}.",
         "Rough casual: {{〜てくれ}} — 'do it for me'.",
+      ],
+    },
+    {
+      type: "heading",
+      text: "ちょうだい — casual please",
+    },
+    {
+      type: "prose",
+      text: "{{ちょうだい}} slots in exactly where {{ください}} goes, but casually: {{それ、ちょうだい}} 'gimme that', te-form + {{ちょうだい}} for actions. It comes from humble {{頂戴[ちょうだい]}} 'receiving' — historically feminine/childlike in tone, but widely used among friends and family.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "ちょっと待[ま]ってちょうだい。", en: "Wait a sec, please. (casual)" },
+        { jp: "その写真[しゃしん]、一枚[いちまい]ちょうだい。", en: "Give me one of those photos, will you?" },
       ],
     },
     {
@@ -101,6 +116,25 @@ export const makingRequests: Lesson = {
       prompt: "Command form of する?",
       choices: ["すれ", "しろ", "して", "される"],
       answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "待ってちょうだい is best described as…",
+      choices: [
+        "a casual, friendly 'please wait'",
+        "a rude command",
+        "formal business Japanese",
+        "a question",
+      ],
+      answer: 0,
+      explanation: "ちょうだい is the casual stand-in for ください, common among friends and family.",
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'Please wait here a moment'",
+      tiles: ["ここで", "少[すこ]し", "待[ま]ってください"],
+      distractors: ["待[ま]ちください"],
+      explanation: "ください follows the te-form: 待って + ください.",
     },
   ],
 };

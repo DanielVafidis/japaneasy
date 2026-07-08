@@ -98,5 +98,12 @@ export const pastTense: Lesson = {
       answers: ["食べなかった", "たべなかった"],
       explanation: "Negative 食べない, then i-adjective past: 食べなかった.",
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Yesterday was very cold'",
+      tiles: ["昨日[きのう]は", "とても", "寒[さむ]かった"],
+      distractors: ["寒[さむ]い"],
+      explanation: "Past i-adjective: 寒い → 寒かった.",
+    },
   ],
 };

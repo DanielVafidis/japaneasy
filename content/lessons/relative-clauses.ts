@@ -101,5 +101,12 @@ export const relativeClauses: Lesson = {
       prompt: "Translate 'the book I bought yesterday' (昨日 / 買った / 本). Type the Japanese:",
       answers: ["昨日買った本", "きのうかった本", "昨日買った本。"],
     },
+    {
+      kind: "order",
+      prompt: "Build: 'I read the book I bought yesterday'",
+      tiles: ["昨日[きのう]買[か]った", "本[ほん]を", "読[よ]む"],
+      distractors: ["買[か]う"],
+      explanation: "The clause 昨日買った directly modifies 本 — no 'that/which' needed.",
+    },
   ],
 };

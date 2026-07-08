@@ -103,5 +103,12 @@ export const hypothesizing: Lesson = {
       choices: ["学生ても", "学生でも", "学生だけ", "学生しか"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'There's no way he's not coming'",
+      tiles: ["彼[かれ]が", "来[こ]ないわけが", "ない"],
+      distractors: ["来[こ]ないこと"],
+      explanation: "わけがない = no way that…",
+    },
   ],
 };

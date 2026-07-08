@@ -25,6 +25,7 @@ import { compoundSentences } from "./compound-sentences";
 import { teForm } from "./te-form";
 import { teFormUses } from "./te-form-uses";
 import { potentialForm } from "./potential-form";
+import { naruSuru } from "./naru-suru";
 import { conditionals } from "./conditionals";
 import { obligation } from "./obligation";
 import { desireSuggestions } from "./desire-suggestions";
@@ -42,8 +43,10 @@ import { genericNouns } from "./generic-nouns";
 import { certainty } from "./certainty";
 import { expressingAmounts } from "./expressing-amounts";
 import { similarityHearsay } from "./similarity-hearsay";
+import { comparisons } from "./comparisons";
 import { easeDifficulty } from "./ease-difficulty";
 import { hypothesizing } from "./hypothesizing";
+import { timeSpecificActions } from "./time-specific-actions";
 import { timeAndMama } from "./time-and-mama";
 
 import { formalDearu } from "./formal-dearu";
@@ -54,6 +57,7 @@ import { zaruWoEnai } from "./zaru-wo-enai";
 import { tendencies } from "./tendencies";
 import { advancedVolitional } from "./advanced-volitional";
 import { coveredEvents } from "./covered-events";
+import { coveredBy } from "./covered-by";
 
 export const allLessons: Lesson[] = [
   introduction,
@@ -79,6 +83,7 @@ export const allLessons: Lesson[] = [
   teForm,
   teFormUses,
   potentialForm,
+  naruSuru,
   conditionals,
   obligation,
   desireSuggestions,
@@ -95,8 +100,10 @@ export const allLessons: Lesson[] = [
   certainty,
   expressingAmounts,
   similarityHearsay,
+  comparisons,
   easeDifficulty,
   hypothesizing,
+  timeSpecificActions,
   timeAndMama,
   formalDearu,
   hazuBeki,
@@ -106,6 +113,7 @@ export const allLessons: Lesson[] = [
   tendencies,
   advancedVolitional,
   coveredEvents,
+  coveredBy,
 ];
 
 export const lessonsById: Record<string, Lesson> = Object.fromEntries(

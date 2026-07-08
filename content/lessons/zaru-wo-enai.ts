@@ -5,10 +5,10 @@ export const zaruWoEnai: Lesson = {
   stage: "advanced-topics",
   order: 4,
   title: "〜ざるを得ない",
-  subtitle: "Cannot help but · have no choice",
+  subtitle: "ざるを得ない · やむを得ない · かねる",
   summary:
-    "A formal double-negative expressing unavoidable action — 'can't not do'.",
-  estMinutes: 16,
+    "Formal ways to say your hands are tied — 'can't not do', 'unavoidable', and the polite business 'unable to' かねる (plus its ominous twin かねない).",
+  estMinutes: 18,
   vocabulary: [
     { word: "認[みと]める", reading: "みとめる", meaning: "to admit; recognise" },
     { word: "延期[えんき]", reading: "えんき", meaning: "postponement" },
@@ -58,8 +58,43 @@ export const zaruWoEnai: Lesson = {
       ],
     },
     {
+      type: "heading",
+      text: "やむを得ない — it can't be helped",
+    },
+    {
+      type: "prose",
+      text: "{{やむを得[え]ない}} is a set phrase — literally 'cannot obtain a stopping' — meaning **unavoidable**. It's the formal cousin of {{しょうがない}}／{{仕方[しかた]がない}} and often modifies a noun directly: {{やむを得ない事情[じじょう]}} 'unavoidable circumstances'.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "台風[たいふう]だから、中止[ちゅうし]もやむを得[え]ない。", en: "With the typhoon, cancelling is unavoidable." },
+        { jp: "やむを得[え]ない事情[じじょう]で欠席[けっせき]します。", en: "I will be absent due to unavoidable circumstances." },
+      ],
+    },
+    {
+      type: "heading",
+      text: "〜かねる・〜かねない — politely can't / might just",
+    },
+    {
+      type: "rule",
+      title: "One stem, two directions",
+      items: [
+        "**Stem + {{かねる}}** — 'find it difficult / unable to' — the standard **polite business refusal**: {{お答[こた]えしかねます}}.",
+        "**Stem + {{かねない}}** — the negative flips the meaning: 'might well (do something bad)': {{事故[じこ]になりかねない}}.",
+        "{{かねない}} is only for **undesirable** possibilities — no happy endings.",
+      ],
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "その件[けん]については、お答[こた]えしかねます。", en: "I'm afraid I'm unable to answer regarding that matter." },
+        { jp: "寝不足[ねぶそく]が続[つづ]くと、体[からだ]を壊[こわ]しかねない。", en: "If the lack of sleep continues, you could well ruin your health." },
+      ],
+    },
+    {
       type: "note",
-      text: "You'll see {{ざるを得ない}} in news headlines and business emails. Recognise it on sight first; active use can wait.",
+      text: "You'll see {{ざるを得ない}} and {{お〜しかねます}} in news headlines and business emails. Recognise them on sight first; active use can wait.",
     },
   ],
   quiz: [
@@ -86,6 +121,37 @@ export const zaruWoEnai: Lesson = {
       prompt: "Casual spoken alternative?",
       choices: ["〜ないわけにはいかない", "〜てしまう", "〜かもしれない", "〜べき"],
       answer: 0,
+    },
+    {
+      kind: "mc",
+      prompt: "A company says 分かりかねます — meaning?",
+      choices: [
+        "We are (politely) unable to tell",
+        "We might understand",
+        "We fully understand",
+        "We refuse rudely",
+      ],
+      answer: 0,
+      explanation: "Stem + かねる = polite business 'unable to'.",
+    },
+    {
+      kind: "mc",
+      prompt: "遅刻しかねない implies…",
+      choices: [
+        "might well end up late (bad possibility)",
+        "definitely won't be late",
+        "was late yesterday",
+        "is politely refusing to be late",
+      ],
+      answer: 0,
+      explanation: "かねない warns of an undesirable possibility.",
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'We have no choice but to change the plan'",
+      tiles: ["計画[けいかく]を", "変更[へんこう]", "せざるを得[え]ない"],
+      distractors: ["しざるを得[え]ない"],
+      explanation: "する is irregular here: せざるを得ない, not しざる.",
     },
   ],
 };

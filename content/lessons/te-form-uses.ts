@@ -35,10 +35,10 @@ export const teFormUses: Lesson = {
       type: "dialogue",
       title: "Progressive",
       lines: [
-        { speaker: "A", jp: "友達[ともだち]は何[なに]をしてるの？", en: "What is your friend doing?" },
-        { speaker: "B", jp: "昼[ひる]ご飯[はん]を食[た]べてる。", en: "(They) are eating lunch." },
+        { speaker: "A", jp: "彼[かれ]らは何[なに]をしてるの？", en: "What are they doing?" },
+        { speaker: "B", jp: "晩[ばん]ご飯[はん]を作[つく]ってる。", en: "(They) are making dinner." },
         { speaker: "A", jp: "何[なに]を読[よ]んでいる？", en: "What are you reading?" },
-        { speaker: "B", jp: "教科書[きょうかしょ]を読[よ]んでいます。", en: "I'm reading a textbook." },
+        { speaker: "B", jp: "雑誌[ざっし]を読[よ]んでいます。", en: "I'm reading a magazine." },
       ],
     },
     {
@@ -53,9 +53,9 @@ export const teFormUses: Lesson = {
       type: "examples",
       items: [
         { jp: "今日[きょう]、知[し]りました。", en: "I found out about it today. (action)" },
-        { jp: "この歌[うた]を知[し]っていますか。", en: "Do you know this song? (state)" },
+        { jp: "この店[みせ]を知[し]っていますか。", en: "Do you know this place? (state)" },
         { jp: "結婚[けっこん]している。", en: "Is married. (state, not 'getting married right now')" },
-        { jp: "道[みち]は分[わ]かりますか。", en: "Do you know the way?" },
+        { jp: "使[つか]い方[かた]は分[わ]かりますか。", en: "Do you understand how to use it?" },
       ],
     },
     {
@@ -87,6 +87,13 @@ export const teFormUses: Lesson = {
       prompt: "結婚している usually means…",
       choices: ["getting married now", "is married (state)", "will marry", "never married"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'It's raining right now'",
+      tiles: ["今[いま]、", "雨[あめ]が", "降[ふ]っている"],
+      distractors: ["降[ふ]ってある"],
+      explanation: "Ongoing action = ている. てある is for a resulting state someone set up.",
     },
   ],
 };

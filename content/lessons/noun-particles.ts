@@ -95,5 +95,12 @@ export const nounParticles: Lesson = {
       choices: ["The teacher and the book", "The teacher's book", "A book about teachers", "Teach the book"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'There is a dog and a cat'",
+      tiles: ["犬[いぬ]と", "猫[ねこ]が", "いる"],
+      distractors: ["猫[ねこ]の"],
+      explanation: "と joins a complete list of nouns.",
+    },
   ],
 };

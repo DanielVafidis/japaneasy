@@ -112,5 +112,12 @@ export const potentialForm: Lesson = {
       choices: ["山が見られる", "山が見える", "山を見える", "山が見えられる"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'I can read a little kanji'",
+      tiles: ["漢字[かんじ]が", "少[すこ]し", "読[よ]める"],
+      distractors: ["読[よ]まれる"],
+      explanation: "読める is potential; 読まれる is passive.",
+    },
   ],
 };

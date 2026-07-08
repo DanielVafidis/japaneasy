@@ -68,5 +68,12 @@ export const transitivity: Lesson = {
       choices: ["開ける (akeru)", "出す (dasu)", "消える (kieru)", "消す (kesu)"],
       answer: 2,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'The door opened from the wind'",
+      tiles: ["風[かぜ]で", "ドアが", "開[あ]いた"],
+      distractors: ["開[あ]けた"],
+      explanation: "Intransitive 開く (it opened) — 開けた would need someone doing the opening (を).",
+    },
   ],
 };

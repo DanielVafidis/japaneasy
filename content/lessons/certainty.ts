@@ -140,5 +140,12 @@ export const certainty: Lesson = {
       choices: ["must come", "no way they'll come", "might come", "heard they're coming"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'It might rain in the afternoon'",
+      tiles: ["午後[ごご]は", "雨[あめ]が", "降[ふ]るかもしれない"],
+      distractors: ["降[ふ]るはずがない"],
+      explanation: "かもしれない = might; はずがない would deny the possibility.",
+    },
   ],
 };

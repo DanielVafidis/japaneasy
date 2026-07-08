@@ -5,9 +5,9 @@ export const showingSigns: Lesson = {
   stage: "advanced-topics",
   order: 3,
   title: "Showing Signs",
-  subtitle: "がる · げ · っぽい · 気配",
+  subtitle: "がる · げ · っぽい · んばかり · めく",
   summary:
-    "Describe how others seem to feel, and spot outward signs of an underlying state.",
+    "Describe how others seem to feel, outward signs of a state, being on the verge (んばかり), and taking on an atmosphere (めく).",
   estMinutes: 16,
   vocabulary: [
     { word: "嬉[うれ]しい", reading: "うれしい", meaning: "happy (i-adj)" },
@@ -75,6 +75,36 @@ export const showingSigns: Lesson = {
       type: "note",
       text: "Don't confuse {{がる}} (behaviour) with {{げ}} (appearance) or {{っぽい}} (character type). A {{怒[おこ]りっぽい}} person gets angry easily; an {{怒りげ}} face looks angry right now.",
     },
+    {
+      type: "heading",
+      text: "On the verge: 〜んばかり",
+    },
+    {
+      type: "prose",
+      text: "**Negative stem + {{んばかり}}({{に}}／{{の}}／{{だ}})** — literally 'as if to…' — paints someone or something on the very verge of an action: {{泣[な]き出[だ]さんばかり}} 'as if about to burst into tears'. {{する}} becomes {{せんばかり}}. Literary flavour; common in novels.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "彼女[かのじょ]は泣[な]き出[だ]さんばかりの顔[かお]で謝[あやま]った。", en: "She apologized looking as if she would burst into tears." },
+        { jp: "棚[たな]は崩[くず]れんばかりに本[ほん]が積[つ]まれている。", en: "The shelf is piled with books to the point of nearly collapsing." },
+      ],
+    },
+    {
+      type: "heading",
+      text: "Atmosphere: 〜めく",
+    },
+    {
+      type: "prose",
+      text: "**Noun + {{めく}}** creates a u-verb meaning 'to take on the air of': {{春[はる]めく}} 'become spring-like', {{謎[なぞ]めく}} 'be enigmatic'. The past form {{〜めいた}} works as a modifier: {{謎めいた言[い]い方[かた]}} 'a cryptic way of speaking'.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "三月[さんがつ]に入[はい]って、日[ひ]ざしが春[はる]めいてきた。", en: "Now that March is here, the sunlight has begun to feel spring-like." },
+        { jp: "彼[かれ]は皮肉[ひにく]めいた笑[わら]い方[かた]をした。", en: "He laughed in a way that had an ironic edge." },
+      ],
+    },
   ],
   quiz: [
     {
@@ -100,6 +130,37 @@ export const showingSigns: Lesson = {
       prompt: "雨の___がする — signs of rain?",
       choices: ["がる", "げ", "気配", "っぽい"],
       answer: 2,
+    },
+    {
+      kind: "mc",
+      prompt: "日ざしが春めいてきた means…",
+      choices: [
+        "The sunlight has started to feel spring-like",
+        "Spring has officially ended",
+        "The sun looks like it will cry",
+        "It's definitely still winter",
+      ],
+      answer: 0,
+      explanation: "Noun + めく = take on the atmosphere of.",
+    },
+    {
+      kind: "mc",
+      prompt: "泣き出さんばかりの顔 describes a face that…",
+      choices: [
+        "looks about to burst into tears",
+        "is already crying loudly",
+        "just finished crying",
+        "never cries",
+      ],
+      answer: 0,
+      explanation: "んばかり = on the very verge, as if about to.",
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'My little sister is acting scared of the dog'",
+      tiles: ["妹[いもうと]は", "犬[いぬ]を", "怖[こわ]がっている"],
+      distractors: ["怖[こわ]いでいる"],
+      explanation: "Others' feelings take がる: 怖がっている.",
     },
   ],
 };

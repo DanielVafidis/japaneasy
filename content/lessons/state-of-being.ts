@@ -77,16 +77,16 @@ export const stateOfBeing: Lesson = {
       type: "rule",
       title: "Past state-of-being",
       items: [
-        "**Past:** attach {{だった}} to the noun. {{友達}} + {{だった}} = {{友達だった}}",
-        "**Negative-past:** take the negative, drop the {{い}} from {{じゃない}}, and add {{かった}}. {{友達じゃない}} → {{友達じゃなかった}}",
+        "**Past:** attach {{だった}} to the noun. {{先生}} + {{だった}} = {{先生だった}}",
+        "**Negative-past:** take the negative, drop the {{い}} from {{じゃない}}, and add {{かった}}. {{先生じゃない}} → {{先生じゃなかった}}",
       ],
     },
     {
       type: "examples",
       items: [
         { jp: "学生[がくせい]だった。", en: "Was a student." },
-        { jp: "友達[ともだち]じゃなかった。", en: "Was not a friend." },
-        { jp: "元気[げんき]じゃなかった。", en: "Was not well." },
+        { jp: "先生[せんせい]じゃなかった。", en: "Was not a teacher." },
+        { jp: "暇[ひま]じゃなかった。", en: "Was not free (had no spare time)." },
       ],
     },
     {
@@ -128,6 +128,13 @@ export const stateOfBeing: Lesson = {
       prompt: "True or false: Japanese has a verb equivalent to English 'to be'.",
       choices: ["True", "False — state-of-being is declared with だ or implied"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'I am a student'",
+      tiles: ["私[わたし]は", "学生[がくせい]", "だ"],
+      distractors: ["じゃない"],
+      explanation: "Topic first (私は), then the noun, then declarative だ.",
     },
   ],
 };

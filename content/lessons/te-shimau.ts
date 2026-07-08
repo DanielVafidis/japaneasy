@@ -117,5 +117,12 @@ export const teShimau: Lesson = {
       choices: ["failed homework", "already finished it", "forgot homework", "refused homework"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'I (regrettably) left my umbrella on the train'",
+      tiles: ["電車[でんしゃ]の中[なか]に", "傘[かさ]を", "忘[わす]れてしまった"],
+      distractors: ["忘[わす]れておいた"],
+      explanation: "てしまう marks the unintended slip; ておく would mean you left it on purpose.",
+    },
   ],
 };

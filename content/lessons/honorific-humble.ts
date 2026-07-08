@@ -130,5 +130,12 @@ export const honorificHumble: Lesson = {
       choices: ["お会いになる", "お目にかかる", "会われる", "会います"],
       answer: 0,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Is the teacher here already?' (honorific)",
+      tiles: ["先生[せんせい]は", "もう", "いらっしゃいますか"],
+      distractors: ["おりますか"],
+      explanation: "Honorific いらっしゃる for others; humble おる is for your own side.",
+    },
   ],
 };

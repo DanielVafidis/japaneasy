@@ -131,5 +131,12 @@ export const similarityHearsay: Lesson = {
       choices: ["降りそう", "降るそうだ", "降るみたい", "降るよう"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Apparently it will snow tomorrow' (hearsay)",
+      tiles: ["明日[あした]は", "雪[ゆき]が", "降[ふ]るらしい"],
+      distractors: ["降[ふ]りらしい"],
+      explanation: "らしい attaches to the plain form: 降るらしい.",
+    },
   ],
 };

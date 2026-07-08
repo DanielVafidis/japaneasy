@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const conditionals: Lesson = {
   id: "conditionals",
   stage: "essential-grammar",
-  order: 8,
+  order: 9,
   title: "Conditionals",
   subtitle: "と · なら · ば · たら",
   summary:
@@ -111,6 +111,13 @@ export const conditionals: Lesson = {
       prompt: "「If you're a student (advice)」 — noun?",
       choices: ["学生だと", "学生なら", "学生たら", "学生ば"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'If there is time, I'll go'",
+      tiles: ["時間[じかん]が", "あれば", "行[い]く"],
+      distractors: ["あれなら"],
+      explanation: "ば conditional: ある → あれば.",
     },
   ],
 };

@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const desireSuggestions: Lesson = {
   id: "desire-suggestions",
   stage: "essential-grammar",
-  order: 10,
+  order: 12,
   title: "Desire & Suggestions",
   subtitle: "たい · ましょう · ませんか",
   summary:
@@ -104,6 +104,13 @@ export const desireSuggestions: Lesson = {
       prompt: "「Shall I help you?」 — offering?",
       choices: ["手伝いましょうか", "手伝いません", "手伝いたい", "手伝うなら"],
       answer: 0,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'Someday I want to go to Japan'",
+      tiles: ["いつか", "日本[にほん]に", "行[い]きたい"],
+      distractors: ["行[い]きほしい"],
+      explanation: "Actions you want to do take たい; ほしい is for things.",
     },
   ],
 };

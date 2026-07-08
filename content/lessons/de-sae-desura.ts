@@ -5,9 +5,9 @@ export const deSaeDesura: Lesson = {
   stage: "advanced-topics",
   order: 2,
   title: "でさえ & ですら",
-  subtitle: "Even · to the extent of",
+  subtitle: "でさえ · すら · はおろか",
   summary:
-    "Emphasise the surprising inclusiveness of 'even' — when the least likely thing applies too.",
+    "Emphasise the surprising inclusiveness of 'even' — and step up to はおろか, 'let alone'.",
   estMinutes: 16,
   vocabulary: [
     { word: "子供[こども]", reading: "こども", meaning: "child" },
@@ -47,20 +47,39 @@ export const deSaeDesura: Lesson = {
       title: "Even if / as long as (different slot)",
       items: [
         "**Stem + {{さえ}} + conditional** — {{見[み]さえすれば}} — 'as long as you look.'",
-        "**Noun + {{さえ}}** — {{お金[かね]さえあれば}} — 'if only there is money.'",
+        "**Noun + {{さえ}}** — {{時間[じかん]さえあれば}} — 'if only there is time.'",
         "Not the same as {{でさえ}} emphasis, but same core word {{さえ}}.",
       ],
     },
     {
       type: "examples",
       items: [
-        { jp: "お金[かね]さえあれば、何[なん]でも買[か]える。", en: "If I only had money, I could buy anything." },
+        { jp: "時間[じかん]さえあれば、どこへでも行[い]ける。", en: "If I only had time, I could go anywhere." },
         { jp: "一口[ひとくち]さえ食[た]べれば、分[わ]かる。", en: "You'll get it if you even take one bite." },
       ],
     },
     {
       type: "note",
       text: "{{でさえ}} emphasises **who** is included. {{さえ}} in conditionals marks the **minimum condition** — same word, different grammar slot.",
+    },
+    {
+      type: "heading",
+      text: "はおろか — let alone",
+    },
+    {
+      type: "prose",
+      text: "**A {{はおろか}} B ({{も}}／{{さえ}})** dismisses A as not even worth discussing: 'B doesn't hold — let alone A.' The bigger, more obvious item goes first, and the sentence is almost always negative.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "海外[かいがい]はおろか、隣[となり]の県[けん]にも行[い]ったことがない。", en: "I've never even been to the next prefecture, let alone abroad." },
+        { jp: "走[はし]ることはおろか、歩[ある]くことさえ難[むずか]しかった。", en: "Even walking was difficult, let alone running." },
+      ],
+    },
+    {
+      type: "note",
+      text: "{{おろか}} here comes from {{疎[おろそ]か}} 'neglected', not {{愚[おろ]か}} 'foolish' — the meaning is 'A is beside the point', not 'A is stupid'.",
     },
   ],
   quiz: [
@@ -84,9 +103,28 @@ export const deSaeDesura: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "「If only there is money」?",
-      choices: ["お金でさえ", "お金さえあれば", "お金すら", "お金でも"],
+      prompt: "「If only there is time」?",
+      choices: ["時間でさえ", "時間さえあれば", "時間すら", "時間でも"],
       answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "料理はおろか、お湯も沸かせない means…",
+      choices: [
+        "Can't even boil water, let alone cook",
+        "Can cook but can't boil water",
+        "Cooking is foolish compared to boiling water",
+        "Can both cook and boil water",
+      ],
+      answer: 0,
+      explanation: "A はおろか B も + negative: B fails too — A isn't even worth mentioning.",
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'Even the experts couldn't solve that problem'",
+      tiles: ["その問題[もんだい]は", "専門家[せんもんか]でさえ", "解[と]けなかった"],
+      distractors: ["専門家[せんもんか]なら"],
+      explanation: "でさえ marks the least likely case: even the experts.",
     },
   ],
 };

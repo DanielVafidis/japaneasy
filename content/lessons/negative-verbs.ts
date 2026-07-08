@@ -86,5 +86,12 @@ export const negativeVerbs: Lesson = {
       choices: ["あらない", "ない", "あるない", "あれない"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Today nobody comes'",
+      tiles: ["今日[きょう]は", "誰[だれ]も", "来[こ]ない"],
+      distractors: ["来[く]る"],
+      explanation: "誰も pairs with a negative verb: 来ない.",
+    },
   ],
 };

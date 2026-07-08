@@ -85,7 +85,7 @@ export const teForm: Lesson = {
     },
     {
       type: "prose",
-      text: "Negative te uses {{なくて}}: {{食[た]べない}} → {{食べなくて}} — 'didn't eat and (so)…' {{行[い]かなくて}}、遅[おく]れた — didn't go, so was late.",
+      text: "Negative te uses {{なくて}}: {{食[た]べない}} → {{食べなくて}} — 'didn't eat and (so)…' {{起[お]きられなくて、遅[おく]れた}} — couldn't get up, so was late.",
     },
     {
       type: "examples",
@@ -133,6 +133,13 @@ export const teForm: Lesson = {
       prompt: "「Cheap and tasty」 — link i-adjectives?",
       choices: ["安いて、おいしい", "安くて、おいしい", "安で、おいしい", "安く、おいしく"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'I ate breakfast and headed out'",
+      tiles: ["朝[あさ]ご飯[はん]を", "食[た]べて", "出[で]かけた"],
+      distractors: ["食[た]べって"],
+      explanation: "Ru-verb te-form: 食べる → 食べて (no small っ).",
     },
   ],
 };

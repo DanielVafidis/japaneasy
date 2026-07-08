@@ -110,5 +110,12 @@ export const verbParticles: Lesson = {
       prompt: "Complete: go by train — 電車＿行く. Type just the particle:",
       answers: ["で"],
     },
+    {
+      kind: "order",
+      prompt: "Build: 'I go to school by train'",
+      tiles: ["電車[でんしゃ]で", "学校[がっこう]へ", "行[い]く"],
+      distractors: ["学校[がっこう]を"],
+      explanation: "で marks the means (by train), へ the direction; the verb comes last.",
+    },
   ],
 };

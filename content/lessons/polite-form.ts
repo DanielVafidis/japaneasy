@@ -109,5 +109,12 @@ export const politeForm: Lesson = {
       choices: ["暑いです", "暑います", "暑です", "暑いでした"],
       answer: 0,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'I will meet a friend tomorrow (polite)'",
+      tiles: ["明日[あした]", "友達[ともだち]に", "会[あ]います"],
+      distractors: ["会[あ]う"],
+      explanation: "Polite sentences end in the ます form: 会います, not plain 会う.",
+    },
   ],
 };

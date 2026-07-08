@@ -101,5 +101,12 @@ export const adjectives: Lesson = {
       ],
       answer: 2,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'This is an interesting book'",
+      tiles: ["これは", "面白[おもしろ]い", "本[ほん]だ"],
+      distractors: ["面白[おもしろ]いな"],
+      explanation: "I-adjectives attach directly to the noun — no な.",
+    },
   ],
 };

@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const definingAndTrying: Lesson = {
   id: "defining-and-trying",
   stage: "essential-grammar",
-  order: 11,
+  order: 13,
   title: "Defining & Trying",
   subtitle: "〜方 · の/こと · 〜てみる · 〜といい",
   summary:
@@ -136,6 +136,13 @@ export const definingAndTrying: Lesson = {
       prompt: "「The country called Japan」?",
       choices: ["日本の国", "日本という国", "日本というの", "日本のこと"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'Do you know the food called ramen?'",
+      tiles: ["ラーメンという", "食[た]べ物[もの]を", "知[し]っていますか"],
+      distractors: ["ラーメンとして"],
+      explanation: "という defines: 'the food called ramen'. として means 'in the role of'.",
     },
   ],
 };

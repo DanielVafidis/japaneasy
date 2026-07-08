@@ -5,10 +5,10 @@ export const genericNouns: Lesson = {
   stage: "special-expressions",
   order: 3,
   title: "Generic Nouns",
-  subtitle: "こと · の — intangible vs tangible",
+  subtitle: "こと · の · ところ · もの",
   summary:
-    "Pick こと or の when turning clauses into noun phrases — the choice depends on whether you mean an event or a physical thing.",
-  estMinutes: 14,
+    "Pick こと or の when turning clauses into noun phrases, pinpoint moments with ところ, and meet もの for excuses and general truths.",
+  estMinutes: 17,
   vocabulary: [
     { word: "こと", reading: "こと", meaning: "thing (abstract); matter; event" },
     { word: "物[もの]", reading: "もの", meaning: "thing (physical object)" },
@@ -59,12 +59,56 @@ export const genericNouns: Lesson = {
       type: "note",
       text: "When both work, {{こと}} sounds slightly more formal or abstract; {{の}} feels more vivid and concrete. Native speakers sometimes use them interchangeably — don't panic over every sentence.",
     },
+    {
+      type: "heading",
+      text: "ところ — the abstract point in time",
+    },
+    {
+      type: "prose",
+      text: "{{ところ}} literally means 'place', but as a generic noun it marks the **point** an action is at. The verb's tense tells you which point.",
+    },
+    {
+      type: "rule",
+      title: "Three snapshots",
+      items: [
+        "**Dictionary + {{ところ}}** — about to: {{今[いま]から出[で]かけるところ}} 'just about to head out.'",
+        "**{{ている}} + {{ところ}}** — in the middle of: {{夕飯[ゆうはん]を作[つく]っているところ}}.",
+        "**Past + {{ところ}}** — just finished: {{たった今[いま]着[つ]いたところ}}.",
+      ],
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "ごめん、今[いま]から出[で]かけるところなんだ。", en: "Sorry — I'm just about to head out." },
+        { jp: "今[いま]、夕飯[ゆうはん]を作[つく]っているところ。", en: "I'm right in the middle of making dinner." },
+        { jp: "たった今[いま]、駅[えき]に着[つ]いたところです。", en: "I arrived at the station just this moment." },
+      ],
+    },
+    {
+      type: "note",
+      text: "{{〜たところ}} pins the exact moment; {{〜たばかり}} (Time-Specific Actions) says it still *feels* recent — {{先月[せんげつ]買ったばかり}} works, {{先月買ったところ}} doesn't.",
+    },
+    {
+      type: "heading",
+      text: "もの — excuses and general truths",
+    },
+    {
+      type: "prose",
+      text: "Beyond meaning 'physical thing', {{もの}} works as a generic noun in two spoken patterns: sentence-final {{（だ）もの}}／{{（だ）もん}} gives a **childlike or feminine excuse** ('because…!'), and {{ものだ}} states a **general truth** about how things simply are.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "だって、まだ眠[ねむ]いんだもん。", en: "But I'm still sleepy! (excuse)" },
+        { jp: "子[こ]どもはよく転[ころ]ぶものだ。", en: "Kids just fall over a lot — that's how it is." },
+      ],
+    },
   ],
   quiz: [
     {
       kind: "mc",
-      prompt: "「Have the experience of eating sushi」 — natural?",
-      choices: ["寿司を食べたのがある", "寿司を食べたことがある", "寿司を食べるのがある", "both A and B"],
+      prompt: "「Have climbed Mt. Fuji before」 — natural?",
+      choices: ["富士山に登ったのがある", "富士山に登ったことがある", "富士山に登るのがある", "both A and B"],
       answer: 1,
     },
     {
@@ -84,6 +128,37 @@ export const genericNouns: Lesson = {
       prompt: "こと often marks…",
       choices: ["physical objects only", "events, experiences, rules", "locations", "people"],
       answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "食べているところ means…",
+      choices: [
+        "right in the middle of eating",
+        "about to eat",
+        "just finished eating",
+        "a place to eat",
+      ],
+      answer: 0,
+      explanation: "ている + ところ = mid-action. 食べるところ = about to; 食べたところ = just did.",
+    },
+    {
+      kind: "mc",
+      prompt: "だって、行きたいんだもん — the もん adds…",
+      choices: [
+        "a childlike 'because…!' excuse",
+        "a formal conclusion",
+        "a question",
+        "past tense",
+      ],
+      answer: 0,
+      explanation: "Sentence-final （だ）もの／もん marks a plaintive excuse.",
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'I have climbed Mt. Fuji before'",
+      tiles: ["富士山[ふじさん]に", "登[のぼ]ったことが", "ある"],
+      distractors: ["登[のぼ]ることが"],
+      explanation: "Experience = past tense + ことがある.",
     },
   ],
 };

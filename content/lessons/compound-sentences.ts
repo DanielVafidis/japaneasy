@@ -12,7 +12,7 @@ export const compoundSentences: Lesson = {
   vocabulary: [
     { word: "静[しず]か", reading: "しずか", meaning: "quiet (na-adj)" },
     { word: "狭[せま]い", reading: "せまい", meaning: "narrow; cramped" },
-    { word: "食堂[しょくどう]", reading: "しょくどう", meaning: "cafeteria" },
+    { word: "図書館[としょかん]", reading: "としょかん", meaning: "library" },
     { word: "昼[ひる]ご飯[はん]", reading: "ひるごはん", meaning: "lunch" },
     { word: "忙[いそが]しい", reading: "いそがしい", meaning: "busy" },
     { word: "時間[じかん]", reading: "じかん", meaning: "time" },
@@ -44,8 +44,8 @@ export const compoundSentences: Lesson = {
       type: "examples",
       title: "Chaining states",
       items: [
-        { jp: "私[わたし]の部屋[へや]は、きれいで、静[しず]かで、とても好[す]き。", en: "My room is clean, quiet, and I like it a lot." },
-        { jp: "田中[たなか]さんは、お金[かね]持[も]ちで、かっこよくて、魅力的[みりょくてき]ですね。", en: "Tanaka is rich, handsome, and charming, isn't he?" },
+        { jp: "この喫茶店[きっさてん]は、静[しず]かで、おしゃれで、とても好[す]き。", en: "This café is quiet, stylish, and I like it a lot." },
+        { jp: "山田[やまだ]さんは、親切[しんせつ]で、明[あか]るくて、頼[たよ]りになりますね。", en: "Yamada is kind, cheerful, and dependable, isn't she?" },
       ],
     },
     {
@@ -59,8 +59,8 @@ export const compoundSentences: Lesson = {
     {
       type: "examples",
       items: [
-        { jp: "食堂[しょくどう]に行[い]って、昼[ひる]ご飯[はん]を食[た]べて、昼寝[ひるね]をする。", en: "Go to the cafeteria, eat lunch, and take a nap." },
-        { jp: "食堂[しょくどう]に行[い]って、昼[ひる]ご飯[はん]を食[た]べて、昼寝[ひるね]をした。", en: "Went to the cafeteria, ate lunch, and took a nap." },
+        { jp: "図書館[としょかん]に行[い]って、宿題[しゅくだい]をして、家[いえ]に帰[かえ]る。", en: "Go to the library, do homework, and head home." },
+        { jp: "図書館[としょかん]に行[い]って、宿題[しゅくだい]をして、家[いえ]に帰[かえ]った。", en: "Went to the library, did homework, and headed home." },
       ],
     },
     {
@@ -79,7 +79,7 @@ export const compoundSentences: Lesson = {
     {
       type: "examples",
       items: [
-        { jp: "時間[じかん]がないから、パーティーに行[い]かない。", en: "Because there's no time, (I) won't go to the party." },
+        { jp: "お金[かね]がないから、旅行[りょこう]に行[い]かない。", en: "Because there's no money, (I) won't go on the trip." },
         { jp: "ちょっと忙[いそが]しいので、失礼[しつれい]します。", en: "I'm a little busy, so excuse me. (polite)" },
       ],
     },
@@ -108,6 +108,13 @@ export const compoundSentences: Lesson = {
       prompt: "Verb sequence: eat then go?",
       choices: ["食べる、行く", "食べて、行く", "食べ、行って", "食べた、行く"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'It's a cheap and tasty restaurant'",
+      tiles: ["安[やす]くて", "おいしい", "店[みせ]だ"],
+      distractors: ["安[やす]いで"],
+      explanation: "I-adjectives chain with くて: 安い → 安くて. 安いで is a common error.",
     },
   ],
 };

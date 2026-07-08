@@ -87,5 +87,12 @@ export const verbBasics: Lesson = {
       ],
       answer: 2,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Tomorrow a friend comes'",
+      tiles: ["明日[あした]", "友達[ともだち]が", "来[く]る"],
+      distractors: ["来[き]た"],
+      explanation: "Dictionary form 来る for non-past; the verb ends the sentence.",
+    },
   ],
 };

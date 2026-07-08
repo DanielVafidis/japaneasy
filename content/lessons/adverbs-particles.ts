@@ -91,5 +91,12 @@ export const adverbsParticles: Lesson = {
       choices: ["ね", "よ", "の", "に"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Please speak more slowly' (casual: speak more slowly)",
+      tiles: ["もっと", "ゆっくり", "話[はな]す"],
+      distractors: ["静[しず]かだ"],
+      explanation: "Adverbs like もっと・ゆっくり come before the verb, no particle needed.",
+    },
   ],
 };

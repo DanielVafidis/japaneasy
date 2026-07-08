@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const obligation: Lesson = {
   id: "obligation",
   stage: "essential-grammar",
-  order: 9,
+  order: 11,
   title: "Must & Have To",
   subtitle: "なければならない and softer cousins",
   summary:
@@ -100,6 +100,13 @@ export const obligation: Lesson = {
       prompt: "Colloquial 「must eat」 (like なきゃ)?",
       choices: ["食べないといけない", "食べてもいい", "食べてはいけない", "食べなくてもいい"],
       answer: 0,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'I have to do my homework'",
+      tiles: ["宿題[しゅくだい]を", "しなければ", "ならない"],
+      distractors: ["しなくても"],
+      explanation: "しなければならない = must do. しなくても belongs to 'don't have to' (てもいい).",
     },
   ],
 };

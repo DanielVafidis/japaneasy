@@ -3,12 +3,12 @@ import type { Lesson } from "../types";
 export const casualPatterns: Lesson = {
   id: "casual-patterns",
   stage: "essential-grammar",
-  order: 16,
+  order: 18,
   title: "Casual Speech Patterns",
-  subtitle: "Plain form · contractions · question の",
+  subtitle: "Plain form · contractions · slang · sentence enders",
   summary:
-    "Review plain-form conjugation, common spoken contractions, and the casual question particle の.",
-  estMinutes: 16,
+    "Review plain-form conjugation and spoken contractions, then meet real-life slang (ってば、なんか) and the full cast of sentence-ending particles.",
+  estMinutes: 20,
   vocabulary: [
     { word: "全然[ぜんぜん]", reading: "ぜんぜん", meaning: "not at all (with negative)" },
     { word: "本当[ほんとう]", reading: "ほんとう", meaning: "really; truth" },
@@ -78,11 +78,48 @@ export const casualPatterns: Lesson = {
     },
     {
       type: "heading",
+      text: "Street-level slang",
+    },
+    {
+      type: "rule",
+      title: "Patterns you'll hear (and can mostly just recognize)",
+      items: [
+        "**Particles vanish, order loosens**: {{それ、何[なに]？}} — 'what's that?'; topics get tacked on after: {{もう食[た]べた？昨日[きのう]のケーキ}}.",
+        "**{{っつう}}／{{つ}}** — slurred {{という}}: {{何[なん]つった？}} 'what'd you say?'",
+        "**{{ってば}}／{{ったら}}** — exasperated 'I said…!': {{もう分[わ]かったってば！}}",
+        "**{{なんか}}** — the all-purpose filler 'like': {{なんか、変[へん]じゃない？}}",
+        "**{{〜やがる}}** — contempt for someone's action (rough; recognize, don't use): {{また遅刻[ちこく]しやがった}}.",
+      ],
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "もう行[い]くってば！", en: "I said I'm going already!" },
+        { jp: "この店[みせ]、なんか高[たか]くない？", en: "This place is, like, kind of expensive, no?" },
+      ],
+    },
+    {
+      type: "heading",
+      text: "More sentence enders: な · さ · かい · だい · かしら",
+    },
+    {
+      type: "rule",
+      title: "The extended cast",
+      items: [
+        "**{{な}}** — rougher {{ね}}, masculine-leaning: {{今日[きょう]は暑[あつ]いな}}.",
+        "**{{さ}}** — casual emphasis / filler between phrases: {{それがさ、意外[いがい]と難[むずか]しくてさ}}.",
+        "**{{かい}}** — soft masculine yes/no question: {{元気[げんき]かい？}}",
+        "**{{だい}}** — masculine open question: {{何[なん]だい、その顔[かお]は？}}",
+        "**{{かしら}}** — feminine 'I wonder' ({{かな}} equivalent): {{間[ま]に合[あ]うかしら}}.",
+      ],
+    },
+    {
+      type: "heading",
       text: "Gender and tone (light touch)",
     },
     {
       type: "prose",
-      text: "Some endings skew feminine or masculine in casual speech — {{わ}} / {{のよ}} (often feminine), {{ぜ}} / {{ぞ}} (often masculine). These are **optional flavour**, not rules. When in doubt, plain form without extra particles is neutral.",
+      text: "Some endings skew feminine or masculine in casual speech — {{わ}} / {{のよ}} / {{かしら}} (often feminine), {{ぜ}} / {{ぞ}} / {{な}} / {{かい・だい}} (often masculine). These are **optional flavour**, not rules. When in doubt, plain form without extra particles is neutral.",
     },
     {
       type: "tip",
@@ -113,6 +150,32 @@ export const casualPatterns: Lesson = {
       prompt: "Plain negative of 行きます?",
       choices: ["行かない", "行きない", "行くない", "行ってない"],
       answer: 0,
+    },
+    {
+      kind: "mc",
+      prompt: "もう分かったってば！ — the ってば expresses…",
+      choices: [
+        "exasperation: 'I told you already!'",
+        "a polite request",
+        "uncertainty",
+        "hearsay",
+      ],
+      answer: 0,
+      explanation: "ってば／ったら add an 'I said…!' edge when you're not being listened to.",
+    },
+    {
+      kind: "mc",
+      prompt: "Casual masculine yes/no question ender?",
+      choices: ["かい", "だい", "かしら", "ってば"],
+      answer: 0,
+      explanation: "かい asks yes/no; だい asks open questions; かしら is the feminine 'I wonder'.",
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'Hey, is it okay to eat this?' (casual)",
+      tiles: ["ねえ、", "これ", "食[た]べていいの？"],
+      distractors: ["食[た]べていいか"],
+      explanation: "Casual questions soften with の; bare か sounds blunt.",
     },
   ],
 };

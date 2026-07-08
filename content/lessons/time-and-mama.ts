@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const timeAndMama: Lesson = {
   id: "time-and-mama",
   stage: "special-expressions",
-  order: 9,
+  order: 10,
   title: "Time & Leaving As-Is",
   subtitle: "とき · 前/後 · 間 · まま · っぱなし",
   summary:
@@ -86,7 +86,7 @@ export const timeAndMama: Lesson = {
     },
     {
       type: "prose",
-      text: "**Stem + {{っぱなし}}** — something left on or unfinished (often carelessly): {{テレビをつけっぱなし}} — left the TV on. {{開[あ]けっぱなし}} — left open.",
+      text: "**Stem + {{っぱなし}}** — something left on or unfinished (often carelessly): {{電気[でんき]をつけっぱなし}} — left the lights on. {{開[あ]けっぱなし}} — left open.",
     },
     {
       type: "tip",
@@ -114,9 +114,16 @@ export const timeAndMama: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Left the TV on — colloquial?",
+      prompt: "Left the lights on — colloquial?",
       choices: ["つけまま", "つけっぱなし", "つけてしまう", "つける間"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'I fell asleep with the window left open'",
+      tiles: ["窓[まど]を", "開[あ]けたまま", "寝[ね]てしまった"],
+      distractors: ["開[あ]けるまま"],
+      explanation: "まま follows the past tense for a state already in place: 開けたまま.",
     },
   ],
 };

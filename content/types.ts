@@ -62,6 +62,15 @@ export type QuizQuestion =
       kind: "match";
       prompt: string;
       pairs: { left: string; right: string }[];
+    }
+  | {
+      kind: "order";
+      prompt: string;
+      /** Tiles in correct order; may carry furigana markup. */
+      tiles: string[];
+      /** Extra wrong tiles mixed into the bank. */
+      distractors?: string[];
+      explanation?: string;
     };
 
 export interface Lesson {

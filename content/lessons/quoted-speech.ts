@@ -3,7 +3,7 @@ import type { Lesson } from "../types";
 export const quotedSpeech: Lesson = {
   id: "quoted-speech",
   stage: "essential-grammar",
-  order: 12,
+  order: 14,
   title: "Quoted Speech",
   subtitle: "Direct quotes · と · って · と思う",
   summary:
@@ -29,8 +29,8 @@ export const quotedSpeech: Lesson = {
     {
       type: "examples",
       items: [
-        { jp: "アリスが、「寒[さむ]い」と言[い]った。", en: 'Alice said, "It\'s cold."' },
-        { jp: "「今日[きょう]は授業[じゅぎょう]がない」と先生[せんせい]から聞[き]いた。", en: 'I heard from the teacher, "There is no class today."' },
+        { jp: "妹[いもうと]が、「眠[ねむ]い」と言[い]った。", en: 'My little sister said, "I\'m sleepy."' },
+        { jp: "「明日[あした]は休[やす]みだ」と店長[てんちょう]から聞[き]いた。", en: 'I heard from the manager, "Tomorrow is a day off."' },
       ],
     },
     {
@@ -44,9 +44,9 @@ export const quotedSpeech: Lesson = {
     {
       type: "examples",
       items: [
-        { jp: "先生[せんせい]から今日[きょう]は授業[じゅぎょう]がないと聞[き]いた。", en: "I heard from the teacher that there is no class today." },
-        { jp: "これは、日本語[にほんご]で何[なに]と言[い]いますか。", en: "What is this called in Japanese?" },
-        { jp: "カレーを食[た]べようと思[おも]った。", en: "I thought I'd eat curry." },
+        { jp: "店長[てんちょう]から明日[あした]は休[やす]みだと聞[き]いた。", en: "I heard from the manager that tomorrow is a day off." },
+        { jp: "これは、英語[えいご]で何[なに]と言[い]いますか。", en: "What is this called in English?" },
+        { jp: "ラーメンを作[つく]ろうと思[おも]った。", en: "I thought I'd make ramen." },
       ],
     },
     {
@@ -63,12 +63,12 @@ export const quotedSpeech: Lesson = {
     },
     {
       type: "prose",
-      text: "{{って}} replaces {{と}} in casual speech for quotes and hearsay: {{来年、海外に行くって}} — 'They say they're going abroad next year.'",
+      text: "{{って}} replaces {{と}} in casual speech for quotes and hearsay: {{来月、大阪に行くって}} — 'They say they're going to Osaka next month.'",
     },
     {
       type: "examples",
       items: [
-        { jp: "智子[ともこ]は、来年[らいねん]海外[かいがい]に行[い]くって。", en: "Tomoko says she's going abroad next year." },
+        { jp: "兄[あに]は、来月[らいげつ]大阪[おおさか]に行[い]くって。", en: "My brother says he's going to Osaka next month." },
         { jp: "本当[ほんとう]なの？", en: "Is that true?" },
       ],
     },
@@ -97,6 +97,13 @@ export const quotedSpeech: Lesson = {
       prompt: "Express a thought about doing something?",
       choices: ["〜と言う", "〜と思う", "〜を思う", "〜が思う"],
       answer: 1,
+    },
+    {
+      kind: "order",
+      prompt: "Build: 'I think it will clear up tomorrow'",
+      tiles: ["明日[あした]は", "晴[は]れると", "思[おも]う"],
+      distractors: ["晴[は]れるを"],
+      explanation: "Thoughts are quoted with と: 晴れると思う.",
     },
   ],
 };

@@ -92,5 +92,12 @@ export const formalDearu: Lesson = {
       choices: ["です", "である", "でございます", "だ"],
       answer: 1,
     },
+    {
+      kind: "order",
+      prompt: "Build: 'Japan is an island nation' (written style)",
+      tiles: ["日本[にほん]は", "島国[しまぐに]", "である"],
+      distractors: ["であるだ"],
+      explanation: "である replaces だ in formal writing — never both.",
+    },
   ],
 };
