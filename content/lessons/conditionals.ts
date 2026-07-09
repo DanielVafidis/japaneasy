@@ -120,4 +120,11 @@ export const conditionals: Lesson = {
       explanation: "ば conditional: ある → あれば.",
     },
   ],
+  drills: [
+    { id: "to", prompt: "Fill — automatic result: 'if it rains, (I) won't go'", jp: "雨[あめ]が降[ふ]る◯、行[い]かない", answers: ["と"] },
+    { id: "nara", prompt: "Fill — contextual: 'if (you mean) Tokyo…'", jp: "東京[とうきょう]◯◯、…", answers: ["なら"] },
+    { id: "ba-i", prompt: "Make the ば-form", jp: "暑[あつ]い", answers: ["暑[あつ]ければ"] },
+    { id: "ba-verb", prompt: "Make the ば-form", jp: "行[い]く", answers: ["行[い]けば"] },
+    { id: "tara", prompt: "Make the たら-form", jp: "暇[ひま]", answers: ["暇[ひま]だったら"] },
+  ],
 };

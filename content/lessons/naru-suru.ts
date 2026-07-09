@@ -170,4 +170,11 @@ export const naruSuru: Lesson = {
       explanation: "Potential 読める + ようになる = became able to read.",
     },
   ],
+  drills: [
+    { id: "noun-naru", prompt: "Become — 'become a doctor'", jp: "医者[いしゃ] ＋ なる", answers: ["医者[いしゃ]になる"] },
+    { id: "i-naru", prompt: "Become — 'get early/fast'", jp: "早[はや]い ＋ なる", answers: ["早[はや]くなる"] },
+    { id: "ni-suru", prompt: "Decide on it — ordering", jp: "野菜[やさい] ＋ する", answers: ["野菜[やさい]にする"] },
+    { id: "you-ni-naru", prompt: "Fill — 'reached the point of speaking'", jp: "話[はな]せる◯◯になる", answers: ["よう"] },
+    { id: "koto-ni-suru", prompt: "Fill — 'decided to move'", jp: "引[ひ]っ越[こ]すこと◯する", answers: ["に"] },
+  ],
 };

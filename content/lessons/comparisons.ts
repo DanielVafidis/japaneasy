@@ -185,4 +185,11 @@ export const comparisons: Lesson = {
       explanation: "より marks the loser, の方が the winner; the adjective comes last.",
     },
   ],
+  drills: [
+    { id: "yori", prompt: "Fill — 'more than the bicycle'", jp: "自転車[じてんしゃ]◯◯…", answers: ["より"] },
+    { id: "hou-ga", prompt: "Fill — 'tea is more…'", jp: "紅茶[こうちゃ]の◯が…", answers: ["方[ほう]"] },
+    { id: "ichiban", prompt: "Type — 'the most / number one'", jp: "？", answers: ["一番[いちばん]"] },
+    { id: "ni-yoru-to", prompt: "Fill — 'according to the news…'", jp: "ニュース◯◯◯◯、…", answers: ["によると"] },
+    { id: "ni-yotte", prompt: "Fill — 'differs depending on the person'", jp: "人[ひと]◯◯◯◯違[ちが]う", answers: ["によって"] },
+  ],
 };

@@ -117,4 +117,11 @@ export const compoundSentences: Lesson = {
       explanation: "I-adjectives chain with くて: 安い → 安くて. 安いで is a common error.",
     },
   ],
+  drills: [
+    { id: "na-chain", prompt: "Chain them — 'quiet and cramped'", jp: "静[しず]か ＋ 狭[せま]い", answers: ["静[しず]かで狭[せま]い"] },
+    { id: "i-chain", prompt: "Chain them — 'cramped and quiet'", jp: "狭[せま]い ＋ 静[しず]か", answers: ["狭[せま]くて静[しず]か"] },
+    { id: "negative-chain", prompt: "Chain the negative — 'not cramped, and…'", jp: "狭[せま]くない", answers: ["狭[せま]くなくて"] },
+    { id: "node", prompt: "Fill the soft 'because' — 'since I'm busy…'", jp: "忙[いそが]しい◯◯、…", answers: ["ので"] },
+    { id: "kara", prompt: "Fill the direct 'because' — 'as there's no time…'", jp: "時間[じかん]がない◯◯、…", answers: ["から"] },
+  ],
 };

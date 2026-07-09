@@ -104,4 +104,11 @@ export const addressingPeople: Lesson = {
       explanation: "No さん when introducing someone from your own in-group.",
     },
   ],
+  drills: [
+    { id: "san", prompt: "Fill the safe honorific — a classmate", jp: "田中[たなか]◯", answers: ["さん"] },
+    { id: "title", prompt: "Fill — addressing the company president", jp: "田中[たなか]◯◯", answers: ["社長[しゃちょう]"] },
+    { id: "watashi", prompt: "Type the neutral-polite 'I'", jp: "？", answers: ["私[わたし]"] },
+    { id: "boku", prompt: "Type the casual-polite male 'I'", jp: "？", answers: ["僕[ぼく]"] },
+    { id: "namae", prompt: "Instead of 'you', ask for their…", jp: "？", answers: ["名前[なまえ]"] },
+  ],
 };

@@ -142,4 +142,12 @@ export const teForm: Lesson = {
       explanation: "Ru-verb te-form: 食べる → 食べて (no small っ).",
     },
   ],
+  drills: [
+    { id: "te-ru", prompt: "Make the te-form", jp: "食[た]べる", answers: ["食[た]べて"] },
+    { id: "te-mu", prompt: "Make the te-form", jp: "飲[の]む", answers: ["飲[の]んで"] },
+    { id: "te-ku", prompt: "Make the te-form", jp: "書[か]く", answers: ["書[か]いて"] },
+    { id: "te-tsu", prompt: "Make the te-form", jp: "待[ま]つ", answers: ["待[ま]って"] },
+    { id: "te-iku", prompt: "Make the te-form — the exception", jp: "行[い]く", answers: ["行[い]って"] },
+    { id: "te-link", prompt: "Link them — 'read and (then) write'", jp: "読[よ]む ＋ 書[か]く", answers: ["読[よ]んで書[か]く"] },
+  ],
 };

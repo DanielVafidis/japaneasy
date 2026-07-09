@@ -109,4 +109,10 @@ export const obligation: Lesson = {
       explanation: "しなければならない = must do. しなくても belongs to 'don't have to' (てもいい).",
     },
   ],
+  drills: [
+    { id: "nakereba", prompt: "Finish the obligation — 'must do homework'", jp: "宿題[しゅくだい]をしなければ◯", answers: ["ならない", "いけない"] },
+    { id: "casual-gotta", prompt: "Contract it — casual 'gotta do'", jp: "しなければならない", answers: ["しなきゃ", "しなくちゃ", "しないと"] },
+    { id: "prohibition", prompt: "Finish the prohibition — 'must not enter'", jp: "入[はい]っては◯", answers: ["いけない", "だめ", "ならない"] },
+    { id: "exemption", prompt: "Say 'don't have to drink' — exemption", jp: "飲[の]む", answers: ["飲[の]まなくてもいい"] },
+  ],
 };

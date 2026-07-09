@@ -145,4 +145,10 @@ export const definingAndTrying: Lesson = {
       explanation: "という defines: 'the food called ramen'. として means 'in the role of'.",
     },
   ],
+  drills: [
+    { id: "kata", prompt: "Say 'how to eat' — way of doing", jp: "食[た]べる", answers: ["食[た]べ方[かた]"] },
+    { id: "temiru", prompt: "Say 'try eating (and see)'", jp: "食[た]べる", answers: ["食[た]べてみる"] },
+    { id: "toii", prompt: "Fill — 'it'd be good if (you) go early'", jp: "早[はや]く行[い]く◯いい", answers: ["と"] },
+    { id: "nominalizer", prompt: "Fill the nominalizer — 'studying abroad is…'", jp: "留学[りゅうがく]する◯は…", answers: ["の", "こと"] },
+  ],
 };

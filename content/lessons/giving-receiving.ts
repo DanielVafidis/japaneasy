@@ -132,4 +132,12 @@ export const givingReceiving: Lesson = {
       explanation: "The favour comes toward you → くれた, not あげた.",
     },
   ],
+  drills: [
+    { id: "ageru", prompt: "Type the verb — give (outward, away from me)", jp: "？", answers: ["あげる"] },
+    { id: "kureru", prompt: "Type the verb — give (inward, to me/us)", jp: "？", answers: ["くれる"] },
+    { id: "morau", prompt: "Type the verb — receive", jp: "？", answers: ["もらう"] },
+    { id: "te-kureru", prompt: "Say 'teach me (as a favour to me)'", jp: "教[おし]える", answers: ["教[おし]えてくれる"] },
+    { id: "te-morau", prompt: "Say '(I) get them to lend it'", jp: "貸[か]す", answers: ["貸[か]してもらう"] },
+    { id: "kudasaru", prompt: "Polite version — the giver outranks you", jp: "くれる", answers: ["くださる"] },
+  ],
 };

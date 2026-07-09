@@ -120,4 +120,12 @@ export const potentialForm: Lesson = {
       explanation: "読める is potential; 読まれる is passive.",
     },
   ],
+  drills: [
+    { id: "ru-potential", prompt: "Make the potential — 'can eat'", jp: "食[た]べる", answers: ["食[た]べられる"] },
+    { id: "su-potential", prompt: "Make the potential — 'can speak'", jp: "話[はな]す", answers: ["話[はな]せる"] },
+    { id: "ku-potential", prompt: "Make the potential — 'can write'", jp: "書[か]く", answers: ["書[か]ける"] },
+    { id: "gu-potential", prompt: "Make the potential — 'can swim'", jp: "泳[およ]ぐ", answers: ["泳[およ]げる"] },
+    { id: "suru-potential", prompt: "Make the potential — exception", jp: "する", answers: ["できる"] },
+    { id: "miru-potential", prompt: "Make the potential — 'can see'", jp: "見[み]る", answers: ["見[み]られる", "見[み]れる"] },
+  ],
 };

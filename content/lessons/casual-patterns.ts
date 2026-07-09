@@ -178,4 +178,11 @@ export const casualPatterns: Lesson = {
       explanation: "Casual questions soften with の; bare か sounds blunt.",
     },
   ],
+  drills: [
+    { id: "plain", prompt: "Make it casual — 'don't understand at all'", jp: "全然[ぜんぜん]分[わ]かりません", answers: ["全然[ぜんぜん]分[わ]からない"] },
+    { id: "wakannai", prompt: "Contract it — spoken", jp: "分[わ]からない", answers: ["分[わ]かんない", "わかんない"] },
+    { id: "chatta", prompt: "Contract it — 'ended up eating'", jp: "食[た]べてしまった", answers: ["食[た]べちゃった"] },
+    { id: "nda", prompt: "Contract it — explanatory の", jp: "行[い]くのだ", answers: ["行[い]くんだ"] },
+    { id: "honto", prompt: "Casual 'really?'", jp: "？", answers: ["本当[ほんとう]", "ほんと"] },
+  ],
 };

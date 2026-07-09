@@ -125,4 +125,11 @@ export const questionsPolite: Lesson = {
       explanation: "Polite questions end in ですか.",
     },
   ],
+  drills: [
+    { id: "ka", prompt: "Make it a polite question", jp: "学生[がくせい]です", answers: ["学生[がくせい]ですか"] },
+    { id: "ka-fill", prompt: "Fill the question marker", jp: "これは何[なん]です◯", answers: ["か"] },
+    { id: "doko", prompt: "Type the question word — 'where'", jp: "？", answers: ["どこ"] },
+    { id: "dare", prompt: "Type the question word — 'who'", jp: "？", answers: ["誰[だれ]"] },
+    { id: "itsu", prompt: "Type the question word — 'when'", jp: "？", answers: ["いつ"] },
+  ],
 };

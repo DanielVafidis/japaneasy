@@ -89,4 +89,11 @@ export const verbStems: Lesson = {
       explanation: "Stem + に + motion verb = go in order to do: 遊びに行く.",
     },
   ],
+  drills: [
+    { id: "stem-ru", prompt: "Extract the stem", jp: "食[た]べる", answers: ["食[た]べ"] },
+    { id: "stem-gu", prompt: "Extract the stem", jp: "泳[およ]ぐ", answers: ["泳[およ]ぎ"] },
+    { id: "stem-ku", prompt: "Extract the stem", jp: "行[い]く", answers: ["行[い]き"] },
+    { id: "stem-miru", prompt: "Extract the stem", jp: "見[み]る", answers: ["見[み]"] },
+    { id: "stem-suru", prompt: "Extract the stem — exception", jp: "する", answers: ["し"] },
+  ],
 };

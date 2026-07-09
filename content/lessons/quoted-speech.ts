@@ -106,4 +106,10 @@ export const quotedSpeech: Lesson = {
       explanation: "Thoughts are quoted with と: 晴れると思う.",
     },
   ],
+  drills: [
+    { id: "to-quote", prompt: "Fill the quote particle — '…said it's cold'", jp: "寒[さむ]い◯言[い]った", answers: ["と"] },
+    { id: "to-omou", prompt: "Say 'I think it's cold'", jp: "寒[さむ]い", answers: ["寒[さむ]いと思[おも]う"] },
+    { id: "tte", prompt: "Fill the casual quote — '(they) said they won't go'", jp: "行[い]かない◯◯言[い]ってた", answers: ["って"] },
+    { id: "da-in-quote", prompt: "Fill — quoting a noun needs it: 'said (it) is a student'", jp: "学生[がくせい]◯と言[い]った", answers: ["だ"] },
+  ],
 };

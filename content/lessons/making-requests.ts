@@ -137,4 +137,11 @@ export const makingRequests: Lesson = {
       explanation: "ください follows the te-form: 待って + ください.",
     },
   ],
+  drills: [
+    { id: "kudasai", prompt: "Request it — 'please write'", jp: "書[か]く", answers: ["書[か]いてください"] },
+    { id: "negative-request", prompt: "Negative request — 'please don't write'", jp: "書[か]く", answers: ["書[か]かないでください"] },
+    { id: "choudai", prompt: "Type the casual stand-in for ください", jp: "？", answers: ["ちょうだい"] },
+    { id: "nasai", prompt: "Soft command — parent to child: 'sit'", jp: "座[すわ]る", answers: ["座[すわ]りなさい"] },
+    { id: "command", prompt: "Blunt command form — 'sit!'", jp: "座[すわ]る", answers: ["座[すわ]れ"] },
+  ],
 };

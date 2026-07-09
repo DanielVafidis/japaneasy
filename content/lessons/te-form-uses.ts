@@ -96,4 +96,11 @@ export const teFormUses: Lesson = {
       explanation: "Ongoing action = ている. てある is for a resulting state someone set up.",
     },
   ],
+  drills: [
+    { id: "progressive", prompt: "Make it progressive — 'is reading'", jp: "読[よ]む", answers: ["読[よ]んでいる"] },
+    { id: "shitteiru", prompt: "Say 'I know' — an enduring state", jp: "知[し]る", answers: ["知[し]っている"] },
+    { id: "contraction", prompt: "Contract it — spoken style", jp: "読[よ]んでいる", answers: ["読[よ]んでる"] },
+    { id: "married", prompt: "Say 'is married' — a resulting state", jp: "結婚[けっこん]する", answers: ["結婚[けっこん]している"] },
+    { id: "shiranai", prompt: "Say 'don't know' — the famous exception", jp: "知[し]っている", answers: ["知[し]らない"] },
+  ],
 };

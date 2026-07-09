@@ -122,4 +122,11 @@ export const numbersCounting: Lesson = {
       explanation: "Generic objects use the native counter みっつ; 三人 counts people.",
     },
   ],
+  drills: [
+    { id: "sanbyaku", prompt: "Type the reading — sound change", jp: "三百", answers: ["さんびゃく"] },
+    { id: "roppyaku", prompt: "Type the reading — sound change", jp: "六百", answers: ["ろっぴゃく"] },
+    { id: "hassen", prompt: "Type the reading — sound change", jp: "八千", answers: ["はっせん"] },
+    { id: "futatsu", prompt: "Type the reading — counting things", jp: "二つ", answers: ["ふたつ"] },
+    { id: "man", prompt: "Type — 'ten thousand'", jp: "？", answers: ["万[まん]", "一万[いちまん]"] },
+  ],
 };

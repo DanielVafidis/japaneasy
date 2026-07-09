@@ -113,4 +113,11 @@ export const desireSuggestions: Lesson = {
       explanation: "Actions you want to do take たい; ほしい is for things.",
     },
   ],
+  drills: [
+    { id: "tai", prompt: "Say 'want to eat'", jp: "食[た]べる", answers: ["食[た]べたい"] },
+    { id: "takunai", prompt: "Say 'don't want to eat'", jp: "食[た]べたい", answers: ["食[た]べたくない"] },
+    { id: "mashou", prompt: "Say 'let's go'", jp: "行[い]く", answers: ["行[い]きましょう"] },
+    { id: "masenka", prompt: "Invite — 'won't you go?'", jp: "行[い]く", answers: ["行[い]きませんか"] },
+    { id: "hoshii", prompt: "Fill — wanting a thing: 'I want ramen'", jp: "ラーメンが◯◯◯", answers: ["欲[ほ]しい"] },
+  ],
 };

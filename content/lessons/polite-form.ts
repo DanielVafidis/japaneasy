@@ -117,4 +117,12 @@ export const politeForm: Lesson = {
       explanation: "Polite sentences end in the ます form: 会います, not plain 会う.",
     },
   ],
+  drills: [
+    { id: "masu", prompt: "Make it polite", jp: "食[た]べる", answers: ["食[た]べます"] },
+    { id: "masu-u", prompt: "Make it polite", jp: "行[い]く", answers: ["行[い]きます"] },
+    { id: "masen", prompt: "Make it polite negative", jp: "食[た]べる", answers: ["食[た]べません"] },
+    { id: "mashita", prompt: "Make it polite past", jp: "行[い]く", answers: ["行[い]きました"] },
+    { id: "desu", prompt: "Make it polite", jp: "学生[がくせい]だ", answers: ["学生[がくせい]です"] },
+    { id: "negative-desu", prompt: "Make it polite negative", jp: "元気[げんき]だ", answers: ["元気[げんき]じゃないです", "元気[げんき]ではありません"] },
+  ],
 };
