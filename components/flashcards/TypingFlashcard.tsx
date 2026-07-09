@@ -184,7 +184,9 @@ export function TypingFlashcard({
             </div>
           </div>
           <Button
-            type="submit"
+            type="button"
+            onClick={onContinue}
+            autoFocus
             size="sm"
             className="mt-3 w-full"
             variant={correct ? "primary" : "outline"}
