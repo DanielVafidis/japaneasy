@@ -109,4 +109,10 @@ export const relativeClauses: Lesson = {
       explanation: "The clause 昨日買った directly modifies 本 — no 'that/which' needed.",
     },
   ],
+  drills: [
+    { id: "verb-clause", prompt: "Combine them — 'the person who ate'", jp: "食[た]べた ＋ 人[ひと]", answers: ["食[た]べた人[ひと]"] },
+    { id: "clause-object", prompt: "Combine them — 'the book (someone) bought'", jp: "買[か]った ＋ 本[ほん]", answers: ["買[か]った本[ほん]"] },
+    { id: "negative-clause", prompt: "Combine them — 'a person who doesn't eat sushi'", jp: "寿司[すし]を食[た]べない ＋ 人[ひと]", answers: ["寿司[すし]を食[た]べない人[ひと]"] },
+    { id: "state-clause", prompt: "Combine them — 'a person who was a student'", jp: "学生[がくせい]だ ＋ 人[ひと]", answers: ["学生[がくせい]だった人[ひと]"] },
+  ],
 };

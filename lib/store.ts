@@ -5,7 +5,10 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { createCard, schedule, type Grade, type SrsState } from "@/lib/srs";
 import { todayStr, daysBetween } from "@/lib/datetime";
 import { XP } from "@/lib/leveling";
-import { vocabCardIdsForLesson } from "@/lib/lesson-cards";
+import {
+  grammarCardIdsForLesson,
+  vocabCardIdsForLesson,
+} from "@/lib/lesson-cards";
 
 export interface LessonProgress {
   completedAt: number;
@@ -171,6 +174,7 @@ export const useStore = create<AppState>()(
         let newlyAddedVocab = 0;
         if (get().autoAddVocabOnComplete) {
           newlyAddedVocab = get().addCards(vocabCardIdsForLesson(lessonId));
+          get().addCards(grammarCardIdsForLesson(lessonId, { drillsOnly: true }));
         }
         return { newlyAddedVocab };
       },

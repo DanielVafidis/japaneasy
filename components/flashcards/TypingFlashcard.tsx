@@ -157,7 +157,13 @@ export function TypingFlashcard({
               {!correct && (
                 <p className="mt-1 flex flex-wrap items-center gap-2 text-ink">
                   <span className="text-ink-soft">Answer:</span>
-                  {card.deck === "kanji" ? (
+                  {card.deck === "grammar" && card.answers?.length ? (
+                    <JapaneseText
+                      text={card.answers[0]}
+                      showFurigana={false}
+                      className="text-lg"
+                    />
+                  ) : card.deck === "kanji" ? (
                     <>
                       <span className="font-jp text-lg">{card.front}</span>
                       <span className="text-ink-soft">({answer})</span>

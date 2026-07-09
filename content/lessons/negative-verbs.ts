@@ -94,4 +94,12 @@ export const negativeVerbs: Lesson = {
       explanation: "誰も pairs with a negative verb: 来ない.",
     },
   ],
+  drills: [
+    { id: "ru-negative", prompt: "Make it negative", jp: "食[た]べる", answers: ["食[た]べない"] },
+    { id: "u-negative", prompt: "Make it negative", jp: "飲[の]む", answers: ["飲[の]まない"] },
+    { id: "u-wa-negative", prompt: "Make it negative — う becomes わ", jp: "買[か]う", answers: ["買[か]わない"] },
+    { id: "suru-negative", prompt: "Make it negative", jp: "する", answers: ["しない"] },
+    { id: "aru-negative", prompt: "Make it negative — special case", jp: "ある", answers: ["ない"] },
+    { id: "kuru-negative", prompt: "Make it negative — the reading changes", jp: "来[く]る", answers: ["来[こ]ない"] },
+  ],
 };

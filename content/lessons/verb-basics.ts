@@ -95,4 +95,11 @@ export const verbBasics: Lesson = {
       explanation: "Dictionary form 来る for non-past; the verb ends the sentence.",
     },
   ],
+  drills: [
+    { id: "class-taberu", prompt: "る-verb or う-verb? Type る or う", jp: "食[た]べる", answers: ["る"] },
+    { id: "class-nomu", prompt: "る-verb or う-verb? Type る or う", jp: "飲[の]む", answers: ["う"] },
+    { id: "class-kaeru", prompt: "る-verb or う-verb? Type る or う — careful", jp: "帰[かえ]る", answers: ["う"] },
+    { id: "exception-do", prompt: "Type the exception verb meaning 'to do'", jp: "？", answers: ["する"] },
+    { id: "exception-come", prompt: "Type the exception verb meaning 'to come'", jp: "？", answers: ["来[く]る"] },
+  ],
 };

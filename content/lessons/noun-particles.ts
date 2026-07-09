@@ -103,4 +103,11 @@ export const nounParticles: Lesson = {
       explanation: "と joins a complete list of nouns.",
     },
   ],
+  drills: [
+    { id: "exhaustive-to", prompt: "Fill the particle — 'dogs and cats' (complete list)", jp: "犬[いぬ]◯猫[ねこ]", answers: ["と"] },
+    { id: "partial-ya", prompt: "Fill the particle — 'dogs and cats, among others'", jp: "犬[いぬ]◯猫[ねこ]", answers: ["や"] },
+    { id: "possessive-no", prompt: "Fill the particle — 'the teacher's book'", jp: "先生[せんせい]◯本[ほん]", answers: ["の"] },
+    { id: "casual-toka", prompt: "Fill the particle — casual list: 'cars and stuff'", jp: "車[くるま]◯", answers: ["とか"] },
+    { id: "no-as-noun", prompt: "Replace the noun — 'the quiet one'", jp: "静[しず]かな◯", answers: ["の"] },
+  ],
 };

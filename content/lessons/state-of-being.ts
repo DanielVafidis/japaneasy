@@ -137,4 +137,11 @@ export const stateOfBeing: Lesson = {
       explanation: "Topic first (私は), then the noun, then declarative だ.",
     },
   ],
+  drills: [
+    { id: "declare", prompt: "Declare it — 'is a student'", jp: "学生[がくせい]", answers: ["学生[がくせい]だ"] },
+    { id: "negative", prompt: "Make it negative", jp: "元気[げんき]だ", answers: ["元気[げんき]じゃない"] },
+    { id: "past", prompt: "Make it past tense", jp: "友達[ともだち]だ", answers: ["友達[ともだち]だった"] },
+    { id: "negative-past", prompt: "Make it negative past", jp: "学生[がくせい]だ", answers: ["学生[がくせい]じゃなかった"] },
+    { id: "negative-2", prompt: "Make it negative", jp: "いい人[ひと]だ", answers: ["いい人[ひと]じゃない"] },
+  ],
 };

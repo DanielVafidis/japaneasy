@@ -118,4 +118,11 @@ export const verbParticles: Lesson = {
       explanation: "で marks the means (by train), へ the direction; the verb comes last.",
     },
   ],
+  drills: [
+    { id: "object-wo", prompt: "Fill the particle — 'eat fish'", jp: "魚[さかな]◯食[た]べる", answers: ["を"] },
+    { id: "target-ni", prompt: "Fill the particle — '(is) at home'", jp: "家[いえ]◯いる", answers: ["に"] },
+    { id: "direction-e", prompt: "Fill the particle — 'head toward Japan'", jp: "日本[にほん]◯行[い]く", answers: ["へ", "に"] },
+    { id: "context-de", prompt: "Fill the particle — 'eat at school'", jp: "学校[がっこう]◯食[た]べる", answers: ["で"] },
+    { id: "means-de", prompt: "Fill the particle — 'go by bus'", jp: "バス◯行[い]く", answers: ["で"] },
+  ],
 };

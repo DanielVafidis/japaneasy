@@ -16,6 +16,10 @@ export interface Card {
   frontJp?: boolean;
   /** Japanese string to pronounce (if any). */
   speak?: string;
+  /** Grammar drills: the instruction shown above the question. */
+  instruction?: string;
+  /** Grammar drills: accepted typed answers (may carry furigana). */
+  answers?: string[];
 }
 
 export interface DeckMeta {
@@ -50,10 +54,10 @@ export const deckMeta: DeckMeta[] = [
   },
   {
     id: "grammar",
-    title: "Grammar points",
+    title: "Grammar drills",
     jp: "文法",
     tone: "gold",
-    description: "Review prompts for each grammar lesson.",
+    description: "Typed pattern drills from the grammar lessons.",
   },
   {
     id: "kanji",
@@ -112,12 +116,30 @@ const GRAMMAR_STAGES: StageId[] = [
 function grammarDeck(): Card[] {
   return allLessons
     .filter((l) => GRAMMAR_STAGES.includes(l.stage))
-    .map((l) => ({
-      id: `grammar:${l.id}`,
-      deck: "grammar" as DeckId,
-      front: l.title,
-      back: l.summary ?? l.subtitle ?? "",
-    }));
+    .flatMap((l) => {
+      // Authored pattern drills; lessons without them keep the legacy
+      // title→summary card until they get a drill pass.
+      if (l.drills?.length) {
+        return l.drills.map((d) => ({
+          id: `grammar:${l.id}:${d.id}`,
+          deck: "grammar" as DeckId,
+          front: d.jp,
+          back: stripFurigana(d.answers[0]),
+          frontJp: true,
+          instruction: d.prompt,
+          answers: d.answers,
+          speak: toReading(d.answers[0]),
+        }));
+      }
+      return [
+        {
+          id: `grammar:${l.id}`,
+          deck: "grammar" as DeckId,
+          front: l.title,
+          back: l.summary ?? l.subtitle ?? "",
+        },
+      ];
+    });
 }
 
 function kanjiDeck(): Card[] {

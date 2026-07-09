@@ -47,7 +47,7 @@ export const allLessons: Lesson[] = [
 ];
 ```
 
-That's it. The lesson now appears in the curriculum (grouped by `stage`, sorted by `order`), gets its own page, and its vocabulary automatically becomes flashcards. A review card for the lesson is added to the **Grammar** deck too.
+That's it. The lesson now appears in the curriculum (grouped by `stage`, sorted by `order`), gets its own page, and its vocabulary automatically becomes flashcards. Its `drills` (see §6) become cards in the **Grammar** deck — lessons without drills fall back to a single title→summary card until they get a drill pass.
 
 ## 3. Writing Japanese text
 
@@ -120,7 +120,28 @@ Fill-in questions with Japanese answers accept romaji — the input converts to 
 Lessons with 3+ vocabulary entries automatically get a **"Practice these words"** typed
 drill under the vocabulary list (non-scoring; reuses the flashcard answer checker).
 
-## 6. Stages
+## 6. Grammar drills (SRS pattern cards)
+
+`drills` is an optional array of typed pattern drills. Each drill becomes a card in the
+**Grammar** flashcard deck (id `grammar:<lessonId>:<drillId>`), auto-enrolled when the
+lesson is completed and boosted when its quiz is missed.
+
+```ts
+drills: [
+  // The learner sees the prompt (small label) + jp (large), and types an answer.
+  { id: "negative", prompt: "Make it negative", jp: "元気[げんき]だ", answers: ["元気[げんき]じゃない"] },
+  // Use ◯ in jp for fill-the-particle gaps.
+  { id: "topic-wa", prompt: "Fill the particle — 'as for today…'", jp: "今日[きょう]◯雨[あめ]だ", answers: ["は"] },
+]
+```
+
+- Keep `id` stable once shipped — it's part of the saved SRS card id.
+- Carry furigana in `answers`: the checker then accepts the kanji form, the kana reading,
+  and romaji (converted live). List several `answers` when more than one is right (e.g. `["へ", "に"]`);
+  the first is displayed as *the* answer and used for audio.
+- Drills must be original sentences — same policy as examples (see C.3 in ROADMAP.md).
+
+## 7. Stages
 
 Stage IDs live in [`content/types.ts`](content/types.ts) and metadata in [`content/curriculum.ts`](content/curriculum.ts):
 
@@ -134,7 +155,7 @@ Stage IDs live in [`content/types.ts`](content/types.ts) and metadata in [`conte
 
 A stage shows as "coming soon" (with its `teaser` topic list) until it has at least one registered lesson. To flesh out Stages 2–4, work through the matching PDF and add lesson files exactly like the examples above — no UI or component changes needed.
 
-## 7. Conventions & tips
+## 8. Conventions & tips
 
 - Keep `id` stable once shipped — it's the lesson's URL and the key for saved progress.
 - Reuse vocabulary words verbatim across lessons; the flashcard deck de-duplicates by word.

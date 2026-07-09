@@ -76,4 +76,10 @@ export const transitivity: Lesson = {
       explanation: "Intransitive 開く (it opened) — 開けた would need someone doing the opening (を).",
     },
   ],
+  drills: [
+    { id: "intransitive-partner", prompt: "Type the intransitive partner — 'something opens'", jp: "開[あ]ける → ？", answers: ["開[あ]く"] },
+    { id: "transitive-partner", prompt: "Type the transitive partner — 'take something out'", jp: "出[で]る → ？", answers: ["出[だ]す"] },
+    { id: "transitive-wo", prompt: "Fill the particle — '(someone) opens the door'", jp: "ドア◯開[あ]ける", answers: ["を"] },
+    { id: "intransitive-ga", prompt: "Fill the particle — 'the door opens'", jp: "ドア◯開[あ]く", answers: ["が"] },
+  ],
 };

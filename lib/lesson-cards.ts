@@ -10,6 +10,23 @@ export function vocabCardIdsForLesson(lessonId: string): string[] {
   return lesson.vocabulary.map((v) => `vocab:${stripFurigana(v.word)}`);
 }
 
+/** Grammar-deck card ids for a lesson: its drills, or the legacy lesson card. */
+export function grammarCardIdsForLesson(
+  lessonId: string,
+  { drillsOnly = false } = {},
+): string[] {
+  const lesson = getLesson(lessonId);
+  if (!lesson) return [];
+  if (lesson.drills?.length) {
+    return lesson.drills
+      .map((d) => `grammar:${lessonId}:${d.id}`)
+      .filter((id) => cardsById[id]);
+  }
+  return drillsOnly
+    ? []
+    : [`grammar:${lessonId}`].filter((id) => cardsById[id]);
+}
+
 /** Ephemeral card for in-lesson practice/learn drills (not an SRS id). */
 export function practiceCard(v: VocabEntry): Card {
   const plain = stripFurigana(v.word);
@@ -67,6 +84,6 @@ export function quizMissCardIds(
       ids.add(`vocab:${plain}`);
     }
   }
-  ids.add(`grammar:${lessonId}`);
+  for (const id of grammarCardIdsForLesson(lessonId)) ids.add(id);
   return [...ids].filter((id) => cardsById[id]);
 }

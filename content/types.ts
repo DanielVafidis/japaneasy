@@ -73,6 +73,22 @@ export type QuizQuestion =
       explanation?: string;
     };
 
+/**
+ * A typed grammar pattern drill (SRS card in the Grammar deck).
+ * The learner sees `prompt` + `jp` and types one of `answers`
+ * (romaji converts live; furigana in answers also accepts the reading).
+ */
+export interface GrammarDrill {
+  /** Stable per-lesson id (kebab-case) — part of the SRS card id. */
+  id: string;
+  /** Short instruction, e.g. "Make it negative" or "Fill the particle". */
+  prompt: string;
+  /** Japanese shown as the question; may carry furigana. Use ◯ for a gap. */
+  jp: string;
+  /** Accepted answers; the first is shown as the correct answer. */
+  answers: string[];
+}
+
 export interface Lesson {
   id: string;
   stage: StageId;
@@ -84,6 +100,8 @@ export interface Lesson {
   vocabulary?: VocabEntry[];
   blocks: ContentBlock[];
   quiz?: QuizQuestion[];
+  /** Pattern drills for the Grammar deck (replaces the title→summary card). */
+  drills?: GrammarDrill[];
 }
 
 export interface StageMeta {

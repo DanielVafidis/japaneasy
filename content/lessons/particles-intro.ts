@@ -109,4 +109,11 @@ export const particlesIntro: Lesson = {
       explanation: "は marks the topic (today), が marks the subject (weather).",
     },
   ],
+  drills: [
+    { id: "topic-wa", prompt: "Fill the particle — 'as for today, it's rain'", jp: "今日[きょう]◯雨[あめ]だ", answers: ["は"] },
+    { id: "inclusive-mo", prompt: "Fill the particle — 'tomorrow, too, is rain'", jp: "明日[あした]◯雨[あめ]だ", answers: ["も"] },
+    { id: "identifier-ga", prompt: "Fill the particle — answering 'who is the student?'", jp: "私[わたし]◯学生[がくせい]だ", answers: ["が"] },
+    { id: "question-ga", prompt: "Fill the particle — question words take it", jp: "誰[だれ]◯学生[がくせい]？", answers: ["が"] },
+    { id: "contrast-wa", prompt: "Fill the particle — 'as for the cat, it's quiet'", jp: "猫[ねこ]◯静[しず]かだ", answers: ["は"] },
+  ],
 };

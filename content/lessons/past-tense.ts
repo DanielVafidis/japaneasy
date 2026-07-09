@@ -106,4 +106,12 @@ export const pastTense: Lesson = {
       explanation: "Past i-adjective: 寒い → 寒かった.",
     },
   ],
+  drills: [
+    { id: "ru-past", prompt: "Make it past tense", jp: "食[た]べる", answers: ["食[た]べた"] },
+    { id: "mu-past", prompt: "Make it past tense", jp: "飲[の]む", answers: ["飲[の]んだ"] },
+    { id: "ku-past", prompt: "Make it past tense", jp: "聞[き]く", answers: ["聞[き]いた"] },
+    { id: "iku-past", prompt: "Make it past tense — the exception", jp: "行[い]く", answers: ["行[い]った"] },
+    { id: "su-past", prompt: "Make it past tense", jp: "話[はな]す", answers: ["話[はな]した"] },
+    { id: "negative-past", prompt: "Make it negative past", jp: "食[た]べる", answers: ["食[た]べなかった"] },
+  ],
 };

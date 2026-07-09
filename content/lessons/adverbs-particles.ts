@@ -99,4 +99,11 @@ export const adverbsParticles: Lesson = {
       explanation: "Adverbs like もっと・ゆっくり come before the verb, no particle needed.",
     },
   ],
+  drills: [
+    { id: "i-adverb", prompt: "Make it an adverb", jp: "早[はや]い", answers: ["早[はや]く"] },
+    { id: "na-adverb", prompt: "Make it an adverb", jp: "静[しず]か", answers: ["静[しず]かに"] },
+    { id: "agreement-ne", prompt: "Fill the ender — seeking agreement: '…isn't it?'", jp: "雨[あめ]だ◯", answers: ["ね"] },
+    { id: "inform-yo", prompt: "Fill the ender — informing: '…you know'", jp: "雨[あめ]だ◯", answers: ["よ"] },
+    { id: "adverb-use", prompt: "Fill the adverb — 'speak quickly'", jp: "◯話[はな]す", answers: ["早[はや]く"] },
+  ],
 };

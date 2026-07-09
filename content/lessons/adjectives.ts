@@ -109,4 +109,12 @@ export const adjectives: Lesson = {
       explanation: "I-adjectives attach directly to the noun — no な.",
     },
   ],
+  drills: [
+    { id: "na-before-noun", prompt: "Connect them — 'a quiet person'", jp: "静[しず]か ＋ 人[ひと]", answers: ["静[しず]かな人[ひと]"] },
+    { id: "i-negative", prompt: "Make it negative", jp: "高[たか]い", answers: ["高[たか]くない"] },
+    { id: "i-past", prompt: "Make it past tense", jp: "高[たか]い", answers: ["高[たか]かった"] },
+    { id: "na-negative", prompt: "Make it negative — careful, na-adjective", jp: "きれいだ", answers: ["きれいじゃない"] },
+    { id: "i-negative-past", prompt: "Make it past tense", jp: "高[たか]くない", answers: ["高[たか]くなかった"] },
+    { id: "ii-past", prompt: "Make it past tense — irregular", jp: "いい", answers: ["よかった"] },
+  ],
 };

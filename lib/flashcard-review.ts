@@ -41,8 +41,13 @@ export function answerScript(card: Card): KanaScript {
   return "hira";
 }
 
+/** Grammar drill card: typed Japanese with an instruction label. */
+function isDrill(card: Card): boolean {
+  return card.deck === "grammar" && Boolean(card.answers?.length);
+}
+
 export function usesJapaneseInput(card: Card): boolean {
-  return card.deck !== "grammar";
+  return card.deck !== "grammar" || isDrill(card);
 }
 
 export function flashcardPrompt(card: Card): {
@@ -53,6 +58,9 @@ export function flashcardPrompt(card: Card): {
   if (card.deck === "kana-hira" || card.deck === "kana-kata") {
     return { label: "Romaji", text: card.back };
   }
+  if (isDrill(card)) {
+    return { label: card.instruction ?? "Grammar", text: card.front, jp: true };
+  }
   if (card.deck === "grammar") {
     return { label: "Recall", text: card.back };
   }
@@ -62,6 +70,16 @@ export function flashcardPrompt(card: Card): {
 function acceptedJapaneseAnswers(card: Card): string[] {
   if (card.deck === "kana-hira" || card.deck === "kana-kata") {
     return [card.front];
+  }
+  if (isDrill(card)) {
+    const answers = new Set<string>();
+    for (const a of card.answers!) {
+      const plain = stripFurigana(a);
+      answers.add(normalizeJa(plain));
+      const reading = toReading(a);
+      if (reading !== plain) answers.add(normalizeJa(reading));
+    }
+    return [...answers];
   }
   if (card.deck === "kanji") {
     const answers = new Set<string>([normalizeJa(card.front)]);
@@ -89,7 +107,7 @@ function acceptedRomajiAnswers(card: Card): string[] {
   if (card.deck === "kana-hira" || card.deck === "kana-kata") {
     return [normalizeRomaji(card.back)];
   }
-  if (card.deck === "vocab" || card.deck === "kanji") {
+  if (card.deck === "vocab" || card.deck === "kanji" || isDrill(card)) {
     const answers = acceptedJapaneseAnswers(card).filter(
       (a) => a !== normalizeJa(card.front),
     );
@@ -122,7 +140,7 @@ export function checkFlashcardAnswer(card: Card, input: string): boolean {
   const typed = input.trim();
   if (!typed) return false;
 
-  if (card.deck === "grammar") {
+  if (card.deck === "grammar" && !isDrill(card)) {
     const normalized = normalizeEn(typed);
     return [card.front].some((a) => normalizeEn(a) === normalized);
   }
@@ -137,6 +155,7 @@ export function checkFlashcardAnswer(card: Card, input: string): boolean {
 }
 
 export function flashcardAnswerDisplay(card: Card): string {
+  if (isDrill(card)) return stripFurigana(card.answers![0]);
   if (card.deck === "grammar") return card.front;
   if (card.deck === "kanji" && card.reading) return card.reading;
   if (card.deck === "vocab" && card.reading) {
@@ -150,7 +169,7 @@ export function flashcardAnswerDisplay(card: Card): string {
 }
 
 export function flashcardInputPlaceholder(card: Card): string {
-  if (card.deck === "grammar") return "Type the answer…";
+  if (card.deck === "grammar" && !isDrill(card)) return "Type the answer…";
   if (card.deck === "kanji") return "Type the reading (romaji or kana)…";
   return "Type in romaji or Japanese…";
 }

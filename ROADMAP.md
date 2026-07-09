@@ -82,7 +82,7 @@ Still **frontend-only**; backend stays deferred.
 |---|---------|-------------|-----|--------|----------|--------|
 | 1.1 | **Learn lesson vocabulary** *(re-scoped from “sentence cards”)* | Guided learn mode per lesson: meet each word (reading, meaning, audio), then typed recall with misses re-queued until correct; words join the review deck on finish. Entries: “Learn these words” in the lesson vocab section, `?vocab=1` deep link, “Learn its N new words first” on Today for the next lesson. Decision 2026-07-09: decks stay **word-based** — full sentences don’t become decks. | Learn vocabulary before, during, or after the lesson that introduces it. | Medium | High | ✅ |
 | 1.2 | **Typed recall mode (mobile)** | Typed answers with live romaji→kana conversion + normalized matching: kana, vocab, kanji readings, EN for grammar; quiz fill-ins too. Shipped beyond original “kana + vocab” scope. | Active production; still no AI. | Medium | High | ✅ |
-| 1.3 | **Rebuild grammar deck** | Replace title→summary with pattern drills (conjugate, particle, fix sentence) authored in lesson files. | Current grammar cards don’t teach grammar. | Medium | High | ⬜ |
+| 1.3 | **Rebuild grammar deck** | Replace title→summary with pattern drills (conjugate, particle, fix sentence) authored in lesson files. Infra shipped: `drills` content type → typed cards (`grammar:<lesson>:<drill>`), auto-enrolled on lesson complete, boosted on quiz miss; lessons without drills keep the legacy card. **Basic Grammar authored (11 lessons, 56 drills)**; essential/special/advanced stages still need drill passes. | Current grammar cards don’t teach grammar. | Medium | High | 🔄 |
 | 1.4 | **Kanji card modes** | char↔meaning, reading drills, link to example word from `kanji.ts`. | Kanji browser alone doesn’t build recall. | Medium | High | ⬜ |
 | 1.5 | **Pre-lesson warm-up** | 3–5 due cards before new lesson content (skippable). | Spacing inside the course path. | Medium | High | ⬜ |
 | 1.6 | **Leech / struggling cards** | Flag cards missed N times; offer extra practice or suspend. | Standard SRS hygiene; reduces frustration. | Low | Medium | ⬜ |
@@ -168,7 +168,7 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **1.3 Grammar deck rebuild** (start with Basic Grammar stage)
+1. **1.3 Grammar deck rebuild — remaining stages** (essential / special / advanced drill passes)
 2. **2.2 Store schema v2** · **2.3 Tests** (srs, japanese, store) · **2.1 PWA scaffold**
 3. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
 
@@ -187,6 +187,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-09 | Phase 1.3 (part 1): grammar drill infrastructure + Basic Grammar authored — `drills` in lesson files become typed Grammar-deck cards (instruction + JP prompt, romaji/kana/kanji answers), auto-enrolled on completion and boosted on quiz misses; 11 lessons, 56 drills; AUTHORING.md §6 documents the format |
 | 2026-07-09 | Phase 1.1 re-scoped and shipped: guided vocab learn mode (intro cards → typed recall with miss re-queue → words join the review deck) reachable from the lesson, `?vocab=1`, and Today; sentence cards dropped — decks stay word-based |
 | 2026-07-09 | Phase 0.4 shipped: quiz misses spawn/boost SRS cards (`boostCards` + `quizMissCardIds`) — missed lesson vocab and the lesson's grammar card go due-now, with a review link under the quiz results; **Phase 0 complete** |
 | 2026-07-09 | Phase 0.6 shipped: daily goal is now reviews-or-lesson (`dailyGoalReviews`, default 10; Settings presets 5/10/20/30) instead of XP — kana-quiz XP no longer fills the goal; removed dead `DailyGoalRing` |
