@@ -83,6 +83,8 @@ interface AppState {
 
   hasCard: (id: string) => boolean;
   addCards: (ids: string[]) => number; // returns # newly added
+  /** Spawn missing cards and pull scheduled ones forward to due-now (quiz misses). */
+  boostCards: (ids: string[]) => { added: number; boosted: number };
   reviewCard: (id: string, grade: Grade) => void;
 
   exportProgress: () => ProgressExport;
@@ -197,6 +199,25 @@ export const useStore = create<AppState>()(
         }
         if (added > 0) set({ cards });
         return added;
+      },
+
+      boostCards: (ids) => {
+        const cards = { ...get().cards };
+        const now = Date.now();
+        let added = 0;
+        let boosted = 0;
+        for (const id of ids) {
+          const existing = cards[id];
+          if (!existing) {
+            cards[id] = createCard(id, now);
+            added++;
+          } else if (existing.due > now) {
+            cards[id] = { ...existing, due: now };
+            boosted++;
+          }
+        }
+        if (added > 0 || boosted > 0) set({ cards });
+        return { added, boosted };
       },
 
       reviewCard: (id, grade) => {

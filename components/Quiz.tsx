@@ -29,7 +29,7 @@ export function Quiz({
   onComplete,
 }: {
   questions: QuizQuestion[];
-  onComplete?: (correct: number, total: number) => void;
+  onComplete?: (correct: number, total: number, missed: QuizQuestion[]) => void;
 }) {
   const [index, setIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -37,6 +37,7 @@ export function Quiz({
   const [wasCorrect, setWasCorrect] = useState(false);
   const [finished, setFinished] = useState(false);
   const [attempt, setAttempt] = useState(0);
+  const missedRef = useRef<QuizQuestion[]>([]);
 
   const q = questions[index];
 
@@ -45,12 +46,13 @@ export function Quiz({
     setAnswered(true);
     setWasCorrect(correct);
     if (correct) setCorrectCount((c) => c + 1);
+    else missedRef.current.push(q);
   }
 
   function next() {
     if (index + 1 >= questions.length) {
       setFinished(true);
-      onComplete?.(correctCount, questions.length);
+      onComplete?.(correctCount, questions.length, missedRef.current);
     } else {
       setIndex((i) => i + 1);
       setAnswered(false);
@@ -65,6 +67,7 @@ export function Quiz({
     setWasCorrect(false);
     setFinished(false);
     setAttempt((a) => a + 1);
+    missedRef.current = [];
   }
 
   if (finished) {

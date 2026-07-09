@@ -12,11 +12,12 @@ import {
   GraduationCap,
   SquareArrowOutUpRight,
 } from "lucide-react";
-import type { Lesson } from "@/content/types";
+import type { Lesson, QuizQuestion } from "@/content/types";
 import { useStore } from "@/lib/store";
 import { useDueStates } from "@/lib/review";
 import { XP } from "@/lib/leveling";
 import { stageMeta } from "@/content/curriculum";
+import { quizMissCardIds } from "@/lib/lesson-cards";
 import { stripFurigana } from "@/lib/japanese";
 import { JapaneseText } from "@/components/JapaneseText";
 import { AudioButton } from "@/components/AudioButton";
@@ -41,10 +42,12 @@ export function LessonView({
   const completeLesson = useStore((s) => s.completeLesson);
   const recordQuiz = useStore((s) => s.recordQuiz);
   const addXp = useStore((s) => s.addXp);
+  const boostCards = useStore((s) => s.boostCards);
   const quizScores = useStore((s) => s.quizScores);
 
   const [justCompleted, setJustCompleted] = useState(false);
   const [addedVocabCount, setAddedVocabCount] = useState(0);
+  const [missQueuedCount, setMissQueuedCount] = useState(0);
 
   const dueCount = useDueStates().length;
 
@@ -59,7 +62,11 @@ export function LessonView({
     setJustCompleted(true);
   }
 
-  function handleQuizComplete(correct: number, total: number) {
+  function handleQuizComplete(
+    correct: number,
+    total: number,
+    missed: QuizQuestion[],
+  ) {
     const pct = Math.round((correct / total) * 100);
     const firstTime = quizScores[lesson.id] === undefined;
     recordQuiz(lesson.id, pct);
@@ -69,6 +76,9 @@ export function LessonView({
     if (pct >= 60 && !completed) {
       finishLesson();
     }
+    // After completion so fresh vocab adds are attributed to the lesson, not the miss.
+    const { added, boosted } = boostCards(quizMissCardIds(lesson.id, missed));
+    setMissQueuedCount(added + boosted);
   }
 
   function handleManualComplete() {
@@ -186,6 +196,20 @@ export function LessonView({
             Check yourself
           </h2>
           <Quiz questions={lesson.quiz} onComplete={handleQuizComplete} />
+          {missQueuedCount > 0 && (
+            <p className="mt-3 text-center text-sm text-ink-soft animate-fade-up">
+              <Brain className="mr-1.5 inline h-4 w-4 align-[-0.18em] text-shu" />
+              {missQueuedCount} card{missQueuedCount === 1 ? "" : "s"} from what
+              you missed {missQueuedCount === 1 ? "is" : "are"} ready to{" "}
+              <Link
+                href="/flashcards?review=1"
+                className="font-medium text-shu hover:underline"
+              >
+                review now
+              </Link>
+              .
+            </p>
+          )}
         </section>
       )}
 
