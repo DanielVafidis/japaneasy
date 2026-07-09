@@ -80,7 +80,7 @@ Still **frontend-only**; backend stays deferred.
 
 | # | Feature | Description | Why | Effort | Priority | Status |
 |---|---------|-------------|-----|--------|----------|--------|
-| 1.1 | **Sentence cards from examples** | Generate SRS cards from `examples` blocks: JP → EN, optional cloze. | Words in context; grammar collocation. | Medium | High | ⬜ |
+| 1.1 | **Learn lesson vocabulary** *(re-scoped from “sentence cards”)* | Guided learn mode per lesson: meet each word (reading, meaning, audio), then typed recall with misses re-queued until correct; words join the review deck on finish. Entries: “Learn these words” in the lesson vocab section, `?vocab=1` deep link, “Learn its N new words first” on Today for the next lesson. Decision 2026-07-09: decks stay **word-based** — full sentences don’t become decks. | Learn vocabulary before, during, or after the lesson that introduces it. | Medium | High | ✅ |
 | 1.2 | **Typed recall mode (mobile)** | Typed answers with live romaji→kana conversion + normalized matching: kana, vocab, kanji readings, EN for grammar; quiz fill-ins too. Shipped beyond original “kana + vocab” scope. | Active production; still no AI. | Medium | High | ✅ |
 | 1.3 | **Rebuild grammar deck** | Replace title→summary with pattern drills (conjugate, particle, fix sentence) authored in lesson files. | Current grammar cards don’t teach grammar. | Medium | High | ⬜ |
 | 1.4 | **Kanji card modes** | char↔meaning, reading drills, link to example word from `kanji.ts`. | Kanji browser alone doesn’t build recall. | Medium | High | ⬜ |
@@ -168,10 +168,9 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **1.1 Sentence cards** from examples
-2. **1.3 Grammar deck rebuild** (start with Basic Grammar stage)
-3. **2.2 Store schema v2** · **2.3 Tests** (srs, japanese, store) · **2.1 PWA scaffold**
-4. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
+1. **1.3 Grammar deck rebuild** (start with Basic Grammar stage)
+2. **2.2 Store schema v2** · **2.3 Tests** (srs, japanese, store) · **2.1 PWA scaffold**
+3. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
 
 ---
 
@@ -188,6 +187,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-09 | Phase 1.1 re-scoped and shipped: guided vocab learn mode (intro cards → typed recall with miss re-queue → words join the review deck) reachable from the lesson, `?vocab=1`, and Today; sentence cards dropped — decks stay word-based |
 | 2026-07-09 | Phase 0.4 shipped: quiz misses spawn/boost SRS cards (`boostCards` + `quizMissCardIds`) — missed lesson vocab and the lesson's grammar card go due-now, with a review link under the quiz results; **Phase 0 complete** |
 | 2026-07-09 | Phase 0.6 shipped: daily goal is now reviews-or-lesson (`dailyGoalReviews`, default 10; Settings presets 5/10/20/30) instead of XP — kana-quiz XP no longer fills the goal; removed dead `DailyGoalRing` |
 | 2026-07-08 | Phase 0.5 shipped: first-run onboarding — 3-step "How the course works" card (read → quiz → review) in the Today view for brand-new users; dismissible, persisted via `onboardingDismissed` in the store and export/import |

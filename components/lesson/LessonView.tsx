@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -19,11 +19,13 @@ import { XP } from "@/lib/leveling";
 import { stageMeta } from "@/content/curriculum";
 import { quizMissCardIds } from "@/lib/lesson-cards";
 import { stripFurigana } from "@/lib/japanese";
+import { cn } from "@/lib/cn";
 import { JapaneseText } from "@/components/JapaneseText";
 import { AudioButton } from "@/components/AudioButton";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
 import { ReadingControls } from "@/components/ReadingControls";
 import { LessonBlocks } from "@/components/lesson/LessonBlocks";
+import { LearnVocab } from "@/components/lesson/LearnVocab";
 import { VocabCheck } from "@/components/lesson/VocabCheck";
 import { Quiz } from "@/components/Quiz";
 import { Badge } from "@/components/ui/Badge";
@@ -48,6 +50,17 @@ export function LessonView({
   const [justCompleted, setJustCompleted] = useState(false);
   const [addedVocabCount, setAddedVocabCount] = useState(0);
   const [missQueuedCount, setMissQueuedCount] = useState(0);
+  const [learningVocab, setLearningVocab] = useState(false);
+
+  useEffect(() => {
+    // Deep link (?vocab=1) opens learn mode; also resets it when the
+    // lesson changes in place (App Router keeps state across params).
+    const open =
+      (lesson.vocabulary?.length ?? 0) > 0 &&
+      new URLSearchParams(window.location.search).get("vocab") === "1";
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLearningVocab(open);
+  }, [lesson.id, lesson.vocabulary]);
 
   const dueCount = useDueStates().length;
 
@@ -130,13 +143,31 @@ export function LessonView({
             <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-ink-faint">
               <BookOpen className="h-4 w-4" /> Vocabulary
             </h2>
-            <AddToDeckButton
-              ids={vocabIds}
-              label={`Add all ${vocabIds.length}`}
-              className="w-full sm:w-auto"
-            />
+            {!learningVocab && (
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                <Button
+                  size="sm"
+                  onClick={() => setLearningVocab(true)}
+                  className="w-full sm:w-auto"
+                >
+                  <GraduationCap className="h-4 w-4" />
+                  Learn these words
+                </Button>
+                <AddToDeckButton
+                  ids={vocabIds}
+                  label={`Add all ${vocabIds.length}`}
+                  className="w-full sm:w-auto"
+                />
+              </div>
+            )}
           </div>
-          <ul className="grid gap-3 sm:grid-cols-2">
+          {learningVocab && (
+            <LearnVocab
+              vocabulary={lesson.vocabulary}
+              onClose={() => setLearningVocab(false)}
+            />
+          )}
+          <ul className={cn("grid gap-3 sm:grid-cols-2", learningVocab && "hidden")}>
             {lesson.vocabulary.map((v, i) => (
               <li
                 key={i}
@@ -177,7 +208,7 @@ export function LessonView({
               </li>
             ))}
           </ul>
-          {lesson.vocabulary.length >= 3 && (
+          {!learningVocab && lesson.vocabulary.length >= 3 && (
             <VocabCheck vocabulary={lesson.vocabulary} />
           )}
         </section>

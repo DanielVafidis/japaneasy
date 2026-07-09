@@ -1,6 +1,6 @@
 import { getLesson } from "@/content/curriculum";
-import { cardsById } from "@/content/decks";
-import type { QuizQuestion } from "@/content/types";
+import { cardsById, type Card } from "@/content/decks";
+import type { QuizQuestion, VocabEntry } from "@/content/types";
 import { stripFurigana } from "@/lib/japanese";
 
 /** Flashcard ids for a lesson's vocabulary entries. */
@@ -8,6 +8,20 @@ export function vocabCardIdsForLesson(lessonId: string): string[] {
   const lesson = getLesson(lessonId);
   if (!lesson?.vocabulary?.length) return [];
   return lesson.vocabulary.map((v) => `vocab:${stripFurigana(v.word)}`);
+}
+
+/** Ephemeral card for in-lesson practice/learn drills (not an SRS id). */
+export function practiceCard(v: VocabEntry): Card {
+  const plain = stripFurigana(v.word);
+  return {
+    id: `practice:${plain}`,
+    deck: "vocab",
+    front: v.word,
+    back: v.meaning,
+    reading: v.reading,
+    frontJp: true,
+    speak: v.reading ?? plain,
+  };
 }
 
 /**

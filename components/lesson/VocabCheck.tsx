@@ -4,25 +4,12 @@ import { useState } from "react";
 import { Dumbbell, RotateCcw } from "lucide-react";
 import type { VocabEntry } from "@/content/types";
 import type { Card } from "@/content/decks";
-import { stripFurigana } from "@/lib/japanese";
 import { checkFlashcardAnswer } from "@/lib/flashcard-review";
+import { practiceCard } from "@/lib/lesson-cards";
 import { TypingFlashcard } from "@/components/flashcards/TypingFlashcard";
 import { Button } from "@/components/ui/Button";
 
 const MAX_WORDS = 4;
-
-function toCard(v: VocabEntry): Card {
-  const plain = stripFurigana(v.word);
-  return {
-    id: `practice:${plain}`,
-    deck: "vocab",
-    front: v.word,
-    back: v.meaning,
-    reading: v.reading,
-    frontJp: true,
-    speak: v.reading ?? plain,
-  };
-}
 
 function sample(vocabulary: VocabEntry[]): Card[] {
   const pool = [...vocabulary];
@@ -30,7 +17,7 @@ function sample(vocabulary: VocabEntry[]): Card[] {
     const j = Math.floor(Math.random() * (i + 1));
     [pool[i], pool[j]] = [pool[j], pool[i]];
   }
-  return pool.slice(0, MAX_WORDS).map(toCard);
+  return pool.slice(0, MAX_WORDS).map(practiceCard);
 }
 
 /**

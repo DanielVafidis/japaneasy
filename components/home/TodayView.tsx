@@ -134,6 +134,17 @@ export function TodayView() {
             {primary.cta}
             <ArrowRight className="h-4 w-4" />
           </ButtonLink>
+          {primary.kind === "lesson" &&
+            nextLesson &&
+            (nextLesson.vocabulary?.length ?? 0) > 0 && (
+              <Link
+                href={`/lessons/${nextLesson.id}?vocab=1`}
+                className="mt-3 block text-center text-sm font-medium text-shu hover:underline"
+              >
+                Learn its {nextLesson.vocabulary!.length} new word
+                {nextLesson.vocabulary!.length === 1 ? "" : "s"} first
+              </Link>
+            )}
         </div>
       )}
 
