@@ -205,7 +205,7 @@ function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void 
         )}
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <AddToDeckButton ids={cardIds} label="Add both cards" size="md" />
+          <AddToDeckButton ids={cardIds} label="Add to deck" size="md" />
           <a
             href={`https://jisho.org/search/${encodeURIComponent(k.char)}`}
             target="_blank"
