@@ -116,6 +116,18 @@ export const politeForm: Lesson = {
       distractors: ["会[あ]う"],
       explanation: "Polite sentences end in the ます form: 会います, not plain 会う.",
     },
+    {
+      kind: "listen",
+      prompt: "Listen — type the polite sentence you hear:",
+      audio: "行[い]きます",
+      explanation: "行きます — (I) go / will go, politely.",
+    },
+    {
+      kind: "listen",
+      prompt: "Listen — type the polite sentence you hear:",
+      audio: "学生[がくせい]です",
+      explanation: "学生です — (I) am a student, politely.",
+    },
   ],
   drills: [
     { id: "masu", prompt: "Make it polite", jp: "食[た]べる", answers: ["食[た]べます"] },

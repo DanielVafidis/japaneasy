@@ -28,16 +28,20 @@ JapanEasy is a lesson-based web app: kana first, then grammar built block by blo
 
 ## Features
 
-- **35 lessons across 5 stages** — Foundations → Basic Grammar → Essential Grammar → Special Expressions → Advanced Topics
+- **54 lessons across 5 stages** — Foundations → Basic Grammar → Essential Grammar → Special Expressions → Advanced Topics, with full [Tae Kim guide](#source--attribution) coverage
+- **A complete learning loop** — first-run onboarding, guided *learn the words* mode around each lesson, a skippable pre-lesson warm-up of due reviews, and quiz misses feeding straight back into the review queue
+- **Spaced-repetition flashcards** — SM-2-style scheduler with typed recall (romaji converts live); kana, vocab, kanji, and grammar decks, plus focused practice for struggling cards
+- **243 grammar pattern drills** — every grammar lesson drills its own patterns (conjugate, fill the particle, transform), not title→summary cards
+- **Kanji browser & dual cards** — 172 common characters; each adds a recall *and* a recognition card, revealed with an example word
+- **Per-lesson quizzes** — multiple choice, fill-in, matching, sentence-building, and listening dictation; 60%+ completes the lesson
 - **Kana Trainer** — hiragana/katakana chart, recognition quiz, and writing canvas
-- **Kanji browser** — 100 common characters with readings, examples, and add-to-deck
-- **Global search (⌘K)** — jump to any lesson, word, kanji, or page
+- **Audio everywhere** — Web Speech API on sentences, words, and kana (curated audio planned)
 - **Furigana & romaji toggles** — romaji off by default; generated from kana automatically
-- **Audio everywhere** — Web Speech API on sentences, words, and kana
-- **Spaced-repetition flashcards** — SM-2-style scheduler; kana, vocab, grammar, and kanji decks
-- **Per-lesson quizzes** — multiple choice, fill-in, and matching; 60%+ completes the lesson
-- **Progress & gamification** — streaks, XP, levels, daily goal ring, study heatmap, export/import
+- **Global search (⌘K)** — jump to any lesson, word, kanji, or page
+- **Honest progress** — streaks, XP, a daily goal counted in reviews or lessons (not XP grinding), study heatmap, export/import
 - **Light & dark themes** — clean, high-contrast UI
+
+See **[ROADMAP.md](ROADMAP.md)** for direction and what's next.
 
 ## Tech stack
 
@@ -60,6 +64,7 @@ npm run dev      # http://localhost:3000
 npm run build    # production build + type-check
 npm run start    # serve production build
 npm run lint
+npm test         # vitest — srs, japanese text, answer checkers, store, content scans
 ```
 
 > Japanese TTS depends on your OS/browser voice. Audio buttons hide themselves if none is available.
@@ -74,6 +79,7 @@ content/                 # typed lesson & kanji data
   kana.ts, kanji.ts, decks.ts, types.ts
 lib/                     # store, SRS, furigana/romaji, speech, leveling
 components/              # UI by feature area
+tests/                   # vitest suites incl. content validation
 .screenshots/            # README screenshots
 ```
 

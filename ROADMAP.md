@@ -99,9 +99,9 @@ Still **frontend-only**; backend stays deferred.
 | 2.3 | **Tests (SRS, furigana, store)** | Unit tests for `lib/srs.ts`, `lib/japanese.ts`, store import/export. Shipped (Vitest, `npm test`): 69 tests over srs scheduling, furigana/romaji conversion, flashcard+quiz answer checkers, store actions (streak, XP, boost, complete, import round-trip incl. legacy fields), lesson→card mapping, plus a content scan validating every drill answer in kanji/kana/romaji forms and all quiz shapes. | Prevent silent scheduling bugs. | Medium | High | ✅ |
 | 2.4 | **Push-style reminders (PWA)** | Optional “reviews due” via Web Push when PWA installed. | Retention without native app. | Medium | Medium | ⬜ |
 | 2.5 | **Natural audio (curated)** | Record or license native audio for core lesson sentences; keep TTS fallback. | Course quality bar; listening exposure. | High | Medium | ⬜ |
-| 2.6 | **Listening comprehension drills** | Hear sentence → pick/write answer (no open-ended AI). Pilot shipped: new `listen` quiz kind (TTS speaks it, learner types the transcription — kanji/kana/romaji accepted, text revealed after answering); 3 questions live in the hiragana lesson. Roll out to more lessons next. | Ear training beyond TTS playback. | Medium | High | 🔄 |
+| 2.6 | **Listening comprehension drills** | Hear sentence → pick/write answer (no open-ended AI). Shipped: `listen` quiz kind (TTS speaks it, learner types the transcription — kanji/kana/romaji accepted, text revealed after answering); 11 questions across hiragana, katakana, state-of-being, polite-form, questions-polite, and past-tense. Extend alongside future content passes; audio quality improves with 2.5. | Ear training beyond TTS playback. | Medium | High | ✅ |
 | 2.7 | **Accessibility pass** | Mobile focus, touch targets, screen reader on quiz/SRS. | Mobile-first includes a11y. | Medium | Medium | ⬜ |
-| 2.8 | **Update README** | 50 lessons, link to this roadmap, mobile/PWA notes. | Docs match product. | Low | Low | ⬜ |
+| 2.8 | **Update README** | 50 lessons, link to this roadmap, mobile/PWA notes. Shipped: 54 lessons, learning-loop features, 243 drills, dual kanji cards, listening, `npm test`, roadmap link. | Docs match product. | Low | Low | ✅ |
 
 ---
 
@@ -168,8 +168,8 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **2.6 rollout** — listen questions across more lessons (after pilot feedback)
-2. **Phase 3** candidates (graded readings, situation modules, stage recaps) or **2.5 natural audio** — pick direction
+1. **2.7 accessibility pass** (focus order, touch targets, screen readers on quiz/review)
+2. **Pick the direction**: Phase 3 content depth (graded readings, situation modules, stage recaps) · 2.5 natural audio · backend/sync era
 
 **Phase 1 is complete** (1.1–1.7 all ✅).
 
@@ -190,6 +190,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-09 | Phases 2.6 + 2.8 completed: listening dictation rolled out to 6 lessons (11 questions incl. katakana loanwords and short grammar sentences); README refreshed (54 lessons, learning loop, drills, tests, roadmap link) |
 | 2026-07-09 | Phases 1.4 + 1.6 + 1.7 shipped: kanji recognition cards (`kanji-mean:X`) with example words in the reveal; leech section on flashcards overview with focused practice; soft kana-first nudge on early grammar lessons — **Phase 1 complete** |
 | 2026-07-09 | Phase 2.6 piloted: `listen` quiz kind — TTS dictation with typed transcription (romaji converts live), audio revealed after answering; 3 questions in the hiragana lesson; AUTHORING.md documents the kind |
 | 2026-07-09 | Phase 1.5 shipped: pre-lesson warm-up — once-a-day offer on uncompleted lessons to review up to 5 oldest-due cards inline (real SRS grades, counts toward the goal), skippable for the day |

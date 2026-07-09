@@ -105,6 +105,12 @@ export const pastTense: Lesson = {
       distractors: ["寒[さむ]い"],
       explanation: "Past i-adjective: 寒い → 寒かった.",
     },
+    {
+      kind: "listen",
+      prompt: "Listen — type the sentence you hear:",
+      audio: "食[た]べなかった",
+      explanation: "食べなかった — did not eat.",
+    },
   ],
   drills: [
     { id: "ru-past", prompt: "Make it past tense", jp: "食[た]べる", answers: ["食[た]べた"] },

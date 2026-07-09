@@ -124,6 +124,12 @@ export const questionsPolite: Lesson = {
       distractors: ["どこだか"],
       explanation: "Polite questions end in ですか.",
     },
+    {
+      kind: "listen",
+      prompt: "Listen — type the question you hear:",
+      audio: "元気[げんき]ですか",
+      explanation: "元気ですか — are you well? The か marks the question.",
+    },
   ],
   drills: [
     { id: "ka", prompt: "Make it a polite question", jp: "学生[がくせい]です", answers: ["学生[がくせい]ですか"] },

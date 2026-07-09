@@ -93,5 +93,17 @@ export const katakana: Lesson = {
       promptJp: "ス",
       answers: ["su"],
     },
+    {
+      kind: "listen",
+      prompt: "Listen — type the loanword you hear:",
+      audio: "カメラ",
+      explanation: "カメラ — camera.",
+    },
+    {
+      kind: "listen",
+      prompt: "Listen — type the loanword you hear:",
+      audio: "テレビ",
+      explanation: "テレビ — TV (from 'television').",
+    },
   ],
 };

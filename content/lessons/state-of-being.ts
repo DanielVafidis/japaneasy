@@ -136,6 +136,18 @@ export const stateOfBeing: Lesson = {
       distractors: ["じゃない"],
       explanation: "Topic first (私は), then the noun, then declarative だ.",
     },
+    {
+      kind: "listen",
+      prompt: "Listen — type the sentence you hear:",
+      audio: "学生[がくせい]だ",
+      explanation: "学生だ — (I) am a student.",
+    },
+    {
+      kind: "listen",
+      prompt: "Listen — type the sentence you hear:",
+      audio: "元気[げんき]じゃない",
+      explanation: "元気じゃない — not well; the casual negative of 元気だ.",
+    },
   ],
   drills: [
     { id: "declare", prompt: "Declare it — 'is a student'", jp: "学生[がくせい]", answers: ["学生[がくせい]だ"] },
