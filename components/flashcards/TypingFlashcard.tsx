@@ -43,7 +43,8 @@ export function TypingFlashcard({
   const showVocabReading =
     card.deck === "vocab" &&
     card.reading &&
-    plainFront === toReading(card.front);
+    plainFront === toReading(card.front) &&
+    card.reading !== plainFront;
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -154,39 +155,37 @@ export function TypingFlashcard({
             )}
             <div className="min-w-0 flex-1">
               <p className="font-semibold">{correct ? "Correct" : "Not quite"}</p>
-              {!correct && (
-                <p className="mt-1 flex flex-wrap items-center gap-2 text-ink">
-                  <span className="text-ink-soft">Answer:</span>
-                  {card.deck === "grammar" && card.answers?.length ? (
+              <p className="mt-1 flex flex-wrap items-center gap-2 text-ink">
+                {!correct && <span className="text-ink-soft">Answer:</span>}
+                {card.deck === "grammar" && card.answers?.length ? (
+                  <JapaneseText
+                    text={card.answers[0]}
+                    showFurigana
+                    className="text-lg"
+                  />
+                ) : card.deck === "kanji" ? (
+                  <>
+                    <span className="font-jp text-lg">{card.front}</span>
+                    <span className="text-ink-soft">({answer})</span>
+                  </>
+                ) : card.frontJp ? (
+                  <>
                     <JapaneseText
-                      text={card.answers[0]}
-                      showFurigana={false}
+                      text={card.front}
+                      showFurigana
                       className="text-lg"
                     />
-                  ) : card.deck === "kanji" ? (
-                    <>
-                      <span className="font-jp text-lg">{card.front}</span>
-                      <span className="text-ink-soft">({answer})</span>
-                    </>
-                  ) : card.frontJp ? (
-                    <>
-                      <JapaneseText
-                        text={card.front}
-                        showFurigana={false}
-                        className="text-lg"
-                      />
-                      {showVocabReading && (
-                        <span className="font-jp text-ink-soft">
-                          ({card.reading})
-                        </span>
-                      )}
-                    </>
-                  ) : (
-                    <span className="font-display text-lg">{answer}</span>
-                  )}
-                  {card.speak && <AudioButton text={card.speak} size="sm" />}
-                </p>
-              )}
+                    {showVocabReading && (
+                      <span className="font-jp text-ink-soft">
+                        ({card.reading})
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  <span className="font-display text-lg">{answer}</span>
+                )}
+                {card.speak && <AudioButton text={card.speak} size="sm" />}
+              </p>
             </div>
           </div>
           <Button
