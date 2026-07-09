@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { allCards, cardsById } from "@/content/decks";
 import { allLessons } from "@/content/lessons";
 import { checkFlashcardAnswer } from "@/lib/flashcard-review";
+import { checkQuizListenAnswer } from "@/lib/quiz-review";
 import { stripFurigana, toReading, toRomaji } from "@/lib/japanese";
 
 describe("card catalogue", () => {
@@ -103,6 +104,18 @@ describe("quizzes", () => {
         }
         if (q.kind === "fill") {
           expect(q.answers.length).toBeGreaterThan(0);
+        }
+        if (q.kind === "listen") {
+          const label = `${lesson.id}: listen "${q.audio}"`;
+          expect(q.audio.trim().length, label).toBeGreaterThan(0);
+          expect(
+            checkQuizListenAnswer(q, toReading(q.audio)),
+            `${label} rejects its own reading`,
+          ).toBe(true);
+          expect(
+            checkQuizListenAnswer(q, toRomaji(q.audio)),
+            `${label} rejects its own romaji`,
+          ).toBe(true);
         }
       }
     }

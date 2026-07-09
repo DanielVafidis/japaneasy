@@ -61,6 +61,9 @@ function questionJapanese(q: QuizQuestion): string[] {
     case "match":
       for (const p of q.pairs) parts.push(p.left, p.right);
       break;
+    case "listen":
+      parts.push(q.audio, ...(q.answers ?? []));
+      break;
   }
   return parts.map(stripFurigana);
 }

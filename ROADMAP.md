@@ -99,7 +99,7 @@ Still **frontend-only**; backend stays deferred.
 | 2.3 | **Tests (SRS, furigana, store)** | Unit tests for `lib/srs.ts`, `lib/japanese.ts`, store import/export. Shipped (Vitest, `npm test`): 69 tests over srs scheduling, furigana/romaji conversion, flashcard+quiz answer checkers, store actions (streak, XP, boost, complete, import round-trip incl. legacy fields), lesson→card mapping, plus a content scan validating every drill answer in kanji/kana/romaji forms and all quiz shapes. | Prevent silent scheduling bugs. | Medium | High | ✅ |
 | 2.4 | **Push-style reminders (PWA)** | Optional “reviews due” via Web Push when PWA installed. | Retention without native app. | Medium | Medium | ⬜ |
 | 2.5 | **Natural audio (curated)** | Record or license native audio for core lesson sentences; keep TTS fallback. | Course quality bar; listening exposure. | High | Medium | ⬜ |
-| 2.6 | **Listening comprehension drills** | Hear sentence → pick/write answer (no open-ended AI). | Ear training beyond TTS playback. | Medium | High | ⬜ |
+| 2.6 | **Listening comprehension drills** | Hear sentence → pick/write answer (no open-ended AI). Pilot shipped: new `listen` quiz kind (TTS speaks it, learner types the transcription — kanji/kana/romaji accepted, text revealed after answering); 3 questions live in the hiragana lesson. Roll out to more lessons next. | Ear training beyond TTS playback. | Medium | High | 🔄 |
 | 2.7 | **Accessibility pass** | Mobile focus, touch targets, screen reader on quiz/SRS. | Mobile-first includes a11y. | Medium | Medium | ⬜ |
 | 2.8 | **Update README** | 50 lessons, link to this roadmap, mobile/PWA notes. | Docs match product. | Low | Low | ⬜ |
 
@@ -168,8 +168,8 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **2.6 Listening drills** (pilot one lesson)
-2. **1.4 Kanji card modes** · **1.6 Leech cards** · **1.7 Kana mastery suggestion**
+1. **1.4 Kanji card modes** · **1.6 Leech cards** · **1.7 Kana mastery suggestion**
+2. **2.6 rollout** — listen questions across more lessons (after pilot feedback)
 
 (2.1 PWA and 2.2 store schema v2 deferred — revisit with backend/sync.)
 
@@ -188,6 +188,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-09 | Phase 2.6 piloted: `listen` quiz kind — TTS dictation with typed transcription (romaji converts live), audio revealed after answering; 3 questions in the hiragana lesson; AUTHORING.md documents the kind |
 | 2026-07-09 | Phase 1.5 shipped: pre-lesson warm-up — once-a-day offer on uncompleted lessons to review up to 5 oldest-due cards inline (real SRS grades, counts toward the goal), skippable for the day |
 | 2026-07-09 | Phase 2.3 shipped: Vitest suite (`npm test`) — 69 tests across srs, japanese, answer checkers, store, lesson-cards, and a full content validation scan (every drill answer accepted as kanji/kana/romaji) |
 | 2026-07-09 | Phase 1.3 complete: Special Expressions + Advanced Topics drill passes — 91 drills across the final 20 lessons (causative/passive, keigo, てしまう, certainty, amounts, hearsay, ずに, tendencies, volitional, formal patterns); grammar deck now 243 authored drills with no legacy cards. 2.2 schema v2 deferred until backend/sync |

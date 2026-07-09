@@ -113,6 +113,16 @@ You never write romaji by hand — it's generated from the kana for the romaji t
   distractors: ["じゃない"],                        // optional wrong tiles
   explanation: "Topic first, noun, then declarative だ.",
 }
+
+// Listening (TTS speaks `audio`; the learner types what they heard —
+// kanji, kana, or romaji all accepted; `audio` is revealed after answering)
+{
+  kind: "listen",
+  prompt: "Listen — type the word you hear:",
+  audio: "きって",                 // may carry furigana; never shown up front
+  answers: ["きって", "切手"],     // optional; defaults to the audio text
+  explanation: "きって — the small っ doubles the t.",
+}
 ```
 
 Fill-in questions with Japanese answers accept romaji — the input converts to kana live.

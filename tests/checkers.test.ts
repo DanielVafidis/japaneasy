@@ -8,7 +8,9 @@ import {
 } from "@/lib/flashcard-review";
 import {
   checkQuizFillAnswer,
+  checkQuizListenAnswer,
   checkQuizOrderAnswer,
+  listenAnswers,
 } from "@/lib/quiz-review";
 import type { QuizQuestion } from "@/content/types";
 
@@ -106,6 +108,26 @@ describe("quiz answers", () => {
     expect(checkQuizFillAnswer(jaFill, "たべなかった")).toBe(true);
     expect(checkQuizFillAnswer(jaFill, "食べなかった")).toBe(true);
     expect(checkQuizFillAnswer(jaFill, "tabeta")).toBe(false);
+  });
+
+  it("listening questions accept kana, romaji, and kanji transcriptions", () => {
+    const kana: QuizQuestion = {
+      kind: "listen",
+      prompt: "Type what you hear:",
+      audio: "きって",
+    };
+    expect(checkQuizListenAnswer(kana, "きって")).toBe(true);
+    expect(checkQuizListenAnswer(kana, "kitte")).toBe(true);
+    expect(checkQuizListenAnswer(kana, "きて")).toBe(false);
+
+    const kanji: QuizQuestion = {
+      kind: "listen",
+      prompt: "Type what you hear:",
+      audio: "学生[がくせい]だ",
+    };
+    expect(listenAnswers(kanji)).toEqual(["学生だ", "がくせいだ"]);
+    expect(checkQuizListenAnswer(kanji, "gakuseida")).toBe(true);
+    expect(checkQuizListenAnswer(kanji, "学生だ")).toBe(true);
   });
 
   it("order questions require the exact tile sequence", () => {

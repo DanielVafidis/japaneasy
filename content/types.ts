@@ -71,6 +71,15 @@ export type QuizQuestion =
       /** Extra wrong tiles mixed into the bank. */
       distractors?: string[];
       explanation?: string;
+    }
+  | {
+      kind: "listen";
+      prompt: string;
+      /** Spoken via TTS, never shown before answering; may carry furigana. */
+      audio: string;
+      /** Accepted transcriptions; defaults to the audio text itself. */
+      answers?: string[];
+      explanation?: string;
     };
 
 /**

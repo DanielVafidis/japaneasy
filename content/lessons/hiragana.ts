@@ -141,5 +141,23 @@ export const hiragana: Lesson = {
       answer: 0,
       explanation: "し + small ゃ = sha, so しゃしん = shashin (photograph).",
     },
+    {
+      kind: "listen",
+      prompt: "Listen — type the word you hear:",
+      audio: "ねこ",
+      explanation: "ねこ — cat.",
+    },
+    {
+      kind: "listen",
+      prompt: "Listen — type the word you hear:",
+      audio: "きって",
+      explanation: "きって (stamp) — the small っ doubles the t: ki-t-te.",
+    },
+    {
+      kind: "listen",
+      prompt: "Listen — type the word you hear:",
+      audio: "しゃしん",
+      explanation: "しゃしん (photo) — し plus small ゃ makes sha.",
+    },
   ],
 };

@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Check, X, RotateCcw, Trophy } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Check, X, RotateCcw, Trophy, Volume2 } from "lucide-react";
 import type { QuizQuestion } from "@/content/types";
 import { JapaneseText } from "@/components/JapaneseText";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { speak } from "@/lib/speech";
 import {
   checkQuizFillAnswer,
   checkQuizOrderAnswer,
   fillUsesJapaneseInput,
+  listenAsFill,
   orderAnswerText,
   prepareQuizFillInput,
   quizFillPlaceholder,
@@ -134,6 +136,9 @@ export function Quiz({
           {q.kind === "order" && (
             <OrderSentence q={q} answered={answered} onResult={handleResult} />
           )}
+          {q.kind === "listen" && (
+            <Listen q={q} answered={answered} onResult={handleResult} />
+          )}
         </div>
       </div>
 
@@ -250,10 +255,14 @@ function FillIn({
   q,
   answered,
   onResult,
+  hidePrompt = false,
+  hideAnswer = false,
 }: {
   q: Extract<QuizQuestion, { kind: "fill" }>;
   answered: boolean;
   onResult: (correct: boolean) => void;
+  hidePrompt?: boolean;
+  hideAnswer?: boolean;
 }) {
   const [value, setValue] = useState("");
   const composingRef = useRef(false);
@@ -272,7 +281,7 @@ function FillIn({
 
   return (
     <>
-      <Prompt prompt={q.prompt} promptJp={q.promptJp} />
+      {!hidePrompt && <Prompt prompt={q.prompt} promptJp={q.promptJp} />}
       <form onSubmit={submit} className="flex flex-col gap-3 sm:flex-row">
         <input
           autoFocus
@@ -324,12 +333,64 @@ function FillIn({
           </Button>
         )}
       </form>
-      {answered && (
+      {answered && !hideAnswer && (
         <p className="mt-3 text-sm text-ink-soft">
           Accepted answer:{" "}
           <span className="font-jp font-medium text-ink">{q.answers[0]}</span>
         </p>
       )}
+    </>
+  );
+}
+
+function Listen({
+  q,
+  answered,
+  onResult,
+}: {
+  q: Extract<QuizQuestion, { kind: "listen" }>;
+  answered: boolean;
+  onResult: (correct: boolean) => void;
+}) {
+  const fillQ = useMemo(() => listenAsFill(q), [q]);
+  const [played, setPlayed] = useState(false);
+
+  function play() {
+    if (speak(q.audio)) setPlayed(true);
+  }
+
+  return (
+    <>
+      <Prompt prompt={q.prompt} />
+      <div className="mb-5 flex flex-col items-center gap-3 rounded-2xl bg-surface-2/70 py-7">
+        <button
+          type="button"
+          onClick={play}
+          aria-label="Play the audio"
+          className="grid h-16 w-16 place-items-center rounded-full border-2 border-ai/30 bg-surface text-ai transition-all hover:border-ai/60 active:scale-95"
+        >
+          <Volume2 className="h-7 w-7" />
+        </button>
+        {answered ? (
+          <JapaneseText
+            text={q.audio}
+            showFurigana
+            className="text-2xl"
+            align="center"
+          />
+        ) : (
+          <p className="text-xs text-ink-faint">
+            {played ? "Tap to hear it again" : "Tap to listen"}
+          </p>
+        )}
+      </div>
+      <FillIn
+        q={fillQ}
+        answered={answered}
+        onResult={onResult}
+        hidePrompt
+        hideAnswer
+      />
     </>
   );
 }

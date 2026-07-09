@@ -4,6 +4,7 @@ import {
   fromRomaji,
   kataToHira,
   normalizeRomaji,
+  stripFurigana,
   toReading,
   toRomaji,
 } from "@/lib/japanese";
@@ -12,6 +13,27 @@ const JA_RE = /[\u3040-\u309f\u30a0-\u30ff\u3400-\u9fff\u3005]/;
 
 type FillQuestion = Extract<QuizQuestion, { kind: "fill" }>;
 type OrderQuestion = Extract<QuizQuestion, { kind: "order" }>;
+type ListenQuestion = Extract<QuizQuestion, { kind: "listen" }>;
+
+/** Accepted transcriptions for a listening question (kanji + reading forms). */
+export function listenAnswers(q: ListenQuestion): string[] {
+  const raw = q.answers?.length ? q.answers : [q.audio];
+  const out = new Set<string>();
+  for (const a of raw) {
+    out.add(stripFurigana(a));
+    out.add(toReading(a));
+  }
+  return [...out];
+}
+
+/** A listening question checks exactly like a fill with the audio as answer. */
+export function listenAsFill(q: ListenQuestion): FillQuestion {
+  return { kind: "fill", prompt: q.prompt, answers: listenAnswers(q) };
+}
+
+export function checkQuizListenAnswer(q: ListenQuestion, input: string): boolean {
+  return checkQuizFillAnswer(listenAsFill(q), input);
+}
 
 export function checkQuizOrderAnswer(q: OrderQuestion, picked: string[]): boolean {
   return (
