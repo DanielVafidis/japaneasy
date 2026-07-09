@@ -149,4 +149,11 @@ export const causativePassive: Lesson = {
       explanation: "Causative-passive させられる = was made to do; 食べられた is plain passive.",
     },
   ],
+  drills: [
+    { id: "causative-ru", prompt: "Make the causative — 'make/let eat'", jp: "食[た]べる", answers: ["食[た]べさせる"] },
+    { id: "causative-u", prompt: "Make the causative — 'make/let go'", jp: "行[い]く", answers: ["行[い]かせる"] },
+    { id: "passive-ru", prompt: "Make the passive — 'be eaten'", jp: "食[た]べる", answers: ["食[た]べられる"] },
+    { id: "passive-u", prompt: "Make the passive — 'be kept waiting… (wait done to you)'", jp: "待[ま]つ", answers: ["待[ま]たれる"] },
+    { id: "causative-passive", prompt: "Make the causative-passive — 'be made to eat'", jp: "食[た]べる", answers: ["食[た]べさせられる"] },
+  ],
 };

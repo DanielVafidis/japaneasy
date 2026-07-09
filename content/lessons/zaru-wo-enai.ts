@@ -154,4 +154,11 @@ export const zaruWoEnai: Lesson = {
       explanation: "する is irregular here: せざるを得ない, not しざる.",
     },
   ],
+  drills: [
+    { id: "zaruwoenai", prompt: "Formal 'no choice but to admit'", jp: "認[みと]める", answers: ["認[みと]めざるを得[え]ない"] },
+    { id: "sezaru", prompt: "The する version — irregular", jp: "する", answers: ["せざるを得[え]ない"] },
+    { id: "yamuwoenai", prompt: "Type the set phrase — 'unavoidable'", jp: "？", answers: ["やむを得[え]ない"] },
+    { id: "kaneru", prompt: "Formal 'cannot (bring oneself to) accept'", jp: "受[う]け入[い]れる", answers: ["受[う]け入[い]れかねる"] },
+    { id: "kanenai", prompt: "Flip it — 'might well happen'", jp: "かねる", answers: ["かねない"] },
+  ],
 };

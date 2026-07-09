@@ -166,4 +166,11 @@ export const advancedVolitional: Lesson = {
       explanation: "まい attaches to the dictionary form: するまい.",
     },
   ],
+  drills: [
+    { id: "volitional-u", prompt: "Make the volitional — 'let's do our best'", jp: "頑張[がんば]る", answers: ["頑張[がんば]ろう"] },
+    { id: "volitional-ru", prompt: "Make the volitional — 'let's eat'", jp: "食[た]べる", answers: ["食[た]べよう"] },
+    { id: "mai", prompt: "Literary negative volitional — 'shall not go'", jp: "行[い]く", answers: ["行[い]くまい"] },
+    { id: "dearou", prompt: "Literary equivalent of だろう", jp: "だろう", answers: ["であろう"] },
+    { id: "karou", prompt: "Literary conjecture for i-adjectives — 'is probably good'", jp: "よい", answers: ["よかろう"] },
+  ],
 };

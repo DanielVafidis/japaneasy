@@ -136,4 +136,10 @@ export const hazuBeki: Lesson = {
       explanation: "Deduction = はず; べき would make it moral advice to the package.",
     },
   ],
+  drills: [
+    { id: "hazu", prompt: "Add expectation — 'should arrive (I expect)'", jp: "届[とど]く", answers: ["届[とど]くはずだ", "届[とど]くはず"] },
+    { id: "beki", prompt: "Add moral 'should' — 'ought to reflect on it'", jp: "反省[はんせい]する", answers: ["反省[はんせい]するべきだ", "反省[はんせい]すべきだ"] },
+    { id: "beku", prompt: "Literary 'in order to do'", jp: "する", answers: ["すべく", "するべく"] },
+    { id: "bekarazu", prompt: "Sign-style prohibition — 'no entering'", jp: "入[はい]る", answers: ["入[はい]るべからず"] },
+  ],
 };

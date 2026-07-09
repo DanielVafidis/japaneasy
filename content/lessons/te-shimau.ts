@@ -125,4 +125,10 @@ export const teShimau: Lesson = {
       explanation: "てしまう marks the unintended slip; ておく would mean you left it on purpose.",
     },
   ],
+  drills: [
+    { id: "shimau", prompt: "Add completion/regret — 'forget (for good)'", jp: "忘[わす]れる", answers: ["忘[わす]れてしまう"] },
+    { id: "chatta", prompt: "Contract it — spoken 'oops'", jp: "忘[わす]れてしまった", answers: ["忘[わす]れちゃった"] },
+    { id: "jatta", prompt: "Contract it — んで verbs take じゃう", jp: "死[し]んでしまった", answers: ["死[し]んじゃった"] },
+    { id: "zenbu", prompt: "Say 'eat it all up (completely)'", jp: "全部[ぜんぶ]食[た]べる", answers: ["全部[ぜんぶ]食[た]べてしまう"] },
+  ],
 };

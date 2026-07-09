@@ -172,4 +172,10 @@ export const timeSpecificActions: Lesson = {
       explanation: "Stem + ながら marks the background action; the main verb comes last.",
     },
   ],
+  drills: [
+    { id: "tabakari", prompt: "Say 'just woke up'", jp: "起[お]きる", answers: ["起[お]きたばかり"] },
+    { id: "totan", prompt: "Fill — 'the instant (I) arrived…'", jp: "着[つ]いた◯◯◯、…", answers: ["とたん", "とたんに"] },
+    { id: "nagara", prompt: "Say 'while washing' — two actions at once", jp: "洗[あら]う", answers: ["洗[あら]いながら"] },
+    { id: "makuru", prompt: "Add 'do like crazy' — 'eat and eat'", jp: "食[た]べる", answers: ["食[た]べまくる"] },
+  ],
 };

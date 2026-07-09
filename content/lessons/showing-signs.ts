@@ -163,4 +163,11 @@ export const showingSigns: Lesson = {
       explanation: "Others' feelings take がる: 怖がっている.",
     },
   ],
+  drills: [
+    { id: "garu", prompt: "Third person feeling — '(they) show wanting it'", jp: "欲[ほ]しい", answers: ["欲[ほ]しがる"] },
+    { id: "ge", prompt: "Add the 'seeming' suffix — 'with a happy look'", jp: "嬉[うれ]しい", answers: ["嬉[うれ]しげ"] },
+    { id: "ppoi", prompt: "Add '-ish' — 'childish'", jp: "子供[こども]", answers: ["子供[こども]っぽい"] },
+    { id: "nbakari", prompt: "Fill — literary 'all but saying…'", jp: "言[い]わ◯◯◯◯に", answers: ["んばかり"] },
+    { id: "meku", prompt: "Add 'showing signs of' — 'spring-like'", jp: "春[はる]", answers: ["春[はる]めく"] },
+  ],
 };

@@ -124,4 +124,11 @@ export const expressingAmounts: Lesson = {
       explanation: "ばかり + ている = does nothing but.",
     },
   ],
+  drills: [
+    { id: "dake", prompt: "Fill — 'only one' (plain statement)", jp: "一[ひと]つ◯◯ある", answers: ["だけ"] },
+    { id: "shika", prompt: "Fill — 'only one' (with the negative)", jp: "一[ひと]つ◯◯ない", answers: ["しか"] },
+    { id: "bakari", prompt: "Fill — 'doing nothing but games'", jp: "ゲーム◯◯◯している", answers: ["ばかり"] },
+    { id: "sugiru", prompt: "Add 'too much' — 'eat too much'", jp: "食[た]べる", answers: ["食[た]べすぎる"] },
+    { id: "kurai", prompt: "Fill — 'about an hour'", jp: "一時間[いちじかん]◯◯◯", answers: ["くらい", "ぐらい"] },
+  ],
 };

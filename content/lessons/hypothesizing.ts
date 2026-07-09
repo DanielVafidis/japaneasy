@@ -111,4 +111,10 @@ export const hypothesizing: Lesson = {
       explanation: "わけがない = no way that…",
     },
   ],
+  drills: [
+    { id: "kadouka", prompt: "Fill — 'whether or not (I'll) study abroad'", jp: "留学[りゅうがく]する◯◯◯◯", answers: ["かどうか"] },
+    { id: "temo", prompt: "Add 'even if' — 'even if (I'm) late'", jp: "遅[おく]れる", answers: ["遅[おく]れても"] },
+    { id: "tosuru", prompt: "Fill — 'suppose (hypothetically) I go'", jp: "行[い]く◯する", answers: ["と"] },
+    { id: "katoomou", prompt: "Fill — '(I) wondered if it was OK'", jp: "大丈夫[だいじょうぶ]◯◯思[おも]った", answers: ["かと"] },
+  ],
 };

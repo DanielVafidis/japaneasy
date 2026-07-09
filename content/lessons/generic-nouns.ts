@@ -161,4 +161,10 @@ export const genericNouns: Lesson = {
       explanation: "Experience = past tense + ことがある.",
     },
   ],
+  drills: [
+    { id: "nominalize", prompt: "Fill the nominalizer — 'I like watching'", jp: "見[み]る◯が好[す]き", answers: ["の", "こと"] },
+    { id: "tokoro", prompt: "Fill — 'just about to run' (point in the action)", jp: "走[はし]る◯◯◯だ", answers: ["ところ"] },
+    { id: "mono", prompt: "Fill — a physical thing", jp: "好[す]きな◯◯", answers: ["物[もの]"] },
+    { id: "koto", prompt: "Fill — abstract matter: 'talk about Japan'", jp: "日本[にほん]の◯◯を話[はな]す", answers: ["こと"] },
+  ],
 };

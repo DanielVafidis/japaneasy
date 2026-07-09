@@ -139,4 +139,10 @@ export const similarityHearsay: Lesson = {
       explanation: "らしい attaches to the plain form: 降るらしい.",
     },
   ],
+  drills: [
+    { id: "sou", prompt: "Visual 'looks like it's about to…' — rain", jp: "降[ふ]る", answers: ["降[ふ]りそう", "降[ふ]りそうだ"] },
+    { id: "mitai", prompt: "Casual judgement — 'seems like rain'", jp: "雨[あめ]", answers: ["雨[あめ]みたい", "雨[あめ]みたいだ"] },
+    { id: "youda", prompt: "Formal judgement — 'appears to be rain'", jp: "雨[あめ]", answers: ["雨[あめ]のようだ", "雨[あめ]のよう"] },
+    { id: "rashii", prompt: "Hearsay / typicality — 'seems it's spring'", jp: "春[はる]", answers: ["春[はる]らしい"] },
+  ],
 };

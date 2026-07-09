@@ -184,4 +184,11 @@ export const easeDifficulty: Lesson = {
       explanation: "にくい attaches to the stem: 読み + にくい.",
     },
   ],
+  drills: [
+    { id: "yasui", prompt: "Add 'easy to' — 'easy to read'", jp: "読[よ]む", answers: ["読[よ]みやすい"] },
+    { id: "nikui", prompt: "Add 'hard to' — 'hard to understand'", jp: "分[わ]かる", answers: ["分[わ]かりにくい"] },
+    { id: "gatai", prompt: "Add 'scarcely possible to' — 'hard to believe'", jp: "信[しん]じる", answers: ["信[しん]じがたい"] },
+    { id: "naide", prompt: "Say 'without saying' — everyday", jp: "言[い]う", answers: ["言[い]わないで"] },
+    { id: "zuni", prompt: "Say 'without saying' — literary", jp: "言[い]う", answers: ["言[い]わずに"] },
+  ],
 };

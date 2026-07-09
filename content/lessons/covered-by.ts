@@ -174,4 +174,11 @@ export const coveredBy: Lesson = {
       explanation: "Mud coats and scatters → だらけ (or まみれ); ずくめ is for 'entirely (dressed in / nothing but)'.",
     },
   ],
+  drills: [
+    { id: "darake", prompt: "Add 'riddled with' — 'full of mistakes'", jp: "間違[まちが]い", answers: ["間違[まちが]いだらけ"] },
+    { id: "mamire", prompt: "Add 'coated in' — 'covered in sweat'", jp: "汗[あせ]", answers: ["汗[あせ]まみれ"] },
+    { id: "zukume", prompt: "Add 'entirely in' — 'all in black'", jp: "黒[くろ]", answers: ["黒[くろ]ずくめ"] },
+    { id: "yainaya", prompt: "Fill — literary 'the moment (he) arrived…'", jp: "着[つ]く◯◯◯、…", answers: ["や否[いな]や"] },
+    { id: "ageku", prompt: "Fill — 'after all that worrying, (bad end)'", jp: "悩[なや]んだ◯◯◯、…", answers: ["あげく"] },
+  ],
 };

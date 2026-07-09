@@ -100,4 +100,10 @@ export const formalDearu: Lesson = {
       explanation: "である replaces だ in formal writing — never both.",
     },
   ],
+  drills: [
+    { id: "dearu", prompt: "Make it written-formal", jp: "問題[もんだい]だ", answers: ["問題[もんだい]である"] },
+    { id: "dewanai", prompt: "Written-formal negative", jp: "問題[もんだい]だ", answers: ["問題[もんだい]ではない"] },
+    { id: "deatta", prompt: "Written-formal past", jp: "事実[じじつ]だ", answers: ["事実[じじつ]であった"] },
+    { id: "nodearu", prompt: "Fill — explanatory formal", jp: "重要[じゅうよう]なの◯◯◯", answers: ["である"] },
+  ],
 };

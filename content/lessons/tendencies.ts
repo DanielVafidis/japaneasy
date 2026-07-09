@@ -117,4 +117,10 @@ export const tendencies: Lesson = {
       explanation: "がち attaches to the stem: ひき + がち.",
     },
   ],
+  drills: [
+    { id: "gachi", prompt: "Add 'prone to' — 'tends to get sick'", jp: "病気[びょうき]", answers: ["病気[びょうき]がち"] },
+    { id: "tsutsu", prompt: "Add 'while / though' — ongoing", jp: "悩[なや]む", answers: ["悩[なや]みつつ"] },
+    { id: "gimi", prompt: "Add 'slightly tending to' — 'a bit overweight'", jp: "太[ふと]る", answers: ["太[ふと]り気味[ぎみ]"] },
+    { id: "kirai", prompt: "Fill — formal 'has a tendency to worry'", jp: "悩[なや]む◯◯◯がある", answers: ["きらい"] },
+  ],
 };

@@ -138,4 +138,11 @@ export const honorificHumble: Lesson = {
       explanation: "Honorific いらっしゃる for others; humble おる is for your own side.",
     },
   ],
+  drills: [
+    { id: "hon-say", prompt: "Honorific — 'to say' (elevate them)", jp: "言[い]う", answers: ["おっしゃる"] },
+    { id: "hum-say", prompt: "Humble — 'to say' (lower yourself)", jp: "言[い]う", answers: ["申[もう]す", "申[もう]し上[あ]げる"] },
+    { id: "hon-be", prompt: "Honorific — 'to be / come / go'", jp: "いる", answers: ["いらっしゃる"] },
+    { id: "hum-go", prompt: "Humble — 'to go / come'", jp: "行[い]く", answers: ["参[まい]る"] },
+    { id: "hum-receive", prompt: "Humble — 'to receive / eat / drink'", jp: "もらう", answers: ["いただく"] },
+  ],
 };

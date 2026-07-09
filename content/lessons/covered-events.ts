@@ -124,4 +124,11 @@ export const coveredEvents: Lesson = {
       explanation: "ないうちに = before (while the state hasn't changed yet).",
     },
   ],
+  drills: [
+    { id: "uede", prompt: "Fill — 'upon (after) confirming…'", jp: "確認[かくにん]した◯◯で", answers: ["上[うえ]"] },
+    { id: "uchini", prompt: "Fill — 'while it's still light'", jp: "明[あか]るい◯◯に", answers: ["うち"] },
+    { id: "saichuu", prompt: "Fill — 'in the very middle of eating'", jp: "食[た]べている◯◯◯◯", answers: ["最中[さいちゅう]"] },
+    { id: "sai", prompt: "Fill — formal 'on the occasion of getting off'", jp: "お降[お]りの◯◯", answers: ["際[さい]"] },
+    { id: "shidai", prompt: "Fill — 'as soon as it's confirmed'", jp: "確認[かくにん]◯◯◯", answers: ["次第[しだい]"] },
+  ],
 };

@@ -148,4 +148,11 @@ export const certainty: Lesson = {
       explanation: "かもしれない = might; はずがない would deny the possibility.",
     },
   ],
+  drills: [
+    { id: "kamoshirenai", prompt: "Add 'might' — 'it might rain'", jp: "雨[あめ]が降[ふ]る", answers: ["雨[あめ]が降[ふ]るかもしれない"] },
+    { id: "deshou", prompt: "Add polite conjecture — 'will probably be late'", jp: "遅[おく]れる", answers: ["遅[おく]れるでしょう"] },
+    { id: "darou", prompt: "Add casual conjecture", jp: "遅[おく]れる", answers: ["遅[おく]れるだろう"] },
+    { id: "hazu", prompt: "Add expectation — 'should (be expected to) come'", jp: "来[く]る", answers: ["来[く]るはずだ", "来[く]るはず"] },
+    { id: "nichigainai", prompt: "Finish the conviction — 'no doubt it's rain'", jp: "雨[あめ]に◯◯◯◯", answers: ["違[ちが]いない"] },
+  ],
 };

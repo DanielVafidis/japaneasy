@@ -126,4 +126,11 @@ export const timeAndMama: Lesson = {
       explanation: "まま follows the past tense for a state already in place: 開けたまま.",
     },
   ],
+  drills: [
+    { id: "toki", prompt: "Fill — 'when (I) went…'", jp: "行[い]った◯◯、…", answers: ["とき", "時[とき]"] },
+    { id: "mae", prompt: "Fill — 'before eating'", jp: "食[た]べる◯◯に", answers: ["前[まえ]"] },
+    { id: "ato", prompt: "Fill — 'after eating' (needs the past form)", jp: "食[た]べた◯◯で", answers: ["後[あと]"] },
+    { id: "mama", prompt: "Fill — 'left it on, as is'", jp: "つけた◯◯にした", answers: ["まま"] },
+    { id: "ppanashi", prompt: "Fill — 'left it on (neglectfully)'", jp: "つけ◯◯◯◯にした", answers: ["っぱなし"] },
+  ],
 };

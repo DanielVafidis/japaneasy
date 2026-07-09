@@ -127,4 +127,10 @@ export const deSaeDesura: Lesson = {
       explanation: "でさえ marks the least likely case: even the experts.",
     },
   ],
+  drills: [
+    { id: "desae", prompt: "Fill — 'even a child can do it'", jp: "子供[こども]◯◯◯できる", answers: ["でさえ", "ですら"] },
+    { id: "sura", prompt: "Fill — literary 'even' (adults too)", jp: "大人[おとな]◯◯◯難[むずか]しい", answers: ["ですら", "でさえ"] },
+    { id: "haoroka", prompt: "Fill — 'let alone kanji, (can't) even read hiragana'", jp: "漢字[かんじ]◯◯◯◯、ひらがなも読[よ]めない", answers: ["はおろか"] },
+    { id: "sae-conditional", prompt: "Fill — 'as long as he's here'", jp: "彼[かれ]◯◯いれば", answers: ["さえ"] },
+  ],
 };
