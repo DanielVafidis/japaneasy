@@ -49,6 +49,8 @@ interface AppState {
 
   // onboarding
   onboardingDismissed: boolean;
+  /** Local date the pre-lesson warm-up was last offered (once per day). */
+  lastWarmupDate: string | null;
 
   // daily activity
   xpToday: number;
@@ -77,6 +79,7 @@ interface AppState {
   setDailyGoalReviews: (n: number) => void;
   setAutoAddVocabOnComplete: (v: boolean) => void;
   dismissOnboarding: () => void;
+  markWarmupToday: () => void;
 
   markStudiedToday: () => void;
   addXp: (amount: number) => void;
@@ -103,6 +106,7 @@ const initial = {
   dailyGoalReviews: 10,
   autoAddVocabOnComplete: true,
   onboardingDismissed: false,
+  lastWarmupDate: null as string | null,
   xpToday: 0,
   xpDate: null as string | null,
   completedLessons: {} as Record<string, LessonProgress>,
@@ -129,6 +133,7 @@ export const useStore = create<AppState>()(
         set({ dailyGoalReviews: Math.max(1, Math.min(200, Math.round(n))) }),
       setAutoAddVocabOnComplete: (v) => set({ autoAddVocabOnComplete: v }),
       dismissOnboarding: () => set({ onboardingDismissed: true }),
+      markWarmupToday: () => set({ lastWarmupDate: todayStr() }),
 
       markStudiedToday: () => {
         const today = todayStr();
@@ -336,6 +341,7 @@ export const useStore = create<AppState>()(
         dailyGoalReviews: s.dailyGoalReviews,
         autoAddVocabOnComplete: s.autoAddVocabOnComplete,
         onboardingDismissed: s.onboardingDismissed,
+        lastWarmupDate: s.lastWarmupDate,
         xpToday: s.xpToday,
         xpDate: s.xpDate,
         completedLessons: s.completedLessons,

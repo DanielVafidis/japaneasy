@@ -155,6 +155,14 @@ describe("export / import", () => {
   });
 });
 
+describe("warm-up gate", () => {
+  it("records the day the warm-up was offered", () => {
+    expect(s().lastWarmupDate).toBeNull();
+    s().markWarmupToday();
+    expect(s().lastWarmupDate).toBe("2026-07-09");
+  });
+});
+
 describe("settings", () => {
   it("clamps the daily review goal", () => {
     s().setDailyGoalReviews(0);

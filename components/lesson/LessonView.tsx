@@ -26,6 +26,7 @@ import { AddToDeckButton } from "@/components/AddToDeckButton";
 import { ReadingControls } from "@/components/ReadingControls";
 import { LessonBlocks } from "@/components/lesson/LessonBlocks";
 import { LearnVocab } from "@/components/lesson/LearnVocab";
+import { LessonWarmup } from "@/components/lesson/LessonWarmup";
 import { VocabCheck } from "@/components/lesson/VocabCheck";
 import { Quiz } from "@/components/Quiz";
 import { Badge } from "@/components/ui/Badge";
@@ -135,6 +136,9 @@ export function LessonView({
           <p className="mt-3 text-lg text-ink-soft">{lesson.subtitle}</p>
         )}
       </header>
+
+      {/* pre-lesson warm-up (new lessons only) */}
+      {!completed && <LessonWarmup />}
 
       {/* vocabulary */}
       {lesson.vocabulary && lesson.vocabulary.length > 0 && (

@@ -84,7 +84,7 @@ Still **frontend-only**; backend stays deferred.
 | 1.2 | **Typed recall mode (mobile)** | Typed answers with live romaji→kana conversion + normalized matching: kana, vocab, kanji readings, EN for grammar; quiz fill-ins too. Shipped beyond original “kana + vocab” scope. | Active production; still no AI. | Medium | High | ✅ |
 | 1.3 | **Rebuild grammar deck** | Replace title→summary with pattern drills (conjugate, particle, fix sentence) authored in lesson files. Shipped: `drills` content type → typed cards (`grammar:<lesson>:<drill>`), auto-enrolled on lesson complete, boosted on quiz miss. **All 50 grammar lessons authored — 243 drills, zero legacy cards** (Basic 56 · Essential 96 · Special/Advanced 91). | Current grammar cards don’t teach grammar. | Medium | High | ✅ |
 | 1.4 | **Kanji card modes** | char↔meaning, reading drills, link to example word from `kanji.ts`. | Kanji browser alone doesn’t build recall. | Medium | High | ⬜ |
-| 1.5 | **Pre-lesson warm-up** | 3–5 due cards before new lesson content (skippable). | Spacing inside the course path. | Medium | High | ⬜ |
+| 1.5 | **Pre-lesson warm-up** | 3–5 due cards before new lesson content (skippable). Shipped: offered once per day on uncompleted lessons when reviews are due — up to 5 oldest-due cards, graded for real (counts toward the daily goal); skippable per day. | Spacing inside the course path. | Medium | High | ✅ |
 | 1.6 | **Leech / struggling cards** | Flag cards missed N times; offer extra practice or suspend. | Standard SRS hygiene; reduces frustration. | Low | Medium | ⬜ |
 | 1.7 | **Kana mastery suggestion** | Soft gate: “Finish hiragana reviews before lesson 4” (not hard block at first). | Honors kana-first philosophy. | Low | Medium | ⬜ |
 
@@ -168,7 +168,7 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
+1. **2.6 Listening drills** (pilot one lesson)
 2. **1.4 Kanji card modes** · **1.6 Leech cards** · **1.7 Kana mastery suggestion**
 
 (2.1 PWA and 2.2 store schema v2 deferred — revisit with backend/sync.)
@@ -188,6 +188,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-09 | Phase 1.5 shipped: pre-lesson warm-up — once-a-day offer on uncompleted lessons to review up to 5 oldest-due cards inline (real SRS grades, counts toward the goal), skippable for the day |
 | 2026-07-09 | Phase 2.3 shipped: Vitest suite (`npm test`) — 69 tests across srs, japanese, answer checkers, store, lesson-cards, and a full content validation scan (every drill answer accepted as kanji/kana/romaji) |
 | 2026-07-09 | Phase 1.3 complete: Special Expressions + Advanced Topics drill passes — 91 drills across the final 20 lessons (causative/passive, keigo, てしまう, certainty, amounts, hearsay, ずに, tendencies, volitional, formal patterns); grammar deck now 243 authored drills with no legacy cards. 2.2 schema v2 deferred until backend/sync |
 | 2026-07-09 | Phase 1.3 (part 2): Essential Grammar drill pass — 96 drills across all 19 lessons (stems, polite forms, te-form, potential, conditionals, comparisons, obligation, quoting, giving/receiving, requests, counters, casual contractions); grammar deck now 172 cards |
