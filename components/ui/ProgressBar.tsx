@@ -13,19 +13,17 @@ export function ProgressBar({
   value,
   tone = "shu",
   className,
-  trackClassName,
 }: {
   value: number;
   tone?: Tone;
   className?: string;
-  trackClassName?: string;
 }) {
   const pct = Math.max(0, Math.min(100, value));
   return (
     <div
       className={cn(
         "h-2 w-full overflow-hidden rounded-full bg-line/70",
-        trackClassName,
+        className,
       )}
       role="progressbar"
       aria-valuenow={Math.round(pct)}
@@ -36,7 +34,6 @@ export function ProgressBar({
         className={cn(
           "h-full rounded-full transition-[width] duration-700 ease-out",
           fills[tone],
-          className,
         )}
         style={{ width: `${pct}%` }}
       />
