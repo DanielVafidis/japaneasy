@@ -15,18 +15,20 @@ import {
 import { useStore } from "@/lib/store";
 import { orderedLessons } from "@/content/curriculum";
 import { todayStr } from "@/lib/datetime";
+import { useDailyGoal } from "@/lib/goal";
 import { useDueStates, useTotalAdded } from "@/lib/review";
 import { ButtonLink } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { FirstRunOnboarding } from "@/components/home/FirstRunOnboarding";
 import { cn } from "@/lib/cn";
 
 export function TodayView() {
   const hasHydrated = useStore((s) => s.hasHydrated);
   const completedLessons = useStore((s) => s.completedLessons);
   const streak = useStore((s) => s.streak);
-  const dailyGoal = useStore((s) => s.dailyGoal);
   const xpToday = useStore((s) => s.xpToday);
   const xpDate = useStore((s) => s.xpDate);
+  const onboardingDismissed = useStore((s) => s.onboardingDismissed);
 
   const due = useDueStates().length;
   const totalAdded = useTotalAdded();
@@ -38,11 +40,10 @@ export function TodayView() {
     [lessons, completedLessons],
   );
 
+  const goal = useDailyGoal();
   const todaysXp = hasHydrated && xpDate === todayStr() ? xpToday : 0;
-  const goalMet = todaysXp >= dailyGoal && hasHydrated;
-  const goalPct =
-    dailyGoal > 0 ? Math.min(100, (todaysXp / dailyGoal) * 100) : 0;
   const started = completedCount > 0 || totalAdded > 0 || todaysXp > 0;
+  const showOnboarding = hasHydrated && !started && !onboardingDismissed;
 
   const primary = (() => {
     if (due > 0) {
@@ -97,7 +98,7 @@ export function TodayView() {
             <span className="font-sans"> · Today</span>
           </p>
           <h2 className="mt-1 font-display text-xl text-ink sm:text-2xl">
-            {goalMet ? "Daily goal done" : "What to do next"}
+            {goal.met ? "Daily goal done" : "What to do next"}
           </h2>
         </div>
         {hasHydrated && streak > 0 && (
@@ -107,30 +108,34 @@ export function TodayView() {
         )}
       </div>
 
-      <div className="rounded-3xl border-2 border-shu/25 bg-surface p-5 card-shadow sm:p-6">
-        <div className="flex items-start gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-shu/10 text-shu">
-            {primary.icon}
-          </span>
-          <div className="min-w-0 flex-1">
-            <p className="text-xs font-semibold uppercase tracking-wide text-shu">
-              {primary.kind === "review"
-                ? "Reviews first"
-                : primary.kind === "lesson"
-                  ? "Next up"
-                  : "Suggested"}
-            </p>
-            <h3 className="mt-1 text-balance font-display text-xl text-ink sm:text-2xl">
-              {primary.title}
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-ink-soft">{primary.body}</p>
+      {showOnboarding ? (
+        <FirstRunOnboarding />
+      ) : (
+        <div className="rounded-3xl border-2 border-shu/25 bg-surface p-5 card-shadow sm:p-6">
+          <div className="flex items-start gap-4">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-shu/10 text-shu">
+              {primary.icon}
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-semibold uppercase tracking-wide text-shu">
+                {primary.kind === "review"
+                  ? "Reviews first"
+                  : primary.kind === "lesson"
+                    ? "Next up"
+                    : "Suggested"}
+              </p>
+              <h3 className="mt-1 text-balance font-display text-xl text-ink sm:text-2xl">
+                {primary.title}
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-ink-soft">{primary.body}</p>
+            </div>
           </div>
+          <ButtonLink href={primary.href} size="lg" className="mt-5 w-full">
+            {primary.cta}
+            <ArrowRight className="h-4 w-4" />
+          </ButtonLink>
         </div>
-        <ButtonLink href={primary.href} size="lg" className="mt-5 w-full">
-          {primary.cta}
-          <ArrowRight className="h-4 w-4" />
-        </ButtonLink>
-      </div>
+      )}
 
       <div className="overflow-hidden rounded-3xl border border-line bg-surface card-shadow">
         <PlanRow
@@ -158,20 +163,20 @@ export function TodayView() {
           action={nextLesson ? "Open" : "Lessons"}
         />
         <PlanRow
-          done={goalMet}
-          active={!goalMet && hasHydrated}
+          done={goal.met}
+          active={!goal.met && hasHydrated}
           icon={<Sparkles className="h-4 w-4" />}
           label="Today's goal"
           value={
-            goalMet
-              ? `${todaysXp} / ${dailyGoal} XP`
-              : `${todaysXp} / ${dailyGoal} XP`
+            goal.lessonDoneToday && goal.reviewsDone < goal.target
+              ? "Lesson finished today"
+              : `${goal.reviewsDone} / ${goal.target} reviews${goal.met ? "" : " · or 1 lesson"}`
           }
           href="/settings"
           action="Change"
           footer={
-            !goalMet && (
-              <ProgressBar value={goalPct} tone="shu" className="mt-2" />
+            !goal.met && (
+              <ProgressBar value={goal.pct} tone="shu" className="mt-2" />
             )
           }
         />

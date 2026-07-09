@@ -41,7 +41,7 @@ This is the product’s primary promise: structured lessons first, spaced repeti
 - **Kana** chart / quiz / writer; **~172 kanji** browser
 - **Gamification** — streak, XP, daily goal, heatmap; localStorage only
 - **Coverage** — full Tae Kim guide coverage as of 2026-07-08 (audit + fixes in **MISSING.md**)
-- **Gaps** — examples not yet original vs the PDF (C.3); grammar deck cards weak (title→summary); no in-lesson production exercises; no sentence cards, listening drills, onboarding, PWA, tests
+- **Gaps** — examples not yet original vs the PDF (C.3); grammar deck cards weak (title→summary); no in-lesson production exercises; no sentence cards, listening drills, PWA, tests
 
 ---
 
@@ -55,8 +55,8 @@ Ship these before backend, AI, or major new content.
 | 0.2 | **“Today” course view (mobile home)** | Replace/supplement dashboard with: (1) reviews due, (2) next lesson in path, (3) daily goal progress — one primary CTA. | Course apps win on “what do I do today?” not stats grids. | Medium | High | ✅ |
 | 0.3 | **Post-lesson recap** | After complete: “12 words added · N cards to review · Next: Polite Form” with review + next-lesson CTAs. (New cards are due immediately in our SRS, so “due tomorrow” → “to review now”.) | Connects reading to long-term memory; feels like a course, not a checklist. | Low | High | ✅ |
 | 0.4 | **Quiz misses → boosted SRS** | Wrong quiz answers spawn or prioritize cards (sentence or vocab). | Closes read → test → review loop without AI. | Medium | High | ⬜ |
-| 0.5 | **First-run onboarding (3 steps)** | Explain: read lesson → short quiz → reviews save progress. Mobile-first, dismissible. | Reduces bounce; sets course expectations vs game. | Low | High | ⬜ |
-| 0.6 | **Daily goal = reviews + lesson** | Tie goal to “10 reviews OR finish one lesson section” not XP alone (kana quiz spam). | Keeps gamification honest and course-aligned. | Low | High | ⬜ |
+| 0.5 | **First-run onboarding (3 steps)** | Explain: read lesson → short quiz → reviews save progress. Mobile-first, dismissible. Shipped as a 3-step card in the Today view (一 read / 二 quiz / 三 review), shown until dismissed or the course is started; dismissal persists (store + export/import). | Reduces bounce; sets course expectations vs game. | Low | High | ✅ |
+| 0.6 | **Daily goal = reviews + lesson** | Tie goal to “10 reviews OR finish one lesson section” not XP alone (kana quiz spam). Shipped: `dailyGoalReviews` (default 10, presets in Settings) met by N reviews **or** any lesson completed today; XP kept only for levels/streak visuals. | Keeps gamification honest and course-aligned. | Low | High | ✅ |
 
 ---
 
@@ -168,13 +168,11 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **0.5 First-run onboarding** (3 steps)
-2. **0.6 Daily goal** tied to reviews + lesson
-3. **0.4 Quiz misses → boosted SRS**
-4. **1.1 Sentence cards** from examples
-5. **1.3 Grammar deck rebuild** (start with Basic Grammar stage)
-6. **2.2 Store schema v2** · **2.3 Tests** (srs, japanese, store) · **2.1 PWA scaffold**
-7. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
+1. **0.4 Quiz misses → boosted SRS**
+2. **1.1 Sentence cards** from examples
+3. **1.3 Grammar deck rebuild** (start with Basic Grammar stage)
+4. **2.2 Store schema v2** · **2.3 Tests** (srs, japanese, store) · **2.1 PWA scaffold**
+5. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
 
 ---
 
@@ -191,6 +189,8 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-09 | Phase 0.6 shipped: daily goal is now reviews-or-lesson (`dailyGoalReviews`, default 10; Settings presets 5/10/20/30) instead of XP — kana-quiz XP no longer fills the goal; removed dead `DailyGoalRing` |
+| 2026-07-08 | Phase 0.5 shipped: first-run onboarding — 3-step "How the course works" card (read → quiz → review) in the Today view for brand-new users; dismissible, persisted via `onboardingDismissed` in the store and export/import |
 | 2026-07-08 | Phase C.4 done (kept minimal): Comparisons moved into Essential Grammar after Conditionals; stage orders renumbered — **Phase C content overhaul complete** |
 | 2026-07-08 | Phase C.5 completed: sentence-building `order` exercise rolled out to all 50 grammar lessons (one per lesson, each with a teaching distractor); all new sentences scanned original vs the PDF |
 | 2026-07-08 | Phase C.5 (partial): sentence-building `order` quiz kind + automatic typed vocab practice drill on lessons with 3+ words; `order` piloted in 6 lessons; AUTHORING.md updated |

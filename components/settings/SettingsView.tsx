@@ -6,17 +6,17 @@ import { useStore } from "@/lib/store";
 import { DataControls } from "@/components/DataControls";
 import { cn } from "@/lib/cn";
 
-const GOAL_PRESETS = [20, 50, 100, 150];
+const GOAL_PRESETS = [5, 10, 20, 30];
 
 export function SettingsView() {
   const hasHydrated = useStore((s) => s.hasHydrated);
   const showFurigana = useStore((s) => s.showFurigana);
   const showRomaji = useStore((s) => s.showRomaji);
-  const dailyGoal = useStore((s) => s.dailyGoal);
+  const dailyGoalReviews = useStore((s) => s.dailyGoalReviews);
   const autoAddVocabOnComplete = useStore((s) => s.autoAddVocabOnComplete);
   const setShowFurigana = useStore((s) => s.setShowFurigana);
   const setShowRomaji = useStore((s) => s.setShowRomaji);
-  const setDailyGoal = useStore((s) => s.setDailyGoal);
+  const setDailyGoalReviews = useStore((s) => s.setDailyGoalReviews);
   const setAutoAddVocabOnComplete = useStore((s) => s.setAutoAddVocabOnComplete);
 
   return (
@@ -54,24 +54,27 @@ export function SettingsView() {
         />
       </Section>
 
-      <Section title="Daily goal" desc="How much XP to aim for each day.">
+      <Section
+        title="Daily goal"
+        desc="Reviews to finish each day. Completing any lesson also counts."
+      >
         <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
           {GOAL_PRESETS.map((g) => (
             <button
               key={g}
               type="button"
-              onClick={() => setDailyGoal(g)}
+              onClick={() => setDailyGoalReviews(g)}
               disabled={!hasHydrated}
               className={cn(
                 "rounded-2xl border px-4 py-3 text-center transition-all sm:px-5",
-                dailyGoal === g
+                dailyGoalReviews === g
                   ? "border-shu bg-shu/10"
                   : "border-line bg-surface hover:border-shu/40",
                 !hasHydrated && "pointer-events-none",
               )}
             >
               <span className="block font-display text-xl text-ink">{g}</span>
-              <span className="text-xs text-ink-faint">XP / day</span>
+              <span className="text-xs text-ink-faint">reviews / day</span>
             </button>
           ))}
         </div>

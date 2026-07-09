@@ -17,8 +17,9 @@ export interface ProgressExport {
   exportedAt: string;
   showFurigana: boolean;
   showRomaji: boolean;
-  dailyGoal: number;
+  dailyGoalReviews: number;
   autoAddVocabOnComplete: boolean;
+  onboardingDismissed: boolean;
   xpToday: number;
   xpDate: string | null;
   completedLessons: Record<string, LessonProgress>;
@@ -39,8 +40,12 @@ interface AppState {
   // settings
   showFurigana: boolean;
   showRomaji: boolean;
-  dailyGoal: number;
+  /** Daily goal: reviews to finish per day (any completed lesson also meets it). */
+  dailyGoalReviews: number;
   autoAddVocabOnComplete: boolean;
+
+  // onboarding
+  onboardingDismissed: boolean;
 
   // daily activity
   xpToday: number;
@@ -66,8 +71,9 @@ interface AppState {
   setHasHydrated: (v: boolean) => void;
   setShowFurigana: (v: boolean) => void;
   setShowRomaji: (v: boolean) => void;
-  setDailyGoal: (n: number) => void;
+  setDailyGoalReviews: (n: number) => void;
   setAutoAddVocabOnComplete: (v: boolean) => void;
+  dismissOnboarding: () => void;
 
   markStudiedToday: () => void;
   addXp: (amount: number) => void;
@@ -89,8 +95,9 @@ const initial = {
   hasHydrated: false,
   showFurigana: true,
   showRomaji: false,
-  dailyGoal: 50,
+  dailyGoalReviews: 10,
   autoAddVocabOnComplete: true,
+  onboardingDismissed: false,
   xpToday: 0,
   xpDate: null as string | null,
   completedLessons: {} as Record<string, LessonProgress>,
@@ -113,9 +120,10 @@ export const useStore = create<AppState>()(
       setHasHydrated: (v) => set({ hasHydrated: v }),
       setShowFurigana: (v) => set({ showFurigana: v }),
       setShowRomaji: (v) => set({ showRomaji: v }),
-      setDailyGoal: (n) =>
-        set({ dailyGoal: Math.max(10, Math.min(1000, Math.round(n))) }),
+      setDailyGoalReviews: (n) =>
+        set({ dailyGoalReviews: Math.max(1, Math.min(200, Math.round(n))) }),
       setAutoAddVocabOnComplete: (v) => set({ autoAddVocabOnComplete: v }),
+      dismissOnboarding: () => set({ onboardingDismissed: true }),
 
       markStudiedToday: () => {
         const today = todayStr();
@@ -214,8 +222,9 @@ export const useStore = create<AppState>()(
           exportedAt: new Date().toISOString(),
           showFurigana: s.showFurigana,
           showRomaji: s.showRomaji,
-          dailyGoal: s.dailyGoal,
+          dailyGoalReviews: s.dailyGoalReviews,
           autoAddVocabOnComplete: s.autoAddVocabOnComplete,
+          onboardingDismissed: s.onboardingDismissed,
           xpToday: s.xpToday,
           xpDate: s.xpDate,
           completedLessons: s.completedLessons,
@@ -245,11 +254,15 @@ export const useStore = create<AppState>()(
             typeof data.showRomaji === "boolean"
               ? data.showRomaji
               : s.showRomaji,
-          dailyGoal: num(data.dailyGoal, s.dailyGoal),
+          dailyGoalReviews: num(data.dailyGoalReviews, s.dailyGoalReviews),
           autoAddVocabOnComplete:
             typeof data.autoAddVocabOnComplete === "boolean"
               ? data.autoAddVocabOnComplete
               : s.autoAddVocabOnComplete,
+          onboardingDismissed:
+            typeof data.onboardingDismissed === "boolean"
+              ? data.onboardingDismissed
+              : s.onboardingDismissed,
           xpToday: num(data.xpToday, s.xpToday),
           xpDate:
             data.xpDate === null || typeof data.xpDate === "string"
@@ -295,8 +308,9 @@ export const useStore = create<AppState>()(
       partialize: (s) => ({
         showFurigana: s.showFurigana,
         showRomaji: s.showRomaji,
-        dailyGoal: s.dailyGoal,
+        dailyGoalReviews: s.dailyGoalReviews,
         autoAddVocabOnComplete: s.autoAddVocabOnComplete,
+        onboardingDismissed: s.onboardingDismissed,
         xpToday: s.xpToday,
         xpDate: s.xpDate,
         completedLessons: s.completedLessons,
