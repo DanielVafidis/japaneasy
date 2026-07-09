@@ -125,6 +125,15 @@ export function TypingFlashcard({
             {card.speak && <AudioButton text={card.speak} size="sm" />}
           </div>
         )}
+        {submitted && correct !== null && card.example && (
+          <p className="mt-2 flex flex-wrap items-center gap-2 text-sm text-ink-soft animate-fade-up">
+            <span className="text-ink-faint">e.g.</span>
+            <span className="font-jp text-base text-ink">{card.example.jp}</span>
+            <span className="font-jp">({card.example.reading})</span>
+            {card.example.en}
+            <AudioButton text={card.example.reading} size="sm" />
+          </p>
+        )}
       </div>
 
       <form

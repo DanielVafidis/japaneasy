@@ -127,7 +127,7 @@ function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void 
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  const cardId = `kanji:${k.char}`;
+  const cardIds = [`kanji:${k.char}`, `kanji-mean:${k.char}`];
 
   return (
     <div
@@ -205,7 +205,7 @@ function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void 
         )}
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <AddToDeckButton ids={[cardId]} label="Add to deck" size="md" />
+          <AddToDeckButton ids={cardIds} label="Add both cards" size="md" />
           <a
             href={`https://jisho.org/search/${encodeURIComponent(k.char)}`}
             target="_blank"

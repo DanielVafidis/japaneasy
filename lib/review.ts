@@ -1,7 +1,7 @@
 "use client";
 
 import { useStore } from "@/lib/store";
-import { isDue, type SrsState } from "@/lib/srs";
+import { isDue, isLeech, type SrsState } from "@/lib/srs";
 import { cardsById, type DeckId } from "@/content/decks";
 
 export interface ReviewableCard {
@@ -18,6 +18,14 @@ export function useDueStates(): SrsState[] {
 export function useTotalAdded(): number {
   const cards = useStore((s) => s.cards);
   return Object.values(cards).filter((c) => cardsById[c.id]).length;
+}
+
+/** Cards failed repeatedly (leeches), most-lapsed first. */
+export function useLeechStates(): SrsState[] {
+  const cards = useStore((s) => s.cards);
+  return Object.values(cards)
+    .filter((c) => cardsById[c.id] && isLeech(c))
+    .sort((a, b) => b.lapses - a.lapses);
 }
 
 export interface DeckStat {

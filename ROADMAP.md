@@ -83,10 +83,10 @@ Still **frontend-only**; backend stays deferred.
 | 1.1 | **Learn lesson vocabulary** *(re-scoped from “sentence cards”)* | Guided learn mode per lesson: meet each word (reading, meaning, audio), then typed recall with misses re-queued until correct; words join the review deck on finish. Entries: “Learn these words” in the lesson vocab section, `?vocab=1` deep link, “Learn its N new words first” on Today for the next lesson. Decision 2026-07-09: decks stay **word-based** — full sentences don’t become decks. | Learn vocabulary before, during, or after the lesson that introduces it. | Medium | High | ✅ |
 | 1.2 | **Typed recall mode (mobile)** | Typed answers with live romaji→kana conversion + normalized matching: kana, vocab, kanji readings, EN for grammar; quiz fill-ins too. Shipped beyond original “kana + vocab” scope. | Active production; still no AI. | Medium | High | ✅ |
 | 1.3 | **Rebuild grammar deck** | Replace title→summary with pattern drills (conjugate, particle, fix sentence) authored in lesson files. Shipped: `drills` content type → typed cards (`grammar:<lesson>:<drill>`), auto-enrolled on lesson complete, boosted on quiz miss. **All 50 grammar lessons authored — 243 drills, zero legacy cards** (Basic 56 · Essential 96 · Special/Advanced 91). | Current grammar cards don’t teach grammar. | Medium | High | ✅ |
-| 1.4 | **Kanji card modes** | char↔meaning, reading drills, link to example word from `kanji.ts`. | Kanji browser alone doesn’t build recall. | Medium | High | ⬜ |
+| 1.4 | **Kanji card modes** | char↔meaning, reading drills, link to example word from `kanji.ts`. Shipped: each kanji now has two cards — recall (`kanji:X`, meaning → type reading/char, unchanged id) and recognition (`kanji-mean:X`, char → type the meaning, any semicolon-split alternative accepted); both reveal the example word with audio; browser detail adds both. | Kanji browser alone doesn’t build recall. | Medium | High | ✅ |
 | 1.5 | **Pre-lesson warm-up** | 3–5 due cards before new lesson content (skippable). Shipped: offered once per day on uncompleted lessons when reviews are due — up to 5 oldest-due cards, graded for real (counts toward the daily goal); skippable per day. | Spacing inside the course path. | Medium | High | ✅ |
-| 1.6 | **Leech / struggling cards** | Flag cards missed N times; offer extra practice or suspend. | Standard SRS hygiene; reduces frustration. | Low | Medium | ⬜ |
-| 1.7 | **Kana mastery suggestion** | Soft gate: “Finish hiragana reviews before lesson 4” (not hard block at first). | Honors kana-first philosophy. | Low | Medium | ⬜ |
+| 1.6 | **Leech / struggling cards** | Flag cards missed N times; offer extra practice or suspend. Shipped: cards with 4+ lapses surface on the flashcards overview with a focused “Practice N” session (runs even when not due). | Standard SRS hygiene; reduces frustration. | Low | Medium | ✅ |
+| 1.7 | **Kana mastery suggestion** | Soft gate: “Finish hiragana reviews before lesson 4” (not hard block at first). Shipped: soft nudge on the first four Basic Grammar lessons while <80% of the hiragana deck is enrolled, linking to the kana trainer — never a block. | Honors kana-first philosophy. | Low | Medium | ✅ |
 
 ---
 
@@ -168,8 +168,10 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **1.4 Kanji card modes** · **1.6 Leech cards** · **1.7 Kana mastery suggestion**
-2. **2.6 rollout** — listen questions across more lessons (after pilot feedback)
+1. **2.6 rollout** — listen questions across more lessons (after pilot feedback)
+2. **Phase 3** candidates (graded readings, situation modules, stage recaps) or **2.5 natural audio** — pick direction
+
+**Phase 1 is complete** (1.1–1.7 all ✅).
 
 (2.1 PWA and 2.2 store schema v2 deferred — revisit with backend/sync.)
 
@@ -188,6 +190,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-09 | Phases 1.4 + 1.6 + 1.7 shipped: kanji recognition cards (`kanji-mean:X`) with example words in the reveal; leech section on flashcards overview with focused practice; soft kana-first nudge on early grammar lessons — **Phase 1 complete** |
 | 2026-07-09 | Phase 2.6 piloted: `listen` quiz kind — TTS dictation with typed transcription (romaji converts live), audio revealed after answering; 3 questions in the hiragana lesson; AUTHORING.md documents the kind |
 | 2026-07-09 | Phase 1.5 shipped: pre-lesson warm-up — once-a-day offer on uncompleted lessons to review up to 5 oldest-due cards inline (real SRS grades, counts toward the goal), skippable for the day |
 | 2026-07-09 | Phase 2.3 shipped: Vitest suite (`npm test`) — 69 tests across srs, japanese, answer checkers, store, lesson-cards, and a full content validation scan (every drill answer accepted as kanji/kana/romaji) |

@@ -18,8 +18,10 @@ export interface Card {
   speak?: string;
   /** Grammar drills: the instruction shown above the question. */
   instruction?: string;
-  /** Grammar drills: accepted typed answers (may carry furigana). */
+  /** Grammar drills / kanji recognition: accepted typed answers. */
   answers?: string[];
+  /** Kanji cards: an example word shown with the answer. */
+  example?: { jp: string; reading: string; en: string };
 }
 
 export interface DeckMeta {
@@ -142,21 +144,54 @@ function grammarDeck(): Card[] {
     });
 }
 
+/** Meaning alternatives accepted for kanji recognition ("day; sun" → day, sun). */
+function meaningAnswers(meaning: string): string[] {
+  const out = new Set<string>([meaning]);
+  for (const part of meaning.split(/[;,/]/)) {
+    const alt = part.trim();
+    if (alt) {
+      out.add(alt);
+      const noParens = alt.replace(/\(.*?\)/g, "").trim();
+      if (noParens) out.add(noParens);
+    }
+  }
+  return [...out];
+}
+
 function kanjiDeck(): Card[] {
-  return kanji.map((k) => {
+  return kanji.flatMap((k) => {
     const readings = [k.on.join("・"), k.kun.join("・")]
       .filter(Boolean)
       .join("  /  ");
     const speak = k.example?.reading ?? k.kun[0]?.split(".")[0] ?? k.on[0] ?? k.char;
-    return {
-      id: `kanji:${k.char}`,
-      deck: "kanji" as DeckId,
-      front: k.char,
-      back: k.meaning,
-      reading: readings,
-      frontJp: true,
-      speak,
-    };
+    const example = k.example
+      ? { jp: k.example.word, reading: k.example.reading, en: k.example.meaning }
+      : undefined;
+    return [
+      // Recall: see the meaning, type the character or a reading.
+      {
+        id: `kanji:${k.char}`,
+        deck: "kanji" as DeckId,
+        front: k.char,
+        back: k.meaning,
+        reading: readings,
+        frontJp: true,
+        speak,
+        example,
+      },
+      // Recognition: see the character, type the meaning.
+      {
+        id: `kanji-mean:${k.char}`,
+        deck: "kanji" as DeckId,
+        front: k.char,
+        back: k.meaning,
+        reading: readings,
+        frontJp: true,
+        speak,
+        answers: meaningAnswers(k.meaning),
+        example,
+      },
+    ];
   });
 }
 

@@ -18,7 +18,8 @@ import {
 } from "@/content/decks";
 import { useStore } from "@/lib/store";
 import { isDue, type Grade } from "@/lib/srs";
-import { useDeckStat, useTotalAdded } from "@/lib/review";
+import { useDeckStat, useLeechStates, useTotalAdded } from "@/lib/review";
+import { LEECH_LAPSES } from "@/lib/srs";
 import { TypingFlashcard } from "@/components/flashcards/TypingFlashcard";
 import { checkFlashcardAnswer } from "@/lib/flashcard-review";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
@@ -32,6 +33,7 @@ export function FlashcardsView() {
   const cards = useStore((s) => s.cards);
   const reviewCard = useStore((s) => s.reviewCard);
   const totalAdded = useTotalAdded();
+  const leeches = useLeechStates();
 
   const [mode, setMode] = useState<"overview" | "review" | "done">("overview");
   const [queue, setQueue] = useState<string[]>([]);
@@ -61,9 +63,13 @@ export function FlashcardsView() {
   }
 
   function start(deck?: DeckId) {
-    const q = buildDue(deck);
-    if (q.length === 0) return;
-    setQueue(q);
+    startQueue(buildDue(deck));
+  }
+
+  /** Start a session over an explicit card list (e.g. struggling cards). */
+  function startQueue(ids: string[]) {
+    if (ids.length === 0) return;
+    setQueue(ids);
     setPos(0);
     resetCardState();
     setReviewed(0);
@@ -219,6 +225,28 @@ export function FlashcardsView() {
               </Button>
             )}
           </div>
+        </div>
+      )}
+
+      {leeches.length > 0 && (
+        <div className="flex flex-col items-start gap-3 rounded-3xl border border-gold/40 bg-gold/[0.07] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div>
+            <h3 className="font-display text-lg text-ink">
+              {leeches.length} struggling card{leeches.length === 1 ? "" : "s"}
+            </h3>
+            <p className="mt-1 text-sm text-ink-soft">
+              Missed {LEECH_LAPSES}+ times each — a short focused pass helps
+              more than meeting them scattered through reviews.
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => startQueue(leeches.map((c) => c.id))}
+            className="w-full shrink-0 sm:w-auto"
+          >
+            Practice {leeches.length}
+          </Button>
         </div>
       )}
 

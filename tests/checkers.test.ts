@@ -44,13 +44,32 @@ describe("flashcard answers — vocab deck", () => {
 });
 
 describe("flashcard answers — kanji deck", () => {
-  it("accepts the character, on/kun readings, and their romaji", () => {
+  it("recall: accepts the character, on/kun readings, and their romaji", () => {
     const c = card("kanji:日");
     expect(checkFlashcardAnswer(c, "日")).toBe(true);
     expect(checkFlashcardAnswer(c, "ひ")).toBe(true);
     expect(checkFlashcardAnswer(c, "にち")).toBe(true);
     expect(checkFlashcardAnswer(c, "nichi")).toBe(true);
     expect(checkFlashcardAnswer(c, "moon")).toBe(false);
+  });
+
+  it("recognition: shows the character and accepts any meaning alternative", () => {
+    const c = card("kanji-mean:日");
+    expect(flashcardPrompt(c).text).toBe("日");
+    expect(usesJapaneseInput(c)).toBe(false);
+    expect(checkFlashcardAnswer(c, "day")).toBe(true);
+    expect(checkFlashcardAnswer(c, "Sun")).toBe(true);
+    expect(checkFlashcardAnswer(c, "day; sun")).toBe(true);
+    expect(checkFlashcardAnswer(c, "moon")).toBe(false);
+    expect(flashcardAnswerDisplay(c)).toBe("day; sun");
+  });
+
+  it("both modes carry an example word", () => {
+    expect(card("kanji:日").example).toEqual({
+      jp: "日本",
+      reading: "にほん",
+      en: "Japan",
+    });
   });
 });
 

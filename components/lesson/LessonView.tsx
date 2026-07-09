@@ -25,6 +25,7 @@ import { AudioButton } from "@/components/AudioButton";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
 import { ReadingControls } from "@/components/ReadingControls";
 import { LessonBlocks } from "@/components/lesson/LessonBlocks";
+import { KanaNudge } from "@/components/lesson/KanaNudge";
 import { LearnVocab } from "@/components/lesson/LearnVocab";
 import { LessonWarmup } from "@/components/lesson/LessonWarmup";
 import { VocabCheck } from "@/components/lesson/VocabCheck";
@@ -136,6 +137,11 @@ export function LessonView({
           <p className="mt-3 text-lg text-ink-soft">{lesson.subtitle}</p>
         )}
       </header>
+
+      {/* soft kana-first nudge on the first grammar lessons */}
+      {!completed && lesson.stage === "basic-grammar" && lesson.order <= 3 && (
+        <KanaNudge />
+      )}
 
       {/* pre-lesson warm-up (new lessons only) */}
       {!completed && <LessonWarmup />}

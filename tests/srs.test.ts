@@ -3,6 +3,8 @@ import {
   createCard,
   dueCount,
   isDue,
+  isLeech,
+  LEECH_LAPSES,
   previewInterval,
   schedule,
 } from "@/lib/srs";
@@ -67,6 +69,16 @@ describe("schedule", () => {
   it("keeps a minimum half-day interval", () => {
     const next = schedule(createCard("x", NOW), "hard", NOW);
     expect(next.intervalDays).toBe(0.5);
+  });
+});
+
+describe("leeches", () => {
+  it("flags cards at the lapse threshold", () => {
+    let c = createCard("x", NOW);
+    for (let i = 0; i < LEECH_LAPSES - 1; i++) c = schedule(c, "again", NOW);
+    expect(isLeech(c)).toBe(false);
+    c = schedule(c, "again", NOW);
+    expect(isLeech(c)).toBe(true);
   });
 });
 

@@ -85,6 +85,13 @@ export function isDue(card: SrsState, now = Date.now()): boolean {
   return card.due <= now;
 }
 
+/** A card failed often enough to deserve focused practice. */
+export const LEECH_LAPSES = 4;
+
+export function isLeech(card: SrsState): boolean {
+  return card.lapses >= LEECH_LAPSES;
+}
+
 /** Human-friendly label of when a grade would next surface the card. */
 export function previewInterval(card: SrsState, grade: Grade): string {
   if (grade === "again") return "1m";

@@ -46,7 +46,13 @@ function isDrill(card: Card): boolean {
   return card.deck === "grammar" && Boolean(card.answers?.length);
 }
 
+/** Kanji recognition card: see the character, type the English meaning. */
+function isKanjiMeaning(card: Card): boolean {
+  return card.deck === "kanji" && Boolean(card.answers?.length);
+}
+
 export function usesJapaneseInput(card: Card): boolean {
+  if (isKanjiMeaning(card)) return false;
   return card.deck !== "grammar" || isDrill(card);
 }
 
@@ -60,6 +66,9 @@ export function flashcardPrompt(card: Card): {
   }
   if (isDrill(card)) {
     return { label: card.instruction ?? "Grammar", text: card.front, jp: true };
+  }
+  if (isKanjiMeaning(card)) {
+    return { label: "What does it mean?", text: card.front, jp: true };
   }
   if (card.deck === "grammar") {
     return { label: "Recall", text: card.back };
@@ -145,6 +154,11 @@ export function checkFlashcardAnswer(card: Card, input: string): boolean {
     return [card.front].some((a) => normalizeEn(a) === normalized);
   }
 
+  if (isKanjiMeaning(card)) {
+    const normalized = normalizeEn(typed);
+    return card.answers!.some((a) => normalizeEn(a) === normalized);
+  }
+
   const jaVariants = inputJapaneseVariants(card, typed);
   const accepted = acceptedJapaneseAnswers(card).map(normalizeJa);
   if (jaVariants.some((v) => accepted.includes(v))) return true;
@@ -156,6 +170,7 @@ export function checkFlashcardAnswer(card: Card, input: string): boolean {
 
 export function flashcardAnswerDisplay(card: Card): string {
   if (isDrill(card)) return stripFurigana(card.answers![0]);
+  if (isKanjiMeaning(card)) return card.back;
   if (card.deck === "grammar") return card.front;
   if (card.deck === "kanji" && card.reading) return card.reading;
   if (card.deck === "vocab" && card.reading) {
@@ -170,6 +185,7 @@ export function flashcardAnswerDisplay(card: Card): string {
 
 export function flashcardInputPlaceholder(card: Card): string {
   if (card.deck === "grammar" && !isDrill(card)) return "Type the answer…";
+  if (isKanjiMeaning(card)) return "Type the meaning in English…";
   if (card.deck === "kanji") return "Type the reading (romaji or kana)…";
   return "Type in romaji or Japanese…";
 }
