@@ -96,7 +96,7 @@ Still **frontend-only**; backend stays deferred.
 |---|---------|-------------|-----|--------|----------|--------|
 | 2.1 | **PWA (install + offline)** | Service worker for lessons + review queue; cache static content. | Mobile-first commuters; no backend needed. | Medium | High | ⬜ |
 | 2.2 | **Store schema v2 + migration** | Version persist payload; migrate card fields safely. | Avoid breaking real user progress. | Low | High | ⬜ |
-| 2.3 | **Tests (SRS, furigana, store)** | Unit tests for `lib/srs.ts`, `lib/japanese.ts`, store import/export. | Prevent silent scheduling bugs. | Medium | High | ⬜ |
+| 2.3 | **Tests (SRS, furigana, store)** | Unit tests for `lib/srs.ts`, `lib/japanese.ts`, store import/export. Shipped (Vitest, `npm test`): 69 tests over srs scheduling, furigana/romaji conversion, flashcard+quiz answer checkers, store actions (streak, XP, boost, complete, import round-trip incl. legacy fields), lesson→card mapping, plus a content scan validating every drill answer in kanji/kana/romaji forms and all quiz shapes. | Prevent silent scheduling bugs. | Medium | High | ✅ |
 | 2.4 | **Push-style reminders (PWA)** | Optional “reviews due” via Web Push when PWA installed. | Retention without native app. | Medium | Medium | ⬜ |
 | 2.5 | **Natural audio (curated)** | Record or license native audio for core lesson sentences; keep TTS fallback. | Course quality bar; listening exposure. | High | Medium | ⬜ |
 | 2.6 | **Listening comprehension drills** | Hear sentence → pick/write answer (no open-ended AI). | Ear training beyond TTS playback. | Medium | High | ⬜ |
@@ -168,7 +168,7 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **2.3 Tests** (srs, japanese, store, quiz/flashcard checkers) · **2.1 PWA scaffold** (2.2 store schema v2 deferred to the backend/sync work)
+1. **2.1 PWA scaffold** (2.2 store schema v2 deferred to the backend/sync work)
 2. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
 3. **1.4 Kanji card modes** · **1.6 Leech cards** · **1.7 Kana mastery suggestion**
 
@@ -187,6 +187,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-09 | Phase 2.3 shipped: Vitest suite (`npm test`) — 69 tests across srs, japanese, answer checkers, store, lesson-cards, and a full content validation scan (every drill answer accepted as kanji/kana/romaji) |
 | 2026-07-09 | Phase 1.3 complete: Special Expressions + Advanced Topics drill passes — 91 drills across the final 20 lessons (causative/passive, keigo, てしまう, certainty, amounts, hearsay, ずに, tendencies, volitional, formal patterns); grammar deck now 243 authored drills with no legacy cards. 2.2 schema v2 deferred until backend/sync |
 | 2026-07-09 | Phase 1.3 (part 2): Essential Grammar drill pass — 96 drills across all 19 lessons (stems, polite forms, te-form, potential, conditionals, comparisons, obligation, quoting, giving/receiving, requests, counters, casual contractions); grammar deck now 172 cards |
 | 2026-07-09 | Phase 1.3 (part 1): grammar drill infrastructure + Basic Grammar authored — `drills` in lesson files become typed Grammar-deck cards (instruction + JP prompt, romaji/kana/kanji answers), auto-enrolled on completion and boosted on quiz misses; 11 lessons, 56 drills; AUTHORING.md §6 documents the format |
