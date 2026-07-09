@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Check, X } from "lucide-react";
+import { Check, CornerDownRight, X } from "lucide-react";
 import type { Card } from "@/content/decks";
 import {
   flashcardAnswerDisplay,
@@ -74,12 +74,25 @@ export function TypingFlashcard({
             className="text-2xl sm:text-3xl"
           />
         ) : (
-          <p className="font-display text-2xl leading-snug text-ink sm:text-3xl">
+          <p
+            className={cn(
+              "font-display leading-snug text-ink",
+              prompt.text.length > 60
+                ? "text-lg sm:text-xl"
+                : "text-2xl sm:text-3xl",
+            )}
+          >
             {prompt.text}
           </p>
         )}
         {submitted && correct !== null && (
           <div className="mt-4 flex animate-fade-up flex-wrap items-center gap-3">
+            <CornerDownRight
+              className={cn(
+                "h-5 w-5 shrink-0",
+                correct ? "text-matcha" : "text-shu",
+              )}
+            />
             {card.deck === "grammar" && card.answers?.length ? (
               <JapaneseText
                 text={card.answers[0]}
