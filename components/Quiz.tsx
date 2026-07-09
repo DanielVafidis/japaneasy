@@ -209,38 +209,7 @@ function MultipleChoice({
   return (
     <>
       <Prompt prompt={q.prompt} promptJp={q.promptJp} />
-      {/* Mobile: full-bleed stacked choices that share borders */}
-      <div className="touch-list -mx-4 sm:hidden">
-        {choices.map((choice) => {
-          const isCorrect = choice === correctValue;
-          const isSelected = choice === selected;
-          return (
-            <button
-              key={choice}
-              type="button"
-              disabled={answered}
-              onClick={() => choose(choice)}
-              className={cn(
-                "flex w-full items-center justify-between gap-2 px-4 py-3.5 text-left text-sm transition-colors active:bg-surface-2",
-                !answered && "bg-surface",
-                answered && isCorrect && "bg-matcha/10",
-                answered && isSelected && !isCorrect && "bg-shu/10",
-                answered && !isCorrect && !isSelected && "opacity-50",
-              )}
-            >
-              <span className="font-jp text-ink">{choice}</span>
-              {answered && isCorrect && (
-                <Check className="h-4 w-4 shrink-0 text-matcha" />
-              )}
-              {answered && isSelected && !isCorrect && (
-                <X className="h-4 w-4 shrink-0 text-shu" />
-              )}
-            </button>
-          );
-        })}
-      </div>
-      {/* Desktop: spaced grid */}
-      <div className="hidden gap-2.5 sm:grid sm:grid-cols-2">
+      <div className="grid gap-2.5 sm:grid-cols-2">
         {choices.map((choice) => {
           const isCorrect = choice === correctValue;
           const isSelected = choice === selected;

@@ -174,23 +174,6 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
-  /* Full-bleed row list — items share borders, no gaps (iOS-friendly) */
-  .touch-list {
-    display: flex;
-    flex-direction: column;
-    border-block: 1px solid var(--line);
-  }
-
-  .touch-list > * + * {
-    border-top: 1px solid var(--line);
-  }
-
-  .touch-list > button,
-  .touch-list > a {
-    min-height: 2.75rem;
-    border-radius: 0;
-  }
-
   /* Segmented control — muted track with elevated active pill */
   .segment-track {
     display: flex;
