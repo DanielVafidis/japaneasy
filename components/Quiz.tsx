@@ -99,7 +99,7 @@ export function Quiz({
 
   return (
     <div className="overflow-hidden rounded-3xl border border-line bg-surface sm:overflow-visible">
-      <div className="px-4 pt-4 sm:p-6 md:px-8 md:pt-8">
+      <div className="p-4 sm:p-6 md:p-8">
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <span className="text-xs font-semibold uppercase tracking-widest text-ink-faint">
             Question {index + 1} of {questions.length}
