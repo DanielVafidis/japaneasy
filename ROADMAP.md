@@ -94,7 +94,7 @@ Still **frontend-only**; backend stays deferred.
 
 | # | Feature | Description | Why | Effort | Priority | Status |
 |---|---------|-------------|-----|--------|----------|--------|
-| 2.1 | **PWA (install + offline)** | Service worker for lessons + review queue; cache static content. | Mobile-first commuters; no backend needed. | Medium | High | ⬜ |
+| 2.1 | **PWA (install + offline)** | Service worker for lessons + review queue; cache static content. Deferred 2026-07-09 — revisit once the learning loop settles (possibly alongside backend/sync). | Mobile-first commuters; no backend needed. | Medium | High | ⏸ |
 | 2.2 | **Store schema v2 + migration** | Version persist payload; migrate card fields safely. | Avoid breaking real user progress. | Low | High | ⬜ |
 | 2.3 | **Tests (SRS, furigana, store)** | Unit tests for `lib/srs.ts`, `lib/japanese.ts`, store import/export. Shipped (Vitest, `npm test`): 69 tests over srs scheduling, furigana/romaji conversion, flashcard+quiz answer checkers, store actions (streak, XP, boost, complete, import round-trip incl. legacy fields), lesson→card mapping, plus a content scan validating every drill answer in kanji/kana/romaji forms and all quiz shapes. | Prevent silent scheduling bugs. | Medium | High | ✅ |
 | 2.4 | **Push-style reminders (PWA)** | Optional “reviews due” via Web Push when PWA installed. | Retention without native app. | Medium | Medium | ⬜ |
@@ -168,9 +168,10 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **2.1 PWA scaffold** (2.2 store schema v2 deferred to the backend/sync work)
-2. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
-3. **1.4 Kanji card modes** · **1.6 Leech cards** · **1.7 Kana mastery suggestion**
+1. **1.5 Pre-lesson warm-up** · **2.6 Listening drills** (pilot one lesson)
+2. **1.4 Kanji card modes** · **1.6 Leech cards** · **1.7 Kana mastery suggestion**
+
+(2.1 PWA and 2.2 store schema v2 deferred — revisit with backend/sync.)
 
 ---
 
