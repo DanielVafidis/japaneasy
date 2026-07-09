@@ -149,7 +149,7 @@ export function FlashcardsView() {
           </span>
           <button
             onClick={() => setMode("overview")}
-            className="inline-flex items-center gap-1 text-sm text-ink-faint hover:text-shu"
+            className="inline-flex min-h-11 items-center gap-1 text-sm text-ink-faint hover:text-shu"
           >
             <X className="h-4 w-4" /> End session
           </button>

@@ -183,6 +183,7 @@ export function TypingFlashcard({
             if (!japaneseInput) onChange(e.target.value);
           }}
           placeholder={flashcardInputPlaceholder(card)}
+          aria-label="Your answer"
           autoComplete="off"
           autoCorrect="off"
           spellCheck={false}
@@ -209,8 +210,11 @@ export function TypingFlashcard({
             ) : (
               <X className="h-4 w-4 shrink-0" />
             )}
-            <p className="min-w-0 flex-1 font-semibold">
+            <p role="status" className="min-w-0 flex-1 font-semibold">
               {correct ? "Correct" : "Not quite"}
+              {!correct && (
+                <span className="sr-only">. The answer is {answer}.</span>
+              )}
             </p>
           </div>
           <Button
@@ -218,7 +222,7 @@ export function TypingFlashcard({
             onClick={onContinue}
             autoFocus
             size="sm"
-            className="mt-3 w-full"
+            className="mt-3 min-h-11 w-full"
             variant={correct ? "primary" : "outline"}
           >
             Continue

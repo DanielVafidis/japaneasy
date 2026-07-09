@@ -40,8 +40,14 @@ export function Quiz({
   const [finished, setFinished] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const missedRef = useRef<QuizQuestion[]>([]);
+  const questionRef = useRef<HTMLDivElement>(null);
 
   const q = questions[index];
+
+  useEffect(() => {
+    // Move keyboard/screen-reader context to each new question.
+    if (index > 0) questionRef.current?.focus();
+  }, [index]);
 
   function handleResult(correct: boolean) {
     if (answered) return;
@@ -106,7 +112,10 @@ export function Quiz({
           <span className="text-xs font-semibold uppercase tracking-widest text-ink-faint">
             Question {index + 1} of {questions.length}
           </span>
-          <div className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 sm:mx-0 sm:overflow-visible sm:pb-0">
+          <div
+            aria-hidden
+            className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 sm:mx-0 sm:overflow-visible sm:pb-0"
+          >
             {questions.map((_, i) => (
               <span
                 key={i}
@@ -123,7 +132,12 @@ export function Quiz({
           </div>
         </div>
 
-        <div key={`${attempt}-${index}`} className="animate-fade-up">
+        <div
+          key={`${attempt}-${index}`}
+          ref={questionRef}
+          tabIndex={-1}
+          className="animate-fade-up outline-none"
+        >
           {q.kind === "mc" && (
             <MultipleChoice q={q} answered={answered} onResult={handleResult} />
           )}
@@ -145,6 +159,7 @@ export function Quiz({
       {answered && (
         <div className="border-t border-line px-4 py-4 animate-fade-up sm:px-6 md:px-8">
           <div
+            role="status"
             className={cn(
               "flex items-start gap-2 rounded-xl p-3 text-sm",
               wasCorrect
@@ -165,7 +180,7 @@ export function Quiz({
             </span>
           </div>
           <div className="mt-4 flex justify-stretch sm:justify-end">
-            <Button size="sm" onClick={next} className="w-full sm:w-auto">
+            <Button size="sm" onClick={next} className="min-h-11 w-full sm:w-auto">
               {index + 1 >= questions.length ? "See results" : "Next"}
             </Button>
           </div>
@@ -321,6 +336,7 @@ function FillIn({
             if (!japaneseInput) setValue(e.target.value);
           }}
           placeholder={quizFillPlaceholder(q)}
+          aria-label="Your answer"
           autoComplete="off"
           autoCorrect="off"
           spellCheck={false}
@@ -446,6 +462,7 @@ function OrderSentence({
     <>
       <Prompt prompt={q.prompt} />
       <div
+        aria-label="Your sentence so far"
         className={cn(
           "flex min-h-[3.75rem] flex-wrap items-center gap-2 rounded-xl border border-dashed p-2.5",
           answered && wasCorrect && "border-matcha/50 bg-matcha/5",
@@ -480,7 +497,7 @@ function OrderSentence({
               disabled={answered || used}
               onClick={() => add(t.id)}
               className={cn(
-                "rounded-lg border px-3 py-2 transition-all",
+                "min-h-11 rounded-lg border px-3 py-2 transition-all",
                 used
                   ? "border-line/50 bg-surface-2/50 opacity-35"
                   : "border-line bg-surface hover:border-shu/50 active:scale-95",
@@ -497,7 +514,7 @@ function OrderSentence({
             size="sm"
             onClick={submit}
             disabled={picked.length !== q.tiles.length}
-            className="w-full sm:w-auto"
+            className="min-h-11 w-full sm:w-auto"
           >
             Check
           </Button>
