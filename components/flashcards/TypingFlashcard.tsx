@@ -78,6 +78,40 @@ export function TypingFlashcard({
             {prompt.text}
           </p>
         )}
+        {submitted && correct !== null && (
+          <div className="mt-4 flex animate-fade-up flex-wrap items-center gap-3">
+            {card.deck === "grammar" && card.answers?.length ? (
+              <JapaneseText
+                text={card.answers[0]}
+                showFurigana
+                className="text-2xl text-ink sm:text-3xl"
+              />
+            ) : card.deck === "kanji" ? (
+              <>
+                <span className="font-jp text-2xl text-ink sm:text-3xl">
+                  {card.front}
+                </span>
+                <span className="text-base text-ink-soft">({answer})</span>
+              </>
+            ) : card.frontJp ? (
+              <>
+                <JapaneseText
+                  text={card.front}
+                  showFurigana
+                  className="text-2xl text-ink sm:text-3xl"
+                />
+                {showVocabReading && (
+                  <span className="font-jp text-base text-ink-soft">
+                    ({card.reading})
+                  </span>
+                )}
+              </>
+            ) : (
+              <span className="font-display text-2xl text-ink">{answer}</span>
+            )}
+            {card.speak && <AudioButton text={card.speak} size="sm" />}
+          </div>
+        )}
       </div>
 
       <form
@@ -147,46 +181,15 @@ export function TypingFlashcard({
             correct ? "bg-matcha/10 text-matcha" : "bg-shu/10 text-shu",
           )}
         >
-          <div className="flex items-start gap-3">
+          <div className="flex items-center gap-3">
             {correct ? (
-              <Check className="mt-0.5 h-4 w-4 shrink-0" />
+              <Check className="h-4 w-4 shrink-0" />
             ) : (
-              <X className="mt-0.5 h-4 w-4 shrink-0" />
+              <X className="h-4 w-4 shrink-0" />
             )}
-            <div className="min-w-0 flex-1">
-              <p className="font-semibold">{correct ? "Correct" : "Not quite"}</p>
-              <p className="mt-1 flex flex-wrap items-center gap-2 text-ink">
-                {!correct && <span className="text-ink-soft">Answer:</span>}
-                {card.deck === "grammar" && card.answers?.length ? (
-                  <JapaneseText
-                    text={card.answers[0]}
-                    showFurigana
-                    className="text-lg"
-                  />
-                ) : card.deck === "kanji" ? (
-                  <>
-                    <span className="font-jp text-lg">{card.front}</span>
-                    <span className="text-ink-soft">({answer})</span>
-                  </>
-                ) : card.frontJp ? (
-                  <>
-                    <JapaneseText
-                      text={card.front}
-                      showFurigana
-                      className="text-lg"
-                    />
-                    {showVocabReading && (
-                      <span className="font-jp text-ink-soft">
-                        ({card.reading})
-                      </span>
-                    )}
-                  </>
-                ) : (
-                  <span className="font-display text-lg">{answer}</span>
-                )}
-                {card.speak && <AudioButton text={card.speak} size="sm" />}
-              </p>
-            </div>
+            <p className="min-w-0 flex-1 font-semibold">
+              {correct ? "Correct" : "Not quite"}
+            </p>
           </div>
           <Button
             type="button"
