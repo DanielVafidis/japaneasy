@@ -99,6 +99,30 @@ describe("grammar drills", () => {
   });
 });
 
+describe("kanji & kana data", () => {
+  it("kanji characters are unique with sane data", async () => {
+    const { kanji } = await import("@/content/kanji");
+    const seen = new Set<string>();
+    for (const k of kanji) {
+      expect(seen.has(k.char), `duplicate kanji ${k.char}`).toBe(false);
+      seen.add(k.char);
+      expect(k.strokes).toBeGreaterThan(0);
+      expect(k.meaning.trim().length).toBeGreaterThan(0);
+      expect(k.on.length + k.kun.length).toBeGreaterThan(0);
+    }
+    expect(kanji.length).toBe(220);
+  });
+
+  it("every gojuon kana has stroke counts", async () => {
+    const { gojuon } = await import("@/content/kana");
+    for (const k of gojuon) {
+      expect(k.strokes, `${k.hira} missing strokes`).toBeDefined();
+      expect(k.strokes![0]).toBeGreaterThan(0);
+      expect(k.strokes![1]).toBeGreaterThan(0);
+    }
+  });
+});
+
 describe("readings", () => {
   it("have unique ids, paragraphs, and backed glossary cards", () => {
     const ids = new Set<string>();

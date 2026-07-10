@@ -24,6 +24,8 @@ export interface Kanji {
   strokes: number;
   category: KanjiCategory;
   example?: { word: string; reading: string; meaning: string };
+  /** Component hint, e.g. "日 sun + 月 moon" — shown in the browser and card reveals. */
+  parts?: string;
 }
 
 export const kanji: Kanji[] = [
@@ -218,6 +220,56 @@ export const kanji: Kanji[] = [
   { char: "信", meaning: "trust; faith", on: ["シン"], kun: [], jlpt: 4, strokes: 9, category: "misc", example: { word: "信じる", reading: "しんじる", meaning: "to believe" } },
   { char: "問", meaning: "question; ask", on: ["モン"], kun: ["と.う", "と.い"], jlpt: 4, strokes: 11, category: "misc", example: { word: "問題", reading: "もんだい", meaning: "problem; question" } },
   { char: "送", meaning: "send", on: ["ソウ"], kun: ["おく.る"], jlpt: 4, strokes: 9, category: "verbs" },
+
+  // ---- N4 expansion ----
+  { char: "兄", meaning: "older brother", on: ["ケイ", "キョウ"], kun: ["あに"], jlpt: 4, strokes: 5, category: "people", example: { word: "兄弟", reading: "きょうだい", meaning: "siblings" }, parts: "口 mouth + 儿 legs" },
+  { char: "弟", meaning: "younger brother", on: ["ダイ", "デ"], kun: ["おとうと"], jlpt: 4, strokes: 7, category: "people", example: { word: "兄弟", reading: "きょうだい", meaning: "siblings" }, parts: "a bow wound with string" },
+  { char: "姉", meaning: "older sister", on: ["シ"], kun: ["あね"], jlpt: 4, strokes: 8, category: "people", example: { word: "お姉さん", reading: "おねえさん", meaning: "older sister" }, parts: "女 woman + 市 market" },
+  { char: "妹", meaning: "younger sister", on: ["マイ"], kun: ["いもうと"], jlpt: 4, strokes: 8, category: "people", example: { word: "妹", reading: "いもうと", meaning: "younger sister" }, parts: "女 woman + 未 not-yet" },
+  { char: "族", meaning: "family; tribe", on: ["ゾク"], kun: [], jlpt: 4, strokes: 11, category: "people", example: { word: "家族", reading: "かぞく", meaning: "family" }, parts: "方 flagpole + 矢 arrow — a clan under one banner" },
+  { char: "親", meaning: "parent; intimate", on: ["シン"], kun: ["おや", "した.しい"], jlpt: 4, strokes: 16, category: "people", example: { word: "親切", reading: "しんせつ", meaning: "kind" }, parts: "立 stand + 木 tree + 見 watch — watching over" },
+  { char: "春", meaning: "spring", on: ["シュン"], kun: ["はる"], jlpt: 4, strokes: 9, category: "time", example: { word: "春", reading: "はる", meaning: "spring" }, parts: "日 sun beneath sprouting plants" },
+  { char: "夏", meaning: "summer", on: ["カ"], kun: ["なつ"], jlpt: 4, strokes: 10, category: "time", example: { word: "夏休み", reading: "なつやすみ", meaning: "summer holiday" }, parts: "a head 頁 over slow legs 夂" },
+  { char: "秋", meaning: "autumn", on: ["シュウ"], kun: ["あき"], jlpt: 4, strokes: 9, category: "time", example: { word: "秋", reading: "あき", meaning: "autumn" }, parts: "禾 grain + 火 fire" },
+  { char: "冬", meaning: "winter", on: ["トウ"], kun: ["ふゆ"], jlpt: 4, strokes: 5, category: "time", example: { word: "冬", reading: "ふゆ", meaning: "winter" }, parts: "夂 trudging legs + ⺀ ice drops" },
+  { char: "空", meaning: "sky; empty", on: ["クウ"], kun: ["そら", "あ.く"], jlpt: 4, strokes: 8, category: "nature", example: { word: "空", reading: "そら", meaning: "sky" }, parts: "穴 hole + 工 craft" },
+  { char: "海", meaning: "sea", on: ["カイ"], kun: ["うみ"], jlpt: 4, strokes: 9, category: "nature", example: { word: "海", reading: "うみ", meaning: "sea" }, parts: "氵 water + 每 every" },
+  { char: "風", meaning: "wind; style", on: ["フウ"], kun: ["かぜ"], jlpt: 4, strokes: 9, category: "nature", example: { word: "風", reading: "かぜ", meaning: "wind" }, parts: "几 sail frame + 虫 bug inside" },
+  { char: "雪", meaning: "snow", on: ["セツ"], kun: ["ゆき"], jlpt: 4, strokes: 11, category: "nature", example: { word: "雪", reading: "ゆき", meaning: "snow" }, parts: "雨 rain + ヨ broom — rain you sweep" },
+  { char: "星", meaning: "star", on: ["セイ"], kun: ["ほし"], jlpt: 4, strokes: 9, category: "nature", example: { word: "星", reading: "ほし", meaning: "star" }, parts: "日 sun + 生 born — born of the sun" },
+  { char: "光", meaning: "light; shine", on: ["コウ"], kun: ["ひかり", "ひか.る"], jlpt: 4, strokes: 6, category: "nature", example: { word: "光", reading: "ひかり", meaning: "light" }, parts: "sparks over 儿 legs" },
+  { char: "犬", meaning: "dog", on: ["ケン"], kun: ["いぬ"], jlpt: 4, strokes: 4, category: "nature", example: { word: "犬", reading: "いぬ", meaning: "dog" }, parts: "大 big + a dot — a dog at your side" },
+  { char: "鳥", meaning: "bird", on: ["チョウ"], kun: ["とり"], jlpt: 4, strokes: 11, category: "nature", example: { word: "鳥", reading: "とり", meaning: "bird" }, parts: "a perched bird, tail feathers below" },
+  { char: "魚", meaning: "fish", on: ["ギョ"], kun: ["さかな"], jlpt: 4, strokes: 11, category: "nature", example: { word: "魚", reading: "さかな", meaning: "fish" }, parts: "head, 田 scales, 灬 tail" },
+  { char: "肉", meaning: "meat", on: ["ニク"], kun: [], jlpt: 4, strokes: 6, category: "misc", example: { word: "肉", reading: "にく", meaning: "meat" }, parts: "ribs inside a body" },
+  { char: "野", meaning: "field; wild", on: ["ヤ"], kun: ["の"], jlpt: 4, strokes: 11, category: "nature", example: { word: "野菜", reading: "やさい", meaning: "vegetables" }, parts: "里 village + 予 — beyond the village" },
+  { char: "菜", meaning: "greens; vegetable", on: ["サイ"], kun: ["な"], jlpt: 4, strokes: 11, category: "misc", example: { word: "野菜", reading: "やさい", meaning: "vegetables" }, parts: "艹 grass + 采 pluck" },
+  { char: "茶", meaning: "tea", on: ["チャ", "サ"], kun: [], jlpt: 4, strokes: 9, category: "misc", example: { word: "お茶", reading: "おちゃ", meaning: "tea" }, parts: "艹 grass + 人 + 木 — leaves off a bush" },
+  { char: "米", meaning: "rice", on: ["ベイ", "マイ"], kun: ["こめ"], jlpt: 4, strokes: 6, category: "misc", example: { word: "お米", reading: "おこめ", meaning: "(uncooked) rice" }, parts: "grains bursting off a stalk" },
+  { char: "住", meaning: "dwell; live", on: ["ジュウ"], kun: ["す.む"], jlpt: 4, strokes: 7, category: "verbs", example: { word: "住む", reading: "すむ", meaning: "to live (somewhere)" }, parts: "亻 person + 主 master — master of the house" },
+  { char: "動", meaning: "move", on: ["ドウ"], kun: ["うご.く"], jlpt: 4, strokes: 11, category: "verbs", example: { word: "動物", reading: "どうぶつ", meaning: "animal" }, parts: "重 heavy + 力 power" },
+  { char: "待", meaning: "wait", on: ["タイ"], kun: ["ま.つ"], jlpt: 4, strokes: 9, category: "verbs", example: { word: "待つ", reading: "まつ", meaning: "to wait" }, parts: "彳 step + 寺 temple — waiting at the temple" },
+  { char: "帰", meaning: "return home", on: ["キ"], kun: ["かえ.る"], jlpt: 4, strokes: 10, category: "verbs", example: { word: "帰る", reading: "かえる", meaning: "to go home" }, parts: "刂 blade + ヨ broom + 巾 cloth — home to the chores" },
+  { char: "通", meaning: "pass through; commute", on: ["ツウ"], kun: ["とお.る", "かよ.う"], jlpt: 4, strokes: 10, category: "verbs", example: { word: "通う", reading: "かよう", meaning: "to commute" }, parts: "辶 road + 甬 — traffic on the road" },
+  { char: "運", meaning: "carry; luck", on: ["ウン"], kun: ["はこ.ぶ"], jlpt: 4, strokes: 12, category: "verbs", example: { word: "運転", reading: "うんてん", meaning: "driving" }, parts: "辶 road + 軍 army — an army on the move" },
+  { char: "転", meaning: "turn; roll", on: ["テン"], kun: ["ころ.ぶ"], jlpt: 4, strokes: 11, category: "verbs", example: { word: "自転車", reading: "じてんしゃ", meaning: "bicycle" }, parts: "車 cart + 云 — wheels turning" },
+  { char: "乗", meaning: "ride; board", on: ["ジョウ"], kun: ["の.る"], jlpt: 4, strokes: 9, category: "verbs", example: { word: "乗る", reading: "のる", meaning: "to ride; get on" }, parts: "a person climbing a tree" },
+  { char: "降", meaning: "descend; fall (rain)", on: ["コウ"], kun: ["お.りる", "ふ.る"], jlpt: 4, strokes: 10, category: "verbs", example: { word: "降りる", reading: "おりる", meaning: "to get off" }, parts: "阝 hill + descending steps" },
+  { char: "貸", meaning: "lend", on: ["タイ"], kun: ["か.す"], jlpt: 4, strokes: 12, category: "verbs", example: { word: "貸す", reading: "かす", meaning: "to lend" }, parts: "代 substitute + 貝 money" },
+  { char: "借", meaning: "borrow", on: ["シャク"], kun: ["か.りる"], jlpt: 4, strokes: 10, category: "verbs", example: { word: "借りる", reading: "かりる", meaning: "to borrow" }, parts: "亻 person + 昔 long ago — owing since way back" },
+  { char: "写", meaning: "copy; photograph", on: ["シャ"], kun: ["うつ.す"], jlpt: 4, strokes: 5, category: "verbs", example: { word: "写真", reading: "しゃしん", meaning: "photo" }, parts: "冖 cover + 与 — tracing under a cover" },
+  { char: "早", meaning: "early; fast", on: ["ソウ"], kun: ["はや.い"], jlpt: 4, strokes: 6, category: "adjectives", example: { word: "早い", reading: "はやい", meaning: "early" }, parts: "日 sun + 十 — sun over the horizon pole" },
+  { char: "近", meaning: "near", on: ["キン"], kun: ["ちか.い"], jlpt: 4, strokes: 7, category: "adjectives", example: { word: "近く", reading: "ちかく", meaning: "nearby" }, parts: "辶 road + 斤 axe — an axe-throw away" },
+  { char: "遠", meaning: "far", on: ["エン"], kun: ["とお.い"], jlpt: 4, strokes: 13, category: "adjectives", example: { word: "遠い", reading: "とおい", meaning: "far" }, parts: "辶 road + 袁 long robes — a long way down the road" },
+  { char: "重", meaning: "heavy; layered", on: ["ジュウ"], kun: ["おも.い"], jlpt: 4, strokes: 9, category: "adjectives", example: { word: "重い", reading: "おもい", meaning: "heavy" }, parts: "千 + 里 stacked — a heavy load carried far" },
+  { char: "軽", meaning: "light (weight)", on: ["ケイ"], kun: ["かる.い"], jlpt: 4, strokes: 12, category: "adjectives", example: { word: "軽い", reading: "かるい", meaning: "light" }, parts: "車 cart + 圣 — a cart that rolls easily" },
+  { char: "太", meaning: "thick; fat", on: ["タイ"], kun: ["ふと.い"], jlpt: 4, strokes: 4, category: "adjectives", example: { word: "太る", reading: "ふとる", meaning: "to gain weight" }, parts: "大 big + a dot for emphasis" },
+  { char: "広", meaning: "wide; spacious", on: ["コウ"], kun: ["ひろ.い"], jlpt: 4, strokes: 5, category: "adjectives", example: { word: "広い", reading: "ひろい", meaning: "spacious" }, parts: "广 roof + ム — room under a wide roof" },
+  { char: "低", meaning: "low", on: ["テイ"], kun: ["ひく.い"], jlpt: 4, strokes: 7, category: "adjectives", example: { word: "低い", reading: "ひくい", meaning: "low" }, parts: "亻 person + 氐 bottom" },
+  { char: "暗", meaning: "dark", on: ["アン"], kun: ["くら.い"], jlpt: 4, strokes: 13, category: "adjectives", example: { word: "暗い", reading: "くらい", meaning: "dark" }, parts: "日 sun + 音 sound — only sound where the sun is gone" },
+  { char: "同", meaning: "same", on: ["ドウ"], kun: ["おな.じ"], jlpt: 4, strokes: 6, category: "adjectives", example: { word: "同じ", reading: "おなじ", meaning: "the same" }, parts: "冂 frame + 一 + 口 — one mouth in one frame" },
+  { char: "旅", meaning: "travel; journey", on: ["リョ"], kun: ["たび"], jlpt: 4, strokes: 10, category: "misc", example: { word: "旅行", reading: "りょこう", meaning: "trip" }, parts: "方 flagpole + people marching behind it" },
+  { char: "題", meaning: "topic; title", on: ["ダイ"], kun: [], jlpt: 4, strokes: 18, category: "misc", example: { word: "宿題", reading: "しゅくだい", meaning: "homework" }, parts: "是 + 頁 page — what the page is about" },
 ];
 
 export const kanjiCategories: { id: KanjiCategory; label: string }[] = [

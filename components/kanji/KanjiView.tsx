@@ -188,6 +188,14 @@ function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void 
               <Badge tone="ai">N{k.jlpt}</Badge>
             </dd>
           </div>
+          {k.parts && (
+            <div className="sm:col-span-2">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-ink-faint">
+                Components
+              </dt>
+              <dd className="mt-1 text-ink-soft">{k.parts}</dd>
+            </div>
+          )}
         </dl>
 
         {k.example && (

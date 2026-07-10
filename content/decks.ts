@@ -23,6 +23,8 @@ export interface Card {
   answers?: string[];
   /** Kanji cards: an example word shown with the answer. */
   example?: { jp: string; reading: string; en: string };
+  /** Kanji cards: component hint shown with the answer. */
+  parts?: string;
 }
 
 export interface DeckMeta {
@@ -180,6 +182,7 @@ function kanjiDeck(): Card[] {
         frontJp: true,
         speak,
         example,
+        parts: k.parts,
       },
       // Recognition: see the character, type the meaning.
       {
@@ -192,6 +195,7 @@ function kanjiDeck(): Card[] {
         speak,
         answers: meaningAnswers(k.meaning),
         example,
+        parts: k.parts,
       },
     ];
   });

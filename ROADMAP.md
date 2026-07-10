@@ -112,9 +112,9 @@ Still **frontend-only**; backend stays deferred.
 | 3.1 | **Graded readings per stage** | Short passages using only taught vocab/kanji; comprehension quiz. Shipped: `Reading` content type, `/readings` library + reader (per-line audio, tap-to-reveal English, glossary → flashcards, quiz ≥60% marks read), “Read” in the nav; **10 readers covering every grammar stage** (Basic ×4, Essential ×3, Special ×2, Advanced ×1). Grow the shelf alongside future content passes. | Volume reading cements grammar. | High | High | ✅ |
 | 3.2 | **Situation modules** | Konbini, train, directions — dialogue blocks + targeted quiz. Shipped as situation-flavoured readings: speaker-chip dialogues, a “Key phrases” section with audio, glossary + quiz; コンビニで, 駅で, and 道を聞く live in the readings library. | Real-world framing without “game” feel. | Medium | High | ✅ |
 | 3.3 | **Stage recap lessons** | End-of-stage synthesis + mixed review quiz. Shipped: four recap lessons (one per grammar stage) at the end of each stage’s path — “what you can now say” synthesis, mixed original examples, and a 10-question quiz spanning the stage (incl. a listening question); `recap: true` keeps them out of the grammar deck. | Course rhythm; milestone satisfaction. | Medium | Medium | ✅ |
-| 3.4 | **Kanji expansion + radicals** | Grow set; optional component hints in browser/SRS. | Beginners need structure, not 2000 chars at once. | Medium | Medium | ⬜ |
+| 3.4 | **Kanji expansion + radicals** | Grow set; optional component hints in browser/SRS. Shipped: +48 N4 kanji (family, seasons, nature, food, movement verbs, adjectives) → 220 total / 440 cards; new `parts` component hints shown in the browser detail and in both card reveals. Backfill hints on the original N5 set over time. | Beginners need structure, not 2000 chars at once. | Medium | Medium | ✅ |
 | 3.5 | **JLPT progress view (optional)** | Map lessons/kanji to N5/N4 coverage %. | Useful when user picks JLPT north star. | Medium | Medium | ⬜ |
-| 3.6 | **Kana writer validation** | Stroke-order check against reference paths. | Writing = motor memory; high effort. | High | Low | ⬜ |
+| 3.6 | **Kana writer validation** | Stroke-order check against reference paths. Shipped v1 as stroke-**count** validation: standard counts on all 46 gojuon (both scripts), live counter with match/over feedback, undo, and stroke-preserving redraws (drawings survive resizes). Path/order matching against reference strokes remains future work. | Writing = motor memory; high effort. | High | Low | ✅ |
 
 ---
 
@@ -189,6 +189,7 @@ Phase 3 core (3.1–3.3) is done. Remaining directions: **2.5 natural audio** ·
 
 | Date | Change |
 |------|--------|
+| 2026-07-10 | Phases 3.4 + 3.6 shipped: 48 N4 kanji with component hints (220 kanji, 440 cards; hints in browser + card reveals) and kana writer stroke-count validation (live counter, undo, resize-safe strokes) |
 | 2026-07-10 | Phase 3.3 shipped: stage recap lessons — end-of-stage synthesis + 10-question mixed quizzes for all four grammar stages; recaps sit last in each stage’s path and add no deck cards. **Phase 3 core complete**; course now 58 lessons |
 | 2026-07-10 | Phase 3.2 shipped: situation modules as dialogue readings (speaker chips, key-phrase list with audio, listen question at the konbini) — コンビニで, 駅で, 道を聞く |
 | 2026-07-10 | Phase 3.1 complete: 7 more readers (朝, 私の町, 雨の日, 日本へ行きたい, 忘れた日, 働きすぎ, レポート) — all four grammar stages covered, incl. a である-style essay for Advanced |

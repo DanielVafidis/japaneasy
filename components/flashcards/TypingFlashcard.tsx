@@ -134,6 +134,11 @@ export function TypingFlashcard({
             <AudioButton text={card.example.reading} size="sm" />
           </p>
         )}
+        {submitted && correct !== null && card.parts && (
+          <p className="mt-1 text-sm text-ink-faint animate-fade-up">
+            <span className="font-medium">Parts:</span> {card.parts}
+          </p>
+        )}
       </div>
 
       <form
