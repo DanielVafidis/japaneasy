@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { SquareArrowOutUpRight, X } from "lucide-react";
+import { Grid3x3, PencilLine, SquareArrowOutUpRight, X } from "lucide-react";
 import {
   kanji,
   kanjiCategories,
@@ -13,15 +13,22 @@ import {
 import { cardsForDeck } from "@/content/decks";
 import { AudioButton } from "@/components/AudioButton";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
+import { KanjiWriter } from "@/components/kanji/KanjiWriter";
 import { Badge } from "@/components/ui/Badge";
+import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { cn } from "@/lib/cn";
 
 type Filter = KanjiCategory | "all";
+type Mode = "browse" | "write";
 
 export function KanjiView() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [filter, setFilter] = useState<Filter>("all");
+  const [mode, setMode] = useState<Mode>("browse");
+  const [writeStart, setWriteStart] = useState<string | undefined>(undefined);
+  // bumped so "Practice writing" always jumps the writer to its kanji
+  const [writeSession, setWriteSession] = useState(0);
 
   // the URL is the source of truth for the open detail panel
   const selectedChar = searchParams.get("c");
@@ -42,6 +49,16 @@ export function KanjiView() {
     router.replace("/kanji", { scroll: false });
   }
 
+  function practiceKanji(k: Kanji) {
+    // the writer only pages through the visible list, so widen the filter
+    // if the requested kanji is filtered out
+    if (!list.some((x) => x.char === k.char)) setFilter("all");
+    setWriteStart(k.char);
+    setWriteSession((s) => s + 1);
+    setMode("write");
+    closeKanji();
+  }
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
@@ -59,27 +76,63 @@ export function KanjiView() {
             </Chip>
           ))}
         </div>
-        <AddToDeckButton ids={allIds} label={`Add all ${allIds.length}`} size="md" className="w-full justify-center sm:w-auto" />
+        <SegmentedControl
+          aria-label="Kanji mode"
+          value={mode}
+          onChange={setMode}
+          className="w-full sm:w-auto sm:min-w-[14rem]"
+          options={[
+            {
+              value: "browse",
+              label: "Browse",
+              icon: <Grid3x3 className="h-4 w-4 shrink-0" />,
+            },
+            {
+              value: "write",
+              label: "Write",
+              icon: <PencilLine className="h-4 w-4 shrink-0" />,
+            },
+          ]}
+        />
       </div>
 
-      <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8">
-        {list.map((k) => (
-          <button
-            key={k.char}
-            onClick={() => openKanji(k)}
-            aria-pressed={selected?.char === k.char}
-            className="group flex aspect-square flex-col items-center justify-center rounded-2xl border border-line bg-surface transition-all hover:-translate-y-0.5 hover:border-shu/50 hover:bg-surface card-shadow"
-          >
-            <span className="font-jp text-3xl text-ink sm:text-4xl">{k.char}</span>
-            <span className="mt-1 truncate px-1 text-[0.65rem] text-ink-faint group-hover:text-shu">
-              {k.meaning.split(";")[0]}
-            </span>
-          </button>
-        ))}
-      </div>
+      {mode === "browse" ? (
+        <>
+          <div className="flex justify-end">
+            <AddToDeckButton
+              ids={allIds}
+              label={`Add all ${allIds.length}`}
+              size="md"
+              className="w-full justify-center sm:w-auto"
+            />
+          </div>
+
+          <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8">
+            {list.map((k) => (
+              <button
+                key={k.char}
+                onClick={() => openKanji(k)}
+                aria-pressed={selected?.char === k.char}
+                className="group flex aspect-square flex-col items-center justify-center rounded-2xl border border-line bg-surface transition-all hover:-translate-y-0.5 hover:border-shu/50 hover:bg-surface card-shadow"
+              >
+                <span className="font-jp text-3xl text-ink sm:text-4xl">{k.char}</span>
+                <span className="mt-1 truncate px-1 text-[0.65rem] text-ink-faint group-hover:text-shu">
+                  {k.meaning.split(";")[0]}
+                </span>
+              </button>
+            ))}
+          </div>
+        </>
+      ) : (
+        <KanjiWriter
+          key={`${filter}-${writeSession}`}
+          list={list}
+          initialChar={writeStart}
+        />
+      )}
 
       {selected && (
-        <KanjiDetail kanji={selected} onClose={closeKanji} />
+        <KanjiDetail kanji={selected} onClose={closeKanji} onPractice={practiceKanji} />
       )}
     </div>
   );
@@ -111,7 +164,15 @@ function Chip({
   );
 }
 
-function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void }) {
+function KanjiDetail({
+  kanji: k,
+  onClose,
+  onPractice,
+}: {
+  kanji: Kanji;
+  onClose: () => void;
+  onPractice: (k: Kanji) => void;
+}) {
   const categoryLabel =
     kanjiCategories.find((c) => c.id === k.category)?.label ?? k.category;
 
@@ -210,6 +271,13 @@ function KanjiDetail({ kanji: k, onClose }: { kanji: Kanji; onClose: () => void 
 
         <div className="mt-6 flex flex-wrap gap-3">
           <AddToDeckButton ids={cardIds} label="Add to deck" size="md" />
+          <button
+            type="button"
+            onClick={() => onPractice(k)}
+            className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-shu/40 hover:text-ink"
+          >
+            <PencilLine className="h-3.5 w-3.5" /> Practice writing
+          </button>
           <a
             href={`https://jisho.org/search/${encodeURIComponent(k.char)}`}
             target="_blank"

@@ -136,6 +136,19 @@ describe("kanji & kana data", () => {
       }
     }
   });
+
+  it("every kanji has stroke paths matching its stroke count", async () => {
+    const { kanji } = await import("@/content/kanji");
+    const { kanjiStrokes } = await import("@/content/kanji-strokes");
+    for (const k of kanji) {
+      const paths = kanjiStrokes[k.char];
+      expect(paths, `${k.char} missing stroke paths`).toBeDefined();
+      expect(paths.length, `${k.char} stroke path count`).toBe(k.strokes);
+      for (const d of paths) {
+        expect(d, `${k.char} path should start with a moveto`).toMatch(/^M/);
+      }
+    }
+  });
 });
 
 describe("readings", () => {
