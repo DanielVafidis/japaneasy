@@ -113,6 +113,30 @@ export interface Lesson {
   drills?: GrammarDrill[];
 }
 
+export interface ReadingParagraph {
+  jp: string;
+  en: string;
+}
+
+/**
+ * A graded reading: a short passage written with grammar/vocabulary taught
+ * up to its stage, plus a comprehension quiz. New words go in `vocabulary`
+ * (they become flashcards like lesson vocab).
+ */
+export interface Reading {
+  id: string;
+  stage: StageId;
+  order: number;
+  title: string;
+  /** Japanese title; may carry furigana. */
+  jpTitle: string;
+  summary: string;
+  estMinutes?: number;
+  body: ReadingParagraph[];
+  vocabulary?: VocabEntry[];
+  quiz: QuizQuestion[];
+}
+
 export interface StageMeta {
   id: StageId;
   index: number;

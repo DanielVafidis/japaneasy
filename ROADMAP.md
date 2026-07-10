@@ -109,7 +109,7 @@ Still **frontend-only**; backend stays deferred.
 
 | # | Feature | Description | Why | Effort | Priority | Status |
 |---|---------|-------------|-----|--------|----------|--------|
-| 3.1 | **Graded readings per stage** | Short passages using only taught vocab/kanji; comprehension quiz. | Volume reading cements grammar. | High | High | ⬜ |
+| 3.1 | **Graded readings per stage** | Short passages using only taught vocab/kanji; comprehension quiz. Pilot shipped: `Reading` content type, `/readings` library + reader (per-line audio, tap-to-reveal English, glossary → flashcards, quiz ≥60% marks read), “Read” in the nav; 3 readings (Basic ×2, Essential ×1). Needs more volume per stage + Special/Advanced readers. | Volume reading cements grammar. | High | High | 🔄 |
 | 3.2 | **Situation modules** | Konbini, train, directions — dialogue blocks + targeted quiz. | Real-world framing without “game” feel. | Medium | High | ⬜ |
 | 3.3 | **Stage recap lessons** | End-of-stage synthesis + mixed review quiz. | Course rhythm; milestone satisfaction. | Medium | Medium | ⬜ |
 | 3.4 | **Kanji expansion + radicals** | Grow set; optional component hints in browser/SRS. | Beginners need structure, not 2000 chars at once. | Medium | Medium | ⬜ |
@@ -168,7 +168,9 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **Pick the direction**: Phase 3 content depth (graded readings, situation modules, stage recaps) · 2.5 natural audio · backend/sync era
+1. **3.1 readings volume** — more readers per stage (incl. Special/Advanced)
+2. **3.2 situation modules** · **3.3 stage recap lessons**
+3. Later: 2.5 natural audio · backend/sync era
 
 **Phase 1 is complete** (1.1–1.7 all ✅).
 
@@ -189,6 +191,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-10 | Phase 3.1 piloted: graded readings — `Reading` content type, `/readings` library + reader with per-line audio and tap-to-reveal English, glossary words become flashcards, comprehension quiz marks read; 3 original readers (My Dog, The Library, A Text from a Friend); "Read" added to the nav |
 | 2026-07-09 | Phase 2.7 shipped (quiz/review scope): status-region verdict announcements with the answer on misses, per-question focus management, labelled answer inputs, hidden decorative dots, 44px touch targets |
 | 2026-07-09 | Phases 2.6 + 2.8 completed: listening dictation rolled out to 6 lessons (11 questions incl. katakana loanwords and short grammar sentences); README refreshed (54 lessons, learning loop, drills, tests, roadmap link) |
 | 2026-07-09 | Phases 1.4 + 1.6 + 1.7 shipped: kanji recognition cards (`kanji-mean:X`) with example words in the reveal; leech section on flashcards overview with focused practice; soft kana-first nudge on early grammar lessons — **Phase 1 complete** |

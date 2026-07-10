@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { allCards, cardsById } from "@/content/decks";
 import { allLessons } from "@/content/lessons";
+import { allReadings } from "@/content/readings";
 import { checkFlashcardAnswer } from "@/lib/flashcard-review";
 import { checkQuizListenAnswer } from "@/lib/quiz-review";
 import { stripFurigana, toReading, toRomaji } from "@/lib/japanese";
@@ -87,9 +88,29 @@ describe("grammar drills", () => {
   });
 });
 
+describe("readings", () => {
+  it("have unique ids, paragraphs, and backed glossary cards", () => {
+    const ids = new Set<string>();
+    for (const r of allReadings) {
+      expect(ids.has(r.id), `duplicate reading id ${r.id}`).toBe(false);
+      ids.add(r.id);
+      expect(r.body.length).toBeGreaterThan(0);
+      for (const p of r.body) {
+        expect(p.jp.trim().length).toBeGreaterThan(0);
+        expect(p.en.trim().length).toBeGreaterThan(0);
+      }
+      for (const v of r.vocabulary ?? []) {
+        const id = `vocab:${stripFurigana(v.word)}`;
+        expect(cardsById[id], `${r.id}: missing ${id}`).toBeDefined();
+      }
+      expect(r.quiz.length).toBeGreaterThan(0);
+    }
+  });
+});
+
 describe("quizzes", () => {
   it("mc answers are in range and order tiles are plural", () => {
-    for (const lesson of allLessons) {
+    for (const lesson of [...allLessons, ...allReadings]) {
       for (const q of lesson.quiz ?? []) {
         if (q.kind === "mc") {
           expect(

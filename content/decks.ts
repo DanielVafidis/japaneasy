@@ -1,5 +1,6 @@
 import { gojuon, kanaOf, type KanaScript } from "./kana";
 import { allLessons } from "./lessons";
+import { allReadings } from "./readings";
 import { kanji } from "./kanji";
 import { stripFurigana, toReading } from "@/lib/japanese";
 import type { StageId } from "./types";
@@ -88,7 +89,8 @@ function kanaDeck(script: KanaScript): Card[] {
 function vocabDeck(): Card[] {
   const seen = new Set<string>();
   const cards: Card[] = [];
-  for (const lesson of allLessons) {
+  const sources = [...allLessons, ...allReadings];
+  for (const lesson of sources) {
     for (const v of lesson.vocabulary ?? []) {
       const plain = stripFurigana(v.word);
       const id = `vocab:${plain}`;

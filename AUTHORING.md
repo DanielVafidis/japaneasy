@@ -151,7 +151,31 @@ drills: [
   the first is displayed as *the* answer and used for audio.
 - Drills must be original sentences — same policy as examples (see C.3 in ROADMAP.md).
 
-## 7. Stages
+## 7. Graded readings
+
+Readings live in [`content/readings/`](content/readings/) (registered in its `index.ts`)
+and appear at `/readings`. A `Reading` is a short passage written **only with grammar and
+vocabulary taught up to its `stage`**, plus a comprehension quiz:
+
+```ts
+export const myStory: Reading = {
+  id: "my-story",            // → /readings/my-story
+  stage: "basic-grammar",
+  order: 0,
+  title: "My Story",
+  jpTitle: "私[わたし]の話[はなし]",
+  summary: "One-line teaser shown in the library.",
+  estMinutes: 3,
+  body: [{ jp: "…", en: "…" }],          // one entry per line/paragraph
+  vocabulary: [ /* new words — become flashcards like lesson vocab */ ],
+  quiz: [ /* comprehension questions; ≥60% marks it read */ ],
+};
+```
+
+Keep the passage original and the sentences short; the reader shows each line with
+audio and a tap-to-reveal English translation.
+
+## 8. Stages
 
 Stage IDs live in [`content/types.ts`](content/types.ts) and metadata in [`content/curriculum.ts`](content/curriculum.ts):
 
@@ -165,7 +189,7 @@ Stage IDs live in [`content/types.ts`](content/types.ts) and metadata in [`conte
 
 A stage shows as "coming soon" (with its `teaser` topic list) until it has at least one registered lesson. To flesh out Stages 2–4, work through the matching PDF and add lesson files exactly like the examples above — no UI or component changes needed.
 
-## 8. Conventions & tips
+## 9. Conventions & tips
 
 - Keep `id` stable once shipped — it's the lesson's URL and the key for saved progress.
 - Reuse vocabulary words verbatim across lessons; the flashcard deck de-duplicates by word.

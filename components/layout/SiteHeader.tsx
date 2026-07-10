@@ -12,6 +12,7 @@ import { cn } from "@/lib/cn";
 
 const NAV = [
   { href: "/learn", label: "Learn" },
+  { href: "/readings", label: "Read" },
   { href: "/kana", label: "Kana" },
   { href: "/kanji", label: "Kanji" },
   { href: "/flashcards", label: "Review" },

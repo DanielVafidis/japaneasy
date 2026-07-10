@@ -26,6 +26,7 @@ export interface ProgressExport {
   xpToday: number;
   xpDate: string | null;
   completedLessons: Record<string, LessonProgress>;
+  completedReadings: Record<string, LessonProgress>;
   quizScores: Record<string, number>;
   xp: number;
   streak: number;
@@ -58,6 +59,7 @@ interface AppState {
 
   // progress
   completedLessons: Record<string, LessonProgress>;
+  completedReadings: Record<string, LessonProgress>;
   quizScores: Record<string, number>; // lessonId -> best % (0..100)
 
   // gamification
@@ -85,6 +87,7 @@ interface AppState {
   addXp: (amount: number) => void;
 
   completeLesson: (lessonId: string) => { newlyAddedVocab: number };
+  completeReading: (readingId: string, vocabCardIds: string[]) => void;
   recordQuiz: (lessonId: string, scorePct: number) => void;
 
   hasCard: (id: string) => boolean;
@@ -110,6 +113,7 @@ const initial = {
   xpToday: 0,
   xpDate: null as string | null,
   completedLessons: {} as Record<string, LessonProgress>,
+  completedReadings: {} as Record<string, LessonProgress>,
   quizScores: {} as Record<string, number>,
   xp: 0,
   streak: 0,
@@ -182,6 +186,19 @@ export const useStore = create<AppState>()(
           get().addCards(grammarCardIdsForLesson(lessonId, { drillsOnly: true }));
         }
         return { newlyAddedVocab };
+      },
+
+      completeReading: (readingId, vocabCardIds) => {
+        const already = get().completedReadings[readingId];
+        set((s) => ({
+          completedReadings: {
+            ...s.completedReadings,
+            [readingId]: { completedAt: Date.now() },
+          },
+        }));
+        if (!already) get().addXp(XP.lessonComplete);
+        else get().markStudiedToday();
+        if (get().autoAddVocabOnComplete) get().addCards(vocabCardIds);
       },
 
       recordQuiz: (lessonId, scorePct) => {
@@ -258,6 +275,7 @@ export const useStore = create<AppState>()(
           xpToday: s.xpToday,
           xpDate: s.xpDate,
           completedLessons: s.completedLessons,
+          completedReadings: s.completedReadings,
           quizScores: s.quizScores,
           xp: s.xp,
           streak: s.streak,
@@ -299,6 +317,7 @@ export const useStore = create<AppState>()(
               ? data.xpDate
               : s.xpDate,
           completedLessons: data.completedLessons ?? s.completedLessons,
+          completedReadings: data.completedReadings ?? s.completedReadings,
           quizScores: data.quizScores ?? s.quizScores,
           xp: num(data.xp, s.xp),
           streak: num(data.streak, s.streak),
@@ -345,6 +364,7 @@ export const useStore = create<AppState>()(
         xpToday: s.xpToday,
         xpDate: s.xpDate,
         completedLessons: s.completedLessons,
+        completedReadings: s.completedReadings,
         quizScores: s.quizScores,
         xp: s.xp,
         streak: s.streak,

@@ -117,6 +117,17 @@ describe("completeLesson", () => {
   });
 });
 
+describe("completeReading", () => {
+  it("records completion, awards XP once, and adds glossary cards", () => {
+    s().completeReading("my-dog", ["vocab:学校"]);
+    expect(s().completedReadings["my-dog"]).toBeDefined();
+    expect(s().cards["vocab:学校"]).toBeDefined();
+    const xpAfter = s().xp;
+    s().completeReading("my-dog", []);
+    expect(s().xp).toBe(xpAfter);
+  });
+});
+
 describe("quiz scores", () => {
   it("keeps the best score", () => {
     s().recordQuiz("past-tense", 60);
