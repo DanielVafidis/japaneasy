@@ -111,6 +111,8 @@ export interface Lesson {
   quiz?: QuizQuestion[];
   /** Pattern drills for the Grammar deck (replaces the title→summary card). */
   drills?: GrammarDrill[];
+  /** End-of-stage recap: synthesis + mixed quiz; contributes no deck cards. */
+  recap?: boolean;
 }
 
 export interface ReadingParagraph {

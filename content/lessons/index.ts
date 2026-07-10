@@ -1,5 +1,10 @@
 import type { Lesson } from "../types";
 
+import { recapBasicGrammar } from "./recap-basic-grammar";
+import { recapEssentialGrammar } from "./recap-essential-grammar";
+import { recapSpecialExpressions } from "./recap-special-expressions";
+import { recapAdvancedTopics } from "./recap-advanced-topics";
+
 import { introduction } from "./introduction";
 import { hiragana } from "./hiragana";
 import { katakana } from "./katakana";
@@ -114,6 +119,11 @@ export const allLessons: Lesson[] = [
   advancedVolitional,
   coveredEvents,
   coveredBy,
+
+  recapBasicGrammar,
+  recapEssentialGrammar,
+  recapSpecialExpressions,
+  recapAdvancedTopics,
 ];
 
 export const lessonsById: Record<string, Lesson> = Object.fromEntries(

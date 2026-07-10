@@ -35,13 +35,24 @@ describe("grammar drills", () => {
       "special-expressions",
       "advanced-topics",
     ];
-    for (const lesson of allLessons.filter((l) =>
-      grammarStages.includes(l.stage),
+    for (const lesson of allLessons.filter(
+      (l) => grammarStages.includes(l.stage) && !l.recap,
     )) {
       expect(
         lesson.drills?.length ?? 0,
         `${lesson.id} has no drills`,
       ).toBeGreaterThan(0);
+    }
+  });
+
+  it("recap lessons contribute no deck cards", () => {
+    const recaps = allLessons.filter((l) => l.recap);
+    expect(recaps.length).toBeGreaterThan(0);
+    for (const lesson of recaps) {
+      expect(cardsById[`grammar:${lesson.id}`]).toBeUndefined();
+      for (const id of Object.keys(cardsById)) {
+        expect(id.startsWith(`grammar:${lesson.id}:`)).toBe(false);
+      }
     }
   });
 

@@ -119,7 +119,7 @@ const GRAMMAR_STAGES: StageId[] = [
 
 function grammarDeck(): Card[] {
   return allLessons
-    .filter((l) => GRAMMAR_STAGES.includes(l.stage))
+    .filter((l) => GRAMMAR_STAGES.includes(l.stage) && !l.recap)
     .flatMap((l) => {
       // Authored pattern drills; lessons without them keep the legacy
       // title→summary card until they get a drill pass.

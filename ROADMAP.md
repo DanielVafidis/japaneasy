@@ -111,7 +111,7 @@ Still **frontend-only**; backend stays deferred.
 |---|---------|-------------|-----|--------|----------|--------|
 | 3.1 | **Graded readings per stage** | Short passages using only taught vocab/kanji; comprehension quiz. Shipped: `Reading` content type, `/readings` library + reader (per-line audio, tap-to-reveal English, glossary → flashcards, quiz ≥60% marks read), “Read” in the nav; **10 readers covering every grammar stage** (Basic ×4, Essential ×3, Special ×2, Advanced ×1). Grow the shelf alongside future content passes. | Volume reading cements grammar. | High | High | ✅ |
 | 3.2 | **Situation modules** | Konbini, train, directions — dialogue blocks + targeted quiz. Shipped as situation-flavoured readings: speaker-chip dialogues, a “Key phrases” section with audio, glossary + quiz; コンビニで, 駅で, and 道を聞く live in the readings library. | Real-world framing without “game” feel. | Medium | High | ✅ |
-| 3.3 | **Stage recap lessons** | End-of-stage synthesis + mixed review quiz. | Course rhythm; milestone satisfaction. | Medium | Medium | ⬜ |
+| 3.3 | **Stage recap lessons** | End-of-stage synthesis + mixed review quiz. Shipped: four recap lessons (one per grammar stage) at the end of each stage’s path — “what you can now say” synthesis, mixed original examples, and a 10-question quiz spanning the stage (incl. a listening question); `recap: true` keeps them out of the grammar deck. | Course rhythm; milestone satisfaction. | Medium | Medium | ✅ |
 | 3.4 | **Kanji expansion + radicals** | Grow set; optional component hints in browser/SRS. | Beginners need structure, not 2000 chars at once. | Medium | Medium | ⬜ |
 | 3.5 | **JLPT progress view (optional)** | Map lessons/kanji to N5/N4 coverage %. | Useful when user picks JLPT north star. | Medium | Medium | ⬜ |
 | 3.6 | **Kana writer validation** | Stroke-order check against reference paths. | Writing = motor memory; high effort. | High | Low | ⬜ |
@@ -168,8 +168,7 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-1. **3.3 stage recap lessons**
-2. Later: 2.5 natural audio · backend/sync era · more readers/situations over time
+Phase 3 core (3.1–3.3) is done. Remaining directions: **2.5 natural audio** · **backend/sync era** (2.1/2.2/2.4) · optional 3.4–3.6 (kanji expansion, JLPT view, writer validation) · growing readers/situations over time.
 
 **Phase 1 is complete** (1.1–1.7 all ✅).
 
@@ -190,6 +189,7 @@ Ordered queue — pull from the top; reorder here as priorities shift.
 
 | Date | Change |
 |------|--------|
+| 2026-07-10 | Phase 3.3 shipped: stage recap lessons — end-of-stage synthesis + 10-question mixed quizzes for all four grammar stages; recaps sit last in each stage’s path and add no deck cards. **Phase 3 core complete**; course now 58 lessons |
 | 2026-07-10 | Phase 3.2 shipped: situation modules as dialogue readings (speaker chips, key-phrase list with audio, listen question at the konbini) — コンビニで, 駅で, 道を聞く |
 | 2026-07-10 | Phase 3.1 complete: 7 more readers (朝, 私の町, 雨の日, 日本へ行きたい, 忘れた日, 働きすぎ, レポート) — all four grammar stages covered, incl. a である-style essay for Advanced |
 | 2026-07-10 | Phase 3.1 piloted: graded readings — `Reading` content type, `/readings` library + reader with per-line audio and tap-to-reveal English, glossary words become flashcards, comprehension quiz marks read; 3 original readers (My Dog, The Library, A Text from a Friend); "Read" added to the nav |
