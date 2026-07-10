@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpenText, CheckCircle2, Clock } from "lucide-react";
+import { BookOpenText, CheckCircle2, Clock, MessagesSquare } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { allReadings } from "@/content/readings";
 import { stages } from "@/content/curriculum";
@@ -44,10 +44,16 @@ export function ReadingsView() {
                   className="group flex h-full flex-col rounded-3xl border border-line bg-surface p-5 transition-all card-shadow hover:-translate-y-0.5 hover:border-shu/40 sm:p-6"
                 >
                   <div className="mb-3 flex items-center gap-2">
-                    <Badge tone={done ? "matcha" : "shu"}>
+                    <Badge
+                      tone={done ? "matcha" : r.kind === "situation" ? "ai" : "shu"}
+                    >
                       {done ? (
                         <>
                           <CheckCircle2 className="h-3 w-3" /> Read
+                        </>
+                      ) : r.kind === "situation" ? (
+                        <>
+                          <MessagesSquare className="h-3 w-3" /> Situation
                         </>
                       ) : (
                         <>

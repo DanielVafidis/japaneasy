@@ -116,6 +116,8 @@ export interface Lesson {
 export interface ReadingParagraph {
   jp: string;
   en: string;
+  /** Set for dialogue lines (e.g. 店員, 私) — rendered as a speaker chip. */
+  speaker?: string;
 }
 
 /**
@@ -127,12 +129,16 @@ export interface Reading {
   id: string;
   stage: StageId;
   order: number;
+  /** "situation" = a real-world dialogue module (konbini, station, …). */
+  kind?: "story" | "situation";
   title: string;
   /** Japanese title; may carry furigana. */
   jpTitle: string;
   summary: string;
   estMinutes?: number;
   body: ReadingParagraph[];
+  /** Situation modules: the phrases worth memorising, shown with audio. */
+  phrases?: { jp: string; en: string }[];
   vocabulary?: VocabEntry[];
   quiz: QuizQuestion[];
 }

@@ -9,6 +9,9 @@ import { iWantToGoToJapan } from "./i-want-to-go-to-japan";
 import { theDayIForgot } from "./the-day-i-forgot";
 import { workingTooMuch } from "./working-too-much";
 import { theReport } from "./the-report";
+import { atTheKonbini } from "./at-the-konbini";
+import { atTheStation } from "./at-the-station";
+import { askingDirections } from "./asking-directions";
 
 export const allReadings: Reading[] = [
   myDog,
@@ -18,6 +21,9 @@ export const allReadings: Reading[] = [
   aTextFromAFriend,
   aRainyDay,
   iWantToGoToJapan,
+  atTheKonbini,
+  atTheStation,
+  askingDirections,
   theDayIForgot,
   workingTooMuch,
   theReport,

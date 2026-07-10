@@ -101,6 +101,11 @@ export function ReadingView({ reading }: { reading: Reading }) {
             key={i}
             className="rounded-2xl border border-line bg-surface p-4 sm:p-5"
           >
+            {p.speaker && (
+              <span className="mb-1.5 inline-block rounded-full bg-ai/10 px-2.5 py-0.5 font-jp text-xs font-medium text-ai">
+                {stripFurigana(p.speaker)}
+              </span>
+            )}
             <div className="flex items-start justify-between gap-3">
               <JapaneseText text={p.jp} className="text-xl leading-loose sm:text-2xl" />
               <AudioButton text={p.jp} size="sm" className="mt-1 shrink-0" />
@@ -127,6 +132,26 @@ export function ReadingView({ reading }: { reading: Reading }) {
           </div>
         ))}
       </section>
+
+      {/* key phrases (situation modules) */}
+      {reading.phrases && reading.phrases.length > 0 && (
+        <section className="mb-10 animate-fade-up rounded-3xl border border-ai/25 bg-ai/[0.04] p-4 sm:p-6">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-ai">
+            Key phrases — worth memorising
+          </h2>
+          <ul className="flex flex-col gap-3">
+            {reading.phrases.map((ph, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <AudioButton text={ph.jp} size="sm" className="mt-1 shrink-0" />
+                <div className="min-w-0">
+                  <JapaneseText text={ph.jp} className="text-lg" />
+                  <p className="text-sm text-ink-soft">{ph.en}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* glossary */}
       {reading.vocabulary && reading.vocabulary.length > 0 && (
