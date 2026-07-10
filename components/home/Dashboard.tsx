@@ -35,7 +35,7 @@ export function DashboardStatsPanel() {
       </div>
 
       <details className="group lg:hidden">
-        <summary className="cursor-pointer list-none rounded-2xl border border-line bg-surface-2/40 px-4 py-3 text-sm font-medium text-ink-soft transition-colors hover:border-shu/30 [&::-webkit-details-marker]:hidden">
+        <summary className="list-none rounded-2xl border border-line bg-surface-2/40 px-4 py-3 text-sm font-medium text-ink-soft transition-colors hover:border-shu/30 [&::-webkit-details-marker]:hidden">
           <span className="flex items-center justify-between">
             Progress details
             <ArrowRight className="h-4 w-4 transition-transform group-open:rotate-90" />

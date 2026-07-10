@@ -271,7 +271,8 @@ export function GlyphWriter({
           <ChevronLeft className="h-5 w-5" />
         </button>
         <div className="flex items-center gap-3 text-center">
-          <span className="font-jp text-3xl text-ink">{glyph}</span>
+          {/* hide the answer while practising from memory */}
+          {guide && <span className="font-jp text-3xl text-ink">{glyph}</span>}
           {caption}
           {audioText && <AudioButton text={audioText} size="sm" />}
         </div>
@@ -284,7 +285,10 @@ export function GlyphWriter({
         </button>
       </div>
 
-      <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-2xl border-2 border-dashed border-line bg-surface">
+      {/* touch-none must sit on the HTML wrapper: iOS builds touch-action
+          regions from painted SVG content, so on the svg alone it only
+          blocks scrolling over the painted glyph, not the whole board */}
+      <div className="relative aspect-square w-full max-w-sm touch-none select-none overflow-hidden rounded-2xl border-2 border-dashed border-line bg-surface">
         {/* practice grid */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-line/70" />
@@ -455,19 +459,29 @@ export function GlyphWriter({
             <>
               {done} / {paths.length} strokes
             </>
-          ) : (
+          ) : guide ? (
             <>
               {glyph} is written with {paths.length} stroke
               {paths.length === 1 ? "" : "s"} — trace them in order.
+            </>
+          ) : (
+            <>
+              Written with {paths.length} stroke
+              {paths.length === 1 ? "" : "s"} — write it from memory.
             </>
           )}
         </p>
       ) : (
         expected !== undefined && (
           <p role="status" className="min-h-5 text-sm font-medium text-ink-soft">
-            {freeDrawn === 0 ? (
+            {freeDrawn === 0 ? guide ? (
               <>
                 {glyph} is written with {expected} stroke
+                {expected === 1 ? "" : "s"}
+              </>
+            ) : (
+              <>
+                Written with {expected} stroke
                 {expected === 1 ? "" : "s"}
               </>
             ) : (
