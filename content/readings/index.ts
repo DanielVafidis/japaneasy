@@ -1,9 +1,27 @@
 import type { Reading, StageId } from "../types";
 import { myDog } from "./my-dog";
 import { theLibrary } from "./the-library";
+import { morning } from "./morning";
+import { myTown } from "./my-town";
 import { aTextFromAFriend } from "./a-text-from-a-friend";
+import { aRainyDay } from "./a-rainy-day";
+import { iWantToGoToJapan } from "./i-want-to-go-to-japan";
+import { theDayIForgot } from "./the-day-i-forgot";
+import { workingTooMuch } from "./working-too-much";
+import { theReport } from "./the-report";
 
-export const allReadings: Reading[] = [myDog, theLibrary, aTextFromAFriend];
+export const allReadings: Reading[] = [
+  myDog,
+  theLibrary,
+  morning,
+  myTown,
+  aTextFromAFriend,
+  aRainyDay,
+  iWantToGoToJapan,
+  theDayIForgot,
+  workingTooMuch,
+  theReport,
+];
 
 export function getReading(id: string): Reading | undefined {
   return allReadings.find((r) => r.id === id);
