@@ -282,6 +282,30 @@
   50% { transform: translateY(-10px); }
 }
 
+/* kana writer */
+.kana-draw-in {
+  stroke-dasharray: 1;
+  animation: kana-draw 300ms ease-out;
+}
+@keyframes kana-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.kana-stroke-wrong {
+  animation: kana-stroke-fade 700ms ease-in forwards;
+}
+@keyframes kana-stroke-fade {
+  0%, 40% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+.kana-start-dot {
+  animation: kana-dot-pulse 1.6s ease-in-out infinite;
+}
+@keyframes kana-dot-pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.35; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

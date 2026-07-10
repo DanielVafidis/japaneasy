@@ -104,3 +104,5 @@ Connect the repo, set framework to Next.js, deploy. No environment variables req
 ## Source & attribution
 
 Grammar content is adapted from ***A Guide to Japanese Grammar*** by Tae Kim (CC BY-NC-SA). JapanEasy is a non-commercial learning project. Prose may be rewritten over time for licensing flexibility.
+
+Kana stroke-order data (`content/kana-strokes.ts`) comes from [KanjiVG](https://kanjivg.tagaini.net) by Ulrich Apel (CC BY-SA 3.0), regenerated with `node scripts/fetch-kana-strokes.mjs`.

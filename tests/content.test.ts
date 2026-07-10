@@ -121,6 +121,21 @@ describe("kanji & kana data", () => {
       expect(k.strokes![1]).toBeGreaterThan(0);
     }
   });
+
+  it("every gojuon kana has stroke paths matching its stroke counts", async () => {
+    const { gojuon } = await import("@/content/kana");
+    const { kanaStrokes } = await import("@/content/kana-strokes");
+    for (const k of gojuon) {
+      for (const [i, glyph] of [k.hira, k.kata].entries()) {
+        const paths = kanaStrokes[glyph];
+        expect(paths, `${glyph} missing stroke paths`).toBeDefined();
+        expect(paths.length, `${glyph} stroke path count`).toBe(k.strokes![i]);
+        for (const d of paths) {
+          expect(d, `${glyph} path should start with a moveto`).toMatch(/^M/);
+        }
+      }
+    }
+  });
 });
 
 describe("readings", () => {
