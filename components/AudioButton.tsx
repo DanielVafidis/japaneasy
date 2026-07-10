@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { Volume2 } from "lucide-react";
 import { speak, speechSupported } from "@/lib/speech";
 import { cn } from "@/lib/cn";
+
+const emptySubscribe = () => () => {};
 
 export function AudioButton({
   text,
@@ -18,12 +20,13 @@ export function AudioButton({
   label?: string;
   size?: "sm" | "md";
 }) {
-  const [supported, setSupported] = useState(true);
+  // assume support during server render; corrected at hydration
+  const supported = useSyncExternalStore(
+    emptySubscribe,
+    speechSupported,
+    () => true,
+  );
   const [playing, setPlaying] = useState(false);
-
-  useEffect(() => {
-    setSupported(speechSupported());
-  }, []);
 
   if (!supported) return null;
 

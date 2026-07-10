@@ -112,7 +112,7 @@ export function SearchPalette({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
 
-  const index = useMemo(buildIndex, []);
+  const index = useMemo(() => buildIndex(), []);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -131,13 +131,20 @@ export function SearchPalette({
     return scored.slice(0, 24).map((s) => s.item);
   }, [index, query]);
 
-  useEffect(() => setActive(0), [query]);
+  // fresh query/selection every time the palette opens
+  function openFresh() {
+    setQuery("");
+    setActive(0);
+    setOpen(true);
+  }
 
   // Global Cmd/Ctrl+K
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
+        setQuery("");
+        setActive(0);
         setOpen((o) => !o);
       }
     }
@@ -147,7 +154,6 @@ export function SearchPalette({
 
   useEffect(() => {
     if (open) {
-      setQuery("");
       document.body.style.overflow = "hidden";
       const t = window.setTimeout(() => inputRef.current?.focus(), 30);
       return () => {
@@ -203,7 +209,7 @@ export function SearchPalette({
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={openFresh}
         aria-label="Search"
         className={cn(
           "inline-flex shrink-0 items-center justify-center text-ink-faint transition-colors hover:text-ink active:bg-surface-2",
@@ -246,7 +252,10 @@ export function SearchPalette({
               <input
                 ref={inputRef}
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setActive(0);
+                }}
                 onKeyDown={onInputKey}
                 placeholder="Search lessons, words, pages…"
                 role="combobox"

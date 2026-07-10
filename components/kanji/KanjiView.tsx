@@ -22,12 +22,10 @@ export function KanjiView() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [filter, setFilter] = useState<Filter>("all");
-  const [selected, setSelected] = useState<Kanji | null>(null);
 
-  useEffect(() => {
-    const c = searchParams.get("c");
-    if (c && kanjiByChar[c]) setSelected(kanjiByChar[c]);
-  }, [searchParams]);
+  // the URL is the source of truth for the open detail panel
+  const selectedChar = searchParams.get("c");
+  const selected = selectedChar ? (kanjiByChar[selectedChar] ?? null) : null;
 
   const list = useMemo(
     () => (filter === "all" ? kanji : kanji.filter((k) => k.category === filter)),
@@ -37,12 +35,10 @@ export function KanjiView() {
   const allIds = cardsForDeck("kanji").map((c) => c.id);
 
   function openKanji(k: Kanji) {
-    setSelected(k);
     router.replace(`/kanji?c=${encodeURIComponent(k.char)}`, { scroll: false });
   }
 
   function closeKanji() {
-    setSelected(null);
     router.replace("/kanji", { scroll: false });
   }
 

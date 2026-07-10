@@ -1,6 +1,7 @@
 "use client";
 
 import { useStore } from "@/lib/store";
+import { useNow } from "@/lib/now";
 import { isDue, isLeech, type SrsState } from "@/lib/srs";
 import { cardsById, type DeckId } from "@/content/decks";
 
@@ -11,7 +12,7 @@ export interface ReviewableCard {
 /** SRS states that have backing content and are currently due. */
 export function useDueStates(): SrsState[] {
   const cards = useStore((s) => s.cards);
-  const now = Date.now();
+  const now = useNow();
   return Object.values(cards).filter((c) => cardsById[c.id] && isDue(c, now));
 }
 
@@ -35,7 +36,7 @@ export interface DeckStat {
 
 export function useDeckStat(deck: DeckId): DeckStat {
   const cards = useStore((s) => s.cards);
-  const now = Date.now();
+  const now = useNow();
   let added = 0;
   let due = 0;
   for (const c of Object.values(cards)) {

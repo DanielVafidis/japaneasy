@@ -55,6 +55,7 @@ export function KanaQuiz({ script }: { script: KanaScript }) {
   }, [pool]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- random question must be generated client-side, after hydration
     newQuestion();
   }, [newQuestion]);
 

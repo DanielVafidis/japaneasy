@@ -217,6 +217,7 @@ function MultipleChoice({
   const [choices, setChoices] = useState<string[]>(q.choices);
   const [selected, setSelected] = useState<string | null>(null);
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- see above: shuffling in render would break hydration
     setChoices(shuffle(q.choices));
   }, [q]);
 
@@ -547,6 +548,7 @@ function MatchPairs({
   );
   const [picks, setPicks] = useState<Record<number, string>>({});
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- shuffle after mount only, so SSR and first client render match
     setRights(shuffle(q.pairs.map((p) => p.right)));
   }, [q]);
 

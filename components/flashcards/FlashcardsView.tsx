@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   ArrowRight,
@@ -56,11 +56,11 @@ export function FlashcardsView() {
       .map((c) => c.id);
   }
 
-  function resetCardState() {
+  const resetCardState = useCallback(() => {
     setInput("");
     setSubmitted(false);
     setCorrect(null);
-  }
+  }, []);
 
   function start(deck?: DeckId) {
     startQueue(buildDue(deck));
@@ -86,17 +86,20 @@ export function FlashcardsView() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, cards]);
 
-  function advance(grade: Grade) {
-    const id = queue[pos];
-    reviewCard(id, grade);
-    setReviewed((r) => r + 1);
-    if (pos + 1 >= queue.length) {
-      setMode("done");
-    } else {
-      setPos((p) => p + 1);
-      resetCardState();
-    }
-  }
+  const advance = useCallback(
+    (grade: Grade) => {
+      const id = queue[pos];
+      reviewCard(id, grade);
+      setReviewed((r) => r + 1);
+      if (pos + 1 >= queue.length) {
+        setMode("done");
+      } else {
+        setPos((p) => p + 1);
+        resetCardState();
+      }
+    },
+    [queue, pos, reviewCard, resetCardState],
+  );
 
   function submitAnswer() {
     if (submitted) return;
@@ -112,10 +115,10 @@ export function FlashcardsView() {
     setCorrect(ok);
   }
 
-  function continueReview() {
+  const continueReview = useCallback(() => {
     if (!submitted || correct === null) return;
     advance(correct ? "good" : "again");
-  }
+  }, [submitted, correct, advance]);
 
   useEffect(() => {
     if (mode !== "review") return;
@@ -131,7 +134,7 @@ export function FlashcardsView() {
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [mode, submitted, correct]);
+  }, [mode, submitted, continueReview]);
 
   // ---- Review session ----
   if (mode === "review") {

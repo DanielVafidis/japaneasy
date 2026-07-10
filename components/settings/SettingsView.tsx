@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useStore } from "@/lib/store";
+import { setThemeMode, useThemeMode, type ThemeMode } from "@/lib/theme";
 import { DataControls } from "@/components/DataControls";
 import { cn } from "@/lib/cn";
 
@@ -152,33 +152,11 @@ function ToggleRow({
   );
 }
 
-type Mode = "light" | "dark" | "system";
-
 function ThemeChooser() {
-  const [mounted, setMounted] = useState(false);
-  const [mode, setMode] = useState<Mode>("system");
+  // null until hydrated, so no option is highlighted during server render
+  const mode = useThemeMode();
 
-  useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem("japaneasy-theme");
-    setMode(stored === "light" || stored === "dark" ? stored : "system");
-  }, []);
-
-  function apply(m: Mode) {
-    setMode(m);
-    let dark: boolean;
-    if (m === "system") {
-      localStorage.removeItem("japaneasy-theme");
-      dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    } else {
-      localStorage.setItem("japaneasy-theme", m);
-      dark = m === "dark";
-    }
-    document.documentElement.classList.toggle("dark", dark);
-    document.documentElement.style.colorScheme = dark ? "dark" : "light";
-  }
-
-  const options: { id: Mode; label: string; icon: React.ReactNode }[] = [
+  const options: { id: ThemeMode; label: string; icon: React.ReactNode }[] = [
     { id: "light", label: "Light", icon: <Sun className="h-4 w-4" /> },
     { id: "dark", label: "Dark", icon: <Moon className="h-4 w-4" /> },
     { id: "system", label: "System", icon: <Monitor className="h-4 w-4" /> },
@@ -190,10 +168,10 @@ function ThemeChooser() {
         <button
           key={o.id}
           type="button"
-          onClick={() => apply(o.id)}
+          onClick={() => setThemeMode(o.id)}
           className={cn(
             "flex items-center justify-center gap-1.5 rounded-xl px-2 py-2.5 text-sm font-medium transition-all sm:gap-2 sm:px-4 sm:py-2",
-            mounted && mode === o.id
+            mode === o.id
               ? "bg-shu text-white shadow-sm"
               : "text-ink-soft hover:text-ink",
           )}
