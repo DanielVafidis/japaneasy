@@ -24,7 +24,7 @@ export function SiteFooter() {
             { href: "/learn", label: "Curriculum" },
             { href: "/kana", label: "Kana Trainer" },
             { href: "/kanji", label: "Kanji" },
-            { href: "/flashcards", label: "Flashcards" },
+            { href: "/flashcards", label: "Review" },
             { href: "/progress", label: "Progress" },
           ]}
         />

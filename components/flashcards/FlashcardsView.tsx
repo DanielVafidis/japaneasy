@@ -22,8 +22,7 @@ import { useDeckStat, useLeechStates, useTotalAdded } from "@/lib/review";
 import { LEECH_LAPSES } from "@/lib/srs";
 import { TypingFlashcard } from "@/components/flashcards/TypingFlashcard";
 import { checkFlashcardAnswer } from "@/lib/flashcard-review";
-import { AddToDeckButton } from "@/components/AddToDeckButton";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Badge } from "@/components/ui/Badge";
 
@@ -219,7 +218,7 @@ export function FlashcardsView() {
               <p className="mt-1 text-ink-soft">
                 {totalDue > 0
                   ? "Type each answer from memory — correct cards move forward, misses come back soon."
-                  : "Nothing to review right now. Add more cards or come back later."}
+                  : "Nothing to review right now. Keep learning — new material lands here automatically."}
               </p>
             </div>
             {totalDue > 0 && (
@@ -254,9 +253,13 @@ export function FlashcardsView() {
       )}
 
       <div>
-        <h3 className="mb-4 flex items-center gap-2 font-display text-xl text-ink">
-          <Layers className="h-5 w-5 text-ink-soft" /> Decks
+        <h3 className="flex items-center gap-2 font-display text-xl text-ink">
+          <Layers className="h-5 w-5 text-ink-soft" /> Review by deck
         </h3>
+        <p className="mb-4 mt-1 text-sm text-ink-soft">
+          Each deck fills up as you learn — review one on its own whenever you
+          want a focused session.
+        </p>
         <div className="grid gap-4 sm:grid-cols-2">
           {deckMeta.map((deck) => (
             <DeckCard key={deck.id} deck={deck} onReview={() => start(deck.id)} />
@@ -276,7 +279,6 @@ function DeckCard({
 }) {
   const stat = useDeckStat(deck.id);
   const all = cardsForDeck(deck.id);
-  const ids = all.map((c) => c.id);
   const pct = all.length ? (stat.added / all.length) * 100 : 0;
 
   return (
@@ -295,26 +297,31 @@ function DeckCard({
       <div>
         <div className="mb-1.5 flex justify-between text-xs text-ink-soft">
           <span>
-            {stat.added} / {all.length} added
+            {stat.added} / {all.length} learned
           </span>
           <span>{Math.round(pct)}%</span>
         </div>
         <ProgressBar value={pct} tone={deck.tone} />
       </div>
 
-      <div className="flex items-center gap-2">
-        <AddToDeckButton
-          ids={ids}
-          label={`Add all ${all.length}`}
-          size="md"
-          className="flex-1 justify-center"
-        />
-        {stat.due > 0 && (
-          <Button size="sm" variant="outline" onClick={onReview}>
-            Review
-          </Button>
-        )}
-      </div>
+      {stat.due > 0 ? (
+        <Button size="sm" onClick={onReview} className="w-full">
+          Review {stat.due} due
+        </Button>
+      ) : stat.added > 0 ? (
+        <div className="flex h-9 items-center justify-center gap-1.5 rounded-full border border-dashed border-line text-xs text-ink-faint">
+          <CheckCircle2 className="h-3.5 w-3.5 text-matcha" /> All caught up
+        </div>
+      ) : (
+        <ButtonLink
+          href={deck.learnHref}
+          variant="outline"
+          size="sm"
+          className="w-full"
+        >
+          {deck.learnLabel} <ArrowRight className="h-3.5 w-3.5" />
+        </ButtonLink>
+      )}
     </div>
   );
 }
@@ -325,12 +332,15 @@ function EmptyState() {
       <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-shu/10 text-shu">
         <Sparkles className="h-7 w-7" />
       </div>
-      <h2 className="font-display text-2xl text-ink">Build your first deck</h2>
+      <h2 className="font-display text-2xl text-ink">Nothing to review yet</h2>
       <p className="mx-auto mt-2 max-w-md text-ink-soft">
-        Flashcards use spaced repetition — they resurface right before you would
-        forget. Add a deck below, or tap “Add to flashcards” on any word or kana
-        as you learn.
+        Your review pile builds itself from the learning path: finish lessons,
+        study kana and kanji, and every new word or character comes back here
+        on a spaced-repetition schedule.
       </p>
+      <ButtonLink href="/learn" className="mt-6">
+        Start learning <ArrowRight className="h-4 w-4" />
+      </ButtonLink>
     </div>
   );
 }

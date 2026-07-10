@@ -3,9 +3,9 @@ import { Suspense } from "react";
 import { FlashcardsView } from "@/components/flashcards/FlashcardsView";
 
 export const metadata: Metadata = {
-  title: "Flashcards",
+  title: "Review",
   description:
-    "Spaced-repetition review for kana, vocabulary and grammar — remember what you learn for good.",
+    "Spaced-repetition review of everything you learn on the path — kana, vocabulary, grammar and kanji.",
 };
 
 export default function FlashcardsPage() {
@@ -19,8 +19,9 @@ export default function FlashcardsPage() {
           Flashcards that schedule themselves
         </h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">
-          Add kana, words and grammar points to your decks. We resurface each
-          card at the perfect moment so it sticks with minimal effort.
+          Everything you pick up on the learning path — kana, words, grammar,
+          kanji — collects here, and we resurface each card at the perfect
+          moment so it sticks.
         </p>
       </header>
       <Suspense fallback={null}>

@@ -33,6 +33,9 @@ export interface DeckMeta {
   jp: string;
   tone: "shu" | "ai" | "matcha" | "gold";
   description: string;
+  /** Where this deck's material is learned (cards are added from there). */
+  learnHref: string;
+  learnLabel: string;
 }
 
 export const deckMeta: DeckMeta[] = [
@@ -42,6 +45,8 @@ export const deckMeta: DeckMeta[] = [
     jp: "ひらがな",
     tone: "shu",
     description: "Recognise the 46 basic hiragana.",
+    learnHref: "/kana",
+    learnLabel: "Learn kana",
   },
   {
     id: "kana-kata",
@@ -49,6 +54,8 @@ export const deckMeta: DeckMeta[] = [
     jp: "カタカナ",
     tone: "ai",
     description: "Recognise the 46 basic katakana.",
+    learnHref: "/kana",
+    learnLabel: "Learn kana",
   },
   {
     id: "vocab",
@@ -56,6 +63,8 @@ export const deckMeta: DeckMeta[] = [
     jp: "単語",
     tone: "matcha",
     description: "Every word introduced across the lessons.",
+    learnHref: "/learn",
+    learnLabel: "Take lessons",
   },
   {
     id: "grammar",
@@ -63,6 +72,8 @@ export const deckMeta: DeckMeta[] = [
     jp: "文法",
     tone: "gold",
     description: "Typed pattern drills from the grammar lessons.",
+    learnHref: "/learn",
+    learnLabel: "Take lessons",
   },
   {
     id: "kanji",
@@ -70,6 +81,8 @@ export const deckMeta: DeckMeta[] = [
     jp: "漢字",
     tone: "ai",
     description: "Common kanji with meanings and readings.",
+    learnHref: "/kanji",
+    learnLabel: "Explore kanji",
   },
 ];
 
