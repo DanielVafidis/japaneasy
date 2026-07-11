@@ -195,4 +195,23 @@ A stage shows as "coming soon" (with its `teaser` topic list) until it has at le
 - Reuse vocabulary words verbatim across lessons; the flashcard deck de-duplicates by word.
 - Prefer many short `examples` over long prose — the source guide's philosophy is "learn by example".
 - Run `npm run build` to type-check your content before committing.
+
+## 10. Audio manifest (natural-audio groundwork)
+
+[`content/audio-manifest.json`](content/audio-manifest.json) lists every line
+the app speaks — kana, kanji, vocabulary, example sentences, dialogues,
+grammar-drill answers, dictation audio, readings, and key phrases. Regenerate
+it after any content change:
+
+```sh
+npm run audio:manifest
 ```
+
+Each entry has a stable `id` (a hash of the spoken text — reordering content
+never changes it, editing a sentence does), the exact `speak` string the
+speech engine receives, the `display` form and `en` translation where they
+exist, and every `source` location that speaks the line. Texts that sound
+identical (e.g. あ and ア, or the same word in two lessons) share one id and
+therefore one future clip. Recorded audio is planned to live at
+`public/audio/<id>.mp3` with TTS as fallback; a test fails when the committed
+manifest drifts from the content.

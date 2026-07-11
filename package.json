@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "audio:manifest": "node --import ./scripts/ts-alias-loader.mjs scripts/build-audio-manifest.mts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

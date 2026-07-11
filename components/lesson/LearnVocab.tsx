@@ -117,7 +117,7 @@ export function LearnVocab({
           )}
           <p className="text-lg text-ink">{v.meaning}</p>
           {v.note && <p className="text-sm italic text-ink-faint">{v.note}</p>}
-          <AudioButton text={v.reading ?? stripFurigana(v.word)} />
+          <AudioButton text={v.reading ?? v.word} />
           <Button
             onClick={() => (last ? startDrill() : setIntroIdx((i) => i + 1))}
             className="mt-2 w-full sm:w-auto sm:min-w-48"

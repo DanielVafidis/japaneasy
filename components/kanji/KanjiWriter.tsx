@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Kanji } from "@/content/kanji";
+import { kanjiSpeak, type Kanji } from "@/content/kanji";
 import { KANJI_VIEWBOX, kanjiStrokes } from "@/content/kanji-strokes";
 import { GlyphWriter } from "@/components/writer/GlyphWriter";
 
@@ -32,7 +32,7 @@ export function KanjiWriter({
       }
       paths={kanjiStrokes[k.char]}
       strokeCount={k.strokes}
-      audioText={k.char}
+      audioText={kanjiSpeak(k)}
       viewBox={KANJI_VIEWBOX}
       onPrev={() => go(-1)}
       onNext={() => go(1)}

@@ -287,3 +287,15 @@ export const kanjiCategories: { id: KanjiCategory; label: string }[] = [
 export const kanjiByChar: Record<string, Kanji> = Object.fromEntries(
   kanji.map((k) => [k.char, k]),
 );
+
+/**
+ * What a kanji sounds like when spoken aloud: its example word's reading,
+ * else its first full kun reading (行 → いく, not the bare stem い), else the
+ * first on'yomi. Every surface that pronounces a kanji (cards, browser,
+ * writer) uses this one utterance.
+ */
+export function kanjiSpeak(k: Kanji): string {
+  return (
+    k.example?.reading ?? k.kun[0]?.replace(".", "") ?? k.on[0] ?? k.char
+  );
+}

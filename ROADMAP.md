@@ -1,6 +1,6 @@
 # JapanEasy — Product roadmap & recommendations
 
-Last updated: 2026-07-08
+Last updated: 2026-07-11
 
 ## Product direction (locked for now)
 
@@ -98,7 +98,7 @@ Still **frontend-only**; backend stays deferred.
 | 2.2 | **Store schema v2 + migration** | Version persist payload; migrate card fields safely. | Avoid breaking real user progress. | Low | High | ⬜ |
 | 2.3 | **Tests (SRS, furigana, store)** | Unit tests for `lib/srs.ts`, `lib/japanese.ts`, store import/export. Shipped (Vitest, `npm test`): 69 tests over srs scheduling, furigana/romaji conversion, flashcard+quiz answer checkers, store actions (streak, XP, boost, complete, import round-trip incl. legacy fields), lesson→card mapping, plus a content scan validating every drill answer in kanji/kana/romaji forms and all quiz shapes. | Prevent silent scheduling bugs. | Medium | High | ✅ |
 | 2.4 | **Push-style reminders (PWA)** | Optional “reviews due” via Web Push when PWA installed. | Retention without native app. | Medium | Medium | ⬜ |
-| 2.5 | **Natural audio (curated)** | Record or license native audio for core lesson sentences; keep TTS fallback. | Course quality bar; listening exposure. | High | Medium | ⬜ |
+| 2.5 | **Natural audio (curated)** | Record or license native audio for core lesson sentences; keep TTS fallback. Groundwork shipped 2026-07-11: `content/audio-manifest.json` lists every spoken line (1,160 distinct utterances) with stable content-hash ids — record clips as `<id>.mp3` (planned home `public/audio/`), regenerate with `npm run audio:manifest`, drift caught by a test. Remaining: record/generate the audio, then wire id-based clip lookup into `lib/speech.ts`. | Course quality bar; listening exposure. | High | Medium | 🔄 |
 | 2.6 | **Listening comprehension drills** | Hear sentence → pick/write answer (no open-ended AI). Shipped: `listen` quiz kind (TTS speaks it, learner types the transcription — kanji/kana/romaji accepted, text revealed after answering); 11 questions across hiragana, katakana, state-of-being, polite-form, questions-polite, and past-tense. Extend alongside future content passes; audio quality improves with 2.5. | Ear training beyond TTS playback. | Medium | High | ✅ |
 | 2.7 | **Accessibility pass** | Mobile focus, touch targets, screen reader on quiz/SRS. Shipped for quiz + review: verdicts announced via `role="status"` (incl. the correct answer on a miss), focus moves to each new question, answer inputs labelled, decorative progress dots hidden, 44px touch targets on Next/Check/Continue/tiles/End-session. Broader sweep (kana trainer, nav) still open. | Mobile-first includes a11y. | Medium | Medium | ✅ |
 | 2.8 | **Update README** | 50 lessons, link to this roadmap, mobile/PWA notes. Shipped: 54 lessons, learning-loop features, 243 drills, dual kanji cards, listening, `npm test`, roadmap link. | Docs match product. | Low | Low | ✅ |
@@ -113,7 +113,7 @@ Still **frontend-only**; backend stays deferred.
 | 3.2 | **Situation modules** | Konbini, train, directions — dialogue blocks + targeted quiz. Shipped as situation-flavoured readings: speaker-chip dialogues, a “Key phrases” section with audio, glossary + quiz; コンビニで, 駅で, and 道を聞く live in the readings library. | Real-world framing without “game” feel. | Medium | High | ✅ |
 | 3.3 | **Stage recap lessons** | End-of-stage synthesis + mixed review quiz. Shipped: four recap lessons (one per grammar stage) at the end of each stage’s path — “what you can now say” synthesis, mixed original examples, and a 10-question quiz spanning the stage (incl. a listening question); `recap: true` keeps them out of the grammar deck. | Course rhythm; milestone satisfaction. | Medium | Medium | ✅ |
 | 3.4 | **Kanji expansion + radicals** | Grow set; optional component hints in browser/SRS. Shipped: +48 N4 kanji (family, seasons, nature, food, movement verbs, adjectives) → 220 total / 440 cards; new `parts` component hints shown in the browser detail and in both card reveals. Backfill hints on the original N5 set over time. | Beginners need structure, not 2000 chars at once. | Medium | Medium | ✅ |
-| 3.5 | **JLPT progress view (optional)** | Map lessons/kanji to N5/N4 coverage %. | Useful when user picks JLPT north star. | Medium | Medium | ⬜ |
+| 3.5 | **JLPT progress view (optional)** | Map lessons/kanji to N5/N4 coverage %. Shipped: `content/jlpt.ts` maps 98 N5/N4 grammar points to the lessons that teach them (every mapping grep-verified; honest `null` for the ~12 points the course doesn't cover); progress page gets a "JLPT coverage" section — grammar % from completed lessons, kanji % from deck membership with a "solid (7d+ interval)" count, and a per-level "what's left" list linking each point to its lesson. | Useful when user picks JLPT north star. | Medium | Medium | ✅ |
 | 3.6 | **Kana writer validation** | Stroke-order check against reference paths. Shipped v1 as stroke-**count** validation: standard counts on all 46 gojuon (both scripts), live counter with match/over feedback, undo, and stroke-preserving redraws (drawings survive resizes). Path/order matching against reference strokes remains future work. | Writing = motor memory; high effort. | High | Low | ✅ |
 
 ---
@@ -168,7 +168,7 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-Phase 3 core (3.1–3.3) is done. Remaining directions: **2.5 natural audio** · **backend/sync era** (2.1/2.2/2.4) · optional 3.4–3.6 (kanji expansion, JLPT view, writer validation) · growing readers/situations over time.
+Phase 3 is complete (3.1–3.6 all shipped). Remaining directions: **2.5 natural audio** (manifest ready — record clips, then wire lookup) · **backend/sync era** (2.1/2.2/2.4) · **content gaps found by the JLPT map** (てから/ておく/てある in te-form-uses; けど/し/のに in compound-sentences; もう・まだ, あまり〜ない, existence がある/がいる, てほしい, つもり, ために — see MISSING.md §5) · growing readers/situations over time.
 
 **Phase 1 is complete** (1.1–1.7 all ✅).
 
@@ -189,6 +189,9 @@ Phase 3 core (3.1–3.3) is done. Remaining directions: **2.5 natural audio** ·
 
 | Date | Change |
 |------|--------|
+| 2026-07-11 | Phase 3.5 shipped: JLPT coverage on the progress page — 98 grep-verified N5/N4 grammar-point → lesson mappings (`content/jlpt.ts`), kanji coverage from deck membership + 7d-interval "solid" count, per-level "what's left" lists. Mapping surfaced real content gaps (てから/ておく/てある, けど/し/のに and more) → MISSING.md §5 |
+| 2026-07-11 | Phase 2.5 groundwork: audio-line manifest — every spoken line (1,160 distinct utterances: kana, kanji, vocab, examples, dialogues, drills, dictation, readings, phrases) with stable content-hash ids in `content/audio-manifest.json`; `npm run audio:manifest` regenerates (zero-dep Node TS loader), test guards drift. Unified per-item utterances: kanji browser/writer now speak the example-word reading like the cards (full kun reading fallback, 行→いく not い), vocab learn mode reads furigana correctly |
+| 2026-07-10 | Kanji write mode shipped (KanjiVG strokes, shared GlyphWriter with the kana writer) and kana writer rebuilt with stroke snapping + order playback — 3.6's "path/order matching" future work is done; review page made learning-path driven with per-deck review |
 | 2026-07-10 | Phases 3.4 + 3.6 shipped: 48 N4 kanji with component hints (220 kanji, 440 cards; hints in browser + card reveals) and kana writer stroke-count validation (live counter, undo, resize-safe strokes) |
 | 2026-07-10 | Phase 3.3 shipped: stage recap lessons — end-of-stage synthesis + 10-question mixed quizzes for all four grammar stages; recaps sit last in each stage’s path and add no deck cards. **Phase 3 core complete**; course now 58 lessons |
 | 2026-07-10 | Phase 3.2 shipped: situation modules as dialogue readings (speaker chips, key-phrase list with audio, listen question at the konbini) — コンビニで, 駅で, 道を聞く |

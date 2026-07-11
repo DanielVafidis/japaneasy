@@ -1,7 +1,7 @@
 import { gojuon, kanaOf, type KanaScript } from "./kana";
 import { allLessons } from "./lessons";
 import { allReadings } from "./readings";
-import { kanji } from "./kanji";
+import { kanji, kanjiSpeak } from "./kanji";
 import { stripFurigana, toReading } from "@/lib/japanese";
 import type { StageId } from "./types";
 
@@ -180,7 +180,7 @@ function kanjiDeck(): Card[] {
     const readings = [k.on.join("・"), k.kun.join("・")]
       .filter(Boolean)
       .join("  /  ");
-    const speak = k.example?.reading ?? k.kun[0]?.split(".")[0] ?? k.on[0] ?? k.char;
+    const speak = kanjiSpeak(k);
     const example = k.example
       ? { jp: k.example.word, reading: k.example.reading, en: k.example.meaning }
       : undefined;

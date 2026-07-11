@@ -264,7 +264,7 @@ function KanjiDetail({
               <span className="font-jp text-2xl text-ink">{k.example.word}</span>
               <span className="text-sm text-ink-soft">{k.example.reading}</span>
               <span className="w-full text-sm text-ink-faint sm:w-auto">{k.example.meaning}</span>
-              <AudioButton text={k.example.word} className="ml-auto shrink-0" />
+              <AudioButton text={k.example.reading} className="ml-auto shrink-0" />
             </div>
           </div>
         )}
