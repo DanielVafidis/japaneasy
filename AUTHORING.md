@@ -179,14 +179,14 @@ audio and a tap-to-reveal English translation.
 
 Stage IDs live in [`content/types.ts`](content/types.ts) and metadata in [`content/curriculum.ts`](content/curriculum.ts):
 
-| Stage ID | Title |
-| --- | --- |
-| `foundations` | Writing System |
-| `n5` | N5 — Foundations |
-| `n4` | N4 — Expansion |
-| `n3` | N3 — Nuance |
-| `n2` | N2 — Naturalness |
-| `n1` | N1 — Mastery |
+| Stage ID | Title | jpTitle |
+| --- | --- | --- |
+| `foundations` | Writing System | 文字 |
+| `n5` | N5 — Foundations | 基礎 |
+| `n4` | N4 — Expansion | 発展 |
+| `n3` | N3 — Nuance | 機微 |
+| `n2` | N2 — Naturalness | 自然 |
+| `n1` | N1 — Mastery | 習得 |
 
 A stage shows as "coming soon" (with its `teaser` topic list) until it has at least one registered lesson. Add lesson files with the matching `stage` id — no UI or component changes needed.
 

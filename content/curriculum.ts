@@ -14,7 +14,7 @@ export const stages: StageMeta[] = [
     id: "n5",
     index: 1,
     title: "N5 — Foundations",
-    jpTitle: "N5",
+    jpTitle: "基礎",
     blurb:
       "Build confidence making basic sentences and surviving simple daily situations: particles, conjugation, te-form, and existence.",
     teaser: [
@@ -30,7 +30,7 @@ export const stages: StageMeta[] = [
     id: "n4",
     index: 2,
     title: "N4 — Expansion",
-    jpTitle: "N4",
+    jpTitle: "発展",
     blurb:
       "Handle everyday situations and connect actions: te-form mastery, conditionals, giving & receiving, potential, and suggestions.",
     teaser: [
@@ -46,7 +46,7 @@ export const stages: StageMeta[] = [
     id: "n3",
     index: 3,
     title: "N3 — Nuance",
-    jpTitle: "N3",
+    jpTitle: "機微",
     blurb:
       "Express thoughts, reasons, and conditions with natural flow: aspect, nuanced conditionals, hearsay, and basic keigo.",
     teaser: [
@@ -62,7 +62,7 @@ export const stages: StageMeta[] = [
     id: "n2",
     index: 4,
     title: "N2 — Naturalness",
-    jpTitle: "N2",
+    jpTitle: "自然",
     blurb:
       "Sound natural on nuanced topics: subtle contrasts, advanced conditionals, inference, concession, and business keigo.",
     teaser: [
@@ -78,7 +78,7 @@ export const stages: StageMeta[] = [
     id: "n1",
     index: 5,
     title: "N1 — Mastery",
-    jpTitle: "N1",
+    jpTitle: "習得",
     blurb:
       "Full control over nuance, tone, and advanced expression: literary forms, counterfactuals, and integrated multi-clause Japanese.",
     teaser: [
