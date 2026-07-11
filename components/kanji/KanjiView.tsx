@@ -10,7 +10,6 @@ import {
   type Kanji,
   type KanjiCategory,
 } from "@/content/kanji";
-import type { JlptLevel } from "@/content/jlpt";
 import { AudioButton } from "@/components/AudioButton";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
 import { KanjiWriter } from "@/components/kanji/KanjiWriter";
@@ -19,10 +18,16 @@ import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { cn } from "@/lib/cn";
 
 type Filter = KanjiCategory | "all";
-type LevelFilter = JlptLevel | "all";
+/** Kanji browser levels — includes N3+ (`3`) beyond grammar's N5/N4 map. */
+type KanjiJlptFilter = 5 | 4 | 3;
+type LevelFilter = KanjiJlptFilter | "all";
 type Mode = "browse" | "write";
 
-const jlptLevels: JlptLevel[] = [5, 4];
+const jlptLevels: { value: KanjiJlptFilter; label: string }[] = [
+  { value: 5, label: "N5" },
+  { value: 4, label: "N4" },
+  { value: 3, label: "N3+" },
+];
 
 export function KanjiView() {
   const router = useRouter();
@@ -96,13 +101,13 @@ export function KanjiView() {
             aria-label="JLPT level"
             className="ml-1 flex items-center gap-1.5 border-l border-line pl-2.5"
           >
-            {jlptLevels.map((n) => (
+            {jlptLevels.map(({ value, label }) => (
               <Chip
-                key={n}
-                active={level === n}
-                onClick={() => setLevel(level === n ? "all" : n)}
+                key={value}
+                active={level === value}
+                onClick={() => setLevel(level === value ? "all" : value)}
               >
-                N{n}
+                {label}
               </Chip>
             ))}
           </div>
@@ -277,7 +282,7 @@ function KanjiDetail({
               JLPT
             </dt>
             <dd className="mt-1">
-              <Badge tone="ai">N{k.jlpt}</Badge>
+              <Badge tone="ai">{k.jlpt === 3 ? "N3+" : `N${k.jlpt}`}</Badge>
             </dd>
           </div>
           {k.parts && (

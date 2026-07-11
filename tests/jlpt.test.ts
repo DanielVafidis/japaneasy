@@ -67,10 +67,12 @@ describe("jlptKanjiProgress", () => {
   const n5 = jlptKanjiForLevel(5);
   const n4 = jlptKanjiForLevel(4);
 
-  it("splits the kanji set by level", () => {
-    expect(n5.length).toBeGreaterThan(100);
-    expect(n4.length).toBeGreaterThan(40);
-    expect(n5.length + n4.length).toBeGreaterThanOrEqual(220);
+  it("splits the kanji set by classic N5/N4 lists", () => {
+    // Old JLPT Level 4 → N5 (103); Level 3 coverage we ship → N4 (125).
+    // Higher-level chars stay in the deck as jlpt: 3 and are excluded here.
+    expect(n5.length).toBe(103);
+    expect(n4.length).toBe(125);
+    expect(n5.length + n4.length).toBe(228);
   });
 
   it("counts deck membership from either card, solidity from interval", () => {
