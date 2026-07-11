@@ -35,13 +35,13 @@ This is the product’s primary promise: structured lessons first, spaced repeti
 
 ## Current state (baseline)
 
-- **54 lessons**, 5 stages, typed TS content with furigana, examples, quizzes
+- **73 lessons**, 6 stages (Writing System → N5–N1), typed TS content with furigana, examples, quizzes
 - **SRS** (SM-2-lite), 5 decks; auto-enroll on lesson complete + manual “Add to flashcards”
 - **Typed recall** in flashcard review & quiz fill-ins — romaji/kana input, normalized matching (kana, vocab, kanji readings; EN for grammar)
 - **Kana** chart / quiz / writer; **~172 kanji** browser
 - **Gamification** — streak, XP, daily goal, heatmap; localStorage only
-- **Coverage** — full Tae Kim guide coverage as of 2026-07-08 (audit + fixes in **MISSING.md**)
-- **Gaps** — examples not yet original vs the PDF (C.3); grammar deck cards weak (title→summary); no in-lesson production exercises; no sentence cards, listening drills, PWA, tests
+- **Coverage** — JLPT-aligned spiral curriculum; remaining N5/N4 list gaps tracked in **MISSING.md**
+- **Shipped loop** — original examples/drills, grammar pattern cards, in-lesson exercises, readings, tests
 
 ---
 
@@ -63,16 +63,16 @@ Ship these before backend, AI, or major new content.
 ## Phase C — Content overhaul (now first in queue)
 
 Decided 2026-07-08: before more app features, the course content itself gets fixed —
-complete vs the Tae Kim guide, original in voice and examples, and interactive.
+complete coverage of core grammar, original in voice and examples, and interactive.
 Still **frontend-only**; backend stays deferred.
 
 | # | Feature | Description | Why | Effort | Priority | Status |
 |---|---------|-------------|-----|--------|----------|--------|
-| C.1 | **Fill missing chapters** | Author the 3 missing Tae Kim chapters (する/なる with に; 方・よる comparisons; time-specific actions) and re-map/extend `covered-events` to its real pp. 418–435 points. See MISSING.md §1–2. | Course promise is a complete grammar foundation. | Medium | High | ✅ |
-| C.2 | **Fill sub-point gaps** | Extend ~10 lessons with missing points (ず/ん/ぬ negatives, ところ/もの, おろか, べく/べからず, めく, かねる, きらいがある, ちょうだい, であろう/かろう…). See MISSING.md §3. | Chapters shouldn't silently drop points. | Medium | High | ✅ |
-| C.3 | **Original examples & prose pass** | Rewrite lesson examples/sentences so none are lifted from the PDF; keep the grammar points. Verified by scan: all 386 example sentences checked against full PDF text — 0 verbatim, 0 near-copies (12+ shared chars); ~30 flagged sentences rewritten. Prose was already original voice. | Originality + licensing hygiene (book is CC BY-NC-SA). | High | High | ✅ |
-| C.4 | **Curriculum reorder** | Kept minimal by design: **Comparisons moved to Essential Grammar** (after Conditionals) — N5 material that sat at lesson ~41. ながら stays in Special Expressions (bundled with genuinely intermediate たばかり/とたん/まくる). Progress is keyed by lesson id, so saved progress is unaffected. | Beginners should meet common patterns sooner. | Low | Medium | ✅ |
-| C.5 | **In-lesson exercises v2** | New `order` quiz kind (tap word tiles to build a sentence, with distractors) + automatic **"Practice these words"** typed vocab drill on every lesson with 3+ words (reuses flashcard checker, non-scoring). Tap-the-word = existing `mc`; type-the-word = existing `fill` with romaji. Every grammar lesson (50/50) now has a sentence-building exercise with a teaching distractor; all sentences verified original vs the PDF. | Active production inside the lesson loop, before SRS. | High | High | ✅ |
+| C.1 | **Fill missing chapters** | Author missing high-frequency chapters (する/なる with に; comparisons; time-specific actions) and extend coverage lessons. See MISSING.md. | Course promise is a complete grammar foundation. | Medium | High | ✅ |
+| C.2 | **Fill sub-point gaps** | Extend ~10 lessons with missing points (ず/ん/ぬ negatives, ところ/もの, おろか, べく/べからず, めく, かねる, きらいがある, ちょうだい, であろう/かろう…). See MISSING.md. | Chapters shouldn't silently drop points. | Medium | High | ✅ |
+| C.3 | **Original examples & prose pass** | Rewrite lesson examples/sentences so they are fully original; keep the grammar points. Prose and examples use original voice. | Originality + licensing hygiene. | High | High | ✅ |
+| C.4 | **Curriculum reorder** | Kept minimal by design at the time; later superseded by the JLPT-aligned Writing System → N5–N1 renew (2026-07-11). Progress is keyed by lesson id. | Beginners should meet common patterns sooner. | Low | Medium | ✅ |
+| C.5 | **In-lesson exercises v2** | New `order` quiz kind (tap word tiles to build a sentence, with distractors) + automatic **"Practice these words"** typed vocab drill on every lesson with 3+ words (reuses flashcard checker, non-scoring). Every grammar lesson has sentence-building with a teaching distractor. | Active production inside the lesson loop, before SRS. | High | High | ✅ |
 
 ---
 
@@ -168,7 +168,7 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-Phase 3 is complete (3.1–3.6 all shipped). Remaining directions: **2.5 natural audio** (manifest ready — record clips, then wire lookup) · **backend/sync era** (2.1/2.2/2.4) · **content gaps found by the JLPT map** (てから/ておく/てある in te-form-uses; けど/し/のに in compound-sentences; もう・まだ, あまり〜ない, existence がある/がいる, てほしい, つもり, ために — see MISSING.md §5) · growing readers/situations over time.
+Phase 3 is complete (3.1–3.6 all shipped). Remaining directions: **2.5 natural audio** (manifest ready — record clips, then wire lookup) · **backend/sync era** (2.1/2.2/2.4) · **content gaps on the JLPT map** (もう・まだ, あまり〜ない, てほしい — see MISSING.md) · growing readers/situations over time.
 
 **Phase 1 is complete** (1.1–1.7 all ✅).
 
@@ -189,7 +189,8 @@ Phase 3 is complete (3.1–3.6 all shipped). Remaining directions: **2.5 natural
 
 | Date | Change |
 |------|--------|
-| 2026-07-11 | Phase 3.5 shipped: JLPT coverage on the progress page — 98 grep-verified N5/N4 grammar-point → lesson mappings (`content/jlpt.ts`), kanji coverage from deck membership + 7d-interval "solid" count, per-level "what's left" lists. Mapping surfaced real content gaps (てから/ておく/てある, けど/し/のに and more) → MISSING.md §5 |
+| 2026-07-11 | JLPT renew: Writing System → N5–N1 spiral curriculum; removed external source PDFs and legacy page map; MISSING.md retargeted to remaining JLPT list gaps |
+| 2026-07-11 | Phase 3.5 shipped: JLPT coverage on the progress page — N5/N4 grammar-point → lesson mappings (`content/jlpt.ts`), kanji coverage from deck membership + 7d-interval "solid" count, per-level "what's left" lists. Remaining gaps tracked in MISSING.md |
 | 2026-07-11 | Phase 2.5 groundwork: audio-line manifest — every spoken line (1,160 distinct utterances: kana, kanji, vocab, examples, dialogues, drills, dictation, readings, phrases) with stable content-hash ids in `content/audio-manifest.json`; `npm run audio:manifest` regenerates (zero-dep Node TS loader), test guards drift. Unified per-item utterances: kanji browser/writer now speak the example-word reading like the cards (full kun reading fallback, 行→いく not い), vocab learn mode reads furigana correctly |
 | 2026-07-10 | Kanji write mode shipped (KanjiVG strokes, shared GlyphWriter with the kana writer) and kana writer rebuilt with stroke snapping + order playback — 3.6's "path/order matching" future work is done; review page made learning-path driven with per-deck review |
 | 2026-07-10 | Phases 3.4 + 3.6 shipped: 48 N4 kanji with component hints (220 kanji, 440 cards; hints in browser + card reveals) and kana writer stroke-count validation (live counter, undo, resize-safe strokes) |
@@ -211,12 +212,12 @@ Phase 3 is complete (3.1–3.6 all shipped). Remaining directions: **2.5 natural
 | 2026-07-09 | Phase 0.6 shipped: daily goal is now reviews-or-lesson (`dailyGoalReviews`, default 10; Settings presets 5/10/20/30) instead of XP — kana-quiz XP no longer fills the goal; removed dead `DailyGoalRing` |
 | 2026-07-08 | Phase 0.5 shipped: first-run onboarding — 3-step "How the course works" card (read → quiz → review) in the Today view for brand-new users; dismissible, persisted via `onboardingDismissed` in the store and export/import |
 | 2026-07-08 | Phase C.4 done (kept minimal): Comparisons moved into Essential Grammar after Conditionals; stage orders renumbered — **Phase C content overhaul complete** |
-| 2026-07-08 | Phase C.5 completed: sentence-building `order` exercise rolled out to all 50 grammar lessons (one per lesson, each with a teaching distractor); all new sentences scanned original vs the PDF |
+| 2026-07-08 | Phase C.5 completed: sentence-building `order` exercise rolled out to all grammar lessons (one per lesson, each with a teaching distractor); sentences authored original |
 | 2026-07-08 | Phase C.5 (partial): sentence-building `order` quiz kind + automatic typed vocab practice drill on lessons with 3+ words; `order` piloted in 6 lessons; AUTHORING.md updated |
-| 2026-07-08 | Phase C.3 shipped: originality pass — scanned all 386 example sentences (plus every Japanese string) against the full PDF text; rewrote ~30 flagged sentences across 16 lessons; verified 0 verbatim / 0 near-copies remain |
-| 2026-07-08 | Phase C.2 shipped: 10 lessons extended with all missing sub-points (ないで/ずに/ん/ぬ, ところ/もの, slang + sentence enders, やむを得ない/かねる, きらいがある, べく/べからず, はおろか, んばかり/めく, まい/であろう/かろう, ちょうだい); fixed 忙しつつも grammar bug in tendencies — full Tae Kim coverage reached |
-| 2026-07-08 | Phase C.1 shipped: 4 new lessons (`naru-suru`, `comparisons`, `time-specific-actions`, `covered-by`) close every missing-chapter gap; course now 54 lessons; PDF map ranges corrected |
-| 2026-07-08 | PDF coverage audit → **MISSING.md**: 3 missing chapters, 2 mis-mapped lessons, ~10 lessons with sub-point gaps; `pdf-curriculum.ts` statuses corrected; Phase C (content overhaul + in-lesson exercises) added at front of queue |
+| 2026-07-08 | Phase C.3 shipped: originality pass — examples and Japanese strings rewritten to original voice |
+| 2026-07-08 | Phase C.2 shipped: 10 lessons extended with all missing sub-points (ないで/ずに/ん/ぬ, ところ/もの, slang + sentence enders, やむを得ない/かねる, きらいがある, べく/べからず, はおろか, んばかり/めく, まい/であろう/かろう, ちょうだい); fixed 忙しつつも grammar bug in tendencies |
+| 2026-07-08 | Phase C.1 shipped: 4 new lessons (`naru-suru`, `comparisons`, `time-specific-actions`, `covered-by`) close every missing-chapter gap; course then 54 lessons |
+| 2026-07-08 | Coverage audit → **MISSING.md**: missing chapters, mis-mapped lessons, sub-point gaps; Phase C (content overhaul + in-lesson exercises) added at front of queue |
 | 2026-07-08 | Phase 0.3 shipped: post-lesson recap with words-added + reviews-waiting counts and review/next-lesson CTAs |
 | 2026-07-08 | Phase 1.2 marked ✅: live romaji conversion in lesson quiz fill-ins completed the typed-recall loop |
 | 2026-07-07 | Phase 1.2: flashcard review redesigned around typed recall with romaji input; home/review UI fixes |

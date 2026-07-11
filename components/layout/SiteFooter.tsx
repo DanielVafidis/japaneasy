@@ -40,12 +40,8 @@ export function SiteFooter() {
         <div>
           <h4 className="mb-3 text-sm font-semibold text-ink">Sources</h4>
           <p className="text-sm leading-6 text-ink-soft">
-            Lessons are adapted from{" "}
-            <span className="font-medium text-ink">
-              A Guide to Japanese Grammar
-            </span>
-            , released under a Creative Commons Attribution-Noncommercial-Share
-            Alike license. Stroke-order data comes from{" "}
+            Grammar is an original JLPT-aligned curriculum. Stroke-order data
+            comes from{" "}
             <a
               href="https://kanjivg.tagaini.net"
               target="_blank"

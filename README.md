@@ -103,6 +103,6 @@ Connect the repo, set framework to Next.js, deploy. No environment variables req
 
 ## Source & attribution
 
-Grammar is organized as an original **JLPT-aligned spiral curriculum** (Writing System → N5–N1) with recurring real-life themes. Early drafts drew structural inspiration from ***A Guide to Japanese Grammar*** by Tae Kim; lesson prose and examples are original. JapanEasy is a non-commercial learning project.
+Grammar is an original **JLPT-aligned spiral curriculum** (Writing System → N5–N1) with recurring real-life themes. JapanEasy is a non-commercial learning project.
 
 Kana stroke-order data (`content/kana-strokes.ts`) comes from [KanjiVG](https://kanjivg.tagaini.net) by Ulrich Apel (CC BY-SA 3.0), regenerated with `node scripts/fetch-kana-strokes.mjs`.

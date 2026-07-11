@@ -149,7 +149,7 @@ drills: [
 - Carry furigana in `answers`: the checker then accepts the kanji form, the kana reading,
   and romaji (converted live). List several `answers` when more than one is right (e.g. `["へ", "に"]`);
   the first is displayed as *the* answer and used for audio.
-- Drills must be original sentences — same policy as examples (see C.3 in ROADMAP.md).
+- Drills must be original sentences — same policy as examples.
 
 ## 7. Graded readings
 
