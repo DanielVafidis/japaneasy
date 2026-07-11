@@ -21,6 +21,7 @@ export const causativePassiveIntro: Lesson = {
     { word: "休[やす]む", reading: "やすむ", meaning: "to rest" },
     { word: "野菜[やさい]", reading: "やさい", meaning: "vegetable" },
     { word: "話[はなし]", reading: "はなし", meaning: "story; talk" },
+    { word: "洗[あら]う", reading: "あらう", meaning: "to wash" },
   ],
   blocks: [
     {

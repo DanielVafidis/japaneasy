@@ -10,6 +10,13 @@ export const recapN4: Lesson = {
   summary:
     "Te-form mastery, conditionals, potential, plans, giving & receiving, and a light passive/causative intro.",
   estMinutes: 12,
+  vocabulary: [
+    { word: "林[はやし]", reading: "はやし", meaning: "woods; grove" },
+    { word: "森[もり]", reading: "もり", meaning: "forest" },
+    { word: "池[いけ]", reading: "いけ", meaning: "pond" },
+    { word: "田[た]んぼ", reading: "たんぼ", meaning: "rice field" },
+    { word: "首都[しゅと]", reading: "しゅと", meaning: "capital city" },
+  ],
   blocks: [
     {
       type: "prose",

@@ -20,6 +20,9 @@ export const desireSuggestions: Lesson = {
     { word: "週末[しゅうまつ]", reading: "しゅうまつ", meaning: "weekend" },
     { word: "荷物[にもつ]", reading: "にもつ", meaning: "luggage; bags" },
     { word: "新[あたら]しい", reading: "あたらしい", meaning: "new (i-adj)" },
+    { word: "ご飯[はん]", reading: "ごはん", meaning: "cooked rice; meal" },
+    { word: "食堂[しょくどう]", reading: "しょくどう", meaning: "cafeteria; dining hall" },
+    { word: "牛肉[ぎゅうにく]", reading: "ぎゅうにく", meaning: "beef" },
   ],
   blocks: [
     {

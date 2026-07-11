@@ -21,6 +21,9 @@ export const definingAndTrying: Lesson = {
     { word: "使[つか]う", reading: "つかう", meaning: "to use" },
     { word: "日本語[にほんご]", reading: "にほんご", meaning: "Japanese language" },
     { word: "国[くに]", reading: "くに", meaning: "country" },
+    { word: "研究[けんきゅう]", reading: "けんきゅう", meaning: "research" },
+    { word: "質問[しつもん]", reading: "しつもん", meaning: "question" },
+    { word: "文字[もじ]", reading: "もじ", meaning: "character; letter" },
   ],
   blocks: [
     {

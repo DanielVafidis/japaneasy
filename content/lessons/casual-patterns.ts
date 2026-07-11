@@ -18,6 +18,10 @@ export const casualPatterns: Lesson = {
     { word: "会議[かいぎ]", reading: "かいぎ", meaning: "meeting" },
     { word: "間[ま]に合[あ]う", reading: "まにあう", meaning: "to make it on time" },
     { word: "疲[つか]れる", reading: "つかれる", meaning: "to get tired" },
+    { word: "主人[しゅじん]", reading: "しゅじん", meaning: "husband; master" },
+    { word: "夕方[ゆうがた]", reading: "ゆうがた", meaning: "evening" },
+    { word: "市民[しみん]", reading: "しみん", meaning: "citizen" },
+    { word: "死[し]ぬ", reading: "しぬ", meaning: "to die" },
   ],
   blocks: [
     {

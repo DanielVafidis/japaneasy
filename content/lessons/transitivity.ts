@@ -20,6 +20,7 @@ export const transitivity: Lesson = {
     { word: "出[で]る", reading: "でる", meaning: "to leave; to come out" },
     { word: "電気[でんき]", reading: "でんき", meaning: "electricity; light" },
     { word: "ドア", reading: "ドア", meaning: "door" },
+    { word: "止[と]める", reading: "とめる", meaning: "to stop (something)" },
   ],
   blocks: [
     {

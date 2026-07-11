@@ -4,6 +4,7 @@ import { useStore } from "@/lib/store";
 import { useNow } from "@/lib/now";
 import { isDue, isLeech, type SrsState } from "@/lib/srs";
 import { cardsById, type DeckId } from "@/content/decks";
+import type { StageId } from "@/content/types";
 
 export interface ReviewableCard {
   state: SrsState;
@@ -42,6 +43,21 @@ export function useDeckStat(deck: DeckId): DeckStat {
   for (const c of Object.values(cards)) {
     const meta = cardsById[c.id];
     if (!meta || meta.deck !== deck) continue;
+    added++;
+    if (isDue(c, now)) due++;
+  }
+  return { added, due };
+}
+
+/** Vocab-deck stats limited to one curriculum stage. */
+export function useVocabStageStat(stage: StageId): DeckStat {
+  const cards = useStore((s) => s.cards);
+  const now = useNow();
+  let added = 0;
+  let due = 0;
+  for (const c of Object.values(cards)) {
+    const meta = cardsById[c.id];
+    if (!meta || meta.deck !== "vocab" || meta.stage !== stage) continue;
     added++;
     if (isDue(c, now)) due++;
   }

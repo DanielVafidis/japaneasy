@@ -20,6 +20,8 @@ export const intentionTsumori: Lesson = {
     { word: "休[やす]む", reading: "やすむ", meaning: "to rest; to take a day off" },
     { word: "飲[の]む", reading: "のむ", meaning: "to drink" },
     { word: "残業[ざんぎょう]", reading: "ざんぎょう", meaning: "overtime" },
+    { word: "出発[しゅっぱつ]", reading: "しゅっぱつ", meaning: "departure" },
+    { word: "以上[いじょう]", reading: "いじょう", meaning: "more than; above; that’s all" },
   ],
   blocks: [
     {

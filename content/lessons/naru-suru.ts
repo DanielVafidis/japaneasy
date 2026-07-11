@@ -23,6 +23,10 @@ export const naruSuru: Lesson = {
     { word: "大阪[おおさか]", reading: "おおさか", meaning: "Osaka" },
     { word: "妹[いもうと]", reading: "いもうと", meaning: "younger sister" },
     { word: "ニュース", reading: "ニュース", meaning: "the news" },
+    { word: "東京[とうきょう]", reading: "とうきょう", meaning: "Tokyo" },
+    { word: "工場[こうじょう]", reading: "こうじょう", meaning: "factory" },
+    { word: "産業[さんぎょう]", reading: "さんぎょう", meaning: "industry" },
+    { word: "西洋[せいよう]", reading: "せいよう", meaning: "the West" },
   ],
   blocks: [
     {

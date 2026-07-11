@@ -20,6 +20,13 @@ export const makingRequests: Lesson = {
     { word: "道[みち]", reading: "みち", meaning: "road; way" },
     { word: "写真[しゃしん]", reading: "しゃしん", meaning: "photograph" },
     { word: "電車[でんしゃ]", reading: "でんしゃ", meaning: "train" },
+    { word: "場所[ばしょ]", reading: "ばしょ", meaning: "place; location" },
+    { word: "地下鉄[ちかてつ]", reading: "ちかてつ", meaning: "subway" },
+    { word: "部屋[へや]", reading: "へや", meaning: "room" },
+    { word: "門[もん]", reading: "もん", meaning: "gate" },
+    { word: "銀行[ぎんこう]", reading: "ぎんこう", meaning: "bank" },
+    { word: "県[けん]", reading: "けん", meaning: "prefecture" },
+    { word: "地区[ちく]", reading: "ちく", meaning: "district; area" },
   ],
   blocks: [
     {

@@ -25,6 +25,8 @@ export interface Card {
   example?: { jp: string; reading: string; en: string };
   /** Kanji cards: component hint shown with the answer. */
   parts?: string;
+  /** Vocab cards: curriculum stage of the first (earliest) lesson/reading that introduces the word. */
+  stage?: StageId;
 }
 
 export interface DeckMeta {
@@ -101,17 +103,43 @@ function kanaDeck(script: KanaScript): Card[] {
   });
 }
 
+const STAGE_RANK: Record<StageId, number> = {
+  foundations: 0,
+  n5: 1,
+  n4: 2,
+  n3: 3,
+  n2: 4,
+  n1: 5,
+};
+
+/** Short labels for vocab stage filters on /flashcards. */
+export const vocabStageLabels: { id: StageId; label: string }[] = [
+  { id: "foundations", label: "Writing" },
+  { id: "n5", label: "N5" },
+  { id: "n4", label: "N4" },
+  { id: "n3", label: "N3" },
+  { id: "n2", label: "N2" },
+  { id: "n1", label: "N1" },
+];
+
 function vocabDeck(): Card[] {
-  const seen = new Set<string>();
-  const cards: Card[] = [];
+  const byId = new Map<string, Card>();
   const sources = [...allLessons, ...allReadings];
   for (const lesson of sources) {
     for (const v of lesson.vocabulary ?? []) {
       const plain = stripFurigana(v.word);
       const id = `vocab:${plain}`;
-      if (seen.has(id)) continue;
-      seen.add(id);
-      cards.push({
+      const existing = byId.get(id);
+      if (existing) {
+        // Keep the earliest curriculum stage when a word reappears later.
+        if (
+          STAGE_RANK[lesson.stage] < STAGE_RANK[existing.stage ?? "n1"]
+        ) {
+          existing.stage = lesson.stage;
+        }
+        continue;
+      }
+      byId.set(id, {
         id,
         deck: "vocab",
         front: v.word,
@@ -119,10 +147,11 @@ function vocabDeck(): Card[] {
         reading: v.reading ?? toReading(v.word),
         frontJp: true,
         speak: v.reading ?? toReading(v.word),
+        stage: lesson.stage,
       });
     }
   }
-  return cards;
+  return [...byId.values()];
 }
 
 const GRAMMAR_STAGES: StageId[] = ["n5", "n4", "n3", "n2", "n1"];
@@ -223,6 +252,10 @@ export const cardsById: Record<string, Card> = Object.fromEntries(
 
 export function cardsForDeck(id: DeckId): Card[] {
   return allCards.filter((c) => c.deck === id);
+}
+
+export function vocabCardsForStage(stage: StageId): Card[] {
+  return cardsForDeck("vocab").filter((c) => c.stage === stage);
 }
 
 export function getCard(id: string): Card | undefined {

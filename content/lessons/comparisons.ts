@@ -21,6 +21,10 @@ export const comparisons: Lesson = {
     { word: "自転車[じてんしゃ]", reading: "じてんしゃ", meaning: "bicycle" },
     { word: "無理[むり]", reading: "むり", meaning: "impossible; unreasonable" },
     { word: "中[なか]", reading: "なか", meaning: "inside; in" },
+    { word: "短[みじか]い", reading: "みじかい", meaning: "short" },
+    { word: "正[ただ]しい", reading: "ただしい", meaning: "correct" },
+    { word: "有名[ゆうめい]", reading: "ゆうめい", meaning: "famous" },
+    { word: "特別[とくべつ]", reading: "とくべつ", meaning: "special" },
   ],
   blocks: [
     {

@@ -22,6 +22,10 @@ export const givingReceiving: Lesson = {
     { word: "傘[かさ]", reading: "かさ", meaning: "umbrella" },
     { word: "隣[となり]", reading: "となり", meaning: "next to; next door" },
     { word: "送[おく]る", reading: "おくる", meaning: "to send (u-verb)" },
+    { word: "紙[かみ]", reading: "かみ", meaning: "paper" },
+    { word: "薬[くすり]", reading: "くすり", meaning: "medicine" },
+    { word: "時計[とけい]", reading: "とけい", meaning: "clock; watch" },
+    { word: "品物[しなもの]", reading: "しなもの", meaning: "goods; article" },
   ],
   blocks: [
     {

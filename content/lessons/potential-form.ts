@@ -20,6 +20,8 @@ export const potentialForm: Lesson = {
     { word: "山[やま]", reading: "やま", meaning: "mountain" },
     { word: "声[こえ]", reading: "こえ", meaning: "voice" },
     { word: "終電[しゅうでん]", reading: "しゅうでん", meaning: "last train" },
+    { word: "進[すす]む", reading: "すすむ", meaning: "to advance; go forward" },
+    { word: "引[ひ]く", reading: "ひく", meaning: "to pull" },
   ],
   blocks: [
     {

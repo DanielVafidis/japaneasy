@@ -23,6 +23,16 @@ describe("card catalogue", () => {
       }
     }
   });
+
+  it("vocab cards carry the earliest curriculum stage", () => {
+    const vocab = allCards.filter((c) => c.deck === "vocab");
+    expect(vocab.length).toBeGreaterThan(0);
+    for (const c of vocab) {
+      expect(c.stage, c.id).toBeDefined();
+    }
+    // Seeded in an N4 lesson; should not float to a later stage if reused.
+    expect(cardsById["vocab:仕事"]?.stage).toBe("n4");
+  });
 });
 
 describe("grammar drills", () => {
@@ -105,7 +115,7 @@ describe("kanji & kana data", () => {
       expect(k.meaning.trim().length).toBeGreaterThan(0);
       expect(k.on.length + k.kun.length).toBeGreaterThan(0);
     }
-    expect(kanji.length).toBe(310);
+    expect(kanji.length).toBe(366);
   });
 
   it("every gojuon kana has stroke counts", async () => {

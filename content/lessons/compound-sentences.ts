@@ -22,6 +22,8 @@ export const compoundSentences: Lesson = {
     { word: "顔[かお]", reading: "かお", meaning: "face" },
     { word: "長[なが]い", reading: "ながい", meaning: "long (i-adj)" },
     { word: "急[いそ]ぐ", reading: "いそぐ", meaning: "to hurry (u-verb)" },
+    { word: "世界[せかい]", reading: "せかい", meaning: "world" },
+    { word: "時代[じだい]", reading: "じだい", meaning: "era; age" },
   ],
   blocks: [
     {

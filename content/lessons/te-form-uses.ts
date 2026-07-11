@@ -20,6 +20,9 @@ export const teFormUses: Lesson = {
     { word: "駅[えき]", reading: "えき", meaning: "station" },
     { word: "資料[しりょう]", reading: "しりょう", meaning: "documents; materials" },
     { word: "会社[かいしゃ]", reading: "かいしゃ", meaning: "company; office" },
+    { word: "一回[いっかい]", reading: "いっかい", meaning: "one time; once" },
+    { word: "注意[ちゅうい]", reading: "ちゅうい", meaning: "caution; attention" },
+    { word: "考[かんが]える", reading: "かんがえる", meaning: "to think; consider" },
   ],
   blocks: [
     {

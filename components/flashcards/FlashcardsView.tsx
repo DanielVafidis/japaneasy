@@ -14,11 +14,14 @@ import {
   deckMeta,
   cardsForDeck,
   getCard,
+  vocabStageLabels,
+  vocabCardsForStage,
   type DeckId,
 } from "@/content/decks";
+import type { StageId } from "@/content/types";
 import { useStore } from "@/lib/store";
 import { isDue, type Grade } from "@/lib/srs";
-import { useDeckStat, useLeechStates, useTotalAdded } from "@/lib/review";
+import { useDeckStat, useLeechStates, useTotalAdded, useVocabStageStat } from "@/lib/review";
 import { LEECH_LAPSES } from "@/lib/srs";
 import { TypingFlashcard } from "@/components/flashcards/TypingFlashcard";
 import { checkFlashcardAnswer } from "@/lib/flashcard-review";
@@ -42,13 +45,14 @@ export function FlashcardsView() {
   const [correct, setCorrect] = useState<boolean | null>(null);
   const [reviewed, setReviewed] = useState(0);
 
-  function buildDue(deck?: DeckId): string[] {
+  function buildDue(deck?: DeckId, stage?: StageId): string[] {
     const now = Date.now();
     return Object.values(cards)
       .filter((c) => {
         const meta = getCard(c.id);
         if (!meta) return false;
         if (deck && meta.deck !== deck) return false;
+        if (stage && meta.stage !== stage) return false;
         return isDue(c, now);
       })
       .sort((a, b) => a.due - b.due)
@@ -61,8 +65,8 @@ export function FlashcardsView() {
     setCorrect(null);
   }, []);
 
-  function start(deck?: DeckId) {
-    startQueue(buildDue(deck));
+  function start(deck?: DeckId, stage?: StageId) {
+    startQueue(buildDue(deck, stage));
   }
 
   /** Start a session over an explicit card list (e.g. struggling cards). */
@@ -261,9 +265,13 @@ export function FlashcardsView() {
           want a focused session.
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
-          {deckMeta.map((deck) => (
-            <DeckCard key={deck.id} deck={deck} onReview={() => start(deck.id)} />
-          ))}
+          {deckMeta.map((deck) =>
+            deck.id === "vocab" ? (
+              <VocabDeckCard key={deck.id} deck={deck} onReview={start} />
+            ) : (
+              <DeckCard key={deck.id} deck={deck} onReview={() => start(deck.id)} />
+            ),
+          )}
         </div>
       </div>
     </div>
@@ -321,6 +329,112 @@ function DeckCard({
         >
           {deck.learnLabel} <ArrowRight className="h-3.5 w-3.5" />
         </ButtonLink>
+      )}
+    </div>
+  );
+}
+
+function VocabDeckCard({
+  deck,
+  onReview,
+}: {
+  deck: (typeof deckMeta)[number];
+  onReview: (deck: DeckId, stage?: StageId) => void;
+}) {
+  const stat = useDeckStat("vocab");
+  const all = cardsForDeck("vocab");
+  const pct = all.length ? (stat.added / all.length) * 100 : 0;
+  const stagesWithCards = vocabStageLabels.filter(
+    (s) => vocabCardsForStage(s.id).length > 0,
+  );
+
+  return (
+    <div className="flex flex-col gap-4 rounded-3xl border border-line bg-surface p-5 card-shadow sm:col-span-2">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span className="font-jp text-3xl text-shu/70">{deck.jp}</span>
+          <div>
+            <h4 className="font-display text-lg text-ink">{deck.title}</h4>
+            <p className="text-xs text-ink-faint">
+              Words from each stage — review one level or the whole deck.
+            </p>
+          </div>
+        </div>
+        {stat.due > 0 && <Badge tone="shu">{stat.due} due</Badge>}
+      </div>
+
+      <div>
+        <div className="mb-1.5 flex justify-between text-xs text-ink-soft">
+          <span>
+            {stat.added} / {all.length} learned
+          </span>
+          <span>{Math.round(pct)}%</span>
+        </div>
+        <ProgressBar value={pct} tone={deck.tone} />
+      </div>
+
+      <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {stagesWithCards.map((s) => (
+          <VocabStageRow
+            key={s.id}
+            stage={s.id}
+            label={s.label}
+            onReview={() => onReview("vocab", s.id)}
+          />
+        ))}
+      </div>
+
+      {stat.due > 0 ? (
+        <Button size="sm" onClick={() => onReview("vocab")} className="w-full">
+          Review all vocab ({stat.due} due)
+        </Button>
+      ) : stat.added > 0 ? (
+        <div className="flex h-9 items-center justify-center gap-1.5 rounded-full border border-dashed border-line text-xs text-ink-faint">
+          <CheckCircle2 className="h-3.5 w-3.5 text-matcha" /> All caught up
+        </div>
+      ) : (
+        <ButtonLink
+          href={deck.learnHref}
+          variant="outline"
+          size="sm"
+          className="w-full"
+        >
+          {deck.learnLabel} <ArrowRight className="h-3.5 w-3.5" />
+        </ButtonLink>
+      )}
+    </div>
+  );
+}
+
+function VocabStageRow({
+  stage,
+  label,
+  onReview,
+}: {
+  stage: StageId;
+  label: string;
+  onReview: () => void;
+}) {
+  const stat = useVocabStageStat(stage);
+  const total = vocabCardsForStage(stage).length;
+
+  return (
+    <div className="flex items-center justify-between gap-2 rounded-2xl border border-line bg-surface-2/60 px-3 py-2.5">
+      <div className="min-w-0">
+        <p className="text-sm font-medium text-ink">{label}</p>
+        <p className="text-xs text-ink-faint">
+          {stat.added}/{total}
+          {stat.due > 0 ? ` · ${stat.due} due` : ""}
+        </p>
+      </div>
+      {stat.due > 0 ? (
+        <Button size="sm" variant="outline" onClick={onReview} className="shrink-0">
+          Review
+        </Button>
+      ) : (
+        <span className="shrink-0 text-xs text-ink-faint">
+          {stat.added > 0 ? "✓" : "—"}
+        </span>
       )}
     </div>
   );
