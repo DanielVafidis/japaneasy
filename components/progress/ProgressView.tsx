@@ -6,6 +6,7 @@ import { levelInfo } from "@/lib/leveling";
 import { stages, lessonsForStage } from "@/content/curriculum";
 import { deckMeta, cardsById } from "@/content/decks";
 import { useDeckStat, useDueStates, useTotalAdded } from "@/lib/review";
+import { JlptProgress } from "@/components/progress/JlptProgress";
 import { StudyHeatmap } from "@/components/progress/StudyHeatmap";
 import { DataControls } from "@/components/DataControls";
 import { ProgressBar } from "@/components/ui/ProgressBar";
@@ -140,6 +141,9 @@ export function ProgressView() {
           </p>
         </section>
       </div>
+
+      {/* JLPT coverage */}
+      <JlptProgress />
 
       {/* data management */}
       <section className="rounded-3xl border border-line bg-surface p-4 card-shadow sm:p-6">

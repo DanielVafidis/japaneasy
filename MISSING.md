@@ -124,3 +124,24 @@ string in `content/lessons/` was scanned against the full extracted PDF text —
 verbatim sentence matches, then for shared runs of 12+ consecutive Japanese characters.
 Remaining overlaps are only conjugation paradigms (高い→高くなかった) and the names of the
 grammar patterns themselves (ざるを得ない…), which any course must contain.*
+
+---
+
+## 5. Gaps found by the JLPT mapping (2026-07-11)
+
+Authoring `content/jlpt.ts` (roadmap 3.5) meant grep-verifying which lesson teaches each
+common N5/N4 grammar point. That re-check found sub-points the 2026-07-08 audit missed —
+each appears only in quiz distractors/explanations, never taught:
+
+| Point | Level | Book chapter | Natural home |
+|-------|-------|--------------|--------------|
+| 〜てから (after doing) | N5 | Other uses of the te-form | `te-form-uses` |
+| 〜ておく (do in advance) | N4 | Other uses of the te-form | `te-form-uses` |
+| 〜てある (resulting state) | N4 | Other uses of the te-form | `te-form-uses` |
+| 〜けど・〜が (but / although) | N5 | Compound sentences | `compound-sentences` |
+| 〜し (listing reasons) | N4 | Compound sentences | `compound-sentences` |
+| 〜のに (despite) | N4 | Compound sentences | `compound-sentences` |
+
+Also missing vs. common JLPT study lists, though not clearly Tae Kim chapters: もう・まだ,
+あまり〜ない, 〜がある・〜がいる (existence), 〜てほしい, 〜つもり, 〜ため（に）. All of the
+above show as "not in the course yet" in the JLPT progress view until authored.
