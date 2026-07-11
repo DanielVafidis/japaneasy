@@ -19,6 +19,7 @@ export const addressingPeople: Lesson = {
     { word: "さん", reading: "さん", meaning: "polite name suffix (Mr/Ms/~san)" },
     { word: "学生[がくせい]", reading: "がくせい", meaning: "student" },
     { word: "会社員[かいしゃいん]", reading: "かいしゃいん", meaning: "office worker; company employee" },
+    { word: "俺[おれ]", reading: "おれ", meaning: "I; me (rough, masculine)" },
   ],
   blocks: [
     {

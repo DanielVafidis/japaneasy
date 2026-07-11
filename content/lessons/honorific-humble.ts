@@ -19,6 +19,7 @@ export const honorificHumble: Lesson = {
     { word: "お客[きゃく]様[さま]", reading: "おきゃくさま", meaning: "customer; guest" },
     { word: "会議[かいぎ]", reading: "かいぎ", meaning: "meeting" },
     { word: "ご覧[らん]になる", reading: "ごらんになる", meaning: "to see (honorific)" },
+    { word: "お客様[きゃくさま]", reading: "おきゃくさま", meaning: "customer; guest (polite)" },
   ],
   blocks: [
     {

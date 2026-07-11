@@ -11,7 +11,6 @@ import {
   type KanjiCategory,
 } from "@/content/kanji";
 import type { JlptLevel } from "@/content/jlpt";
-import { cardsForDeck } from "@/content/decks";
 import { AudioButton } from "@/components/AudioButton";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
 import { KanjiWriter } from "@/components/kanji/KanjiWriter";
@@ -49,7 +48,11 @@ export function KanjiView() {
     [filter, level],
   );
 
-  const allIds = cardsForDeck("kanji").map((c) => c.id);
+  // two cards per character; count in the label is characters (matches the grid)
+  const listIds = useMemo(
+    () => list.flatMap((k) => [`kanji:${k.char}`, `kanji-mean:${k.char}`]),
+    [list],
+  );
 
   function openKanji(k: Kanji) {
     router.replace(`/kanji?c=${encodeURIComponent(k.char)}`, { scroll: false });
@@ -132,8 +135,8 @@ export function KanjiView() {
         <>
           <div className="flex justify-end">
             <AddToDeckButton
-              ids={allIds}
-              label={`Add all ${allIds.length}`}
+              ids={listIds}
+              label={`Add all ${list.length}`}
               size="md"
               className="w-full justify-center sm:w-auto"
             />

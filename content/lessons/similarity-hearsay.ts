@@ -18,6 +18,8 @@ export const similarityHearsay: Lesson = {
     { word: "機嫌[きげん]", reading: "きげん", meaning: "mood; temper" },
     { word: "案件[あんけん]", reading: "あんけん", meaning: "matter; case; project" },
     { word: "忙[いそが]しい", reading: "いそがしい", meaning: "busy" },
+    { word: "彼[かれ]", reading: "かれ", meaning: "he; him" },
+    { word: "決[き]める", reading: "きめる", meaning: "to decide (ru-verb)" },
   ],
   blocks: [
     {

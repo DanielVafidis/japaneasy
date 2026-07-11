@@ -20,6 +20,9 @@ export const naruSuru: Lesson = {
     { word: "来月[らいげつ]", reading: "らいげつ", meaning: "next month" },
     { word: "残業[ざんぎょう]", reading: "ざんぎょう", meaning: "overtime" },
     { word: "早[はや]い", reading: "はやい", meaning: "early; fast" },
+    { word: "大阪[おおさか]", reading: "おおさか", meaning: "Osaka" },
+    { word: "妹[いもうと]", reading: "いもうと", meaning: "younger sister" },
+    { word: "ニュース", reading: "ニュース", meaning: "the news" },
   ],
   blocks: [
     {

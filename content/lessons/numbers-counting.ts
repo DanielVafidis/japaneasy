@@ -20,6 +20,8 @@ export const numbersCounting: Lesson = {
     { word: "曜日[ようび]", reading: "ようび", meaning: "day of the week" },
     { word: "二人[ふたり]", reading: "ふたり", meaning: "two people" },
     { word: "電車[でんしゃ]", reading: "でんしゃ", meaning: "train" },
+    { word: "今[いま]", reading: "いま", meaning: "now" },
+    { word: "八[はち]", reading: "はち", meaning: "eight" },
   ],
   blocks: [
     {

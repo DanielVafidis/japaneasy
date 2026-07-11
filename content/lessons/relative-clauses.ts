@@ -19,6 +19,8 @@ export const relativeClauses: Lesson = {
     { word: "作[つく]る", reading: "つくる", meaning: "to make" },
     { word: "住[す]む", reading: "すむ", meaning: "to live (somewhere)" },
     { word: "好[す]き", reading: "すき", meaning: "liked; favourite (na-adj)" },
+    { word: "母[はは]", reading: "はは", meaning: "(my) mother" },
+    { word: "父[ちち]", reading: "ちち", meaning: "(my) father" },
   ],
   blocks: [
     {

@@ -105,7 +105,7 @@ describe("kanji & kana data", () => {
       expect(k.meaning.trim().length).toBeGreaterThan(0);
       expect(k.on.length + k.kun.length).toBeGreaterThan(0);
     }
-    expect(kanji.length).toBe(220);
+    expect(kanji.length).toBe(310);
   });
 
   it("every gojuon kana has stroke counts", async () => {

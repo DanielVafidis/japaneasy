@@ -18,6 +18,7 @@ export const hypothesizing: Lesson = {
     { word: "計画[けいかく]", reading: "けいかく", meaning: "plan" },
     { word: "大丈夫[だいじょうぶ]", reading: "だいじょうぶ", meaning: "OK; fine" },
     { word: "怒[おこ]る", reading: "おこる", meaning: "to get angry" },
+    { word: "残[のこ]る", reading: "のこる", meaning: "to remain; to be left (u-verb)" },
   ],
   blocks: [
     {

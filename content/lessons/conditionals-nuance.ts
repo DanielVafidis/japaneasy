@@ -20,6 +20,9 @@ export const conditionalsNuance: Lesson = {
     { word: "安[やす]い", reading: "やすい", meaning: "cheap; inexpensive" },
     { word: "質[しつ]", reading: "しつ", meaning: "quality" },
     { word: "東京[とうきょう]", reading: "とうきょう", meaning: "Tokyo" },
+    { word: "悪[わる]い", reading: "わるい", meaning: "bad (i-adj)" },
+    { word: "便利[べんり]", reading: "べんり", meaning: "convenient (na-adj)" },
+    { word: "限[かぎ]り", reading: "かぎり", meaning: "as far as; as long as", note: "〜する限り — as long as …" },
   ],
   blocks: [
     {

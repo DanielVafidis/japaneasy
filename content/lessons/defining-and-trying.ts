@@ -20,6 +20,7 @@ export const definingAndTrying: Lesson = {
     { word: "券売機[けんばいき]", reading: "けんばいき", meaning: "ticket machine" },
     { word: "使[つか]う", reading: "つかう", meaning: "to use" },
     { word: "日本語[にほんご]", reading: "にほんご", meaning: "Japanese language" },
+    { word: "国[くに]", reading: "くに", meaning: "country" },
   ],
   blocks: [
     {

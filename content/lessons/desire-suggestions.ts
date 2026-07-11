@@ -19,6 +19,7 @@ export const desireSuggestions: Lesson = {
     { word: "欲[ほ]しい", reading: "ほしい", meaning: "want (a thing)" },
     { word: "週末[しゅうまつ]", reading: "しゅうまつ", meaning: "weekend" },
     { word: "荷物[にもつ]", reading: "にもつ", meaning: "luggage; bags" },
+    { word: "新[あたら]しい", reading: "あたらしい", meaning: "new (i-adj)" },
   ],
   blocks: [
     {

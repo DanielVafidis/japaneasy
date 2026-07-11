@@ -20,6 +20,9 @@ export const n1NuanceIntegration: Lesson = {
     { word: "責任[せきにん]", reading: "せきにん", meaning: "responsibility" },
     { word: "職場[しょくば]", reading: "しょくば", meaning: "workplace" },
     { word: "品質[ひんしつ]", reading: "ひんしつ", meaning: "quality (of a product)" },
+    { word: "存[ぞん]じる", reading: "ぞんじる", meaning: "to know (humble)" },
+    { word: "逃[に]げる", reading: "にげる", meaning: "to escape; to run away (ru-verb)" },
+    { word: "選[えら]ぶ", reading: "えらぶ", meaning: "to choose (u-verb)" },
   ],
   blocks: [
     {

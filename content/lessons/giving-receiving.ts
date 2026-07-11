@@ -20,6 +20,8 @@ export const givingReceiving: Lesson = {
     { word: "手伝[てつだ]う", reading: "てつだう", meaning: "to help" },
     { word: "お菓子[かし]", reading: "おかし", meaning: "sweets; snacks" },
     { word: "傘[かさ]", reading: "かさ", meaning: "umbrella" },
+    { word: "隣[となり]", reading: "となり", meaning: "next to; next door" },
+    { word: "送[おく]る", reading: "おくる", meaning: "to send (u-verb)" },
   ],
   blocks: [
     {

@@ -18,6 +18,7 @@ export const quotedSpeech: Lesson = {
     { word: "会議[かいぎ]", reading: "かいぎ", meaning: "meeting" },
     { word: "部長[ぶちょう]", reading: "ぶちょう", meaning: "section chief; manager" },
     { word: "不満[ふまん]", reading: "ふまん", meaning: "dissatisfaction" },
+    { word: "彼女[かのじょ]", reading: "かのじょ", meaning: "she; her; girlfriend" },
   ],
   blocks: [
     {

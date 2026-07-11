@@ -18,6 +18,8 @@ export const timeAndMama: Lesson = {
     { word: "っぱなし", reading: "っぱなし", meaning: "left on / undone (colloquial)" },
     { word: "窓[まど]", reading: "まど", meaning: "window" },
     { word: "転職[てんしょく]", reading: "てんしょく", meaning: "changing jobs" },
+    { word: "迷[まよ]う", reading: "まよう", meaning: "to get lost; to waver (u-verb)" },
+    { word: "出張[しゅっちょう]", reading: "しゅっちょう", meaning: "business trip" },
   ],
   blocks: [
     {

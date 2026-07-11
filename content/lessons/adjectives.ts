@@ -18,6 +18,9 @@ export const adjectives: Lesson = {
     { word: "静か", reading: "しずか", meaning: "quiet (na-adj)" },
     { word: "きれい", reading: "きれい", meaning: "pretty; clean (na-adj)" },
     { word: "いい", reading: "いい", meaning: "good (irregular i-adj)" },
+    { word: "昼[ひる]", reading: "ひる", meaning: "noon; daytime" },
+    { word: "カフェ", reading: "カフェ", meaning: "cafe" },
+    { word: "カレー", reading: "カレー", meaning: "curry" },
   ],
   blocks: [
     {

@@ -18,6 +18,7 @@ export const conditionals: Lesson = {
     { word: "春[はる]", reading: "はる", meaning: "spring" },
     { word: "暇[ひま]", reading: "ひま", meaning: "free time" },
     { word: "電話[でんわ]", reading: "でんわ", meaning: "telephone; a call" },
+    { word: "タクシー", reading: "タクシー", meaning: "taxi" },
   ],
   blocks: [
     {

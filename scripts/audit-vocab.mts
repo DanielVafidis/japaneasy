@@ -89,10 +89,11 @@ const uses: Use[] = [];
 // curriculum position of every lesson/reading, for placement suggestions
 const STAGE_INDEX: Record<string, number> = {
   foundations: 0,
-  "basic-grammar": 1,
-  "essential-grammar": 2,
-  "special-expressions": 3,
-  "advanced-topics": 4,
+  n5: 1,
+  n4: 2,
+  n3: 3,
+  n2: 4,
+  n1: 5,
 };
 const sourcePos = new Map<string, { pos: number; isReading: boolean }>();
 for (const l of allLessons) {
@@ -366,12 +367,33 @@ const CURATED: [key: string, entry: string][] = [
   ["kata:コンビニ", `{ word: "コンビニ", reading: "コンビニ", meaning: "convenience store" }`],
   ["kata:レポート", `{ word: "レポート", reading: "レポート", meaning: "report; paper" }`],
   ["kata:タバコ", `{ word: "タバコ", reading: "タバコ", meaning: "tobacco; cigarette" }`],
+  ["彼|かれ", `{ word: "彼[かれ]", reading: "かれ", meaning: "he; him" }`],
+  ["彼女|かのじょ", `{ word: "彼女[かのじょ]", reading: "かのじょ", meaning: "she; her; girlfriend" }`],
+  ["猫|ねこ", `{ word: "猫[ねこ]", reading: "ねこ", meaning: "cat" }`],
+  ["決|き", `{ word: "決[き]める", reading: "きめる", meaning: "to decide (ru-verb)" }`],
+  ["変|か", `{ word: "変[か]える", reading: "かえる", meaning: "to change (something) (ru-verb)" }`],
+  ["急|いそ", `{ word: "急[いそ]ぐ", reading: "いそぐ", meaning: "to hurry (u-verb)" }`],
+  ["便利|", `{ word: "便利[べんり]", reading: "べんり", meaning: "convenient (na-adj)" }`],
+  ["準備|", `{ word: "準備[じゅんび]", reading: "じゅんび", meaning: "preparation", note: "準備する — to prepare" }`],
+  ["出張|", `{ word: "出張[しゅっちょう]", reading: "しゅっちょう", meaning: "business trip" }`],
+  ["不足|ぶそく", `{ word: "不足[ぶそく]", reading: "ぶそく", meaning: "shortage; lack" }`],
+  ["残|のこ", `{ word: "残[のこ]る", reading: "のこる", meaning: "to remain; to be left (u-verb)" }`],
+  ["逃|に", `{ word: "逃[に]げる", reading: "にげる", meaning: "to escape; to run away (ru-verb)" }`],
+  ["選|えら", `{ word: "選[えら]ぶ", reading: "えらぶ", meaning: "to choose (u-verb)" }`],
+  ["送|おく", `{ word: "送[おく]る", reading: "おくる", meaning: "to send (u-verb)" }`],
+  ["限|かぎ", `{ word: "限[かぎ]り", reading: "かぎり", meaning: "as far as; as long as", note: "〜する限り — as long as …" }`],
+  ["昼|ひる", `{ word: "昼[ひる]", reading: "ひる", meaning: "noon; daytime" }`],
+  ["八|はち", `{ word: "八[はち]", reading: "はち", meaning: "eight" }`],
+  ["with:持|も", `{ word: "持[も]っていく", reading: "もっていく", meaning: "to take (something) along" }`],
+  ["kata:カフェ", `{ word: "カフェ", reading: "カフェ", meaning: "cafe" }`],
+  ["kata:カレー", `{ word: "カレー", reading: "カレー", meaning: "curry" }`],
 ];
 
 // pattern words are better taught by the lesson about their pattern than by
 // whichever reading happens to come first
 const PLACEMENT_OVERRIDES: Record<string, string> = {
   "得|え": "zaru-wo-enai",
+  "限|かぎ": "conditionals-nuance",
 };
 
 if (process.argv.includes("--place") || process.argv.includes("--apply")) {

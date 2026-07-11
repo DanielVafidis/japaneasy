@@ -19,6 +19,9 @@ export const compoundSentences: Lesson = {
     { word: "安[やす]い", reading: "やすい", meaning: "cheap" },
     { word: "美味[おい]しい", reading: "おいしい", meaning: "delicious" },
     { word: "図書館[としょかん]", reading: "としょかん", meaning: "library" },
+    { word: "顔[かお]", reading: "かお", meaning: "face" },
+    { word: "長[なが]い", reading: "ながい", meaning: "long (i-adj)" },
+    { word: "急[いそ]ぐ", reading: "いそぐ", meaning: "to hurry (u-verb)" },
   ],
   blocks: [
     {

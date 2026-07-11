@@ -18,6 +18,7 @@ export const easeDifficulty: Lesson = {
     { word: "説明[せつめい]", reading: "せつめい", meaning: "explanation" },
     { word: "提案[ていあん]", reading: "ていあん", meaning: "proposal; suggestion" },
     { word: "避[さ]ける", reading: "さける", meaning: "to avoid" },
+    { word: "解[と]く", reading: "とく", meaning: "to solve (u-verb)" },
   ],
   blocks: [
     {

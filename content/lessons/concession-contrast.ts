@@ -20,6 +20,7 @@ export const concessionContrast: Lesson = {
     { word: "厳[きび]しい", reading: "きびしい", meaning: "strict; severe" },
     { word: "予算[よさん]", reading: "よさん", meaning: "budget" },
     { word: "責任[せきにん]", reading: "せきにん", meaning: "responsibility" },
+    { word: "準備[じゅんび]", reading: "じゅんび", meaning: "preparation", note: "準備する — to prepare" },
   ],
   blocks: [
     {

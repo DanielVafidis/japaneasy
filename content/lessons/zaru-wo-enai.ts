@@ -17,6 +17,8 @@ export const zaruWoEnai: Lesson = {
     { word: "事情[じじょう]", reading: "じじょう", meaning: "circumstances" },
     { word: "計画[けいかく]", reading: "けいかく", meaning: "plan" },
     { word: "決断[けつだん]", reading: "けつだん", meaning: "decision (decisive)" },
+    { word: "答[こた]える", reading: "こたえる", meaning: "to answer (ru-verb)" },
+    { word: "得[え]る", reading: "える", meaning: "to gain; to obtain (ru-verb)", note: "as in 〜ざるを得ない" },
   ],
   blocks: [
     {

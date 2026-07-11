@@ -20,6 +20,7 @@ export const comparisons: Lesson = {
     { word: "速[はや]い", reading: "はやい", meaning: "fast" },
     { word: "自転車[じてんしゃ]", reading: "じてんしゃ", meaning: "bicycle" },
     { word: "無理[むり]", reading: "むり", meaning: "impossible; unreasonable" },
+    { word: "中[なか]", reading: "なか", meaning: "inside; in" },
   ],
   blocks: [
     {

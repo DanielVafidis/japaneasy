@@ -20,6 +20,8 @@ export const reasonsCauses: Lesson = {
     { word: "説明[せつめい]", reading: "せつめい", meaning: "explanation" },
     { word: "助[たす]け", reading: "たすけ", meaning: "help; assistance" },
     { word: "通勤[つうきん]", reading: "つうきん", meaning: "commuting to work" },
+    { word: "変[か]える", reading: "かえる", meaning: "to change (something) (ru-verb)" },
+    { word: "不足[ぶそく]", reading: "ぶそく", meaning: "shortage; lack" },
   ],
   blocks: [
     {

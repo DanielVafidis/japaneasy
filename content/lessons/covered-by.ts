@@ -20,6 +20,7 @@ export const coveredBy: Lesson = {
     { word: "油[あぶら]", reading: "あぶら", meaning: "oil" },
     { word: "議論[ぎろん]", reading: "ぎろん", meaning: "discussion; debate" },
     { word: "報告書[ほうこくしょ]", reading: "ほうこくしょ", meaning: "written report" },
+    { word: "飛[と]ぶ", reading: "とぶ", meaning: "to fly; to jump (u-verb)" },
   ],
   blocks: [
     {

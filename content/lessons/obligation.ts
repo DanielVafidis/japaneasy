@@ -18,6 +18,7 @@ export const obligation: Lesson = {
     { word: "吸[す]う", reading: "すう", meaning: "to smoke; to inhale" },
     { word: "タバコ", reading: "タバコ", meaning: "cigarette" },
     { word: "休[やす]む", reading: "やすむ", meaning: "to rest; to take a day off" },
+    { word: "撮[と]る", reading: "とる", meaning: "to take (a photo) (u-verb)" },
   ],
   blocks: [
     {

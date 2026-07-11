@@ -18,6 +18,8 @@ export const adverbsParticles: Lesson = {
     { word: "雨[あめ]", reading: "あめ", meaning: "rain" },
     { word: "きれい", reading: "きれい", meaning: "pretty; clean (na-adj)" },
     { word: "遅[おそ]い", reading: "おそい", meaning: "slow; late (i-adj)" },
+    { word: "持[も]つ", reading: "もつ", meaning: "to hold; to carry (u-verb)" },
+    { word: "持[も]っていく", reading: "もっていく", meaning: "to take (something) along" },
   ],
   blocks: [
     {
