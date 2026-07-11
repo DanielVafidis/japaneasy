@@ -81,6 +81,7 @@ describe("fromRomaji", () => {
     expect(fromRomaji("konnichiwa")).toBe("こんにちわ");
     expect(fromRomaji("genki")).toBe("げんき");
     expect(fromRomaji("sann")).toBe("さん");
+    expect(fromRomaji("gyuunyuu")).toBe("ぎゅうにゅう");
   });
 
   it("accepts non-Hepburn aliases", () => {
@@ -90,8 +91,23 @@ describe("fromRomaji", () => {
     expect(fromRomaji("jyu")).toBe("じゅ");
   });
 
+  it("treats l like r", () => {
+    expect(fromRomaji("le")).toBe("れ");
+    expect(fromRomaji("tabelu")).toBe("たべる");
+    expect(fromRomaji("lyokou")).toBe("りょこう");
+    expect(fromRomaji("lamen", "kata")).toBe("ラメン");
+  });
+
   it("converts to katakana when asked", () => {
     expect(fromRomaji("kamera", "kata")).toBe("カメラ");
+  });
+
+  it("writes - as the prolonged sound mark, doubled vowels as kana", () => {
+    expect(fromRomaji("ke-ki", "kata")).toBe("ケーキ");
+    expect(fromRomaji("ra-men", "kata")).toBe("ラーメン");
+    expect(fromRomaji("keeki", "kata")).toBe("ケエキ");
+    expect(fromRomaji("ookii")).toBe("おおきい");
+    expect(fromRomaji("nyu-su", "kata")).toBe("ニュース");
   });
 });
 
@@ -104,10 +120,21 @@ describe("convertRomajiInInput (live typing)", () => {
   it("converts a trailing n after a vowel, holds a bare n", () => {
     expect(convertRomajiInInput("shin")).toBe("しん");
     expect(convertRomajiInInput("n")).toBe("n");
+    expect(convertRomajiInInput("ny")).toBe("ny");
   });
 
   it("preserves existing Japanese characters", () => {
     expect(convertRomajiInInput("元気janai")).toBe("元気じゃない");
+  });
+
+  it("converts - to ー while typing", () => {
+    expect(convertRomajiInInput("ke-ki", "kata")).toBe("ケーキ");
+    expect(convertRomajiInInput("ke-", "kata")).toBe("ケー");
+  });
+
+  it("holds a bare l like other consonants", () => {
+    expect(convertRomajiInInput("l")).toBe("l");
+    expect(convertRomajiInInput("le")).toBe("れ");
   });
 });
 

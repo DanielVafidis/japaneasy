@@ -313,7 +313,7 @@ function FillIn({
             }
 
             if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
-              if (japaneseInput && /[a-zA-Z]/.test(e.key)) {
+              if (japaneseInput && /[a-zA-Z-]/.test(e.key)) {
                 e.preventDefault();
                 appendRaw(e.key);
               }

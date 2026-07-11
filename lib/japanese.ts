@@ -178,6 +178,15 @@ const ROMAJI_ALIASES: Record<string, string> = {
   zi: "ji",
   di: "ji",
   du: "zu",
+  // Japanese r sits between l and r; accept both spellings.
+  la: "ra",
+  li: "ri",
+  lu: "ru",
+  le: "re",
+  lo: "ro",
+  lya: "rya",
+  lyu: "ryu",
+  lyo: "ryo",
 };
 
 /** Hepburn spellings with an extra "y" (jyu, syu, tya, …). */
@@ -247,7 +256,14 @@ function parseRomajiChunk(
 
   while (i < s.length) {
     const ch = s[i];
-    if (ch === " " || ch === "-") {
+    if (ch === " ") {
+      i += 1;
+      continue;
+    }
+
+    // Prolonged sound mark: "ke-ki" → けーき/ケーキ, distinct from "keeki" → けえき.
+    if (ch === "-") {
+      out += "ー";
       i += 1;
       continue;
     }
@@ -277,7 +293,8 @@ function parseRomajiChunk(
         i += 2;
         continue;
       }
-      if (!next || CONSONANTS.includes(next)) {
+      // "ny" starts にゃ/にゅ/にょ, so leave it to syllable matching.
+      if (!next || (CONSONANTS.includes(next) && next !== "y")) {
         if (live && !next) {
           const prev = i > 0 ? s[i - 1] : "";
           // Hold trailing n when it could start na/ni/… (e.g. typing "ni").
@@ -371,7 +388,7 @@ export function convertRomajiInInput(
   };
 
   for (const ch of input.normalize("NFKC")) {
-    if (/[a-zA-Z]/.test(ch)) {
+    if (/[a-zA-Z-]/.test(ch)) {
       ascii += ch;
       continue;
     }
