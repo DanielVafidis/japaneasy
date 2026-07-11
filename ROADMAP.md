@@ -35,7 +35,7 @@ This is the product’s primary promise: structured lessons first, spaced repeti
 
 ## Current state (baseline)
 
-- **73 lessons**, 6 stages (Writing System → N5–N1), typed TS content with furigana, examples, quizzes
+- **76 lessons**, 6 stages (Writing System → N5–N1), typed TS content with furigana, examples, quizzes
 - **SRS** (SM-2-lite), 5 decks; auto-enroll on lesson complete + manual “Add to flashcards”
 - **Typed recall** in flashcard review & quiz fill-ins — romaji/kana input, normalized matching (kana, vocab, kanji readings; EN for grammar)
 - **Kana** chart / quiz / writer; **~172 kanji** browser
@@ -168,7 +168,7 @@ Still **frontend-only**; backend stays deferred.
 
 Ordered queue — pull from the top; reorder here as priorities shift.
 
-Phase 3 is complete (3.1–3.6 all shipped). Remaining directions: **2.5 natural audio** (manifest ready — record clips, then wire lookup) · **backend/sync era** (2.1/2.2/2.4) · **content gaps on the JLPT map** (もう・まだ, あまり〜ない, てほしい — see MISSING.md) · growing readers/situations over time.
+Phase 3 is complete (3.1–3.6 all shipped). Remaining directions: **2.5 natural audio** (manifest ready — record clips, then wire lookup) · **backend/sync era** (2.1/2.2/2.4) · growing readers/situations over time. JLPT N5/N4 grammar map gaps closed (もう・まだ, あまり〜ない, てほしい — 2026-07-11).
 
 **Phase 1 is complete** (1.1–1.7 all ✅).
 
@@ -189,6 +189,7 @@ Phase 3 is complete (3.1–3.6 all shipped). Remaining directions: **2.5 natural
 
 | Date | Change |
 |------|--------|
+| 2026-07-11 | JLPT grammar gaps closed: three new lessons (`mou-mada`, `amari-nai`, `te-hoshii`) — N5/N4 map now fully covered; course 76 lessons |
 | 2026-07-11 | Reading shelf balanced: +14 graded readings (N5×2, N4×1, N3×4, N2×4, N1×3) tied to orphan lesson themes; situations at cafe + hotel; library now 27 across N5–N1; audio manifest 1,934 utterances |
 | 2026-07-11 | JLPT renew: Writing System → N5–N1 spiral curriculum; removed external source PDFs and legacy page map; MISSING.md retargeted to remaining JLPT list gaps |
 | 2026-07-11 | Phase 3.5 shipped: JLPT coverage on the progress page — N5/N4 grammar-point → lesson mappings (`content/jlpt.ts`), kanji coverage from deck membership + 7d-interval "solid" count, per-level "what's left" lists. Remaining gaps tracked in MISSING.md |

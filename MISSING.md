@@ -30,6 +30,9 @@ These used to be open gaps; they now have dedicated lessons (or remapped homes):
 | 〜てある / 〜ておく | `te-aspect` |
 | 〜ため（に） | `reasons-causes` |
 | 〜のに | `contrast-noni` |
+| もう・まだ | `mou-mada` |
+| あまり〜ない | `amari-nai` |
+| 〜てほしい | `te-hoshii` |
 
 Earlier content-overhaul work (naru-suru, comparisons, time-specific-actions,
 covered-by, sub-point fills, originality pass, in-lesson exercises) remains in
@@ -39,13 +42,7 @@ place under the new stage model.
 
 ## Still open (honest gaps)
 
-Shown as “not in the course yet” in the JLPT progress view:
-
-| Point | Typical level | Notes |
-|-------|---------------|-------|
-| もう・まだ | N5 | already / still — no dedicated lesson |
-| あまり〜ない | N5 | not much / not very |
-| 〜てほしい | N4 | want someone to do |
+None — all N5/N4 grammar points on the JLPT map now have a teaching lesson (2026-07-11).
 
 Legend: 🔴 missing · ✅ resolved
 

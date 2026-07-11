@@ -26,12 +26,12 @@ describe("jlpt grammar data", () => {
     }
   });
 
-  it("has a substantial list per level, mostly taught", () => {
+  it("has a substantial list per level, fully taught", () => {
     for (const level of [5, 4] as const) {
       const points = jlptGrammarForLevel(level);
       const taught = points.filter((p) => p.lessonId !== null);
       expect(points.length).toBeGreaterThanOrEqual(40);
-      expect(taught.length / points.length).toBeGreaterThan(0.8);
+      expect(taught.length).toBe(points.length);
     }
   });
 });
@@ -49,13 +49,17 @@ describe("jlptGrammarProgress", () => {
     expect(p.missing.length).toBe(p.points.length - 5);
   });
 
-  it("lists incomplete taught points before course gaps", () => {
-    const p = jlptGrammarProgress(5, {});
-    const firstGap = p.missing.findIndex((m) => m.lessonId === null);
-    expect(firstGap).toBeGreaterThan(0);
-    for (const m of p.missing.slice(firstGap)) {
-      expect(m.lessonId).toBeNull();
+  it("has full N5/N4 grammar coverage in the course", () => {
+    for (const level of [5, 4] as const) {
+      const gaps = jlptGrammarForLevel(level).filter((p) => p.lessonId === null);
+      expect(gaps, `N${level} gaps remain`).toEqual([]);
     }
+  });
+
+  it("missing list contains only incomplete taught points", () => {
+    const p = jlptGrammarProgress(5, {});
+    expect(p.missing.every((m) => m.lessonId !== null)).toBe(true);
+    expect(p.missing.length).toBe(p.points.length);
   });
 });
 

@@ -26,6 +26,8 @@ import { adverbsParticles } from "./adverbs-particles";
 import { politeForm } from "./polite-form";
 import { verbStems } from "./verb-stems";
 import { addressingPeople } from "./addressing-people";
+import { mouMada } from "./mou-mada";
+import { amariNai } from "./amari-nai";
 import { questionsPolite } from "./questions-polite";
 import { compoundSentences } from "./compound-sentences";
 import { teForm } from "./te-form";
@@ -36,6 +38,7 @@ import { conditionals } from "./conditionals";
 import { obligation } from "./obligation";
 import { desireSuggestions } from "./desire-suggestions";
 import { definingAndTrying } from "./defining-and-trying";
+import { teHoshii } from "./te-hoshii";
 import { quotedSpeech } from "./quoted-speech";
 import { givingReceiving } from "./giving-receiving";
 import { makingRequests } from "./making-requests";
@@ -98,6 +101,8 @@ export const allLessons: Lesson[] = [
   verbStems,
   politeForm,
   addressingPeople,
+  mouMada,
+  amariNai,
   questionsPolite,
   compoundSentences,
   teForm,
@@ -108,6 +113,7 @@ export const allLessons: Lesson[] = [
   obligation,
   desireSuggestions,
   definingAndTrying,
+  teHoshii,
   quotedSpeech,
   givingReceiving,
   makingRequests,

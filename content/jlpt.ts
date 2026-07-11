@@ -4,7 +4,7 @@
  * The JLPT publishes no official lists (not since 2010), so levels follow the
  * common study lists; every mapping was verified against the lesson content.
  * `lessonId: null` = a standard point the course does not teach yet — shown
- * honestly as a gap in the progress view.
+ * honestly as a gap in the progress view. (As of 2026-07-11, N5/N4 are fully mapped.)
  *
  * Lesson ids follow the JLPT-aligned renew curriculum (Foundations → N5–N1).
  */
@@ -69,8 +69,8 @@ export const jlptGrammar: JlptGrammarPoint[] = [
   { level: 5, jp: "でしょう", en: "probably", lessonId: "certainty" },
   { level: 5, jp: "Counters & dates", en: "〜つ、〜人、〜月…", lessonId: "numbers-counting" },
   { level: 5, jp: "〜てから", en: "after doing", lessonId: "te-form-uses" },
-  { level: 5, jp: "もう・まだ", en: "already / still", lessonId: null },
-  { level: 5, jp: "あまり〜ない", en: "not much / not very", lessonId: null },
+  { level: 5, jp: "もう・まだ", en: "already / still", lessonId: "mou-mada" },
+  { level: 5, jp: "あまり〜ない", en: "not much / not very", lessonId: "amari-nai" },
 
   // ---- N4 ------------------------------------------------------------------
   { level: 4, jp: "可能形", en: "potential form", lessonId: "potential-form" },
@@ -123,7 +123,7 @@ export const jlptGrammar: JlptGrammarPoint[] = [
   { level: 4, jp: "くらい・ぐらい", en: "about / to the extent", lessonId: "expressing-amounts" },
   { level: 4, jp: "〜ため（に）", en: "for the sake of / because of", lessonId: "reasons-causes" },
   { level: 4, jp: "〜のに", en: "despite", lessonId: "contrast-noni" },
-  { level: 4, jp: "〜てほしい", en: "want someone to do", lessonId: null },
+  { level: 4, jp: "〜てほしい", en: "want someone to do", lessonId: "te-hoshii" },
 ];
 
 export function jlptGrammarForLevel(level: JlptLevel): JlptGrammarPoint[] {
