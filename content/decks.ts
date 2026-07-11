@@ -125,12 +125,7 @@ function vocabDeck(): Card[] {
   return cards;
 }
 
-const GRAMMAR_STAGES: StageId[] = [
-  "basic-grammar",
-  "essential-grammar",
-  "special-expressions",
-  "advanced-topics",
-];
+const GRAMMAR_STAGES: StageId[] = ["n5", "n4", "n3", "n2", "n1"];
 
 function grammarDeck(): Card[] {
   return allLessons

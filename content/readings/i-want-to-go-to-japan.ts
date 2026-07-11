@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Uses: たい, potential, になる, たら, comparisons (の方が・より), quoted speech. */
 export const iWantToGoToJapan: Reading = {
   id: "i-want-to-go-to-japan",
-  stage: "essential-grammar",
-  order: 2,
+  stage: "n4",
+  order: 5,
   title: "I Want to Go to Japan",
   jpTitle: "日本[にほん]へ行[い]きたい",
   summary: "Plans, hopes, and one very practical comparison about trains.",

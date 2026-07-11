@@ -51,7 +51,7 @@ export function ReadingView({ reading }: { reading: Reading }) {
 
   function handleQuizComplete(correct: number, total: number) {
     const pct = Math.round((correct / total) * 100);
-    if (pct >= 60 && !completed) finish();
+    if (pct >= 80 && !completed) finish();
   }
 
   return (

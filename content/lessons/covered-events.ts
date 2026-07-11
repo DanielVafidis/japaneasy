@@ -2,29 +2,37 @@ import type { Lesson } from "../types";
 
 export const coveredEvents: Lesson = {
   id: "covered-events",
-  stage: "advanced-topics",
-  order: 7,
+  stage: "n1",
+  order: 2,
   title: "Coverage & Timing",
-  subtitle: "上で · うちに · 最中 · 際 · にわたって",
+  subtitle: "上で · うちに · 最中 · 際 · にわたって · 次第",
   summary:
-    "Formal patterns for 'upon doing', 'while you still can', 'throughout', and 'in the middle of'.",
+    "Leadership and career timing — upon confirming, while you still can, in the midst, on the occasion, throughout, and as soon as.",
   estMinutes: 18,
   vocabulary: [
     { word: "確認[かくにん]", reading: "かくにん", meaning: "confirmation" },
     { word: "最中[さいちゅう]", reading: "さいちゅう", meaning: "midst; height of" },
     { word: "際[さい]", reading: "さい", meaning: "occasion; when (formal)" },
-    { word: "期間[きかん]", reading: "きかん", meaning: "period; duration" },
+    { word: "提案[ていあん]", reading: "ていあん", meaning: "proposal" },
     { word: "次第[しだい]", reading: "しだい", meaning: "as soon as; depending on" },
-    { word: "若[わか]い", reading: "わかい", meaning: "young" },
+    { word: "報告[ほうこく]", reading: "ほうこく", meaning: "report" },
+    { word: "就任[しゅうにん]", reading: "しゅうにん", meaning: "assumption of office" },
+    { word: "停電[ていでん]", reading: "ていでん", meaning: "power outage" },
+    { word: "会議[かいぎ]", reading: "かいぎ", meaning: "meeting" },
+    { word: "方針[ほうしん]", reading: "ほうしん", meaning: "policy; course" },
   ],
   blocks: [
+    {
+      type: "prose",
+      text: "These patterns cluster in **business Japanese**, announcements, and leadership prose. They pin deliberate timing: after due diligence, while a window lasts, mid-crisis, on formal occasions, across spans, and as soon as ready.",
+    },
     {
       type: "heading",
       text: "Upon / after: 〜上で",
     },
     {
       type: "prose",
-      text: "Ta-form + {{上[うえ]で}} — **after doing X (as a prerequisite)**, then Y: {{確認[かくにん]した上[うえ]で}}、送[おく]ります — 'I'll send it after confirming.' Formal and deliberate.",
+      text: "Ta-form + {{上[うえ]で}} — **after doing X as a prerequisite**, then Y: {{確認した上で、決断します}} — deliberate leadership tone.",
     },
     {
       type: "heading",
@@ -32,26 +40,26 @@ export const coveredEvents: Lesson = {
     },
     {
       type: "prose",
-      text: "Plain form + {{うちに}} — **before the situation changes**, do something: {{若[わか]いうちに}}、たくさん旅行[りょこう]した — 'Travelled a lot while I was still young.' Implies a window that won't last.",
+      text: "Plain + {{うちに}} — **before the situation changes**: {{若いうちに挑戦する}} · {{忘れないうちに記録する}}. Life reflection and urgent career windows.",
     },
     {
       type: "examples",
       items: [
         { jp: "明[あ]るいうちに帰[かえ]ろう。", en: "Let's head home while it's still light." },
-        { jp: "忘[わす]れないうちに、メモしておく。", en: "Jot it down before I forget." },
+        { jp: "機[き]会[かい]を逃[のが]さないうちに、提案[ていあん]する。", en: "Propose before we miss the chance." },
       ],
     },
     {
       type: "heading",
-      text: "In the midst of: 〜最中に",
+      text: "In the midst: 〜最中に",
     },
     {
       type: "rule",
       title: "Formation",
       items: [
-        "Dictionary / ta-form + {{最中[さいちゅう]に}} — right in the middle of an action.",
-        "{{会議[かいぎ]の最中[さいちゅう]に}}電[でん]話[わ] — a call during the meeting.",
-        "{{食[た]べている最中[さいちゅう]}} — while eating (emphasis on mid-action).",
+        "{{ている}} / noun + {{最中に}} — right in the middle.",
+        "{{改革の最中に}}危機が起きた — a crisis mid-reform.",
+        "{{報告している最中}} — while reporting (mid-action emphasis).",
       ],
     },
     {
@@ -60,7 +68,7 @@ export const coveredEvents: Lesson = {
     },
     {
       type: "prose",
-      text: "{{際[さい]に}} and {{にあたって}} appear in notices and speeches: {{ご不明[ふめい]な点[てん]がございました際[さい]には}} — 'When you have questions…' {{開会[かいかい]にあたって}} — 'On the occasion of opening the conference.'",
+      text: "{{際に}} and {{にあたって}} in notices and speeches: {{ご不明な点がございました際には}} · {{就任にあたって}}.",
     },
     {
       type: "heading",
@@ -68,7 +76,7 @@ export const coveredEvents: Lesson = {
     },
     {
       type: "prose",
-      text: "{{にわたって}} — **throughout / across** a range: {{三[さん]日[か]間[かん]にわたって}}雨[あめ] — rain for three days straight. {{全国[ぜんこく]にわたる}} — nationwide.",
+      text: "{{にわたって}} — **throughout / across**: {{三年間にわたって調査した}} · {{全国にわたる改革}}.",
     },
     {
       type: "heading",
@@ -76,19 +84,21 @@ export const coveredEvents: Lesson = {
     },
     {
       type: "prose",
-      text: "Stem + {{次第[しだい]}} — **as soon as** (formal): {{準備[じゅんび]ができ次第[しだい]}}、連絡[れんらく]します — 'I'll contact you as soon as ready.' Also {{次第[しだい]で}} — 'depending on'.",
+      text: "Stem + {{次第}} — **as soon as** (formal): {{準備ができ次第、連絡します}}. Also {{次第で}} — 'depending on'.",
     },
     {
       type: "examples",
       items: [
         { jp: "詳[くわ]しく調[しら]べた上[うえ]で、報告[ほうこく]します。", en: "I'll report after investigating in detail." },
-        { jp: "会議[かいぎ]中[ちゅう]、最中[さいちゅう]に停電[ていでん]した。", en: "The power went out right in the middle of the meeting." },
+        { jp: "会議[かいぎ]の最中[さいちゅう]に停電[ていでん]した。", en: "The power went out right in the middle of the meeting." },
         { jp: "着[つ]き次第[しだい]、お電話[でんわ]します。", en: "I'll call as soon as I arrive." },
+        { jp: "就任[しゅうにん]にあたって、方針[ほうしん]を示[しめ]す。", en: "On taking office, I will set out the policy." },
+        { jp: "二週間[しゅうかん]にわたって、協議[きょうぎ]が続[つづ]いた。", en: "Negotiations continued over two weeks." },
       ],
     },
     {
       type: "tip",
-      text: "These patterns cluster in **business Japanese**, announcements, and essays. In casual chat, simpler forms ({{…たら}}, {{…てる間}}) usually suffice.",
+      text: "In casual chat, simpler forms ({{…たら}}, {{…てる間}}) usually suffice. Reach for these when the genre is leadership, HR, or formal reporting.",
     },
   ],
   quiz: [
@@ -100,14 +110,14 @@ export const coveredEvents: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Formal: send after confirming?",
+      prompt: "Formal: report after confirming?",
       choices: ["確認してから", "確認した上で", "確認したうちに", "確認した次第"],
       answer: 1,
     },
     {
       kind: "mc",
-      prompt: "Right in the middle of eating?",
-      choices: ["食べている間", "食べている最中に", "食べた上で", "食べるうちに"],
+      prompt: "Right in the middle of reporting?",
+      choices: ["報告している間", "報告している最中に", "報告した上で", "報告するうちに"],
       answer: 1,
     },
     {
@@ -117,18 +127,24 @@ export const coveredEvents: Lesson = {
       answer: 1,
     },
     {
+      kind: "mc",
+      prompt: "三年間___調査した — throughout?",
+      choices: ["うちに", "上で", "にわたって", "次第"],
+      answer: 2,
+    },
+    {
       kind: "order",
-      prompt: "Build: 'Let's head home before it gets dark'",
-      tiles: ["暗[くら]くならない", "うちに", "帰[かえ]ろう"],
-      distractors: ["うちで"],
-      explanation: "ないうちに = before (while the state hasn't changed yet).",
+      prompt: "Build: 'I'll report after confirming'",
+      tiles: ["確認[かくにん]した", "上[うえ]で", "報告[ほうこく]します"],
+      distractors: ["うちに"],
+      explanation: "上で = after doing as a prerequisite; うちに = while still.",
     },
   ],
   drills: [
     { id: "uede", prompt: "Fill — 'upon (after) confirming…'", jp: "確認[かくにん]した◯◯で", answers: ["上[うえ]"] },
-    { id: "uchini", prompt: "Fill — 'while it's still light'", jp: "明[あか]るい◯◯に", answers: ["うち"] },
-    { id: "saichuu", prompt: "Fill — 'in the very middle of eating'", jp: "食[た]べている◯◯◯◯", answers: ["最中[さいちゅう]"] },
-    { id: "sai", prompt: "Fill — formal 'on the occasion of getting off'", jp: "お降[お]りの◯◯", answers: ["際[さい]"] },
+    { id: "uchini", prompt: "Fill — 'while the chance still lasts'", jp: "機[き]会[かい]がある◯◯に", answers: ["うち"] },
+    { id: "saichuu", prompt: "Fill — 'in the very middle of the meeting'", jp: "会議[かいぎ]の◯◯◯◯", answers: ["最中[さいちゅう]"] },
+    { id: "sai", prompt: "Fill — formal 'on the occasion of'", jp: "就任[しゅうにん]の◯◯", answers: ["際[さい]"] },
     { id: "shidai", prompt: "Fill — 'as soon as it's confirmed'", jp: "確認[かくにん]◯◯◯", answers: ["次第[しだい]"] },
   ],
 };

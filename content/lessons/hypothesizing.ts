@@ -2,56 +2,42 @@ import type { Lesson } from "../types";
 
 export const hypothesizing: Lesson = {
   id: "hypothesizing",
-  stage: "special-expressions",
-  order: 8,
+  stage: "n3",
+  order: 12,
   title: "Hypothesizing & Concluding",
-  subtitle: "かどうか · ても · とする · かと思う",
+  subtitle: "かどうか · とする · かと思う · わけ",
   summary:
-    "Wonder whether, suppose something for argument's sake, and say 'even if' without giving up.",
+    "Wonder whether, suppose for argument's sake, and wrap up conditional plans — without rehashing ば／なら／ても (see Conditionals with Nuance).",
   estMinutes: 16,
   vocabulary: [
-    { word: "留学[りゅうがく]", reading: "りゅうがく", meaning: "study abroad" },
+    { word: "年収[ねんしゅう]", reading: "ねんしゅう", meaning: "annual income" },
     { word: "結局[けっきょく]", reading: "けっきょく", meaning: "after all; in the end" },
     { word: "試[ため]す", reading: "ためす", meaning: "to try" },
-    { word: "遅[おく]れる", reading: "おくれる", meaning: "to be late" },
+    { word: "転職[てんしょく]", reading: "てんしょく", meaning: "changing jobs" },
+    { word: "鍵[かぎ]", reading: "かぎ", meaning: "key" },
+    { word: "計画[けいかく]", reading: "けいかく", meaning: "plan" },
     { word: "大丈夫[だいじょうぶ]", reading: "だいじょうぶ", meaning: "OK; fine" },
+    { word: "怒[おこ]る", reading: "おこる", meaning: "to get angry" },
   ],
   blocks: [
+    {
+      type: "prose",
+      text: "For **conditional plans** and soft conclusions you need more than {{たら}} / {{ば}}. This lesson keeps the unique tools: **whether**, **suppose**, **I wonder if**, and a quick look at {{わけ}}. Full {{ても}} / {{ば}} / {{なら}} live in **Conditionals with Nuance** — we won't retread them here.",
+    },
     {
       type: "heading",
       text: "Whether or not: 〜かどうか",
     },
     {
       type: "prose",
-      text: "Embed a **yes/no question** inside a larger sentence with {{かどうか}} — 'whether (or not)'. The inner clause is plain form; no {{か}} at the end of the embedded part.",
+      text: "Embed a **yes/no question** with {{かどうか}} — 'whether (or not)'. Inner clause is plain; no trailing {{か}} on the embedded part.",
     },
     {
       type: "examples",
       items: [
-        { jp: "留学[りゅうがく]するかどうか、まだ決[き]めていない。", en: "Haven't decided yet whether to study abroad." },
+        { jp: "転職[てんしょく]するかどうか、まだ決[き]めていない。", en: "Haven't decided yet whether to change jobs." },
         { jp: "彼[かれ]が来[く]るかどうか分[わ]からない。", en: "Don't know whether he's coming." },
-        { jp: "おいしいかどうか、食[た]べてみて。", en: "Try it and see whether it's good." },
-      ],
-    },
-    {
-      type: "heading",
-      text: "Even if: 〜ても / 〜でも",
-    },
-    {
-      type: "rule",
-      title: "Formation",
-      items: [
-        "Verbs: **te-form + {{も}}** — {{雨[あめ]が降[ふ]っても}} (even if it rains).",
-        "Nouns / na-adjectives: **{{でも}}** — {{子供[こども]でも}} · {{暇[ひま]でも}}.",
-        "Casual emphasis: {{〜たって}} — {{行[い]きたくないって言[い]われたって}}.",
-      ],
-    },
-    {
-      type: "examples",
-      items: [
-        { jp: "遅[おく]れても、大丈夫[だいじょうぶ]ですか。", en: "Is it OK even if I'm late?" },
-        { jp: "子供[こども]でも分[わ]かる。", en: "Even a child can understand." },
-        { jp: "結局[けっきょく]、行[い]かないと決[き]めた。", en: "In the end, decided not to go." },
+        { jp: "その計画[けいかく]がうまくいくかどうか、試[ため]してみよう。", en: "Let's try and see whether that plan works." },
       ],
     },
     {
@@ -60,7 +46,15 @@ export const hypothesizing: Lesson = {
     },
     {
       type: "prose",
-      text: "{{とする}} means 'suppose' or 'pretend' — setting up a hypothetical: {{100万円[まんえん]もらったとする}} — 'Suppose you got a million yen.' Volitional + {{とする}}: {{行[い]こうとする}} — 'try to go'.",
+      text: "{{とする}} sets up a **hypothetical** for argument's sake: {{来月転職したとする}} — 'Suppose I changed jobs next month.' Also: volitional + {{とする}} = try to: {{出かけようとした}} — 'tried to leave.'",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "年収[ねんしゅう]が上[あ]がったとする。どう使[つか]う？", en: "Suppose your salary went up. How would you use it?" },
+        { jp: "雨[あめ]だとしても、行[い]くつもりだ。", en: "Even supposing it's rain, I still plan to go." },
+        { jp: "ドアを開[あ]けようとしたが、鍵[かぎ]がかかっていた。", en: "I tried to open the door, but it was locked." },
+      ],
     },
     {
       type: "heading",
@@ -68,14 +62,41 @@ export const hypothesizing: Lesson = {
     },
     {
       type: "prose",
-      text: "Plain form + {{かと思[おも]う}} — 'I wonder if…' Softer than a direct question: {{雨[あめ]が降[ふ]るかと思[おも]った}} — 'I thought it might rain.'",
+      text: "Plain + {{かと思[おも]う}} — 'I wonder if…' / 'I thought maybe…': {{もう帰ったかと思った}}. Soft way to float a guess about plans and relationships.",
     },
     {
       type: "examples",
       items: [
-        { jp: "もう帰[かえ]ったかと思[おも]った。", en: "I wondered if they'd already gone home." },
-        { jp: "試[ため]してみようと思[おも]う。", en: "I think I'll try it." },
+        { jp: "もう怒[おこ]ったかと思[おも]った。", en: "I thought maybe they'd gotten angry." },
+        { jp: "今日[きょう]中[じゅう]に終[お]わるかと思[おも]う。", en: "I think / wonder if it'll finish today." },
       ],
+    },
+    {
+      type: "heading",
+      text: "Quick wrap: わけ",
+    },
+    {
+      type: "rule",
+      title: "わけ — reasoned conclusion (taste)",
+      items: [
+        "{{わけだ}} — 'so that means… / no wonder': {{だから遅れたわけだ}}.",
+        "{{わけがない}} — 'there's no way': {{彼が忘れるわけがない}}.",
+        "{{わけにはいかない}} — 'can't very well…' (social constraint): {{断るわけにはいかない}}.",
+        "Deeper {{わけ}} patterns appear again at higher levels; here just recognize these three.",
+      ],
+    },
+    {
+      type: "dialogue",
+      title: "Conditional career plan",
+      lines: [
+        { speaker: "A", jp: "転職[てんしょく]するかどうか、悩[なや]んでる。", en: "I'm stuck on whether to change jobs." },
+        { speaker: "B", jp: "仮[かり]に辞[や]めたとする。次[つぎ]の仕事[しごと]は決[き]まってる？", en: "Suppose you quit. Is the next job lined up?" },
+        { speaker: "A", jp: "まだ。結局[けっきょく]、今[いま]の会社[かいしゃ]に残[のこ]るわけだな…。", en: "Not yet. So that means I stay at this company after all…" },
+      ],
+    },
+    {
+      type: "tip",
+      text: "Need 'even if' / 'if it's the case that' / general conditions? Use **Conditionals with Nuance** ({{ても}} · {{なら}} · {{ば}} · {{限り}}). This lesson is for whether / suppose / wonder / わけ.",
     },
   ],
   quiz: [
@@ -87,34 +108,40 @@ export const hypothesizing: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "「Even if it rains」?",
-      choices: ["雨が降る", "雨が降っても", "雨が降ると", "雨が降った"],
-      answer: 1,
-    },
-    {
-      kind: "mc",
       prompt: "Suppose / hypothetically — which ending?",
       choices: ["とする", "かも", "ばかり", "すぎる"],
       answer: 0,
     },
     {
       kind: "mc",
-      prompt: "Even a student (noun) — pattern?",
-      choices: ["学生ても", "学生でも", "学生だけ", "学生しか"],
+      prompt: "「Tried to leave」?",
+      choices: ["出かけた", "出かけようとした", "出かけるかどうか", "出かけるわけ"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "彼が忘れるわけがない means…",
+      choices: ["he might forget", "no way he'll forget", "he forgot", "I wonder if he forgot"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "「I thought maybe they'd already gone home」?",
+      choices: ["帰ったと思う", "帰ったかと思った", "帰るとする", "帰るかどうか"],
       answer: 1,
     },
     {
       kind: "order",
-      prompt: "Build: 'There's no way he's not coming'",
-      tiles: ["彼[かれ]が", "来[こ]ないわけが", "ない"],
-      distractors: ["来[こ]ないこと"],
-      explanation: "わけがない = no way that…",
+      prompt: "Build: 'Haven't decided whether to change jobs'",
+      tiles: ["転職[てんしょく]するかどうか", "まだ", "決[き]めていない"],
+      distractors: ["転職[てんしょく]するわけ"],
+      explanation: "かどうか embeds the whether-question; わけ would be a conclusion.",
     },
   ],
   drills: [
-    { id: "kadouka", prompt: "Fill — 'whether or not (I'll) study abroad'", jp: "留学[りゅうがく]する◯◯◯◯", answers: ["かどうか"] },
-    { id: "temo", prompt: "Add 'even if' — 'even if (I'm) late'", jp: "遅[おく]れる", answers: ["遅[おく]れても"] },
+    { id: "kadouka", prompt: "Fill — 'whether or not (I'll) change jobs'", jp: "転職[てんしょく]する◯◯◯◯", answers: ["かどうか"] },
     { id: "tosuru", prompt: "Fill — 'suppose (hypothetically) I go'", jp: "行[い]く◯する", answers: ["と"] },
     { id: "katoomou", prompt: "Fill — '(I) wondered if it was OK'", jp: "大丈夫[だいじょうぶ]◯◯思[おも]った", answers: ["かと"] },
+    { id: "wakeganai", prompt: "Fill — 'no way he'll forget'", jp: "忘[わす]れる◯◯が◯◯", answers: ["わけがない"] },
   ],
 };

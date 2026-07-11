@@ -88,7 +88,7 @@ export function LessonView({
     if (firstTime) {
       addXp(correct * XP.quizPerCorrect + (pct === 100 ? XP.quizPerfectBonus : 0));
     }
-    if (pct >= 60 && !completed) {
+    if (pct >= 80 && !completed) {
       finishLesson();
     }
     // After completion so fresh vocab adds are attributed to the lesson, not the miss.
@@ -139,7 +139,7 @@ export function LessonView({
       </header>
 
       {/* soft kana-first nudge on the first grammar lessons */}
-      {!completed && lesson.stage === "basic-grammar" && lesson.order <= 3 && (
+      {!completed && lesson.stage === "n5" && lesson.order <= 3 && (
         <KanaNudge />
       )}
 

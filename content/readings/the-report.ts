@@ -3,7 +3,7 @@ import type { Reading } from "../types";
 /** Uses: である style, ば, はず, ざるを得ない, でさえ, のである, べき. */
 export const theReport: Reading = {
   id: "the-report",
-  stage: "advanced-topics",
+  stage: "n2",
   order: 0,
   title: "The Report",
   jpTitle: "レポート",

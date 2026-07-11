@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Situation: asking the way — と conditional for directions, ください. */
 export const askingDirections: Reading = {
   id: "asking-directions",
-  stage: "essential-grammar",
-  order: 5,
+  stage: "n4",
+  order: 1,
   kind: "situation",
   title: "Asking Directions",
   jpTitle: "道[みち]を聞[き]く",

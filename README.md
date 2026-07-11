@@ -28,12 +28,12 @@ JapanEasy is a lesson-based web app: kana first, then grammar built block by blo
 
 ## Features
 
-- **54 lessons across 5 stages** — Foundations → Basic Grammar → Essential Grammar → Special Expressions → Advanced Topics, with full [Tae Kim guide](#source--attribution) coverage
+- **73 lessons across 6 stages** — Writing System → N5 → N4 → N3 → N2 → N1, a JLPT-aligned spiral curriculum with recurring real-life themes
 - **A complete learning loop** — first-run onboarding, guided *learn the words* mode around each lesson, a skippable pre-lesson warm-up of due reviews, and quiz misses feeding straight back into the review queue
 - **Spaced-repetition flashcards** — SM-2-style scheduler with typed recall (romaji converts live); kana, vocab, kanji, and grammar decks, plus focused practice for struggling cards
-- **243 grammar pattern drills** — every grammar lesson drills its own patterns (conjugate, fill the particle, transform), not title→summary cards
+- **327 grammar pattern drills** — every grammar lesson drills its own patterns (conjugate, fill the particle, transform), not title→summary cards
 - **Kanji browser & dual cards** — 172 common characters; each adds a recall *and* a recognition card, revealed with an example word
-- **Per-lesson quizzes** — multiple choice, fill-in, matching, sentence-building, and listening dictation; 60%+ completes the lesson
+- **Per-lesson quizzes** — multiple choice, fill-in, matching, sentence-building, and listening dictation; 80%+ completes the lesson
 - **Kana Trainer** — hiragana/katakana chart, recognition quiz, and writing canvas
 - **Audio everywhere** — Web Speech API on sentences, words, and kana (curated audio planned)
 - **Furigana & romaji toggles** — romaji off by default; generated from kana automatically
@@ -103,6 +103,6 @@ Connect the repo, set framework to Next.js, deploy. No environment variables req
 
 ## Source & attribution
 
-Grammar content is adapted from ***A Guide to Japanese Grammar*** by Tae Kim (CC BY-NC-SA). JapanEasy is a non-commercial learning project. Prose may be rewritten over time for licensing flexibility.
+Grammar is organized as an original **JLPT-aligned spiral curriculum** (Writing System → N5–N1) with recurring real-life themes. Early drafts drew structural inspiration from ***A Guide to Japanese Grammar*** by Tae Kim; lesson prose and examples are original. JapanEasy is a non-commercial learning project.
 
 Kana stroke-order data (`content/kana-strokes.ts`) comes from [KanjiVG](https://kanjivg.tagaini.net) by Ulrich Apel (CC BY-SA 3.0), regenerated with `node scripts/fetch-kana-strokes.mjs`.

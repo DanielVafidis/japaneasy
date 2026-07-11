@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Uses: ある/いる, の, relative clauses, adjectives. */
 export const myTown: Reading = {
   id: "my-town",
-  stage: "basic-grammar",
-  order: 3,
+  stage: "n5",
+  order: 2,
   title: "My Town",
   jpTitle: "私[わたし]の町[まち]",
   summary: "A small town, a quiet park, and the library I keep going back to.",

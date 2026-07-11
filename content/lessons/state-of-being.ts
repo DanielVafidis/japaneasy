@@ -2,27 +2,41 @@ import type { Lesson } from "../types";
 
 export const stateOfBeing: Lesson = {
   id: "state-of-being",
-  stage: "basic-grammar",
+  stage: "n5",
   order: 0,
   title: "Expressing state-of-being",
-  subtitle: "Declaring what something is with 「だ」",
+  subtitle: "だ · じゃない · だった · じゃなかった",
   summary:
-    "Japanese has no verb 'to be'. Learn how to declare, negate, and put state-of-being into the past.",
+    "Japanese has no verb 'to be'. Declare, negate, and put state-of-being into the past — and see how SOV sentences start.",
   estMinutes: 15,
   vocabulary: [
-    { word: "人", reading: "ひと", meaning: "person" },
-    { word: "学生", reading: "がくせい", meaning: "student" },
-    { word: "元気", reading: "げんき", meaning: "healthy; lively; well" },
-    { word: "友達", reading: "ともだち", meaning: "friend" },
+    { word: "人[ひと]", reading: "ひと", meaning: "person" },
+    { word: "学生[がくせい]", reading: "がくせい", meaning: "student" },
+    { word: "元気[げんき]", reading: "げんき", meaning: "healthy; lively; well" },
+    { word: "友達[ともだち]", reading: "ともだち", meaning: "friend" },
+    { word: "先生[せんせい]", reading: "せんせい", meaning: "teacher" },
   ],
   blocks: [
     {
       type: "prose",
-      text: "One of the trickiest things about Japanese is that there is **no verb for the state-of-being** like English 'to be'. Instead, you *declare* that something is so by attaching the hiragana {{だ}} to a noun (or na-adjective).",
+      text: "Japanese sentences are **SOV**: the **verb (or predicate) comes last**. Subject and object come earlier; the end of the sentence tells you what is being said about them. For state-of-being there is no separate verb like English 'to be' — you declare what something **is** by attaching {{だ}} to a noun (or na-adjective).",
     },
     {
       type: "rule",
-      title: "Declaring with だ",
+      title: "Word order snapshot",
+      items: [
+        "English is often SVO: *I am a student*.",
+        "Japanese is SOV: topic/subject first, predicate **last** — {{学生だ}}.",
+        "Once the topic is clear, Japanese often drops it: {{元気？}} can mean 'Are you well?'",
+      ],
+    },
+    {
+      type: "heading",
+      text: "Declaring with だ",
+    },
+    {
+      type: "rule",
+      title: "Positive non-past",
       items: ["Attach {{だ}} to the noun.", "Example: {{人}} + {{だ}} = {{人だ}}"],
     },
     {
@@ -35,19 +49,21 @@ export const stateOfBeing: Lesson = {
     },
     {
       type: "prose",
-      text: "Here's the kicker: a state-of-being can be **implied without だ at all**. Notice how the subject isn't even mentioned when it's obvious from context.",
+      text: "A state-of-being can also be **implied without だ**. In casual talk, {{だ}} is often dropped when the meaning is obvious — but {{だ}} is more emphatic, and later grammar will require it.",
     },
     {
       type: "dialogue",
-      title: "A typical casual greeting",
+      title: "Self-intro at a language meetup",
       lines: [
-        { speaker: "A", jp: "元気[げんき]？", en: "(Are you) well?" },
-        { speaker: "B", jp: "元気[げんき]。", en: "(I'm) well." },
+        { speaker: "Yuki", jp: "初[はじ]めまして。Yukiです。学生[がくせい]だ。", en: "Nice to meet you. I'm Yuki. (I'm) a student." },
+        { speaker: "Ken", jp: "Kenだ。元気[げんき]？", en: "I'm Ken. You well?" },
+        { speaker: "Yuki", jp: "元気[げんき]。Kenは先生[せんせい]？", en: "Yeah. Are you a teacher, Ken?" },
+        { speaker: "Ken", jp: "ううん、先生[せんせい]じゃない。友達[ともだち]の友達[ともだち]だ。", en: "Nope, not a teacher. (I'm) a friend of a friend." },
       ],
     },
     {
-      type: "prose",
-      text: "So what is だ for? A declarative statement sounds more emphatic and forceful. It's also **required** by certain grammar later on. (It carries a slightly assertive, masculine ring at the end of a plain sentence.)",
+      type: "note",
+      text: "In the dialogue, {{です}} is the polite cousin of {{だ}} — same idea, softer tone. This lesson focuses on the plain forms you need for conjugation and later grammar.",
     },
     {
       type: "heading",
@@ -55,7 +71,7 @@ export const stateOfBeing: Lesson = {
     },
     {
       type: "prose",
-      text: "In Japanese, negative and past are handled by **conjugation**. For the negative state-of-being, attach {{じゃない}} to the noun. None of these state-of-being conjugations are declarative the way だ is.",
+      text: "Negative and past are handled by **conjugation**. For the negative state-of-being, attach {{じゃない}} to the noun.",
     },
     {
       type: "rule",
@@ -98,6 +114,10 @@ export const stateOfBeing: Lesson = {
         ["Past", "学生だった — was a student", "学生じゃなかった — was not a student"],
       ],
     },
+    {
+      type: "tip",
+      text: "Remember SOV: whatever form you use — {{だ}}, {{じゃない}}, {{だった}}, {{じゃなかった}} — it sits at the **end** of the clause.",
+    },
   ],
   quiz: [
     {
@@ -105,6 +125,7 @@ export const stateOfBeing: Lesson = {
       prompt: "Which sentence means 'Is a student.'?",
       choices: ["学生だ。", "学生じゃない。", "学生だった。", "学生じゃなかった。"],
       answer: 0,
+      explanation: "だ declares positive non-past state-of-being.",
     },
     {
       kind: "mc",
@@ -116,6 +137,7 @@ export const stateOfBeing: Lesson = {
         "友達だ",
       ],
       answer: 2,
+      explanation: "Negative past = じゃない → drop い + かった → じゃなかった.",
     },
     {
       kind: "fill",
@@ -125,28 +147,30 @@ export const stateOfBeing: Lesson = {
     },
     {
       kind: "mc",
+      prompt: "In Japanese word order (SOV), where does the predicate usually go?",
+      choices: ["First", "In the middle", "Last", "Anywhere"],
+      answer: 2,
+      explanation: "SOV: the verb/predicate comes last — e.g. 学生だ.",
+    },
+    {
+      kind: "mc",
       prompt: "True or false: Japanese has a verb equivalent to English 'to be'.",
       choices: ["True", "False — state-of-being is declared with だ or implied"],
       answer: 1,
+      explanation: "There is no standalone 'to be'; だ (or zero-copula) does the job.",
     },
     {
       kind: "order",
       prompt: "Build: 'I am a student'",
       tiles: ["私[わたし]は", "学生[がくせい]", "だ"],
       distractors: ["じゃない"],
-      explanation: "Topic first (私は), then the noun, then declarative だ.",
+      explanation: "Topic first (私は), then the noun, then declarative だ at the end.",
     },
     {
       kind: "listen",
       prompt: "Listen — type the sentence you hear:",
       audio: "学生[がくせい]だ",
       explanation: "学生だ — (I) am a student.",
-    },
-    {
-      kind: "listen",
-      prompt: "Listen — type the sentence you hear:",
-      audio: "元気[げんき]じゃない",
-      explanation: "元気じゃない — not well; the casual negative of 元気だ.",
     },
   ],
   drills: [

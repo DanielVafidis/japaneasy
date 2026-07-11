@@ -2,24 +2,28 @@ import type { Lesson } from "../types";
 
 export const causativePassive: Lesson = {
   id: "causative-passive",
-  stage: "special-expressions",
-  order: 0,
+  stage: "n3",
+  order: 7,
   title: "Causative & Passive",
-  subtitle: "Make / let someone do · be done to",
+  subtitle: "Make / let · be done to · させられる",
   summary:
-    "The causative makes someone act; the passive shifts focus to what happens to the subject — including the suffering passive.",
+    "Full passive, causative, and causative-passive for work problems and relationship pressure — make someone do, get done to, and be forced to.",
   estMinutes: 22,
   vocabulary: [
-    { word: "食[た]べる", reading: "たべる", meaning: "to eat" },
-    { word: "行[い]く", reading: "いく", meaning: "to go" },
+    { word: "残業[ざんぎょう]", reading: "ざんぎょう", meaning: "overtime" },
     { word: "待[ま]つ", reading: "まつ", meaning: "to wait" },
-    { word: "子供[こども]", reading: "こども", meaning: "child" },
-    { word: "質問[しつもん]", reading: "しつもん", meaning: "question" },
-    { word: "宿題[しゅくだい]", reading: "しゅくだい", meaning: "homework" },
+    { word: "部下[ぶか]", reading: "ぶか", meaning: "subordinate" },
+    { word: "上司[じょうし]", reading: "じょうし", meaning: "boss; superior" },
+    { word: "説明[せつめい]", reading: "せつめい", meaning: "explanation" },
+    { word: "仕事[しごと]", reading: "しごと", meaning: "work; job" },
     { word: "全部[ぜんぶ]", reading: "ぜんぶ", meaning: "all; entirely" },
-    { word: "答[こた]える", reading: "こたえる", meaning: "to answer (ru-verb)" },
+    { word: "怒[おこ]る", reading: "おこる", meaning: "to get angry" },
   ],
   blocks: [
+    {
+      type: "prose",
+      text: "N4 introduced the idea; this lesson is the **full toolkit**: causative (make/let), passive (be done to / suffering), and causative-passive {{させられる}} (be forced to). Work overtime, relationship friction, and detailed problem stories lean on these forms.",
+    },
     {
       type: "heading",
       text: "Causative — make / let do",
@@ -29,21 +33,25 @@ export const causativePassive: Lesson = {
       title: "Forming the causative",
       items: [
         "**Ru-verbs:** {{る}} → {{させる}}. {{食べる}} → {{食べさせる}}.",
-        "**U-verbs:** final /u/ → /a/ + {{せる}}. {{行く}} → {{行かせる}}.",
+        "**U-verbs:** final /u/ → /a/ + {{せる}}. {{待つ}} → {{待たせる}} · {{行く}} → {{行かせる}}.",
         "**Exceptions:** {{する}} → {{させる}}, {{来る}} → {{来させる}}.",
       ],
-    },
-    {
-      type: "prose",
-      text: "The **causer** takes {{を}} or {{に}} depending on who performs the action. When the person being made to act is also the one doing the verb, use {{を}}: {{先生[せんせい]は学生[がくせい]を廊下[ろうか]に立[た]たせた}} — 'The teacher made the student stand in the hall.' When they act on something else, the actor takes {{に}} and the object keeps {{を}}: {{母[はは]は子供[こども]に野菜[やさい]を食[た]べさせる}}.",
     },
     {
       type: "rule",
       title: "を vs に (causative)",
       items: [
-        "**を** — the person made to act **is** the doer: {{子供を寝[ね]させる}} (make the child sleep).",
-        "**に** — the person is made to act **on something else**: {{子供に野菜を食べさせる}}.",
-        "**に** alone can also mean permission: {{子供に遊[あそ]ばせる}} — let the child play.",
+        "**を** — the person made to act **is** the doer: {{部下を待たせる}} (make the subordinate wait).",
+        "**に** — the person acts **on something else**: {{部下に資料を作らせる}}.",
+        "**に** can also mean permission: {{部下に早退させる}} — let them leave early.",
+      ],
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "上司[じょうし]は部下[ぶか]に説明[せつめい]をさせた。", en: "The boss made the subordinate give an explanation." },
+        { jp: "子供[こども]に野菜[やさい]を食[た]べさせる。", en: "Make / have the child eat vegetables." },
+        { jp: "少[すこ]し待[ま]たせてください。", en: "Please let me make you wait a moment. / Please wait." },
       ],
     },
     {
@@ -55,13 +63,13 @@ export const causativePassive: Lesson = {
       title: "Forming the passive",
       items: [
         "**Ru-verbs:** {{る}} → {{られる}}. {{食べる}} → {{食べられる}}.",
-        "**U-verbs:** final /u/ → /a/ + {{れる}}. {{待つ}} → {{待たれる}}.",
+        "**U-verbs:** final /u/ → /a/ + {{れる}}. {{待つ}} → {{待たれる}} · {{言う}} → {{言われる}}.",
         "**Exceptions:** {{する}} → {{される}}, {{来る}} → {{来られる}}.",
       ],
     },
     {
       type: "prose",
-      text: "The passive highlights the **patient** — who or what is affected. {{パンが弟に食べられた}} — 'The bread was eaten by my little brother.' The doer takes {{に}}.",
+      text: "The passive highlights the **patient**. {{会議で意見を言われた}} — 'I was told an opinion in the meeting.' The doer takes {{に}}.",
     },
     {
       type: "heading",
@@ -69,7 +77,15 @@ export const causativePassive: Lesson = {
     },
     {
       type: "note",
-      text: "When something bad happens *to you*, the passive can drop the agent: {{雨[あめ]に降[ふ]られた}} — 'I got rained on (and I didn't like it).' The subject is the one inconvenienced, not the rain.",
+      text: "When something inconveniences *you*, the passive can drop a clear agent or keep {{に}}: {{雨に降られた}} — got rained on. {{友達にデートをキャンセルされた}} — my date was cancelled on me (I suffered).",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "上司[じょうし]に怒[おこ]られた。", en: "I got scolded by my boss." },
+        { jp: "大事[だいじ]なファイルを消[け]された。", en: "My important file was deleted (on me)." },
+        { jp: "雨[あめ]に降[ふ]られて、会議[かいぎ]に遅[おく]れた。", en: "I got rained on and was late to the meeting." },
+      ],
     },
     {
       type: "heading",
@@ -77,14 +93,33 @@ export const causativePassive: Lesson = {
     },
     {
       type: "prose",
-      text: "Stack **causative + passive** to mean 'was forced / made to do': {{食[た]べ}} + {{させ}} + {{られる}} → {{食べさせられた}} — 'I was made to eat (it).' This is the passive of being compelled — common for homework, overtime, and awkward obligations.",
+      text: "Stack **causative + passive**: {{させられる}} / short {{される}} on many u-verbs — 'was forced / made to do'. Classic for overtime and awkward obligations: {{残業させられた}}.",
+    },
+    {
+      type: "rule",
+      title: "Forms you'll hear",
+      items: [
+        "Full: {{食べさせられた}} · {{行かせられた}}.",
+        "Short causative-passive (u-verbs, common): {{待たされた}} · {{飲まされた}} · {{やらされた}}.",
+        "{{する}} → {{させられる}} (not {{さされた}} in careful speech).",
+      ],
     },
     {
       type: "examples",
       items: [
-        { jp: "宿題[しゅくだい]を全部[ぜんぶ]やらせられた。", en: "Was made to do all the homework." },
-        { jp: "長[なが]い間[あいだ]、待[ま]たされた。", en: "Was made to wait a long time." },
-        { jp: "お酒[さけ]を飲[の]ませられた。", en: "Was made to drink alcohol (social pressure)." },
+        { jp: "週末[しゅうまつ]も仕事[しごと]をやらされた。", en: "I was made to work on the weekend too." },
+        { jp: "長[なが]い間[あいだ]、待[ま]たされた。", en: "I was made to wait a long time." },
+        { jp: "お酒[さけ]を飲[の]ませられた。", en: "I was made to drink (social pressure)." },
+        { jp: "説明[せつめい]を全部[ぜんぶ]させられた。", en: "I was made to explain everything." },
+      ],
+    },
+    {
+      type: "dialogue",
+      title: "Work complaint",
+      lines: [
+        { speaker: "A", jp: "昨日[きのう]、また残業[ざんぎょう]させられたよ。", en: "Yesterday I was made to do overtime again." },
+        { speaker: "B", jp: "ええ？誰[だれ]に？", en: "What? By whom?" },
+        { speaker: "A", jp: "部長[ぶちょう]に。部下[ぶか]に全部[ぜんぶ]やらせるんだ。", en: "By the section chief. Makes the subordinates do everything." },
       ],
     },
     {
@@ -96,18 +131,8 @@ export const causativePassive: Lesson = {
       title: "食べられる — two readings",
       items: [
         "**Passive:** {{ケーキが食べられた}} — the cake was eaten.",
-        "**Potential:** {{ケーキが食べられる}} — can eat cake (context / {{が}} vs {{を}} helps).",
-        "U-verbs avoid ambiguity: passive {{読[よ]まれる}} vs potential {{読める}}.",
-      ],
-    },
-    {
-      type: "examples",
-      items: [
-        { jp: "先生[せんせい]は学生[がくせい]に本[ほん]を読[よ]ませた。", en: "The teacher made the students read the book." },
-        { jp: "質問[しつもん]に答[こた]えさせてください。", en: "Please let me answer the question." },
-        { jp: "待[ま]たされた。", en: "I was made to wait (suffering nuance)." },
-        { jp: "ケーキが弟[おとうと]に食[た]べられた。", en: "The cake was eaten by my little brother." },
-        { jp: "日本語[にほんご]は、読[よ]める。", en: "I can read Japanese. (potential — distinct form for u-verbs)" },
+        "**Potential:** {{ケーキが食べられる}} — can eat cake (context helps).",
+        "U-verbs avoid ambiguity: passive {{読まれる}} vs potential {{読める}}.",
       ],
     },
   ],
@@ -132,29 +157,35 @@ export const causativePassive: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "「Was made to do homework」?",
-      choices: ["宿題をさせた", "宿題をさせられた", "宿題をされた", "宿題をさせる"],
+      prompt: "「Was made to do overtime」?",
+      choices: ["残業をさせた", "残業をさせられた", "残業をされた", "残業をさせる"],
       answer: 1,
     },
     {
       kind: "mc",
-      prompt: "Make the child sleep (child = doer) — particle for child?",
+      prompt: "Make the subordinate wait (subordinate = doer) — particle?",
       choices: ["に", "を", "が", "で"],
       answer: 1,
     },
     {
+      kind: "mc",
+      prompt: "Short causative-passive of 待つ (common spoken)?",
+      choices: ["待たせられた", "待たされた", "待たれた", "待たせる"],
+      answer: 1,
+    },
+    {
       kind: "order",
-      prompt: "Build: 'I was made to eat vegetables by my mom'",
-      tiles: ["母[はは]に", "野菜[やさい]を", "食[た]べさせられた"],
-      distractors: ["食[た]べられた"],
-      explanation: "Causative-passive させられる = was made to do; 食べられた is plain passive.",
+      prompt: "Build: 'I was made to wait by my boss'",
+      tiles: ["上司[じょうし]に", "長[なが]く", "待[ま]たされた"],
+      distractors: ["待[ま]たれた"],
+      explanation: "Causative-passive 待たされた = was made to wait; 待たれた is plain passive.",
     },
   ],
   drills: [
     { id: "causative-ru", prompt: "Make the causative — 'make/let eat'", jp: "食[た]べる", answers: ["食[た]べさせる"] },
-    { id: "causative-u", prompt: "Make the causative — 'make/let go'", jp: "行[い]く", answers: ["行[い]かせる"] },
-    { id: "passive-ru", prompt: "Make the passive — 'be eaten'", jp: "食[た]べる", answers: ["食[た]べられる"] },
-    { id: "passive-u", prompt: "Make the passive — 'be kept waiting… (wait done to you)'", jp: "待[ま]つ", answers: ["待[ま]たれる"] },
-    { id: "causative-passive", prompt: "Make the causative-passive — 'be made to eat'", jp: "食[た]べる", answers: ["食[た]べさせられる"] },
+    { id: "causative-u", prompt: "Make the causative — 'make/let wait'", jp: "待[ま]つ", answers: ["待[ま]たせる"] },
+    { id: "passive-u", prompt: "Make the passive — 'be scolded / get yelled at'", jp: "怒[おこ]る", answers: ["怒[おこ]られる"] },
+    { id: "causative-passive", prompt: "Make the causative-passive — 'be made to do'", jp: "する", answers: ["させられる"] },
+    { id: "short-cp", prompt: "Short causative-passive — 'was made to wait'", jp: "待[ま]つ", answers: ["待[ま]たされる", "待[ま]たされた"] },
   ],
 };

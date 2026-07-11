@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Uses: ている, potential, から/ので, てから, で-chaining, ね, といい. */
 export const aRainyDay: Reading = {
   id: "a-rainy-day",
-  stage: "essential-grammar",
-  order: 1,
+  stage: "n4",
+  order: 2,
   title: "A Rainy Day",
   jpTitle: "雨[あめ]の日[ひ]",
   summary: "Stuck inside with tea and a book — polite form and the te-form at work.",

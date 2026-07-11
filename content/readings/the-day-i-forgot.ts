@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Uses: てしまう, らしい, かもしれない, ばかり, explanatory の. */
 export const theDayIForgot: Reading = {
   id: "the-day-i-forgot",
-  stage: "special-expressions",
-  order: 0,
+  stage: "n3",
+  order: 1,
   title: "The Day I Forgot",
   jpTitle: "忘[わす]れた日[ひ]",
   summary: "Homework left at home, a teacher who seems angry — regret with てしまう.",

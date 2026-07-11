@@ -19,7 +19,7 @@ export default function LearnPage() {
         </h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">
           Work top to bottom. Each lesson builds on the last, exactly the way the
-          language itself is layered. Finish a lesson (or score 60%+ on its quiz)
+          language itself is layered. Finish a lesson (or score 80%+ on its quiz)
           to mark it complete.
         </p>
       </header>

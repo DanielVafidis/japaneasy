@@ -3,7 +3,7 @@ import type { Reading } from "../types";
 /** Uses: state-of-being (だ/じゃない/だった), は・も・が・の, adjectives, を + verb. */
 export const myDog: Reading = {
   id: "my-dog",
-  stage: "basic-grammar",
+  stage: "n5",
   order: 0,
   title: "My Dog",
   jpTitle: "私[わたし]の犬[いぬ]",

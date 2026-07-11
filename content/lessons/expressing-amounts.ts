@@ -2,12 +2,12 @@ import type { Lesson } from "../types";
 
 export const expressingAmounts: Lesson = {
   id: "expressing-amounts",
-  stage: "special-expressions",
-  order: 5,
+  stage: "n2",
+  order: 0,
   title: "Expressing Amounts",
   subtitle: "だけ · しか · ばかり · くらい · すぎる · ほど",
   summary:
-    "Limit, approximate, or exaggerate quantities — from 'only three' to 'so much that…'.",
+    "Limit, approximate, and exaggerate quantities in nuanced complaints — only this much overtime, nothing but meetings, too much pressure.",
   estMinutes: 18,
   vocabulary: [
     { word: "だけ", reading: "だけ", meaning: "only; as much as" },
@@ -16,8 +16,8 @@ export const expressingAmounts: Lesson = {
     { word: "くらい", reading: "くらい", meaning: "about; to the extent" },
     { word: "すぎる", reading: "すぎる", meaning: "to exceed; too much" },
     { word: "ほど", reading: "ほど", meaning: "extent; so much that" },
-    { word: "一[ひと]つ", reading: "ひとつ", meaning: "one (thing)" },
-    { word: "ゲーム", reading: "ゲーム", meaning: "game" },
+    { word: "残業[ざんぎょう]", reading: "ざんぎょう", meaning: "overtime" },
+    { word: "会議[かいぎ]", reading: "かいぎ", meaning: "meeting" },
   ],
   blocks: [
     {
@@ -26,27 +26,26 @@ export const expressingAmounts: Lesson = {
     },
     {
       type: "prose",
-      text: "Both mean 'only', but **{{だけ}}** is neutral (works with positive or negative) while **{{しか}}** must pair with a **negative** verb and adds a 'no more than this' feel.",
+      text: "Both mean 'only', but **{{だけ}}** is neutral while **{{しか}}** must pair with a **negative** and adds a 'no more than this' complaint feel — useful in career and workload talk.",
     },
     {
       type: "examples",
       items: [
-        { jp: "りんごだけ。", en: "Apples only. / Just apples." },
-        { jp: "三[さん]人[にん]しか来[こ]なかった。", en: "Only three people came (and that's all)." },
-        { jp: "これだけあれば十分[じゅうぶん]だ。", en: "This much is enough." },
+        { jp: "休[やす]みは土日[どにち]だけだ。", en: "Days off are only weekends." },
+        { jp: "三日[みっか]しか休[やす]めなかった。", en: "I could only take three days off (and that's all)." },
+        { jp: "これだけ残業[ざんぎょう]すれば十分[じゅうぶん]だろ。", en: "This much overtime should be enough, right." },
       ],
     },
     {
       type: "heading",
-      text: "ばかり — nothing but / just happened",
+      text: "ばかり — nothing but",
     },
     {
       type: "rule",
       title: "Two main uses",
       items: [
-        "**Nothing but X:** {{ゲームばかりしている}} — doing nothing but games.",
-        "**Just (recently) did:** {{来[き]たばかり}} — just arrived. Past tense before {{ばかり}}.",
-        "Don't confuse with {{ばか}} (fool) or {{くらい}} (about).",
+        "**Nothing but X:** {{会議ばかりしている}} — doing nothing but meetings (complaint).",
+        "**Just (recently) did:** {{来たばかり}} — just arrived. Past before {{ばかり}}.",
       ],
     },
     {
@@ -55,13 +54,13 @@ export const expressingAmounts: Lesson = {
     },
     {
       type: "prose",
-      text: "{{くらい}} (or {{ぐらい}}) marks **approximate amount** or **extent** — 'about ten minutes', 'to the point where…'. After numbers: {{十[じゅう]分[ふん]くらい}}.",
+      text: "{{くらい}} marks **approximate amount** or **extent** — 'about two hours of overtime', 'so busy there's barely time to…'.",
     },
     {
       type: "examples",
       items: [
-        { jp: "駅[えき]まで歩[ある]いて十[じゅう]分[ふん]くらい。", en: "About ten minutes on foot to the station." },
-        { jp: "忙[いそが]しくて、寝[ね]る時間[じかん]がないくらい。", en: "So busy there's no time to sleep." },
+        { jp: "毎日[まいにち]二時間[にじかん]くらい残業[ざんぎょう]している。", en: "I'm doing about two hours of overtime every day." },
+        { jp: "忙[いそが]しくて、昼[ひる]ごはんを食[た]べる時間[じかん]がないくらいだ。", en: "So busy there's barely time to eat lunch." },
       ],
     },
     {
@@ -72,9 +71,9 @@ export const expressingAmounts: Lesson = {
       type: "rule",
       title: "Stem + すぎる",
       items: [
-        "Attach to **ます-stem**: {{食[た]べ}} + {{すぎる}} → {{食べすぎる}} — eat too much.",
-        "Also with adjectives: {{大[おお]き}} + {{すぎる}} → {{大きすぎる}}; na-adj: {{静[しず]か}} + {{すぎる}}.",
-        "Conjugates as ru-verb: {{飲[の]みすぎた}} · {{高[たか]すぎない}}.",
+        "ます-stem + {{すぎる}}: {{働きすぎる}} — work too much.",
+        "Adjectives: {{厳しすぎる}} · {{静かすぎる}}.",
+        "Conjugates as ru-verb: {{飲みすぎた}} · {{高すぎない}}.",
       ],
     },
     {
@@ -83,21 +82,30 @@ export const expressingAmounts: Lesson = {
     },
     {
       type: "prose",
-      text: "{{ほど}} means 'to the degree that' — often paired with negatives for 'not so much that': {{死[し]ぬほど}} (enough to die). {{〜ば〜ほど}} — 'the more X, the more Y'.",
+      text: "{{ほど}} — 'to the degree that'. {{〜ば〜ほど}} — 'the more X, the more Y'. Common in life reflection and nuanced complaints.",
     },
     {
       type: "examples",
       items: [
-        { jp: "練習[れんしゅう]すればするほど上手[じょうず]になる。", en: "The more you practice, the better you get." },
-        { jp: "見[み]たこともないほど大[おお]きい。", en: "So big I've never seen anything like it." },
+        { jp: "責任[せきにん]が増[ふ]えれば増[ふ]えるほど、ストレスも増[ふ]える。", en: "The more responsibility increases, the more stress does too." },
+        { jp: "泣[な]くほど悔[くや]しかった。", en: "I was so frustrated I could cry." },
+        { jp: "会議[かいぎ]ばかりで、仕事[しごと]が進[すす]まない。", en: "Nothing but meetings, so the real work doesn't progress." },
+      ],
+    },
+    {
+      type: "dialogue",
+      title: "Nuanced workload complaint",
+      lines: [
+        { speaker: "A", jp: "最近[さいきん]、会議[かいぎ]ばかりだよね。", en: "Lately it's nothing but meetings, huh." },
+        { speaker: "B", jp: "うん。残業[ざんぎょう]も多[おお]すぎる。三日[みっか]しか休[やす]めてないよ。", en: "Yeah. Overtime is too much too. I've only gotten three days off." },
       ],
     },
   ],
   quiz: [
     {
       kind: "mc",
-      prompt: "「Only three left (emphasis: no more)」 — natural?",
-      choices: ["三つだけ", "三つしかない", "三つばかり", "三つくらい"],
+      prompt: "「Only three days off (emphasis: no more)」 — natural?",
+      choices: ["三日だけ", "三日しかない", "三日ばかり", "三日くらい"],
       answer: 1,
     },
     {
@@ -108,8 +116,8 @@ export const expressingAmounts: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "「Ate too much」?",
-      choices: ["食べすぎる", "食べだけ", "食べほど", "食べばかり"],
+      prompt: "「Worked too much」?",
+      choices: ["働きすぎる", "働きだけ", "働きほど", "働きばかり"],
       answer: 0,
     },
     {
@@ -119,18 +127,24 @@ export const expressingAmounts: Lesson = {
       answer: 1,
     },
     {
+      kind: "mc",
+      prompt: "会議ばかりしている means…",
+      choices: ["only one meeting", "nothing but meetings", "about to meet", "too few meetings"],
+      answer: 1,
+    },
+    {
       kind: "order",
-      prompt: "Build: 'My little brother eats nothing but sweets'",
-      tiles: ["弟[おとうと]は", "お菓子[かし]ばかり", "食[た]べている"],
-      distractors: ["お菓子[かし]だけで"],
+      prompt: "Build: 'I'm doing nothing but overtime'",
+      tiles: ["残業[ざんぎょう]ばかり", "して", "いる"],
+      distractors: ["残業[ざんぎょう]だけで"],
       explanation: "ばかり + ている = does nothing but.",
     },
   ],
   drills: [
-    { id: "dake", prompt: "Fill — 'only one' (plain statement)", jp: "一[ひと]つ◯◯ある", answers: ["だけ"] },
-    { id: "shika", prompt: "Fill — 'only one' (with the negative)", jp: "一[ひと]つ◯◯ない", answers: ["しか"] },
-    { id: "bakari", prompt: "Fill — 'doing nothing but games'", jp: "ゲーム◯◯◯している", answers: ["ばかり"] },
-    { id: "sugiru", prompt: "Add 'too much' — 'eat too much'", jp: "食[た]べる", answers: ["食[た]べすぎる"] },
-    { id: "kurai", prompt: "Fill — 'about an hour'", jp: "一時間[いちじかん]◯◯◯", answers: ["くらい", "ぐらい"] },
+    { id: "dake", prompt: "Fill — 'only weekends' (plain statement)", jp: "土日[どにち]◯◯だ", answers: ["だけ"] },
+    { id: "shika", prompt: "Fill — 'only three days' (with the negative)", jp: "三日[みっか]◯◯休[やす]めない", answers: ["しか"] },
+    { id: "bakari", prompt: "Fill — 'doing nothing but meetings'", jp: "会議[かいぎ]◯◯◯している", answers: ["ばかり"] },
+    { id: "sugiru", prompt: "Add 'too much' — 'work too much'", jp: "働[はたら]く", answers: ["働[はたら]きすぎる"] },
+    { id: "kurai", prompt: "Fill — 'about two hours'", jp: "二時間[にじかん]◯◯◯", answers: ["くらい", "ぐらい"] },
   ],
 };

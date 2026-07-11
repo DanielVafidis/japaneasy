@@ -3,7 +3,7 @@ import type { Reading } from "../types";
 /** Situation: buying a ticket and finding the platform — questions, ですか. */
 export const atTheStation: Reading = {
   id: "at-the-station",
-  stage: "essential-grammar",
+  stage: "n4",
   order: 4,
   kind: "situation",
   title: "At the Station",

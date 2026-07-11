@@ -11,7 +11,7 @@ import type { Lesson } from "../types";
 
 export const politeForm: Lesson = {
   id: "polite-form",          // unique, URL-safe → /lessons/polite-form
-  stage: "essential-grammar", // which stage it belongs to
+  stage: "n5", // which stage it belongs to
   order: 0,                   // position within the stage
   title: "Polite Form",
   subtitle: "〜です and 〜ます",
@@ -93,7 +93,7 @@ You never write romaji by hand — it's generated from the kana for the romaji t
 
 ## 5. Quiz question types
 
-`quiz` is an optional array. Scoring is one point per question; 60%+ marks the lesson complete and awards XP.
+`quiz` is an optional array. Scoring is one point per question; 80%+ marks the lesson complete and awards XP.
 
 ```ts
 // Multiple choice (choices are shuffled at runtime)
@@ -160,7 +160,7 @@ vocabulary taught up to its `stage`**, plus a comprehension quiz:
 ```ts
 export const myStory: Reading = {
   id: "my-story",            // → /readings/my-story
-  stage: "basic-grammar",
+  stage: "n5",
   order: 0,
   title: "My Story",
   jpTitle: "私[わたし]の話[はなし]",
@@ -168,7 +168,7 @@ export const myStory: Reading = {
   estMinutes: 3,
   body: [{ jp: "…", en: "…" }],          // one entry per line/paragraph
   vocabulary: [ /* new words — become flashcards like lesson vocab */ ],
-  quiz: [ /* comprehension questions; ≥60% marks it read */ ],
+  quiz: [ /* comprehension questions; ≥80% marks it read */ ],
 };
 ```
 
@@ -179,15 +179,16 @@ audio and a tap-to-reveal English translation.
 
 Stage IDs live in [`content/types.ts`](content/types.ts) and metadata in [`content/curriculum.ts`](content/curriculum.ts):
 
-| Stage ID | Title | Source PDF (in `docs/`) |
-| --- | --- | --- |
-| `foundations` | Writing System | pages 1–24 |
-| `basic-grammar` | Basic Grammar | pages 25–94 |
-| `essential-grammar` | Essential Grammar | pages 95–253 |
-| `special-expressions` | Special Expressions | pages 254–363 |
-| `advanced-topics` | Advanced Topics | pages 364–436 |
+| Stage ID | Title |
+| --- | --- |
+| `foundations` | Writing System |
+| `n5` | N5 — Foundations |
+| `n4` | N4 — Expansion |
+| `n3` | N3 — Nuance |
+| `n2` | N2 — Naturalness |
+| `n1` | N1 — Mastery |
 
-A stage shows as "coming soon" (with its `teaser` topic list) until it has at least one registered lesson. To flesh out Stages 2–4, work through the matching PDF and add lesson files exactly like the examples above — no UI or component changes needed.
+A stage shows as "coming soon" (with its `teaser` topic list) until it has at least one registered lesson. Add lesson files with the matching `stage` id — no UI or component changes needed.
 
 ## 9. Conventions & tips
 

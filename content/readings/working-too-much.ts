@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Uses: すぎる, ずに, ばかり, やすい, 〜た方がいい, てくれる. */
 export const workingTooMuch: Reading = {
   id: "working-too-much",
-  stage: "special-expressions",
-  order: 1,
+  stage: "n3",
+  order: 0,
   title: "Working Too Much",
   jpTitle: "働[はたら]きすぎ",
   summary: "A worried look at an older brother who won't slow down.",

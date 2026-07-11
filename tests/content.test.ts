@@ -29,12 +29,7 @@ describe("grammar drills", () => {
   const drilled = allLessons.filter((l) => l.drills?.length);
 
   it("every grammar-stage lesson has drills (no legacy cards left)", () => {
-    const grammarStages = [
-      "basic-grammar",
-      "essential-grammar",
-      "special-expressions",
-      "advanced-topics",
-    ];
+    const grammarStages = ["n5", "n4", "n3", "n2", "n1"];
     for (const lesson of allLessons.filter(
       (l) => grammarStages.includes(l.stage) && !l.recap,
     )) {

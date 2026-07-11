@@ -2,12 +2,12 @@ import type { Lesson } from "../types";
 
 export const timeAndMama: Lesson = {
   id: "time-and-mama",
-  stage: "special-expressions",
-  order: 10,
+  stage: "n2",
+  order: 2,
   title: "Time & Leaving As-Is",
   subtitle: "とき · 前/後 · 間 · まま · っぱなし",
   summary:
-    "Pin actions to time (when, before, after, while) and describe things left unchanged.",
+    "Pin life moments and lingering states — when, before, after, while — and things left unchanged in career and daily reflection.",
   estMinutes: 16,
   vocabulary: [
     { word: "時[とき]", reading: "とき", meaning: "when; time" },
@@ -17,6 +17,7 @@ export const timeAndMama: Lesson = {
     { word: "まま", reading: "まま", meaning: "as is; unchanged state" },
     { word: "っぱなし", reading: "っぱなし", meaning: "left on / undone (colloquial)" },
     { word: "窓[まど]", reading: "まど", meaning: "window" },
+    { word: "転職[てんしょく]", reading: "てんしょく", meaning: "changing jobs" },
   ],
   blocks: [
     {
@@ -27,16 +28,16 @@ export const timeAndMama: Lesson = {
       type: "rule",
       title: "Plain form + とき",
       items: [
-        "**Non-past action:** dictionary form — {{食[た]べるとき}} (when (I) eat).",
-        "**Past / completed:** {{た-form}} — {{日本[にほん]に行[い]ったとき}} (when I went to Japan).",
-        "**Na-adjective / noun:** add {{な}} / {{の}} — {{暇[ひま]なとき}} · {{学生[がくせい]のとき}}.",
+        "**Non-past:** dictionary — {{悩むとき}} (when (I) worry).",
+        "**Past / completed:** {{た-form}} — {{転職したとき}} (when I changed jobs).",
+        "**Na-adj / noun:** {{な}} / {{の}} — {{暇なとき}} · {{学生のとき}}.",
       ],
     },
     {
       type: "examples",
       items: [
-        { jp: "子供[こども]の時[とき]、よくこの公園[こうえん]で遊[あそ]んだ。", en: "When I was a child, I often played in this park." },
-        { jp: "分[わ]からない時[とき]は、聞[き]いてください。", en: "When you don't understand, please ask." },
+        { jp: "若[わか]い時[とき]、もっと挑戦[ちょうせん]すればよかった。", en: "When I was young, I wish I'd taken more risks." },
+        { jp: "分[わ]からない時[とき]は、すぐに聞[き]くべきだ。", en: "When you don't understand, you ought to ask right away." },
       ],
     },
     {
@@ -45,13 +46,13 @@ export const timeAndMama: Lesson = {
     },
     {
       type: "prose",
-      text: "Verb **dictionary form + {{前[まえ]}}** — before doing. **Ta-form + {{後[あと]}}** — after doing. Nouns use {{の}}: {{食事[しょくじ]の前[まえ]}}.",
+      text: "Verb **dictionary + {{前}}** — before doing. **Ta-form + {{後}}** — after doing. Nouns: {{食事の前}}.",
     },
     {
       type: "examples",
       items: [
-        { jp: "寝[ね]る前[まえ]に、歯[は]を磨[みが]く。", en: "Brush teeth before sleeping." },
-        { jp: "授業[じゅぎょう]が終[お]わった後[あと]、カフェに行[い]った。", en: "After class ended, went to a café." },
+        { jp: "発表[はっぴょう]の前[まえ]に、資料[しりょう]を確[かく]認[にん]する。", en: "Confirm the materials before the presentation." },
+        { jp: "会議[かいぎ]が終[お]わった後[あと]、残[のこ]って話[はな]した。", en: "After the meeting ended, I stayed and talked." },
       ],
     },
     {
@@ -62,8 +63,8 @@ export const timeAndMama: Lesson = {
       type: "rule",
       title: "Duration vs point in time",
       items: [
-        "**{{間[あいだ]}}** — throughout a period: {{映画[えいが]を見[み]ている間[あいだ]}} — while watching a movie.",
-        "**{{間[あいだ]に}}** — at some point during: {{映画を見ている間[あいだ]に}}電[でん]話[わ]が来[き]た — the phone rang during the movie.",
+        "**{{間}}** — throughout: {{待っている間}} — while waiting.",
+        "**{{間に}}** — at some point during: {{出張している間に}}問題が起きた.",
       ],
     },
     {
@@ -72,12 +73,13 @@ export const timeAndMama: Lesson = {
     },
     {
       type: "prose",
-      text: "{{まま}} keeps a **state as it was**: {{靴[くつ]を履[は]いたまま}} — with shoes still on. Attach to plain form (verbs), nouns + {{の}}, or adjectives + {{な}}.",
+      text: "{{まま}} keeps a **state as it was** — often with a hint of unfinished business or quiet reflection: {{問題を放置したまま}}.",
     },
     {
       type: "examples",
       items: [
         { jp: "窓[まど]を開[あ]けたまま寝[ね]てしまった。", en: "Fell asleep with the window left open." },
+        { jp: "不満[ふまん]を抱[かか]えたまま、何年[なんねん]も働[はたら]いた。", en: "I worked for years with dissatisfaction still held inside." },
         { jp: "そのままにしておいて。", en: "Leave it as is." },
       ],
     },
@@ -87,11 +89,15 @@ export const timeAndMama: Lesson = {
     },
     {
       type: "prose",
-      text: "**Stem + {{っぱなし}}** — something left on or unfinished (often carelessly): {{電気[でんき]をつけっぱなし}} — left the lights on. {{開[あ]けっぱなし}} — left open.",
+      text: "**Stem + {{っぱなし}}** — left on or unfinished (often carelessly): {{つけっぱなし}} · {{やりっぱなし}} — started and never cleaned up. A soft conflict / complaint marker at home and work.",
     },
     {
-      type: "tip",
-      text: "{{そのまま}} is a set phrase meaning 'unchanged' or 'as it is' — very common in instructions and daily life.",
+      type: "dialogue",
+      title: "Life reflection",
+      lines: [
+        { speaker: "A", jp: "転職[てんしょく]した時[とき]、怖[こわ]かった？", en: "When you changed jobs, were you scared?" },
+        { speaker: "B", jp: "うん。でも、迷[まよ]ったまま残[のこ]る方[ほう]が辛[つら]かった。", en: "Yeah. But staying while still undecided was harder." },
+      ],
     },
   ],
   quiz: [
@@ -103,14 +109,14 @@ export const timeAndMama: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "「Before eating」?",
-      choices: ["食べた前", "食べる前", "食べ前", "食べて前"],
+      prompt: "「Before presenting」?",
+      choices: ["発表した前", "発表する前", "発表前だけ", "発表して前"],
       answer: 1,
     },
     {
       kind: "mc",
-      prompt: "Phone rang at some point during the movie — which?",
-      choices: ["見ている間", "見ている間に", "見る間", "見た間に"],
+      prompt: "Problem arose at some point during the trip — which?",
+      choices: ["出張している間", "出張している間に", "出張する間", "出張した間に"],
       answer: 1,
     },
     {
@@ -124,14 +130,14 @@ export const timeAndMama: Lesson = {
       prompt: "Build: 'I fell asleep with the window left open'",
       tiles: ["窓[まど]を", "開[あ]けたまま", "寝[ね]てしまった"],
       distractors: ["開[あ]けるまま"],
-      explanation: "まま follows the past tense for a state already in place: 開けたまま.",
+      explanation: "まま follows the past for a state already in place: 開けたまま.",
     },
   ],
   drills: [
-    { id: "toki", prompt: "Fill — 'when (I) went…'", jp: "行[い]った◯◯、…", answers: ["とき", "時[とき]"] },
-    { id: "mae", prompt: "Fill — 'before eating'", jp: "食[た]べる◯◯に", answers: ["前[まえ]"] },
-    { id: "ato", prompt: "Fill — 'after eating' (needs the past form)", jp: "食[た]べた◯◯で", answers: ["後[あと]"] },
-    { id: "mama", prompt: "Fill — 'left it on, as is'", jp: "つけた◯◯にした", answers: ["まま"] },
+    { id: "toki", prompt: "Fill — 'when (I) changed jobs…'", jp: "転職[てんしょく]した◯◯、…", answers: ["とき", "時[とき]"] },
+    { id: "mae", prompt: "Fill — 'before presenting'", jp: "発表[はっぴょう]する◯◯に", answers: ["前[まえ]"] },
+    { id: "ato", prompt: "Fill — 'after the meeting ended'", jp: "終[お]わった◯◯で", answers: ["後[あと]"] },
+    { id: "mama", prompt: "Fill — 'left it as is'", jp: "その◯◯にしておいた", answers: ["まま"] },
     { id: "ppanashi", prompt: "Fill — 'left it on (neglectfully)'", jp: "つけ◯◯◯◯にした", answers: ["っぱなし"] },
   ],
 };

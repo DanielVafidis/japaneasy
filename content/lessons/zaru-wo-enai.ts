@@ -2,12 +2,12 @@ import type { Lesson } from "../types";
 
 export const zaruWoEnai: Lesson = {
   id: "zaru-wo-enai",
-  stage: "advanced-topics",
-  order: 4,
+  stage: "n1",
+  order: 1,
   title: "〜ざるを得ない",
   subtitle: "ざるを得ない · やむを得ない · かねる",
   summary:
-    "Formal ways to say your hands are tied — 'can't not do', 'unavoidable', and the polite business 'unable to' かねる (plus its ominous twin かねない).",
+    "Formal complaints and leadership language — 'no choice but to', 'unavoidable', and polite business かねる／かねない.",
   estMinutes: 18,
   vocabulary: [
     { word: "認[みと]める", reading: "みとめる", meaning: "to admit; recognise" },
@@ -16,57 +16,51 @@ export const zaruWoEnai: Lesson = {
     { word: "受[う]け入[い]れる", reading: "うけいれる", meaning: "to accept" },
     { word: "事情[じじょう]", reading: "じじょう", meaning: "circumstances" },
     { word: "計画[けいかく]", reading: "けいかく", meaning: "plan" },
-    { word: "得[え]る", reading: "える", meaning: "to gain; to obtain (ru-verb)", note: "as in 〜ざるを得ない" },
+    { word: "決断[けつだん]", reading: "けつだん", meaning: "decision (decisive)" },
   ],
   blocks: [
     {
       type: "prose",
-      text: "{{〜ざるを得[え]ない}} is a **formal, written** pattern meaning you have **no choice** but to do something. It combines classical negative {{〜ざる}} with {{を得ない}} ('cannot obtain / cannot manage otherwise').",
+      text: "{{〜ざるを得[え]ない}} is **formal, written** — your hands are tied. Leadership announcements, formal complaints, and career statements lean on it: circumstances force the action.",
     },
     {
       type: "rule",
       title: "Formation",
       items: [
-        "**U-verbs:** replace final {{ない}} stem with {{ざる}}: {{行[い]かない}} → {{行[い]かざるを得[え]ない}}.",
-        "**Ru-verbs:** {{食[た]べない}} → {{食[た]べざるを得[え]ない}}.",
-        "**Exceptions:** {{しない}} → {{せざるを得[え]ない}}, {{来[こ]ない}} → {{来[こ]ざるを得[え]ない}}.",
-        "**Suru compounds:** {{延期[えんき]せざるを得[え]ない}} — 'Cannot avoid postponing.'",
+        "**U-verbs:** {{行かない}} → {{行かざるを得ない}}.",
+        "**Ru-verbs:** {{認めない}} → {{認めざるを得ない}}.",
+        "**する** → {{せざるを得ない}}; **来る** → {{来ざるを得ない}}.",
+        "Compounds: {{延期せざるを得ない}}.",
       ],
     },
     {
       type: "examples",
       items: [
         { jp: "事態[じたい]を認[みと]めざるを得[え]ない。", en: "Cannot help but acknowledge the situation." },
-        { jp: "雨[あめ]のため、試合[しあい]を延期[えんき]せざるを得[え]なかった。", en: "Due to rain, we had no choice but to postpone the match." },
-        { jp: "彼[かれ]の能力[のうりょく]は認[みと]めざるを得ない。", en: "One cannot deny his ability." },
+        { jp: "予算[よさん]不足[ぶそく]のため、計画[けいかく]を見直[みなお]さざるを得[え]なかった。", en: "Due to budget shortfalls, we had no choice but to revise the plan." },
+        { jp: "彼[かれ]の功績[こうせき]は認[みと]めざるを得ない。", en: "One cannot deny his achievements." },
       ],
     },
     {
       type: "heading",
-      text: "Other 'no choice' patterns",
+      text: "Related 'no choice' patterns",
     },
     {
       type: "rule",
       title: "Spoken and written alternatives",
       items: [
-        "**{{〜ないわけにはいかない}}** — social / moral pressure: {{行[い]かないわけにはいかない}}.",
-        "**{{〜ざるを得ない}}** — formal, external circumstances: {{延期[えんき]せざるを得[え]ない}}.",
-        "**{{〜ないではすまない}}** — won't get away without doing (apology, duty).",
-      ],
-    },
-    {
-      type: "examples",
-      items: [
-        { jp: "親[おや]の期待[きたい]に応[こた]えないわけにはいかない。", en: "I can't not live up to my parents' expectations." },
+        "**{{〜ないわけにはいかない}}** — social / moral pressure.",
+        "**{{〜ざるを得ない}}** — formal, external circumstances.",
+        "**{{〜ないではすまない}}** — won't get away without doing (duty / apology).",
       ],
     },
     {
       type: "heading",
-      text: "やむを得ない — it can't be helped",
+      text: "やむを得ない — unavoidable",
     },
     {
       type: "prose",
-      text: "{{やむを得[え]ない}} is a set phrase — literally 'cannot obtain a stopping' — meaning **unavoidable**. It's the formal cousin of {{しょうがない}}／{{仕方[しかた]がない}} and often modifies a noun directly: {{やむを得ない事情[じじょう]}} 'unavoidable circumstances'.",
+      text: "{{やむを得ない}} — formal cousin of {{しょうがない}}. Often modifies a noun: {{やむを得ない事情}}. Leadership tone for cancellations and absences.",
     },
     {
       type: "examples",
@@ -77,27 +71,32 @@ export const zaruWoEnai: Lesson = {
     },
     {
       type: "heading",
-      text: "〜かねる・〜かねない — politely can't / might just",
+      text: "かねる · かねない",
     },
     {
       type: "rule",
       title: "One stem, two directions",
       items: [
-        "**Stem + {{かねる}}** — 'find it difficult / unable to' — the standard **polite business refusal**: {{お答[こた]えしかねます}}.",
-        "**Stem + {{かねない}}** — the negative flips the meaning: 'might well (do something bad)': {{事故[じこ]になりかねない}}.",
-        "{{かねない}} is only for **undesirable** possibilities — no happy endings.",
+        "**Stem + {{かねる}}** — polite business 'unable to': {{お答えしかねます}}.",
+        "**Stem + {{かねない}}** — 'might well (undesirable)': {{事故になりかねない}}.",
+        "{{かねない}} only for bad possibilities.",
       ],
     },
     {
       type: "examples",
       items: [
         { jp: "その件[けん]については、お答[こた]えしかねます。", en: "I'm afraid I'm unable to answer regarding that matter." },
-        { jp: "寝不足[ねぶそく]が続[つづ]くと、体[からだ]を壊[こわ]しかねない。", en: "If the lack of sleep continues, you could well ruin your health." },
+        { jp: "このままでは、信頼[しんらい]を失[うしな]いかねない。", en: "At this rate, we could well lose trust." },
+        { jp: "苦[くる]しい決断[けつだん]だが、受[う]け入[い]れざるを得[え]ない。", en: "It's a hard decision, but we have no choice but to accept it." },
       ],
     },
     {
-      type: "note",
-      text: "You'll see {{ざるを得ない}} and {{お〜しかねます}} in news headlines and business emails. Recognise them on sight first; active use can wait.",
+      type: "dialogue",
+      title: "Formal complaint / leadership",
+      lines: [
+        { speaker: "幹部", jp: "現状[げんじょう]では、方針[ほうしん]を変[か]えざるを得[え]ない。", en: "Under present conditions, we have no choice but to change policy." },
+        { speaker: "担当", jp: "詳細[しょうさい]はお答[こた]えしかねますが、やむを得[え]ない事情[じじょう]です。", en: "I can't give details, but the circumstances are unavoidable." },
+      ],
     },
   ],
   quiz: [
@@ -109,52 +108,34 @@ export const zaruWoEnai: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Negative of 行く in this pattern?",
-      choices: ["行かざる", "行きざる", "行くざる", "行かないざる"],
-      answer: 0,
-    },
-    {
-      kind: "mc",
       prompt: "する → ?",
       choices: ["しざるを得ない", "せざるを得ない", "すざるを得ない", "されざるを得ない"],
       answer: 1,
     },
     {
       kind: "mc",
-      prompt: "Casual spoken alternative?",
-      choices: ["〜ないわけにはいかない", "〜てしまう", "〜かもしれない", "〜べき"],
-      answer: 0,
-    },
-    {
-      kind: "mc",
       prompt: "A company says 分かりかねます — meaning?",
-      choices: [
-        "We are (politely) unable to tell",
-        "We might understand",
-        "We fully understand",
-        "We refuse rudely",
-      ],
+      choices: ["We are (politely) unable to tell", "We might understand", "We fully understand", "We refuse rudely"],
       answer: 0,
-      explanation: "Stem + かねる = polite business 'unable to'.",
     },
     {
       kind: "mc",
       prompt: "遅刻しかねない implies…",
-      choices: [
-        "might well end up late (bad possibility)",
-        "definitely won't be late",
-        "was late yesterday",
-        "is politely refusing to be late",
-      ],
+      choices: ["might well end up late (bad)", "definitely won't be late", "was late yesterday", "politely refusing to be late"],
       answer: 0,
-      explanation: "かねない warns of an undesirable possibility.",
+    },
+    {
+      kind: "mc",
+      prompt: "やむを得ない事情 means…",
+      choices: ["optional circumstances", "unavoidable circumstances", "happy circumstances", "unknown circumstances"],
+      answer: 1,
     },
     {
       kind: "order",
       prompt: "Build: 'We have no choice but to change the plan'",
       tiles: ["計画[けいかく]を", "変更[へんこう]", "せざるを得[え]ない"],
       distractors: ["しざるを得[え]ない"],
-      explanation: "する is irregular here: せざるを得ない, not しざる.",
+      explanation: "する is irregular: せざるを得ない.",
     },
   ],
   drills: [

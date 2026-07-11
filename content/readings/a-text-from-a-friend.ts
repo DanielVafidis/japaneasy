@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Uses: polite form, invitations (ませんか), quoted speech, たい, てから, から. */
 export const aTextFromAFriend: Reading = {
   id: "a-text-from-a-friend",
-  stage: "essential-grammar",
-  order: 0,
+  stage: "n4",
+  order: 3,
   title: "A Text from a Friend",
   jpTitle: "友達[ともだち]のメール",
   summary: "An invitation to the movies — polite form, quoting, and plans.",

@@ -45,8 +45,8 @@ describe("jlptGrammarProgress", () => {
 
   it("covers every point of a completed lesson", () => {
     const p = jlptGrammarProgress(5, { "verb-particles": { done: true } });
-    expect(p.covered).toBe(4); // を・に・へ・で
-    expect(p.missing.length).toBe(p.points.length - 4);
+    expect(p.covered).toBe(5); // を・に・へ・で・から/まで
+    expect(p.missing.length).toBe(p.points.length - 5);
   });
 
   it("lists incomplete taught points before course gaps", () => {

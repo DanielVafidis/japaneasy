@@ -2,140 +2,108 @@ import type { Lesson } from "../types";
 
 export const advancedVolitional: Lesson = {
   id: "advanced-volitional",
-  stage: "advanced-topics",
-  order: 6,
+  stage: "n1",
+  order: 0,
   title: "Advanced Volitional",
-  subtitle: "う/よう · まい · であろう · かろう",
+  subtitle: "まい · ようが〜まいが · であろう · かろう",
   summary:
-    "The う／よう form for intention and attempts — plus the literary negatives and likelihoods: まい, ようが〜まいが, であろう, かろう.",
+    "Literary volitional territory for debate and life resolve — まい, whether-or-not pairs, であろう, かろう. Basic ようと思う lives in Intention (N4).",
   estMinutes: 18,
   vocabulary: [
-    { word: "頑張[がんば]る", reading: "がんばる", meaning: "to do one's best" },
-    { word: "協力[きょうりょく]", reading: "きょうりょく", meaning: "cooperation" },
+    { word: "方針[ほうしん]", reading: "ほうしん", meaning: "policy; course" },
     { word: "一致[いっち]", reading: "いっち", meaning: "agreement; unity" },
-    { word: "努力[どりょく]", reading: "どりょく", meaning: "effort" },
-    { word: "遅[おそ]い", reading: "おそい", meaning: "late; slow (i-adj)" },
-    { word: "二度[にど]と", reading: "にどと", meaning: "never again (with a negative)" },
+    { word: "二度[にど]と", reading: "にどと", meaning: "never again" },
     { word: "今後[こんご]", reading: "こんご", meaning: "from now on" },
+    { word: "傾向[けいこう]", reading: "けいこう", meaning: "tendency; trend" },
+    { word: "遅[おそ]い", reading: "おそい", meaning: "late; slow" },
+    { word: "責任[せきにん]", reading: "せきにん", meaning: "responsibility" },
+    { word: "改革[かいかく]", reading: "かいかく", meaning: "reform" },
+    { word: "妥協[だきょう]", reading: "だきょう", meaning: "compromise" },
+    { word: "反対[はんたい]", reading: "はんたい", meaning: "opposition" },
   ],
   blocks: [
     {
       type: "prose",
-      text: "You already know {{ましょう}} for 'let's'. The **volitional form** ({{う／よう}}) is its plain backbone — and it powers several advanced patterns about intention, attempts, and literary 'let us'.",
+      text: "You already form volitionals ({{行こう}} · {{食べよう}}) and meet everyday intention in **Intention (つもり / ようと思う)** at N4. This N1 lesson is **literary and rhetorical**: negative volitional {{まい}}, whether-or-not pairs, written likelihood {{であろう}}, and archaic {{かろう}} — for essays, speeches, and formal resolve.",
+    },
+    {
+      type: "heading",
+      text: "Brief recap: volitional shape",
     },
     {
       type: "rule",
-      title: "Forming the volitional",
+      title: "Formation (assumed known)",
       items: [
-        "**U-verbs:** final /u/ → /o/ + {{う}}: {{行[い]く}} → {{行[い]こう}}.",
-        "**Ru-verbs:** {{る}} → {{よう}}: {{食[た]べる}} → {{食[た]べよう}}.",
-        "**Exceptions:** {{する}} → {{しよう}}, {{来[く]る}} → {{来[こ]よう}}.",
-        "Polite: {{ましょう}}. Plain: {{行[い]こう}}, {{食[た]べよう}}.",
-      ],
-    },
-    {
-      type: "rule",
-      title: "Beyond 'let's'",
-      items: [
-        "**Intent:** {{明日[あした]から頑張[がんば]ろう}} — 'I'll try hard from tomorrow.'",
-        "**〜うとする** — try to do: {{立[た]とうとした}} — 'tried to stand.'",
-        "**〜うと思[おも]う** — intend to: {{来年[らいねん]留学[りゅうがく]しようと思[おも]う}}.",
-        "**Literary 'let us':** {{一致[いっち]しよう}} in slogans and speeches.",
-      ],
-    },
-    {
-      type: "examples",
-      items: [
-        { jp: "みんなで協力[きょうりょく]しよう。", en: "Let's all cooperate." },
-        { jp: "もう一度[いちど]、努力[どりょく]しようと思[おも]う。", en: "I intend to make an effort once more." },
-        { jp: "彼[かれ]はドアを開[あ]けようとした。", en: "He tried to open the door." },
+        "**U-verbs:** /u/ → /o/ + {{う}}: {{行こう}}.",
+        "**Ru-verbs:** {{る}} → {{よう}}: {{食べよう}}.",
+        "**する／来る:** {{しよう}} · {{来よう}}.",
+        "Everyday {{〜ようと思う}} / {{〜ようにする}} — review in N4 Intention; we demote teaching them here.",
       ],
     },
     {
       type: "heading",
-      text: "Volitional in set phrases",
-    },
-    {
-      type: "rule",
-      title: "Common patterns",
-      items: [
-        "**〜ようとしない** — refuses to try: {{話[はな]そうとしない}}.",
-        "**〜ようと思[おも]う** — intend to: {{もう一度[いちど]やろうと思[おも]う}}.",
-        "**〜まい** — negative volitional (won't): {{二度[にど]とするまい}} — 'won't do again.'",
-        "**〜ようにする** — make an effort: {{早[はや]く寝[ね]るようにする}}.",
-      ],
-    },
-    {
-      type: "examples",
-      items: [
-        { jp: "毎日[まいにち]、日本語[にほんご]を話[はな]すようにしている。", en: "I make a point of speaking Japanese daily." },
-        { jp: "もう二度[にど]と、あんなミスは犯[おか]すまい。", en: "I won't make a mistake like that again." },
-      ],
-    },
-    {
-      type: "tip",
-      text: "{{〜ようとしない}} — 'won't even try' — is a strong complaint: {{宿題[しゅくだい]をしようとしない}}.",
-    },
-    {
-      type: "heading",
-      text: "The negative volitional まい, up close",
+      text: "まい — negative volitional / 'probably not'",
     },
     {
       type: "rule",
       title: "Formation & two meanings",
       items: [
-        "Attach {{まい}} to the **dictionary form**: {{行[い]くまい}}. Ru-verbs also allow the stem: {{食[た]べまい}}. {{する}} → {{するまい}}／{{すまい}}.",
-        "**Meaning 1 — 'probably not'** (negative {{だろう}}, written): {{彼[かれ]はもう来[く]るまい}}.",
-        "**Meaning 2 — resolve 'never will'**: {{二度[にど]とするまい}}.",
-        "**{{〜ようが〜まいが}}** — 'whether or not': {{雨[あめ]が降[ふ]ろうが降るまいが}}.",
+        "Dictionary + {{まい}}: {{行くまい}}. Ru-verbs also allow stem: {{食べまい}}. {{する}} → {{するまい}}／{{すまい}}.",
+        "**Resolve 'never will':** {{二度とするまい}} — leadership / life reflection tone.",
+        "**Written 'probably not':** {{彼はもう来るまい}}.",
+        "**{{〜ようが〜まいが}}** — 'whether or not': {{降ろうが降るまいが}}.",
       ],
     },
     {
       type: "examples",
       items: [
-        { jp: "雨[あめ]が降[ふ]ろうが降[ふ]るまいが、大会[たいかい]は行[おこな]われる。", en: "The tournament will be held whether it rains or not." },
+        { jp: "もう二度[にど]と、責任[せきにん]を逃[のが]れまい。", en: "Never again will I shirk responsibility." },
+        { jp: "反対[はんたい]されようがされまいが、方針[ほうしん]は変[か]えない。", en: "Whether opposed or not, the policy won't change." },
+        { jp: "彼[かれ]はもうその役[やく]を引[ひ]き受[う]けるまい。", en: "He probably won't take on that role again. (written)" },
       ],
     },
     {
       type: "heading",
-      text: "Written likelihood: であろう・かろう",
+      text: "ようとしない — refuses to try",
+    },
+    {
+      type: "prose",
+      text: "{{〜ようとしない}} — 'won't even attempt' — a strong formal complaint about leadership or colleagues: {{話し合おうとしない}}.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "経営陣[けいえいじん]は改革[かいかく]しようとしない。", en: "Management won't even try to reform." },
+        { jp: "相手[あいて]は妥協[だきょう]しようとしない。", en: "The other side refuses to try to compromise." },
+      ],
+    },
+    {
+      type: "heading",
+      text: "であろう · かろう — written likelihood",
     },
     {
       type: "rule",
       title: "Literary equivalents of だろう",
       items: [
-        "**{{であろう}}** — formal written {{だろう}}: {{今後[こんご]も増[ふ]え続[つづ]けるであろう}} 'will likely continue to increase.'",
-        "Can modify nouns directly: {{今後[こんご]必要[ひつよう]となるであろう知識[ちしき]}} 'knowledge that will likely become necessary.'",
-        "**{{かろう}}** — i-adjective volitional: {{よかろう}} 'that is probably fine', {{遅[おそ]かろうが早[はや]かろうが}} 'be it late or early.' Archaic flavour.",
+        "**{{であろう}}** — formal written {{だろう}}: {{今後も続くであろう}}.",
+        "Can modify nouns: {{必要となるであろう知識}}.",
+        "**{{かろう}}** — i-adjective volitional/conjecture: {{よかろう}}, {{遅かろうが早かろうが}}. Archaic flavour in debate rhetoric.",
       ],
     },
     {
       type: "examples",
       items: [
-        { jp: "この傾向[けいこう]は今後[こんご]も続[つづ]くであろう。", en: "This trend will likely continue from here on. (written)" },
+        { jp: "この傾向[けいこう]は今後[こんご]も続[つづ]くであろう。", en: "This trend will likely continue from here on." },
         { jp: "始[はじ]めるのが遅[おそ]かろうが早[はや]かろうが、続[つづ]けることが大事[だいじ]だ。", en: "Whether you start late or early, what matters is continuing." },
+        { jp: "一致[いっち]しようではないか。", en: "Shall we not unite? (rhetorical literary 'let us')" },
       ],
+    },
+    {
+      type: "tip",
+      text: "For everyday 'I think I'll…' use N4 {{〜ようと思う}}. Reach for {{まい}} / {{であろう}} when the register is essay, speech, or stern resolve.",
     },
   ],
   quiz: [
-    {
-      kind: "mc",
-      prompt: "Volitional form of 行く?",
-      choices: ["行くう", "行こう", "行いよう", "行けよう"],
-      answer: 1,
-    },
-    {
-      kind: "mc",
-      prompt: "Volitional form of 食べる?",
-      choices: ["食べう", "食べよう", "食べましょう only", "食べるう"],
-      answer: 1,
-    },
-    {
-      kind: "mc",
-      prompt: "「Tried to stand」?",
-      choices: ["立った", "立とうとした", "立てよう", "立ちたい"],
-      answer: 1,
-    },
     {
       kind: "mc",
       prompt: "「Won't do that again」 — literary resolve?",
@@ -145,21 +113,26 @@ export const advancedVolitional: Lesson = {
     {
       kind: "mc",
       prompt: "行こうが行くまいが means…",
-      choices: [
-        "whether (someone) goes or not",
-        "let's definitely go",
-        "(someone) probably went",
-        "because (someone) won't go",
-      ],
+      choices: ["whether (someone) goes or not", "let's definitely go", "(someone) probably went", "because (someone) won't go"],
       answer: 0,
-      explanation: "Volitional + が + まい + が = 'whether or not' — the outcome is unaffected.",
     },
     {
       kind: "mc",
       prompt: "であろう is the written equivalent of…",
       choices: ["だろう", "らしい", "そうだ", "はずだ"],
       answer: 0,
-      explanation: "であろう = formal/literary だろう, common in essays and news analysis.",
+    },
+    {
+      kind: "mc",
+      prompt: "改革しようとしない means…",
+      choices: ["will reform", "won't even try to reform", "reformed already", "should reform"],
+      answer: 1,
+    },
+    {
+      kind: "mc",
+      prompt: "よかろう is…",
+      choices: ["literary i-adj conjecture", "casual past", "honorific", "passive"],
+      answer: 0,
     },
     {
       kind: "order",
@@ -170,10 +143,10 @@ export const advancedVolitional: Lesson = {
     },
   ],
   drills: [
-    { id: "volitional-u", prompt: "Make the volitional — 'let's do our best'", jp: "頑張[がんば]る", answers: ["頑張[がんば]ろう"] },
-    { id: "volitional-ru", prompt: "Make the volitional — 'let's eat'", jp: "食[た]べる", answers: ["食[た]べよう"] },
     { id: "mai", prompt: "Literary negative volitional — 'shall not go'", jp: "行[い]く", answers: ["行[い]くまい"] },
     { id: "dearou", prompt: "Literary equivalent of だろう", jp: "だろう", answers: ["であろう"] },
     { id: "karou", prompt: "Literary conjecture for i-adjectives — 'is probably good'", jp: "よい", answers: ["よかろう"] },
+    { id: "you-ga-mai-ga", prompt: "Fill — 'whether it rains or not'", jp: "降[ふ]ろうが降[ふ]る◯◯が", answers: ["まい"] },
+    { id: "you-to-shinai", prompt: "Say 'won't even try to talk'", jp: "話[はな]す", answers: ["話[はな]そうとしない"] },
   ],
 };

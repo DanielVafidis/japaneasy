@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Situation: convenience store checkout — polite requests, ください, てもいい. */
 export const atTheKonbini: Reading = {
   id: "at-the-konbini",
-  stage: "essential-grammar",
-  order: 3,
+  stage: "n4",
+  order: 0,
   kind: "situation",
   title: "At the Konbini",
   jpTitle: "コンビニで",

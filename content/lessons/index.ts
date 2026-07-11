@@ -1,9 +1,10 @@
 import type { Lesson } from "../types";
 
-import { recapBasicGrammar } from "./recap-basic-grammar";
-import { recapEssentialGrammar } from "./recap-essential-grammar";
-import { recapSpecialExpressions } from "./recap-special-expressions";
-import { recapAdvancedTopics } from "./recap-advanced-topics";
+import { recapN5 } from "./recap-n5";
+import { recapN4 } from "./recap-n4";
+import { recapN3 } from "./recap-n3";
+import { recapN2 } from "./recap-n2";
+import { recapN1 } from "./recap-n1";
 
 import { introduction } from "./introduction";
 import { hiragana } from "./hiragana";
@@ -40,6 +41,9 @@ import { givingReceiving } from "./giving-receiving";
 import { makingRequests } from "./making-requests";
 import { numbersCounting } from "./numbers-counting";
 import { casualPatterns } from "./casual-patterns";
+import { existenceLocation } from "./existence-location";
+import { intentionTsumori } from "./intention-tsumori";
+import { causativePassiveIntro } from "./causative-passive-intro";
 
 import { causativePassive } from "./causative-passive";
 import { honorificHumble } from "./honorific-humble";
@@ -53,6 +57,10 @@ import { easeDifficulty } from "./ease-difficulty";
 import { hypothesizing } from "./hypothesizing";
 import { timeSpecificActions } from "./time-specific-actions";
 import { timeAndMama } from "./time-and-mama";
+import { teAspect } from "./te-aspect";
+import { conditionalsNuance } from "./conditionals-nuance";
+import { reasonsCauses } from "./reasons-causes";
+import { contrastNoni } from "./contrast-noni";
 
 import { formalDearu } from "./formal-dearu";
 import { hazuBeki } from "./hazu-beki";
@@ -63,6 +71,13 @@ import { tendencies } from "./tendencies";
 import { advancedVolitional } from "./advanced-volitional";
 import { coveredEvents } from "./covered-events";
 import { coveredBy } from "./covered-by";
+import { similarPointsContrast } from "./similar-points-contrast";
+import { conditionalsAdvanced } from "./conditionals-advanced";
+import { inferenceWake } from "./inference-wake";
+import { concessionContrast } from "./concession-contrast";
+import { keigoAdvanced } from "./keigo-advanced";
+import { literaryNegatives } from "./literary-negatives";
+import { n1NuanceIntegration } from "./n1-nuance-integration";
 
 export const allLessons: Lesson[] = [
   introduction,
@@ -98,6 +113,9 @@ export const allLessons: Lesson[] = [
   makingRequests,
   numbersCounting,
   casualPatterns,
+  existenceLocation,
+  intentionTsumori,
+  causativePassiveIntro,
   causativePassive,
   honorificHumble,
   teShimau,
@@ -110,6 +128,10 @@ export const allLessons: Lesson[] = [
   hypothesizing,
   timeSpecificActions,
   timeAndMama,
+  teAspect,
+  conditionalsNuance,
+  reasonsCauses,
+  contrastNoni,
   formalDearu,
   hazuBeki,
   deSaeDesura,
@@ -119,11 +141,19 @@ export const allLessons: Lesson[] = [
   advancedVolitional,
   coveredEvents,
   coveredBy,
+  similarPointsContrast,
+  conditionalsAdvanced,
+  inferenceWake,
+  concessionContrast,
+  keigoAdvanced,
+  literaryNegatives,
+  n1NuanceIntegration,
 
-  recapBasicGrammar,
-  recapEssentialGrammar,
-  recapSpecialExpressions,
-  recapAdvancedTopics,
+  recapN5,
+  recapN4,
+  recapN3,
+  recapN2,
+  recapN1,
 ];
 
 export const lessonsById: Record<string, Lesson> = Object.fromEntries(

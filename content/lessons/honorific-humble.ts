@@ -2,12 +2,12 @@ import type { Lesson } from "../types";
 
 export const honorificHumble: Lesson = {
   id: "honorific-humble",
-  stage: "special-expressions",
-  order: 1,
+  stage: "n3",
+  order: 8,
   title: "Honorific & Humble Speech",
-  subtitle: "Respectful 尊敬語 and modest 謙譲語",
+  subtitle: "尊敬語 and 謙譲語 basics",
   summary:
-    "Elevate the listener and humble yourself — essential for shops, workplaces, and meeting someone's family.",
+    "Elevate the listener and humble yourself — shop and office essentials. Advanced keigo patterns live in the Keigo Advanced lesson.",
   estMinutes: 20,
   vocabulary: [
     { word: "いらっしゃる", reading: "いらっしゃる", meaning: "to be / go / come (hon.)" },
@@ -17,68 +17,61 @@ export const honorificHumble: Lesson = {
     { word: "いただく", reading: "いただく", meaning: "to receive (hum.)" },
     { word: "社長[しゃちょう]", reading: "しゃちょう", meaning: "company president" },
     { word: "お客[きゃく]様[さま]", reading: "おきゃくさま", meaning: "customer; guest" },
-    { word: "恐[おそ]れ入[い]ります", reading: "おそれいります", meaning: "I'm sorry to trouble you (hum.)" },
-    { word: "靴[くつ]", reading: "くつ", meaning: "shoes" },
     { word: "会議[かいぎ]", reading: "かいぎ", meaning: "meeting" },
-    { word: "お客様[きゃくさま]", reading: "おきゃくさま", meaning: "customer; guest (polite)" },
     { word: "ご覧[らん]になる", reading: "ごらんになる", meaning: "to see (honorific)" },
-    { word: "存[ぞん]じる", reading: "ぞんじる", meaning: "to know (humble)" },
   ],
   blocks: [
     {
       type: "prose",
-      text: "Japanese **keigo** (respectful language) has three layers learners meet in order: **polite** {{です／ます}} (丁寧語), **honorific** (尊敬語) elevates the other person, and **humble** (謙譲語) lowers yourself. Never honor yourself or humble the customer — that swap is a classic learner mistake.",
+      text: "Japanese **keigo** has three layers: **polite** {{です／ます}} (丁寧語), **honorific** (尊敬語) elevates the other person, and **humble** (謙譲語) lowers yourself. This lesson covers the **basics** for shops and workplaces. Deeper patterns (advanced set phrases, nuanced swaps) are in **Keigo Advanced**.",
     },
     {
       type: "rule",
       title: "Honorific — elevate them",
       items: [
         "**Special verbs:** {{いらっしゃる}} (be/go/come), {{おっしゃる}} (say), {{なさる}} (do), {{くださる}} (give).",
-        "**お／ご + stem + になる:** {{お食べになる}} — '(they) eat (respectfully).'",
-        "**Passive as honorific:** {{決[き]められました}} — 'It has been decided (by the boss).'",
+        "**お／ご + stem + になる:** {{お待ちになる}} — '(they) wait (respectfully).'",
+        "**Passive as honorific:** {{決められました}} — 'It has been decided (by the boss).'",
       ],
     },
     {
       type: "rule",
       title: "Humble — lower yourself",
       items: [
-        "**Special verbs:** {{参る}} (go/come), {{申す}} (say), {{いただく}} (receive), {{差[さ]し上[あ]げる}} (give).",
-        "**お／ご + stem + する:** {{お待[ま]ちする}} — 'I wait (humbly).' {{お世[せ]話[わ]になりました}} — 'Thank you for taking care of me.'",
+        "**Special verbs:** {{参る}} (go/come), {{申す}} (say), {{いただく}} (receive), {{差し上げる}} (give).",
+        "**お／ご + stem + する:** {{お待ちする}} — 'I wait (humbly).' {{お世話になりました}}.",
       ],
     },
     {
       type: "table",
-      caption: "Plain → honorific / humble",
+      caption: "Plain → honorific / humble (core set)",
       headers: ["Plain", "Honorific", "Humble"],
       rows: [
         ["行く / 来る / いる", "いらっしゃる", "参る / 伺う"],
         ["言う", "おっしゃる", "申す / 申し上げる"],
         ["する", "なさる", "いたす"],
-        ["食べる", "召[め]し上[あ]がる", "いただく"],
-        ["見る", "ご覧[らん]になる", "拝見[はいけん]する"],
-        ["聞く / 聞こえる", "お聞[き]きになる", "伺[うかが]う"],
-        ["知る / 知っている", "ご存[ぞん]じ", "存[ぞん]じ上[あ]げる"],
-        ["会う", "お会[あ]いになる", "お目[め]にかかる"],
-        ["くれる", "くださる", "— (use いただく for receive)"],
+        ["食べる / 飲む", "召し上がる", "いただく"],
+        ["見る", "ご覧になる", "拝見する"],
+        ["くれる", "くださる", "— (use いただく to receive)"],
       ],
     },
     {
       type: "rule",
       title: "お / ご prefix",
       items: [
-        "**お** — native Japanese stems: {{お待[ま]ち}} · {{お話[はな]し}}.",
-        "**ご** — Sino-Japanese (on-reading): {{ご連絡[れんらく]}} · {{ご確認[かくにん]}}.",
+        "**お** — native stems: {{お待ち}} · {{お話し}}.",
+        "**ご** — Sino-Japanese: {{ご連絡}} · {{ご確認}}.",
         "Honorific: {{お}} + stem + {{になる}}. Humble: {{お}} + stem + {{する}}.",
       ],
     },
     {
       type: "rule",
-      title: "Common mistakes",
+      title: "Classic mistakes",
       items: [
-        "✗ {{私[わたし]がおっしゃいます}} — don't honor yourself.",
-        "✗ {{お客様[おきゃくさま]が参[まい]りました}} — don't humble the customer.",
+        "✗ {{私がおっしゃいます}} — don't honor yourself.",
+        "✗ {{お客様が参りました}} — don't humble the customer.",
         "✓ {{お客様がいらっしゃいました}} — elevate the guest.",
-        "✓ {{私[わたし]が参[まい]りました}} — humble yourself arriving.",
+        "✓ {{私が参りました}} — humble yourself arriving.",
       ],
     },
     {
@@ -87,7 +80,7 @@ export const honorificHumble: Lesson = {
       lines: [
         { speaker: "部下", jp: "社長[しゃちょう]はもういらっしゃいますか。", en: "Is the president here already? (respectful)" },
         { speaker: "秘書", jp: "はい、お待[ま]ちしております。", en: "Yes, we've been waiting (humble)." },
-        { speaker: "社長", jp: "会議[かいぎ]は三時[さんじ]からでございます。", en: "The meeting is from three (polite formal)." },
+        { speaker: "部下", jp: "会議[かいぎ]の件[けん]、申[もう]し上[あ]げます。", en: "I'll report on the meeting matter (humble)." },
       ],
     },
     {
@@ -101,7 +94,7 @@ export const honorificHumble: Lesson = {
     },
     {
       type: "tip",
-      text: "Store clerks use set phrases: {{いらっしゃいませ}} (welcome), {{かしこまりました}} (certainly). You don't need full keigo as a customer — polite {{です／ます}} is enough.",
+      text: "As a customer, polite {{です／ます}} is enough. Store clerks use set phrases: {{いらっしゃいませ}}, {{かしこまりました}}. Don't over-keigo yourself.",
     },
   ],
   quiz: [
@@ -131,14 +124,14 @@ export const honorificHumble: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "Honorific for 会う?",
-      choices: ["お会いになる", "お目にかかる", "会われる", "会います"],
-      answer: 0,
+      prompt: "Honorific pattern: お + stem + ?",
+      choices: ["する", "になる", "いたす", "申す"],
+      answer: 1,
     },
     {
       kind: "order",
-      prompt: "Build: 'Is the teacher here already?' (honorific)",
-      tiles: ["先生[せんせい]は", "もう", "いらっしゃいますか"],
+      prompt: "Build: 'Is the president here already?' (honorific)",
+      tiles: ["社長[しゃちょう]は", "もう", "いらっしゃいますか"],
       distractors: ["おりますか"],
       explanation: "Honorific いらっしゃる for others; humble おる is for your own side.",
     },

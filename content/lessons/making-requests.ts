@@ -2,45 +2,50 @@ import type { Lesson } from "../types";
 
 export const makingRequests: Lesson = {
   id: "making-requests",
-  stage: "essential-grammar",
-  order: 16,
+  stage: "n4",
+  order: 1,
   title: "Making Requests",
   subtitle: "ください · ちょうだい · なさい · command form",
   summary:
-    "Ask politely with te-form + ください, casually with ちょうだい, give firm instructions with なさい, and learn the plain command form.",
+    "Ask for help on the commute or at school — polite てください, casual ちょうだい, firm なさい, and blunt commands.",
   estMinutes: 16,
   vocabulary: [
     { word: "ください", reading: "ください", meaning: "please (give me / do for me)" },
-    { word: "書[か]く", reading: "かく", meaning: "to write" },
-    { word: "漢字[かんじ]", reading: "かんじ", meaning: "kanji" },
-    { word: "消[け]しゴム", reading: "けしゴム", meaning: "eraser" },
+    { word: "傘[かさ]", reading: "かさ", meaning: "umbrella" },
+    { word: "待[ま]つ", reading: "まつ", meaning: "to wait" },
+    { word: "教[おし]える", reading: "おしえる", meaning: "to teach; to tell" },
     { word: "貸[か]す", reading: "かす", meaning: "to lend" },
     { word: "座[すわ]る", reading: "すわる", meaning: "to sit" },
+    { word: "荷物[にもつ]", reading: "にもつ", meaning: "luggage; bags" },
+    { word: "道[みち]", reading: "みち", meaning: "road; way" },
+    { word: "写真[しゃしん]", reading: "しゃしん", meaning: "photograph" },
+    { word: "電車[でんしゃ]", reading: "でんしゃ", meaning: "train" },
   ],
   blocks: [
+    {
+      type: "prose",
+      text: "When the train is packed, you're lost, or you need a favour, Japanese requests range from soft {{てください}} to blunt command forms. Match the form to the person and the urgency.",
+    },
     {
       type: "heading",
       text: "Te-form + ください",
     },
     {
-      type: "prose",
-      text: "{{ください}} is the standard polite request. Attach it to the **te-form** for actions, or use {{をください}} for 'please give me (this thing)'.",
+      type: "rule",
+      title: "Polite requests",
+      items: [
+        "Action: te-form + {{ください}} — {{待ってください}}, {{教えてください}}.",
+        "Thing: {{をください}} — {{それをください}}.",
+        "Negative: {{ないでください}} — {{押さないでください}}.",
+      ],
     },
     {
       type: "examples",
       items: [
-        { jp: "ここに名前[なまえ]を書[か]いてください。", en: "Please write your name here." },
-        { jp: "もう少[すこ]し大[おお]きい声[こえ]で話[はな]してください。", en: "Please speak a little louder." },
-        { jp: "それをください。", en: "Please give me that." },
-      ],
-    },
-    {
-      type: "rule",
-      title: "Negative requests",
-      items: [
-        "{{ないでください}} — 'please don't': {{ここに荷物[にもつ]を置[お]かないでください}}.",
-        "Casual: drop {{ください}} → {{もう一度[いちど]言[い]って}}.",
-        "Rough casual: {{〜てくれ}} — 'do it for me'.",
+        { jp: "少[すこ]し待[ま]ってください。電車[でんしゃ]が遅[おく]れています。", en: "Please wait a moment. The train is delayed." },
+        { jp: "駅[えき]までの道[みち]を教[おし]えてください。", en: "Please tell me the way to the station." },
+        { jp: "この荷物[にもつ]を持[も]ってくださいませんか。", en: "Could you please carry this bag?" },
+        { jp: "ドアの近[ちか]くに立[た]たないでください。", en: "Please don't stand near the door." },
       ],
     },
     {
@@ -49,13 +54,23 @@ export const makingRequests: Lesson = {
     },
     {
       type: "prose",
-      text: "{{ちょうだい}} slots in exactly where {{ください}} goes, but casually: {{それ、ちょうだい}} 'gimme that', te-form + {{ちょうだい}} for actions. It comes from humble {{頂戴[ちょうだい]}} 'receiving' — historically feminine/childlike in tone, but widely used among friends and family.",
+      text: "{{ちょうだい}} replaces {{ください}} among friends and family: {{ちょっと待ってちょうだい}}, {{それ、ちょうだい}}. Softer than a bare te-form request, still casual.",
     },
     {
       type: "examples",
       items: [
-        { jp: "ちょっと待[ま]ってちょうだい。", en: "Wait a sec, please. (casual)" },
-        { jp: "その写真[しゃしん]、一枚[いちまい]ちょうだい。", en: "Give me one of those photos, will you?" },
+        { jp: "傘[かさ]、貸[か]してちょうだい。", en: "Lend me an umbrella, will you?" },
+        { jp: "写真[しゃしん]、一枚[いちまい]ちょうだい。", en: "Give me one of those photos?" },
+      ],
+    },
+    {
+      type: "dialogue",
+      title: "Asking for help on the platform",
+      lines: [
+        { speaker: "A", jp: "すみません、この電車[でんしゃ]、新宿[しんじゅく]に行[い]きますか。", en: "Excuse me — does this train go to Shinjuku?" },
+        { speaker: "B", jp: "はい。次[つぎ]の駅[えき]で乗[の]り換[か]えてください。", en: "Yes. Please transfer at the next station." },
+        { speaker: "A", jp: "ありがとうございます。地図[ちず]を見[み]てもいいですか。", en: "Thank you. May I look at the map?" },
+        { speaker: "B", jp: "どうぞ。ここに書[か]いてありますよ。", en: "Go ahead. It's written here." },
       ],
     },
     {
@@ -64,7 +79,14 @@ export const makingRequests: Lesson = {
     },
     {
       type: "prose",
-      text: "{{なさい}} attaches to the **stem** (not te-form): {{聞[き]きなさい}} ('Listen!'), {{座[すわ]りなさい}}. Used by teachers, parents — firm but not as blunt as the command form. Casual short form: {{聞[き]きな}}.",
+      text: "{{なさい}} attaches to the **stem**: {{聞きなさい}}, {{座りなさい}}. Teachers and parents use it — firm, not as blunt as the plain command. Casual short form: {{聞きな}}.",
+    },
+    {
+      type: "examples",
+      items: [
+        { jp: "静[しず]かにしなさい。", en: "Be quiet. (teacher/parent)" },
+        { jp: "宿題[しゅくだい]を出[だ]しなさい。", en: "Hand in your homework." },
+      ],
     },
     {
       type: "heading",
@@ -74,42 +96,44 @@ export const makingRequests: Lesson = {
       type: "rule",
       title: "Conjugation",
       items: [
-        "**Ru-verbs:** replace {{る}} with {{ろ}}: {{食[た]べる}} → {{食[た]べろ}}.",
-        "**U-verbs:** change final vowel to /e/: {{死[し]ぬ}} → {{死[し]ね}}.",
-        "**Exceptions:** {{する}} → {{しろ}}, {{来[く]る}} → {{来[こ]い}}.",
-        "**Irregular:** {{くれる}} → {{くれ}} (already a request form).",
+        "**Ru-verbs:** {{る}} → {{ろ}}: {{食べる}} → {{食べろ}}.",
+        "**U-verbs:** final vowel → /e/: {{待つ}} → {{待て}}, {{座る}} → {{座れ}}.",
+        "**Exceptions:** {{する}} → {{しろ}}, {{来る}} → {{来い}}.",
       ],
     },
     {
       type: "examples",
       items: [
         { jp: "早[はや]く来[こ]い！", en: "Come quickly!" },
-        { jp: "ここに座[すわ]れ。", en: "Sit here. (command)" },
+        { jp: "ここに座[すわ]れ。", en: "Sit here." },
       ],
     },
     {
       type: "note",
-      text: "Command forms are blunt — use only with close friends, never with strangers or superiors. {{ください}} is your default.",
+      text: "Commands are blunt — close friends or fiction, not strangers or superiors. Default to {{ください}}. Soften further with {{くださいませんか}} when asking a favour of someone you don't know well.",
     },
   ],
   quiz: [
     {
       kind: "mc",
-      prompt: "Polite request: 'please write'?",
-      choices: ["書いて", "書いてください", "書きなさい", "書け"],
+      prompt: "Polite: 'please wait'?",
+      choices: ["待って", "待ってください", "待ちなさい", "待て"],
       answer: 1,
+      explanation: "てください is the standard polite request.",
     },
     {
       kind: "mc",
-      prompt: "「Please don't come here」?",
-      choices: ["来ないください", "来ないでください", "来なくてください", "来ないで"],
+      prompt: "「Please don't push」?",
+      choices: ["押さないください", "押さないでください", "押さなくてください", "押すないで"],
       answer: 1,
+      explanation: "ないでください for negative requests.",
     },
     {
       kind: "mc",
-      prompt: "Firm (teacher-style) 'listen!'?",
-      choices: ["聞いてください", "聞きなさい", "聞け", "聞いてくれ"],
+      prompt: "Teacher-style 'sit down!'?",
+      choices: ["座ってください", "座りなさい", "座れ", "座ってちょうだい"],
       answer: 1,
+      explanation: "なさい = stem + なさい.",
     },
     {
       kind: "mc",
@@ -119,29 +143,35 @@ export const makingRequests: Lesson = {
     },
     {
       kind: "mc",
-      prompt: "待ってちょうだい is best described as…",
+      prompt: "待ってちょうだい is…",
       choices: [
-        "a casual, friendly 'please wait'",
+        "a casual friendly 'please wait'",
         "a rude command",
         "formal business Japanese",
         "a question",
       ],
       answer: 0,
-      explanation: "ちょうだい is the casual stand-in for ください, common among friends and family.",
     },
     {
       kind: "order",
-      prompt: "Build: 'Please wait here a moment'",
-      tiles: ["ここで", "少[すこ]し", "待[ま]ってください"],
-      distractors: ["待[ま]ちください"],
-      explanation: "ください follows the te-form: 待って + ください.",
+      prompt: "Build: 'Please tell me the way to the station'",
+      tiles: ["駅[えき]までの", "道[みち]を", "教[おし]えてください"],
+      distractors: ["教[おし]えください"],
+      explanation: "ください follows the te-form: 教えて + ください.",
+    },
+    {
+      kind: "listen",
+      prompt: "Listen — type the sentence you hear:",
+      audio: "少[すこ]し待[ま]ってください",
+      explanation: "少し待ってください — Please wait a moment.",
     },
   ],
   drills: [
-    { id: "kudasai", prompt: "Request it — 'please write'", jp: "書[か]く", answers: ["書[か]いてください"] },
-    { id: "negative-request", prompt: "Negative request — 'please don't write'", jp: "書[か]く", answers: ["書[か]かないでください"] },
-    { id: "choudai", prompt: "Type the casual stand-in for ください", jp: "？", answers: ["ちょうだい"] },
-    { id: "nasai", prompt: "Soft command — parent to child: 'sit'", jp: "座[すわ]る", answers: ["座[すわ]りなさい"] },
-    { id: "command", prompt: "Blunt command form — 'sit!'", jp: "座[すわ]る", answers: ["座[すわ]れ"] },
+    { id: "kudasai", prompt: "Request — 'please wait'", jp: "待[ま]つ", answers: ["待[ま]ってください"] },
+    { id: "negative-request", prompt: "Negative request — 'please don't push'", jp: "押[お]す", answers: ["押[お]さないでください"] },
+    { id: "choudai", prompt: "Casual stand-in for ください", jp: "？", answers: ["ちょうだい"] },
+    { id: "nasai", prompt: "Soft command — 'sit'", jp: "座[すわ]る", answers: ["座[すわ]りなさい"] },
+    { id: "command", prompt: "Blunt command — 'sit!'", jp: "座[すわ]る", answers: ["座[すわ]れ"] },
+    { id: "oshiete", prompt: "Request — 'please tell/teach me'", jp: "教[おし]える", answers: ["教[おし]えてください"] },
   ],
 };

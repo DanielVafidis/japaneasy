@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Uses: dictionary/past forms, adverbs, を・へ・で, relative clause. */
 export const morning: Reading = {
   id: "morning",
-  stage: "basic-grammar",
-  order: 2,
+  stage: "n5",
+  order: 1,
   title: "Morning",
   jpTitle: "朝[あさ]",
   summary: "A plain-form daily routine — verbs and particles doing their jobs.",

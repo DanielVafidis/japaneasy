@@ -7,10 +7,11 @@
 
 export type StageId =
   | "foundations"
-  | "basic-grammar"
-  | "essential-grammar"
-  | "special-expressions"
-  | "advanced-topics";
+  | "n5"
+  | "n4"
+  | "n3"
+  | "n2"
+  | "n1";
 
 export interface VocabEntry {
   word: string; // may include furigana markup

@@ -3,8 +3,8 @@ import type { Reading } from "../types";
 /** Uses: past tense, negatives, relative clauses, へ/を/に particles, adverbs. */
 export const theLibrary: Reading = {
   id: "the-library",
-  stage: "basic-grammar",
-  order: 1,
+  stage: "n5",
+  order: 3,
   title: "The Library",
   jpTitle: "図書館[としょかん]",
   summary: "A quiet afternoon with a difficult book — past tense in action.",
