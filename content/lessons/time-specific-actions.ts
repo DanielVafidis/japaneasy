@@ -18,6 +18,12 @@ export const timeSpecificActions: Lesson = {
     { word: "眠[ねむ]る", reading: "ねむる", meaning: "to sleep; to fall asleep" },
     { word: "残念[ざんねん]", reading: "ざんねん", meaning: "unfortunate; a shame" },
     { word: "連休[れんきゅう]", reading: "れんきゅう", meaning: "consecutive holidays; long weekend" },
+    { word: "風[かぜ]", reading: "かぜ", meaning: "wind" },
+    { word: "音楽[おんがく]", reading: "おんがく", meaning: "music" },
+    { word: "聴[き]く", reading: "きく", meaning: "to listen (to music)", note: "聴く — attentive listening; 聞く — to hear/ask" },
+    { word: "迷[まよ]う", reading: "まよう", meaning: "to get lost; to waver (u-verb)" },
+    { word: "飛[と]ぶ", reading: "とぶ", meaning: "to fly; to jump (u-verb)" },
+    { word: "レポート", reading: "レポート", meaning: "report; paper" },
   ],
   blocks: [
     {

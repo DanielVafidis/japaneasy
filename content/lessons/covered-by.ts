@@ -18,6 +18,8 @@ export const coveredBy: Lesson = {
     { word: "満席[まんせき]", reading: "まんせき", meaning: "fully seated; no seats free" },
     { word: "散歩[さんぽ]", reading: "さんぽ", meaning: "walk; stroll" },
     { word: "郵便局[ゆうびんきょく]", reading: "ゆうびんきょく", meaning: "post office" },
+    { word: "黒[くろ]", reading: "くろ", meaning: "black" },
+    { word: "傷[きず]", reading: "きず", meaning: "wound; scratch" },
   ],
   blocks: [
     {

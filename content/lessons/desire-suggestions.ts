@@ -16,6 +16,8 @@ export const desireSuggestions: Lesson = {
     { word: "ラーメン", reading: "らーめん", meaning: "ramen" },
     { word: "一緒[いっしょ]", reading: "いっしょ", meaning: "together" },
     { word: "欲[ほ]しい", reading: "ほしい", meaning: "want (a thing)" },
+    { word: "荷物[にもつ]", reading: "にもつ", meaning: "luggage; bags" },
+    { word: "新[あたら]しい", reading: "あたらしい", meaning: "new (i-adj)" },
   ],
   blocks: [
     {

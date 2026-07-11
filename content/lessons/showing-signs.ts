@@ -16,6 +16,9 @@ export const showingSigns: Lesson = {
     { word: "子供[こども]っぽい", reading: "こどもっぽい", meaning: "childish" },
     { word: "気配[けはい]", reading: "けはい", meaning: "sign; indication" },
     { word: "怪[あや]しい", reading: "あやしい", meaning: "suspicious" },
+    { word: "結果[けっか]", reading: "けっか", meaning: "result" },
+    { word: "泣[な]く", reading: "なく", meaning: "to cry (u-verb)" },
+    { word: "悲[かな]しい", reading: "かなしい", meaning: "sad (i-adj)" },
   ],
   blocks: [
     {

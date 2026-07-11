@@ -16,6 +16,7 @@ export const quotedSpeech: Lesson = {
     { word: "考[かんが]える", reading: "かんがえる", meaning: "to consider" },
     { word: "寒[さむ]い", reading: "さむい", meaning: "cold" },
     { word: "授業[じゅぎょう]", reading: "じゅぎょう", meaning: "class" },
+    { word: "店長[てんちょう]", reading: "てんちょう", meaning: "shop manager" },
   ],
   blocks: [
     {

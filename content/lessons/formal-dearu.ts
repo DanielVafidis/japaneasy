@@ -14,6 +14,7 @@ export const formalDearu: Lesson = {
     { word: "結論[けつろん]", reading: "けつろん", meaning: "conclusion" },
     { word: "事実[じじつ]", reading: "じじつ", meaning: "fact" },
     { word: "重要[じゅうよう]", reading: "じゅうよう", meaning: "important" },
+    { word: "傾向[けいこう]", reading: "けいこう", meaning: "tendency; trend" },
   ],
   blocks: [
     {

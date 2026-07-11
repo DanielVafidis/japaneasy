@@ -40,6 +40,7 @@ export const theLibrary: Reading = {
     { word: "難[むずか]しい", reading: "むずかしい", meaning: "difficult (i-adj)" },
     { word: "言葉[ことば]", reading: "ことば", meaning: "word; language" },
     { word: "ご飯[はん]", reading: "ごはん", meaning: "meal; cooked rice" },
+    { word: "帰[かえ]る", reading: "かえる", meaning: "to go home; to return (u-verb)" },
   ],
   quiz: [
     {

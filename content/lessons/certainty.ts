@@ -17,6 +17,7 @@ export const certainty: Lesson = {
     { word: "試験[しけん]", reading: "しけん", meaning: "exam" },
     { word: "はず", reading: "はず", meaning: "should be; expected" },
     { word: "違[ちが]う", reading: "ちがう", meaning: "to differ; be wrong" },
+    { word: "犯人[はんにん]", reading: "はんにん", meaning: "culprit" },
   ],
   blocks: [
     {

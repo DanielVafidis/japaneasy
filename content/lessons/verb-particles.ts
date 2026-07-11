@@ -17,6 +17,7 @@ export const verbParticles: Lesson = {
     { word: "家", reading: "いえ", meaning: "house; home" },
     { word: "電車", reading: "でんしゃ", meaning: "train" },
     { word: "友達", reading: "ともだち", meaning: "friend" },
+    { word: "日本[にほん]", reading: "にほん", meaning: "Japan" },
   ],
   blocks: [
     {

@@ -16,6 +16,7 @@ export const similarityHearsay: Lesson = {
     { word: "伝[つた]える", reading: "つたえる", meaning: "to convey" },
     { word: "春[はる]", reading: "はる", meaning: "spring" },
     { word: "忙[いそが]しい", reading: "いそがしい", meaning: "busy" },
+    { word: "美味[おい]しい", reading: "おいしい", meaning: "delicious (i-adj)" },
   ],
   blocks: [
     {

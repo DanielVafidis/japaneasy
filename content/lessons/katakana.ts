@@ -9,6 +9,11 @@ export const katakana: Lesson = {
   summary:
     "The same sounds as hiragana, a different look — used for foreign words, with a simple long-vowel dash.",
   estMinutes: 18,
+  vocabulary: [
+    { word: "ケーキ", reading: "ケーキ", meaning: "cake" },
+    { word: "コーヒー", reading: "コーヒー", meaning: "coffee" },
+    { word: "テレビ", reading: "テレビ", meaning: "TV" },
+  ],
   blocks: [
     {
       type: "prose",

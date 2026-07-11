@@ -16,6 +16,10 @@ export const definingAndTrying: Lesson = {
     { word: "分[わ]かる", reading: "わかる", meaning: "to understand" },
     { word: "留学[りゅうがく]", reading: "りゅうがく", meaning: "study abroad" },
     { word: "早[はや]い", reading: "はやい", meaning: "early; fast" },
+    { word: "国[くに]", reading: "くに", meaning: "country" },
+    { word: "一度[いちど]", reading: "いちど", meaning: "once; one time" },
+    { word: "合格[ごうかく]する", reading: "ごうかくする", meaning: "to pass (an exam)" },
+    { word: "単語[たんご]", reading: "たんご", meaning: "word; vocabulary" },
   ],
   blocks: [
     {

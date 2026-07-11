@@ -14,6 +14,7 @@ export const deSaeDesura: Lesson = {
     { word: "大人[おとな]", reading: "おとな", meaning: "adult" },
     { word: "彼[かれ]", reading: "かれ", meaning: "he" },
     { word: "簡単[かんたん]", reading: "かんたん", meaning: "simple; easy" },
+    { word: "専門家[せんもんか]", reading: "せんもんか", meaning: "expert; specialist" },
   ],
   blocks: [
     {

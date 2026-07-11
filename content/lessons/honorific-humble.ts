@@ -18,6 +18,11 @@ export const honorificHumble: Lesson = {
     { word: "社長[しゃちょう]", reading: "しゃちょう", meaning: "company president" },
     { word: "お客[きゃく]様[さま]", reading: "おきゃくさま", meaning: "customer; guest" },
     { word: "恐[おそ]れ入[い]ります", reading: "おそれいります", meaning: "I'm sorry to trouble you (hum.)" },
+    { word: "靴[くつ]", reading: "くつ", meaning: "shoes" },
+    { word: "会議[かいぎ]", reading: "かいぎ", meaning: "meeting" },
+    { word: "お客様[きゃくさま]", reading: "おきゃくさま", meaning: "customer; guest (polite)" },
+    { word: "ご覧[らん]になる", reading: "ごらんになる", meaning: "to see (honorific)" },
+    { word: "存[ぞん]じる", reading: "ぞんじる", meaning: "to know (humble)" },
   ],
   blocks: [
     {

@@ -14,6 +14,8 @@ export const hazuBeki: Lesson = {
     { word: "約束[やくそく]", reading: "やくそく", meaning: "promise" },
     { word: "当然[とうぜん]", reading: "とうぜん", meaning: "natural; expected" },
     { word: "反省[はんせい]", reading: "はんせい", meaning: "reflection; regret" },
+    { word: "嘘[うそ]", reading: "うそ", meaning: "lie" },
+    { word: "破[やぶ]る", reading: "やぶる", meaning: "to break (a rule, promise) (u-verb)" },
   ],
   blocks: [
     {

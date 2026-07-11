@@ -15,6 +15,9 @@ export const conditionals: Lesson = {
     { word: "暇[ひま]", reading: "ひま", meaning: "free time" },
     { word: "病気[びょうき]", reading: "びょうき", meaning: "illness" },
     { word: "東京[とうきょう]", reading: "とうきょう", meaning: "Tokyo" },
+    { word: "電話[でんわ]", reading: "でんわ", meaning: "telephone; a call", note: "電話する — to phone someone" },
+    { word: "手伝[てつだ]う", reading: "てつだう", meaning: "to help; to lend a hand (u-verb)" },
+    { word: "連絡[れんらく]する", reading: "れんらくする", meaning: "to contact; to get in touch" },
   ],
   blocks: [
     {

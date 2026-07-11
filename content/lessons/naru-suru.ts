@@ -18,6 +18,12 @@ export const naruSuru: Lesson = {
     { word: "野菜[やさい]", reading: "やさい", meaning: "vegetable" },
     { word: "運動[うんどう]", reading: "うんどう", meaning: "exercise" },
     { word: "甘[あま]い", reading: "あまい", meaning: "sweet" },
+    { word: "来月[らいげつ]", reading: "らいげつ", meaning: "next month" },
+    { word: "大阪[おおさか]", reading: "おおさか", meaning: "Osaka" },
+    { word: "妹[いもうと]", reading: "いもうと", meaning: "younger sister" },
+    { word: "弟[おとうと]", reading: "おとうと", meaning: "younger brother" },
+    { word: "長[なが]い", reading: "ながい", meaning: "long (i-adj)" },
+    { word: "ニュース", reading: "ニュース", meaning: "the news" },
   ],
   blocks: [
     {

@@ -16,6 +16,10 @@ export const easeDifficulty: Lesson = {
     { word: "言[い]う", reading: "いう", meaning: "to say" },
     { word: "避[さ]ける", reading: "さける", meaning: "to avoid" },
     { word: "決[き]める", reading: "きめる", meaning: "to decide" },
+    { word: "話[はなし]", reading: "はなし", meaning: "story; talk" },
+    { word: "字[じ]", reading: "じ", meaning: "character; handwriting" },
+    { word: "断[ことわ]る", reading: "ことわる", meaning: "to decline; to refuse (u-verb)" },
+    { word: "解[と]く", reading: "とく", meaning: "to solve (u-verb)" },
   ],
   blocks: [
     {

@@ -18,6 +18,11 @@ export const comparisons: Lesson = {
     { word: "一番[いちばん]", reading: "いちばん", meaning: "number one; the most" },
     { word: "天気予報[てんきよほう]", reading: "てんきよほう", meaning: "weather forecast" },
     { word: "違[ちが]う", reading: "ちがう", meaning: "to differ; to be wrong" },
+    { word: "雪[ゆき]", reading: "ゆき", meaning: "snow" },
+    { word: "中[なか]", reading: "なか", meaning: "inside; in" },
+    { word: "無理[むり]", reading: "むり", meaning: "impossible; unreasonable" },
+    { word: "タクシー", reading: "タクシー", meaning: "taxi" },
+    { word: "パソコン", reading: "パソコン", meaning: "computer; laptop" },
   ],
   blocks: [
     {

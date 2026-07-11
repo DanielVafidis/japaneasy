@@ -14,6 +14,9 @@ export const zaruWoEnai: Lesson = {
     { word: "延期[えんき]", reading: "えんき", meaning: "postponement" },
     { word: "事態[じたい]", reading: "じたい", meaning: "situation" },
     { word: "受[う]け入[い]れる", reading: "うけいれる", meaning: "to accept" },
+    { word: "事情[じじょう]", reading: "じじょう", meaning: "circumstances" },
+    { word: "計画[けいかく]", reading: "けいかく", meaning: "plan" },
+    { word: "得[え]る", reading: "える", meaning: "to gain; to obtain (ru-verb)", note: "as in 〜ざるを得ない" },
   ],
   blocks: [
     {

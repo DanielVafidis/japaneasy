@@ -42,6 +42,10 @@ export const morning: Reading = {
     { word: "歩[ある]く", reading: "あるく", meaning: "to walk" },
     { word: "晴[は]れ", reading: "はれ", meaning: "clear weather; sunny" },
     { word: "起[お]きる", reading: "おきる", meaning: "to get up; wake up" },
+    { word: "日[ひ]", reading: "ひ", meaning: "day; sun" },
+    { word: "朝[あさ]", reading: "あさ", meaning: "morning" },
+    { word: "朝[あさ]ご飯[はん]", reading: "あさごはん", meaning: "breakfast" },
+    { word: "バス", reading: "バス", meaning: "bus" },
   ],
   quiz: [
     {

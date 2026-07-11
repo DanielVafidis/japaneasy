@@ -41,6 +41,7 @@ export const myDog: Reading = {
     { word: "でも", reading: "でも", meaning: "but; however" },
     { word: "天気[てんき]", reading: "てんき", meaning: "weather" },
     { word: "いる", reading: "いる", meaning: "to exist; to be (animate)" },
+    { word: "魚[さかな]", reading: "さかな", meaning: "fish" },
   ],
   quiz: [
     {

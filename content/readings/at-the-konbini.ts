@@ -56,6 +56,9 @@ export const atTheKonbini: Reading = {
     { word: "袋[ふくろ]", reading: "ふくろ", meaning: "bag" },
     { word: "いる", reading: "いる", meaning: "to need (u-verb)" },
     { word: "払[はら]う", reading: "はらう", meaning: "to pay" },
+    { word: "お願[ねが]いします", reading: "おねがいします", meaning: "please; I'd like that" },
+    { word: "カード", reading: "カード", meaning: "card" },
+    { word: "コンビニ", reading: "コンビニ", meaning: "convenience store" },
   ],
   quiz: [
     {

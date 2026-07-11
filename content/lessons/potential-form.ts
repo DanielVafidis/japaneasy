@@ -16,6 +16,11 @@ export const potentialForm: Lesson = {
     { word: "書[か]く", reading: "かく", meaning: "to write" },
     { word: "泳[およ]ぐ", reading: "およぐ", meaning: "to swim" },
     { word: "日本語[にほんご]", reading: "にほんご", meaning: "Japanese language" },
+    { word: "山[やま]", reading: "やま", meaning: "mountain" },
+    { word: "声[こえ]", reading: "こえ", meaning: "voice" },
+    { word: "音[おと]", reading: "おと", meaning: "sound" },
+    { word: "弾[ひ]く", reading: "ひく", meaning: "to play (an instrument) (u-verb)" },
+    { word: "ピアノ", reading: "ピアノ", meaning: "piano" },
   ],
   blocks: [
     {

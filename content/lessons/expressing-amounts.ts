@@ -16,6 +16,8 @@ export const expressingAmounts: Lesson = {
     { word: "くらい", reading: "くらい", meaning: "about; to the extent" },
     { word: "すぎる", reading: "すぎる", meaning: "to exceed; too much" },
     { word: "ほど", reading: "ほど", meaning: "extent; so much that" },
+    { word: "一[ひと]つ", reading: "ひとつ", meaning: "one (thing)" },
+    { word: "ゲーム", reading: "ゲーム", meaning: "game" },
   ],
   blocks: [
     {

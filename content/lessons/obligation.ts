@@ -14,6 +14,9 @@ export const obligation: Lesson = {
     { word: "薬[くすり]", reading: "くすり", meaning: "medicine" },
     { word: "約束[やくそく]", reading: "やくそく", meaning: "promise" },
     { word: "禁止[きんし]", reading: "きんし", meaning: "prohibition" },
+    { word: "入[はい]る", reading: "はいる", meaning: "to enter; to go in (u-verb)" },
+    { word: "吸[す]う", reading: "すう", meaning: "to smoke; to breathe in (u-verb)" },
+    { word: "タバコ", reading: "タバコ", meaning: "tobacco; cigarette" },
   ],
   blocks: [
     {

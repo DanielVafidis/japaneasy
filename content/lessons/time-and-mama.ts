@@ -16,6 +16,7 @@ export const timeAndMama: Lesson = {
     { word: "間[あいだ]", reading: "あいだ", meaning: "while; between; during" },
     { word: "まま", reading: "まま", meaning: "as is; unchanged state" },
     { word: "っぱなし", reading: "っぱなし", meaning: "left on / undone (colloquial)" },
+    { word: "窓[まど]", reading: "まど", meaning: "window" },
   ],
   blocks: [
     {

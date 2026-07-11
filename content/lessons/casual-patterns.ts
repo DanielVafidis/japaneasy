@@ -16,6 +16,9 @@ export const casualPatterns: Lesson = {
     { word: "大丈夫[だいじょうぶ]", reading: "だいじょうぶ", meaning: "OK; all right" },
     { word: "面白[おもしろ]い", reading: "おもしろい", meaning: "interesting" },
     { word: "暇[ひま]", reading: "ひま", meaning: "free time; bored" },
+    { word: "顔[かお]", reading: "かお", meaning: "face" },
+    { word: "遅刻[ちこく]する", reading: "ちこくする", meaning: "to be late" },
+    { word: "間[ま]に合[あ]う", reading: "まにあう", meaning: "to be on time; to make it" },
   ],
   blocks: [
     {

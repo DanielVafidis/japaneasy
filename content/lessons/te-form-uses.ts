@@ -16,6 +16,9 @@ export const teFormUses: Lesson = {
     { word: "結婚[けっこん]する", reading: "けっこんする", meaning: "to marry" },
     { word: "教科書[きょうかしょ]", reading: "きょうかしょ", meaning: "textbook" },
     { word: "友達[ともだち]", reading: "ともだち", meaning: "friend" },
+    { word: "今[いま]", reading: "いま", meaning: "now" },
+    { word: "作[つく]る", reading: "つくる", meaning: "to make (u-verb)" },
+    { word: "使[つか]う", reading: "つかう", meaning: "to use (u-verb)" },
   ],
   blocks: [
     {

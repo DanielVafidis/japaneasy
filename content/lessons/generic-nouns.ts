@@ -16,6 +16,10 @@ export const genericNouns: Lesson = {
     { word: "走[はし]る", reading: "はしる", meaning: "to run" },
     { word: "好[す]き", reading: "すき", meaning: "like; fond of" },
     { word: "上手[じょうず]", reading: "じょうず", meaning: "skillful" },
+    { word: "富士山[ふじさん]", reading: "ふじさん", meaning: "Mt. Fuji" },
+    { word: "夕飯[ゆうはん]", reading: "ゆうはん", meaning: "dinner; evening meal" },
+    { word: "海外[かいがい]", reading: "かいがい", meaning: "overseas; abroad" },
+    { word: "登[のぼ]る", reading: "のぼる", meaning: "to climb (u-verb)" },
   ],
   blocks: [
     {

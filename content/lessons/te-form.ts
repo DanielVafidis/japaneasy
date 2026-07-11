@@ -16,6 +16,11 @@ export const teForm: Lesson = {
     { word: "書[か]く", reading: "かく", meaning: "to write" },
     { word: "読[よ]む", reading: "よむ", meaning: "to read" },
     { word: "ください", reading: "ください", meaning: "please (give me)" },
+    { word: "写真[しゃしん]", reading: "しゃしん", meaning: "photograph" },
+    { word: "お腹[なか]", reading: "おなか", meaning: "stomach; belly" },
+    { word: "持[も]つ", reading: "もつ", meaning: "to hold; to carry (u-verb)" },
+    { word: "撮[と]る", reading: "とる", meaning: "to take (a photo) (u-verb)" },
+    { word: "空[す]く", reading: "すく", meaning: "to become empty (u-verb)", note: "お腹が空いた — I'm hungry" },
   ],
   blocks: [
     {

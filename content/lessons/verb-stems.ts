@@ -17,6 +17,9 @@ export const verbStems: Lesson = {
     { word: "見[み]る", reading: "みる", meaning: "to see" },
     { word: "行[い]く", reading: "いく", meaning: "to go" },
     { word: "映画[えいが]", reading: "えいが", meaning: "movie" },
+    { word: "会[あ]う", reading: "あう", meaning: "to meet (u-verb)" },
+    { word: "遊[あそ]ぶ", reading: "あそぶ", meaning: "to play; to hang out (u-verb)" },
+    { word: "勉強[べんきょう]する", reading: "べんきょうする", meaning: "to study" },
   ],
   blocks: [
     {

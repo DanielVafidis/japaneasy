@@ -16,6 +16,10 @@ export const compoundSentences: Lesson = {
     { word: "昼[ひる]ご飯[はん]", reading: "ひるごはん", meaning: "lunch" },
     { word: "忙[いそが]しい", reading: "いそがしい", meaning: "busy" },
     { word: "時間[じかん]", reading: "じかん", meaning: "time" },
+    { word: "店[みせ]", reading: "みせ", meaning: "shop; store" },
+    { word: "旅行[りょこう]", reading: "りょこう", meaning: "trip; travel", note: "旅行する — to travel" },
+    { word: "安[やす]い", reading: "やすい", meaning: "cheap (i-adj)" },
+    { word: "明[あか]るい", reading: "あかるい", meaning: "bright (i-adj)" },
   ],
   blocks: [
     {

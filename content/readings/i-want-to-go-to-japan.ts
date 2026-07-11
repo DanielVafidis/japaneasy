@@ -42,6 +42,7 @@ export const iWantToGoToJapan: Reading = {
     { word: "お金[かね]", reading: "おかね", meaning: "money" },
     { word: "電車[でんしゃ]", reading: "でんしゃ", meaning: "train" },
     { word: "速[はや]い", reading: "はやい", meaning: "fast (i-adj)" },
+    { word: "方[ほう]", reading: "ほう", meaning: "side; direction; way", note: "〜の方がいい — the ... one is better" },
   ],
   quiz: [
     {

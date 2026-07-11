@@ -16,6 +16,11 @@ export const givingReceiving: Lesson = {
     { word: "プレゼント", reading: "ぷれぜんと", meaning: "present; gift" },
     { word: "教[おし]える", reading: "おしえる", meaning: "to teach" },
     { word: "貸[か]す", reading: "かす", meaning: "to lend" },
+    { word: "隣[となり]", reading: "となり", meaning: "next to; next door" },
+    { word: "お菓子[かし]", reading: "おかし", meaning: "sweets; snacks" },
+    { word: "先輩[せんぱい]", reading: "せんぱい", meaning: "senior (at school or work)" },
+    { word: "母[はは]", reading: "はは", meaning: "(my) mother" },
+    { word: "父[ちち]", reading: "ちち", meaning: "(my) father" },
   ],
   blocks: [
     {

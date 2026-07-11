@@ -14,6 +14,9 @@ export const advancedVolitional: Lesson = {
     { word: "協力[きょうりょく]", reading: "きょうりょく", meaning: "cooperation" },
     { word: "一致[いっち]", reading: "いっち", meaning: "agreement; unity" },
     { word: "努力[どりょく]", reading: "どりょく", meaning: "effort" },
+    { word: "遅[おそ]い", reading: "おそい", meaning: "late; slow (i-adj)" },
+    { word: "二度[にど]と", reading: "にどと", meaning: "never again (with a negative)" },
+    { word: "今後[こんご]", reading: "こんご", meaning: "from now on" },
   ],
   blocks: [
     {

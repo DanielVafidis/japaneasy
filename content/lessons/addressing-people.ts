@@ -15,6 +15,7 @@ export const addressingPeople: Lesson = {
     { word: "名前[なまえ]", reading: "なまえ", meaning: "name" },
     { word: "先生[せんせい]", reading: "せんせい", meaning: "teacher; expert" },
     { word: "社長[しゃちょう]", reading: "しゃちょう", meaning: "company president" },
+    { word: "俺[おれ]", reading: "おれ", meaning: "I; me (rough, masculine)" },
   ],
   blocks: [
     {

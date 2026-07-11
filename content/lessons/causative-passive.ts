@@ -17,6 +17,7 @@ export const causativePassive: Lesson = {
     { word: "質問[しつもん]", reading: "しつもん", meaning: "question" },
     { word: "宿題[しゅくだい]", reading: "しゅくだい", meaning: "homework" },
     { word: "全部[ぜんぶ]", reading: "ぜんぶ", meaning: "all; entirely" },
+    { word: "答[こた]える", reading: "こたえる", meaning: "to answer (ru-verb)" },
   ],
   blocks: [
     {

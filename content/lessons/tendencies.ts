@@ -14,6 +14,8 @@ export const tendencies: Lesson = {
     { word: "太[ふと]る", reading: "ふとる", meaning: "to gain weight" },
     { word: "悩[なや]む", reading: "なやむ", meaning: "to worry" },
     { word: "改善[かいぜん]", reading: "かいぜん", meaning: "improvement" },
+    { word: "風邪[かぜ]", reading: "かぜ", meaning: "a cold", note: "風邪をひく — to catch a cold" },
+    { word: "悪[わる]い", reading: "わるい", meaning: "bad (i-adj)" },
   ],
   blocks: [
     {

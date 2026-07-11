@@ -17,6 +17,7 @@ export const numbersCounting: Lesson = {
     { word: "万[まん]", reading: "まん", meaning: "ten thousand" },
     { word: "二[に]つ", reading: "ふたつ", meaning: "two (things)" },
     { word: "人[にん]", reading: "にん", meaning: "counter for people" },
+    { word: "二人[ふたり]", reading: "ふたり", meaning: "two people" },
   ],
   blocks: [
     {
