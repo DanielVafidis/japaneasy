@@ -10,6 +10,7 @@ import {
   type Kanji,
   type KanjiCategory,
 } from "@/content/kanji";
+import type { JlptLevel } from "@/content/jlpt";
 import { cardsForDeck } from "@/content/decks";
 import { AudioButton } from "@/components/AudioButton";
 import { AddToDeckButton } from "@/components/AddToDeckButton";
@@ -19,12 +20,16 @@ import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { cn } from "@/lib/cn";
 
 type Filter = KanjiCategory | "all";
+type LevelFilter = JlptLevel | "all";
 type Mode = "browse" | "write";
+
+const jlptLevels: JlptLevel[] = [5, 4];
 
 export function KanjiView() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [filter, setFilter] = useState<Filter>("all");
+  const [level, setLevel] = useState<LevelFilter>("all");
   const [mode, setMode] = useState<Mode>("browse");
   const [writeStart, setWriteStart] = useState<string | undefined>(undefined);
   // bumped so "Practice writing" always jumps the writer to its kanji
@@ -35,8 +40,13 @@ export function KanjiView() {
   const selected = selectedChar ? (kanjiByChar[selectedChar] ?? null) : null;
 
   const list = useMemo(
-    () => (filter === "all" ? kanji : kanji.filter((k) => k.category === filter)),
-    [filter],
+    () =>
+      kanji.filter(
+        (k) =>
+          (filter === "all" || k.category === filter) &&
+          (level === "all" || k.jlpt === level),
+      ),
+    [filter, level],
   );
 
   const allIds = cardsForDeck("kanji").map((c) => c.id);
@@ -50,9 +60,12 @@ export function KanjiView() {
   }
 
   function practiceKanji(k: Kanji) {
-    // the writer only pages through the visible list, so widen the filter
+    // the writer only pages through the visible list, so widen the filters
     // if the requested kanji is filtered out
-    if (!list.some((x) => x.char === k.char)) setFilter("all");
+    if (!list.some((x) => x.char === k.char)) {
+      setFilter("all");
+      setLevel("all");
+    }
     setWriteStart(k.char);
     setWriteSession((s) => s + 1);
     setMode("write");
@@ -62,7 +75,7 @@ export function KanjiView() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
-        <div className="flex w-full flex-wrap gap-1.5 sm:w-auto">
+        <div className="flex w-full flex-wrap items-center gap-1.5 sm:w-auto">
           <Chip active={filter === "all"} onClick={() => setFilter("all")}>
             All
           </Chip>
@@ -75,6 +88,21 @@ export function KanjiView() {
               {c.label}
             </Chip>
           ))}
+          <div
+            role="group"
+            aria-label="JLPT level"
+            className="ml-1 flex items-center gap-1.5 border-l border-line pl-2.5"
+          >
+            {jlptLevels.map((n) => (
+              <Chip
+                key={n}
+                active={level === n}
+                onClick={() => setLevel(level === n ? "all" : n)}
+              >
+                N{n}
+              </Chip>
+            ))}
+          </div>
         </div>
         <SegmentedControl
           aria-label="Kanji mode"
@@ -96,7 +124,11 @@ export function KanjiView() {
         />
       </div>
 
-      {mode === "browse" ? (
+      {list.length === 0 ? (
+        <p className="rounded-2xl border border-dashed border-line p-8 text-center text-ink-faint">
+          No kanji match these filters yet.
+        </p>
+      ) : mode === "browse" ? (
         <>
           <div className="flex justify-end">
             <AddToDeckButton
@@ -125,7 +157,7 @@ export function KanjiView() {
         </>
       ) : (
         <KanjiWriter
-          key={`${filter}-${writeSession}`}
+          key={`${filter}-${level}-${writeSession}`}
           list={list}
           initialChar={writeStart}
         />
