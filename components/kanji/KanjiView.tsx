@@ -2,7 +2,13 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Grid3x3, PencilLine, SquareArrowOutUpRight, X } from "lucide-react";
+import {
+  Grid3x3,
+  PencilLine,
+  Sparkles,
+  SquareArrowOutUpRight,
+  X,
+} from "lucide-react";
 import {
   kanji,
   kanjiCategories,
@@ -132,7 +138,9 @@ export function KanjiView() {
         />
       </div>
 
-      {list.length === 0 ? (
+      {level === 3 ? (
+        <N3ComingSoon />
+      ) : list.length === 0 ? (
         <p className="rounded-2xl border border-dashed border-line p-8 text-center text-ink-faint">
           No kanji match these filters yet.
         </p>
@@ -201,6 +209,24 @@ function Chip({
     >
       {children}
     </button>
+  );
+}
+
+function N3ComingSoon() {
+  return (
+    <div className="flex flex-col items-center rounded-3xl border border-dashed border-line bg-surface-2/40 px-6 py-14 text-center sm:px-10 sm:py-16">
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-ink-faint">
+        <Sparkles className="h-3.5 w-3.5" /> Coming soon
+      </span>
+      <p className="mt-5 font-jp text-4xl text-shu/50 sm:text-5xl">漢字</p>
+      <h2 className="mt-4 font-display text-2xl text-ink sm:text-3xl">
+        N3+ kanji are on the way
+      </h2>
+      <p className="mt-3 max-w-md text-base leading-7 text-ink-soft">
+        We&apos;re focused on solid N5 and N4 coverage first. Intermediate and
+        beyond will open up here once those foundations are ready to build on.
+      </p>
+    </div>
   );
 }
 
